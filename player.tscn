@@ -172,6 +172,6 @@ texture_filter = 1
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_7lmhl")
 animation = &"idle_down"
-frame_progress = 0.57391703
+frame_progress = 0.039437577
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2034566478]

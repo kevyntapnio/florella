@@ -35,14 +35,4 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("walk_down")
 
 	else:
-		if facing_direction == "right":
-			$AnimatedSprite2D.play("idle_right")
-
-		elif facing_direction == "left":
-			$AnimatedSprite2D.play("idle_left")
-
-		elif facing_direction == "up":
-			$AnimatedSprite2D.play("idle_up")
-
-		elif facing_direction == "down":
-			$AnimatedSprite2D.play("idle_down")
+		$AnimatedSprite2D.play("idle_down")
