@@ -7,11 +7,12 @@ var facing_direction = "down"
 
 var nearby_interactables = []
 var closest_interactable = null
+var focused_interactable = null
 
 func _physics_process(delta):
 	
-	print(nearby_interactables)
 	find_closest_interactable()
+	update_focused_interactable()
 
 	# Movement
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -48,7 +49,6 @@ func _physics_process(delta):
 		
 	# Object interaction
 	if Input.is_action_just_pressed("interact"):
-		print("Closest interactable value -> ", closest_interactable)
 		
 		if closest_interactable:
 			closest_interactable.interact()
@@ -73,3 +73,15 @@ func find_closest_interactable():
 			closest_object = object
 			
 	closest_interactable = closest_object
+
+func update_focused_interactable():
+
+	if closest_interactable != focused_interactable:
+		if focused_interactable: 
+			focused_interactable.on_focus_exited()
+			
+		focused_interactable = closest_interactable
+		
+		if focused_interactable:
+			focused_interactable.on_focus_entered()
+	
