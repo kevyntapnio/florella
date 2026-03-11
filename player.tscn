@@ -176,3 +176,7 @@ frame_progress = 0.34689435
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2034566478]
 zoom = Vector2(2, 2)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1981826413]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=114551351]
