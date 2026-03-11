@@ -180,3 +180,6 @@ zoom = Vector2(2, 2)
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1981826413]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=114551351]
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
