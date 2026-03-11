@@ -4,6 +4,7 @@ const SPEED = 120
 var facing_direction = "down"
 
 @onready var sprite = $AnimatedSprite2D
+@onready var interaction_prompt = $InteractionPrompt
 
 var nearby_interactables = []
 var closest_interactable = null
@@ -47,26 +48,34 @@ func _physics_process(delta):
 	else:
 		sprite.play("idle_down")
 		
-	# Object interaction
+	# OBJECT INTERACTION
 	if Input.is_action_just_pressed("interact"):
 		
 		if closest_interactable:
 			closest_interactable.interact()
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
+	
 	if area is Interactable:
-		nearby_interactables.append(area)
+		var interactable_object = area.get_parent()
+		nearby_interactables.append(interactable_object)
 		
 func _on_interaction_area_area_exited(area: Area2D) -> void:
+	
 	if area is Interactable:
-		nearby_interactables.erase(area)
+		var interactable_object = area.get_parent()
+		nearby_interactables.erase(interactable_object)
+		
+		find_closest_interactable()
+		update_focused_interactable()
 		
 func find_closest_interactable():
+	
 	var closest_object = null
 	var current_smallest_distance = INF
 	
 	for object in nearby_interactables:
-		var distance = global_position.distance_to(object.get_parent().global_position)
+		var distance = global_position.distance_to(object.global_position)
 		
 		if distance < current_smallest_distance:
 			current_smallest_distance = distance
@@ -77,6 +86,7 @@ func find_closest_interactable():
 func update_focused_interactable():
 
 	if closest_interactable != focused_interactable:
+		
 		if focused_interactable: 
 			focused_interactable.on_focus_exited()
 			
@@ -84,4 +94,10 @@ func update_focused_interactable():
 		
 		if focused_interactable:
 			focused_interactable.on_focus_entered()
-	
+			
+			var action = focused_interactable.get_interaction_action()
+			print (action)
+			
+			interaction_prompt.show()
+		else:
+			interaction_prompt.hide()

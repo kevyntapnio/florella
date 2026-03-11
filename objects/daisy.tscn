@@ -11,9 +11,10 @@ radius = 19.0
 script = ExtResource("1_ow11x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2028254702]
+y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("2_q3yrv")
-offset = Vector2(0, -13.205)
+offset = Vector2(0, -15.205)
 hframes = 5
 frame = 4
 
