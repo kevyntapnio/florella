@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cqtguk5mgbqpi"]
+
+[ext_resource type="Script" uid="uid://dpo3lkrut81td" path="res://objects/daisy.gd" id="1_ow11x"]
+[ext_resource type="Texture2D" uid="uid://b3c3j06x5equ8" path="res://sprites/daisy sprite sheet.png" id="2_q3yrv"]
+[ext_resource type="Script" uid="uid://cmb1wrnroabm0" path="res://objects/interactable.gd" id="3_bus1m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwt7r"]
+radius = 19.0
+
+[node name="Daisy" type="Node2D" unique_id=1747781451]
+script = ExtResource("1_ow11x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2028254702]
+texture_filter = 1
+texture = ExtResource("2_q3yrv")
+offset = Vector2(0, -13.205)
+hframes = 5
+frame = 4
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=289164790]
+script = ExtResource("3_bus1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=971296038]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_iwt7r")

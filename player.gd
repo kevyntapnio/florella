@@ -10,6 +10,7 @@ var closest_interactable = null
 
 func _physics_process(delta):
 	
+	print(nearby_interactables)
 	find_closest_interactable()
 
 	# Movement
@@ -47,24 +48,25 @@ func _physics_process(delta):
 		
 	# Object interaction
 	if Input.is_action_just_pressed("interact"):
+		print("Closest interactable value -> ", closest_interactable)
+		
 		if closest_interactable:
 			closest_interactable.interact()
 
-
-func _on_interaction_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("interactable"):
-		nearby_interactables.append(body)
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	if area is Interactable:
+		nearby_interactables.append(area)
 		
-func _on_interaction_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("interactable"):
-		nearby_interactables.erase(body)
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	if area is Interactable:
+		nearby_interactables.erase(area)
 		
 func find_closest_interactable():
 	var closest_object = null
 	var current_smallest_distance = INF
 	
 	for object in nearby_interactables:
-		var distance = global_position.distance_to(object.global_position)
+		var distance = global_position.distance_to(object.get_parent().global_position)
 		
 		if distance < current_smallest_distance:
 			current_smallest_distance = distance

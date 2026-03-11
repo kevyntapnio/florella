@@ -160,6 +160,9 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 19.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1372264591]
 script = ExtResource("1_onrkg")
 
@@ -180,6 +183,10 @@ zoom = Vector2(2, 2)
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1981826413]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=114551351]
+position = Vector2(0, 14)
+shape = SubResource("CircleShape2D_onrkg")
 
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
