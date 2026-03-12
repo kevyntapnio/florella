@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cmb1wrnroabm0" path="res://objects/interactable.gd" id="3_bus1m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iwt7r"]
-radius = 19.0
+radius = 10.049875
 
 [node name="Daisy" type="Node2D" unique_id=1747781451]
 script = ExtResource("1_ow11x")
@@ -22,5 +22,5 @@ frame = 4
 script = ExtResource("3_bus1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=971296038]
-position = Vector2(0, 7)
+position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_iwt7r")
