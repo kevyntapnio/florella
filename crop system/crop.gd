@@ -4,7 +4,11 @@ var growth_stage = 0
 var days_in_stage = 0
 var crop_data
 
+@onready var time_manager
 @export var sprite: Sprite2D
+
+func _ready():
+	time_manager.day_passed.connect(on_day_passed)
 
 func receive_crop_data(data):
 	crop_data = data
@@ -29,3 +33,4 @@ func on_day_passed():
 			growth_stage += 1
 			days_in_stage = 0
 			update_sprite()
+			

@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://cd1s6enicxk2n"]
 
-[ext_resource type="Script" uid="uid://mggu5cqcy304" path="res://crop.gd" id="1_doysg"]
+[ext_resource type="Script" uid="uid://mggu5cqcy304" path="res://crop system/crop.gd" id="1_doysg"]
 
 [node name="Crop" type="Node2D" unique_id=1254910331]
 script = ExtResource("1_doysg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=402152962]
+texture_filter = 1
+region_enabled = true
+region_rect = Rect2(128, 0, 32, 32)
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1770395996]
 
