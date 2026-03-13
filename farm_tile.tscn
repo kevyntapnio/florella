@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://sfbkfsohxfi0"]
+
+[ext_resource type="Script" uid="uid://b4mgtw1f3hk6" path="res://farm_tile.gd" id="1_jvyi0"]
+
+[node name="FarmTile" type="Node2D" unique_id=1563810621]
+script = ExtResource("1_jvyi0")
+
+[node name="TileArea" type="Area2D" parent="." unique_id=836724375]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileArea" unique_id=312803005]

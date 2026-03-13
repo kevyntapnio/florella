@@ -195,6 +195,10 @@ position = Vector2(0, -40)
 scale = Vector2(0.5625, 0.5625)
 texture = ExtResource("3_i3pqv")
 
+[node name="TileDetector" type="Area2D" parent="." unique_id=564237202]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector" unique_id=1709070598]
+
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
