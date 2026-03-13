@@ -2,14 +2,19 @@
 
 [ext_resource type="Script" uid="uid://mggu5cqcy304" path="res://crop system/crop.gd" id="1_doysg"]
 
-[node name="Crop" type="Node2D" unique_id=1254910331]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kesr"]
+
+[node name="Crop" type="Node2D" unique_id=1254910331 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_doysg")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=402152962]
 texture_filter = 1
-region_enabled = true
 region_rect = Rect2(128, 0, 32, 32)
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1770395996]
+collision_layer = 4
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=827168425]
+shape = SubResource("CircleShape2D_4kesr")

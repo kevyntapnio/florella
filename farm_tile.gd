@@ -6,29 +6,37 @@ enum SoilState {
 	TILLED,
 	WATERED
 }
-var soil_state = SoilState.GRASS
+## IMPORTANT: default state GRASS. change to TILLED for testing
+var soil_state = SoilState.TILLED
+
+## Change this to "Crop" when Crop class is created
 var current_crop: Node2D = null
 
+## This is needed so scene can be instantiated later
 @export var crop_scene: PackedScene
 
-func plant(crop_data):
-	
+func plant(crop_data) -> bool:
+	print("Plant called")
 	if crop_data == null: 
+		print("crop_data is null")
 		return false
 		
 	if current_crop != null:
+		print("tile already has crop")
 		return false
 			
 	if soil_state != SoilState.TILLED:
+		print("soil not tilled")
 		return false
 		
-		var crop = crop_scene.instantiate()
+	var crop = crop_scene.instantiate()
+	print("Crop instantiated")
 		
-		add_child(crop)
-		current_crop = crop
-		crop.parent_tile = self
-		crop.receive_crop_data(crop_data)
+	add_child(crop)
+	current_crop = crop
+	crop.parent_tile = self
+	crop.receive_crop_data(crop_data)
 		
-		return true
+	return true
 	
 	

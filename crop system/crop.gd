@@ -4,6 +4,7 @@ var growth_stage = 0
 var days_in_stage = 0
 var crop_data
 var is_regrowing = false
+var parent_tile: Node2D
 
 var interaction_action = "Harvest"
 
@@ -12,8 +13,8 @@ var interaction_action = "Harvest"
 
 @export var sprite: Sprite2D
 
-func _ready():
-	time_manager.day_passed.connect(on_day_passed)
+# func _ready():
+#	time_manager.day_passed.connect(on_day_passed)
 
 func receive_crop_data(data):
 	crop_data = data
@@ -23,6 +24,7 @@ func receive_crop_data(data):
 	
 func update_sprite():
 	sprite.texture = crop_data.stage_textures[growth_stage]
+	print(crop_data.stage_textures[growth_stage])
 
 func on_day_passed():
 	if crop_data == null:
@@ -66,3 +68,9 @@ func harvest():
 		update_sprite()
 	else:
 		queue_free()
+		
+### added for testing
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		on_day_passed()
