@@ -10,6 +10,8 @@ var nearby_interactables = []
 var closest_interactable = null
 var focused_interactable = null
 
+var nearby_tile = []
+
 func _physics_process(delta):
 	
 	find_closest_interactable()
@@ -101,3 +103,12 @@ func update_focused_interactable():
 			interaction_prompt.show()
 		else:
 			interaction_prompt.hide()
+
+
+func _on_tile_detector_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+	
+
+
+func _on_tile_detector_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.

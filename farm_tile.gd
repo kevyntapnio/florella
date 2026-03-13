@@ -14,18 +14,21 @@ var current_crop: Node2D = null
 func plant(crop_data):
 	
 	if crop_data == null: 
-		return
+		return false
 		
 	if current_crop != null:
-		return
-		
+		return false
+			
 	if soil_state != SoilState.TILLED:
-		return
+		return false
+		
+		var crop = crop_scene.instantiate()
+		
+		add_child(crop)
+		current_crop = crop
+		crop.parent_tile = self
+		crop.receive_crop_data(crop_data)
+		
+		return true
 	
-	var crop = crop_scene.instantiate()
-	
-	add_child(crop)
-	current_crop = crop
-	crop.parent_tile = self
-	crop.receive_crop_data(crop_data)
 	
