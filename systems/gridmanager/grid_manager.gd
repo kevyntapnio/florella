@@ -16,7 +16,6 @@ func _ready():
 		tiles[tile_coords] = tile
 
 func get_tile_at(grid_coordinate):
-	if tiles.has(grid_coordinate):
 		return tiles[grid_coordinate]
 	else:
 		return null

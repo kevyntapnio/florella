@@ -1,4 +1,4 @@
-extends Node2D
+extends Interactable
 
 var growth_stage = 0
 var days_in_stage = 0
@@ -10,7 +10,6 @@ var interaction_action = "Harvest"
 
 ## Path to TimeManager doesn't exist yet because I haven't set it up
 @onready var time_manager = get_tree().root.get_node("Game/TimeManager")
-
 @export var sprite: Sprite2D
 
 # func _ready():
@@ -67,10 +66,11 @@ func harvest():
 		is_regrowing = true
 		update_sprite()
 	else:
+		parent_tile.clear_crop()
 		queue_free()
 		
-### added for testing
-
+### Added for testing
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		on_day_passed()
+		

@@ -13,11 +13,14 @@ config_version=5
 config/name="learning project"
 run/main_scene="uid://us2ojftsqtjc"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
 
 [autoload]
 
 InventorySystem="*uid://bgx6lm1cwnyaa"
+
+[global_group]
+
+farm_tiles=""
 
 [input]
 

@@ -15,8 +15,11 @@ var current_crop: Node2D = null
 ## This is needed so scene can be instantiated later
 @export var crop_scene: PackedScene
 
+func _ready():
+	add_to_group("farm_tiles")
+
 func plant(crop_data) -> bool:
-	print("Plant called")
+	
 	if crop_data == null: 
 		print("crop_data is null")
 		return false
@@ -39,4 +42,5 @@ func plant(crop_data) -> bool:
 		
 	return true
 	
-	
+func clear_crop():
+	current_crop = null

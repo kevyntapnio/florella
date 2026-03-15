@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btttkhmphug02"]
 
-[ext_resource type="Script" uid="uid://bdcbc70qm4xc" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://bdcbc70qm4xc" path="res://systems/player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://d3jnemt5fsf4m" path="res://sprites/player sprite.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://ca70a8k8jdmka" path="res://objects/interact.png" id="3_i3pqv"]
 
@@ -162,11 +162,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 12.0415945
+radius = 11.04
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1372264591]
+collision_layer = 16
+collision_mask = 4
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=473465960]
@@ -188,7 +190,7 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=114551351]
-position = Vector2(0, -6)
+position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="InteractionPrompt" type="Sprite2D" parent="." unique_id=2061459619]
@@ -204,8 +206,8 @@ collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileDetector" unique_id=1709070598]
-position = Vector2(0, 6)
-shape = SubResource("CircleShape2D_i3pqv")
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_i3pqv")
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]

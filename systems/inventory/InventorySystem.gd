@@ -1,7 +1,6 @@
 extends Node
 
-## added for debugging
-
+## temporary for debugging
 var inventory_slots = [
 	preload("res://SeedItems/DaisySeedItem.tres")
 	]
