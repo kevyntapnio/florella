@@ -6,6 +6,7 @@ var tiles = {}
 
 func _ready():
 	var farm_tiles = get_tree().get_nodes_in_group("farm_tiles")
+	print(farm_tiles)
 	
 	## This can be compacted into 1 var, but can be written like this for readability
 	for tile in farm_tiles:

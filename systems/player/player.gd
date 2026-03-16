@@ -6,6 +6,7 @@ var facing_direction = Vector2i(0, 1)
 @export var tilemap: TileMapLayer
 @export var grid_manager: Node2D
 @export var tile_highlight: Node2D
+@export var targeting_system: Node2D
 
 @onready var sprite = $AnimatedSprite2D
 @onready var interaction_prompt = $InteractionPrompt
@@ -18,27 +19,17 @@ var closest_interactable = null
 var focused_interactable = null
 var player_tile_coords: Vector2i
 var current_target_coords: Vector2i
-var current_hovered_coords: Vector2i = INVALID_COORD
 
 func _process(delta):
-	update_mouse_target()
-	update_current_target()
 	
-	if current_target_coords == INVALID_COORD:
-		tile_highlight.remove_highlight()
-	else:
-		tile_highlight.show_highlight()
-		tile_highlight.highlight_tile(current_target_coords)
+	var target_tile = grid_manager.get_tile_at(targeting_system.current_target_coords)
 
-func update_mouse_target():
-	
-	var mouse_pos = get_global_mouse_position()
-	var local_pos = tilemap.to_local(mouse_pos)
-	var grid_coords = tilemap.local_to_map(local_pos)
-	
-	if grid_coords != current_hovered_coords:
-		current_hovered_coords = grid_coords
-		
+	if target_tile != null:
+		tile_highlight.show_highlight()
+		tile_highlight.highlight_tile(targeting_system.current_target_coords)
+	else:
+		tile_highlight.remove_highlight()
+
 func _physics_process(delta):
 
 	# Movement
@@ -77,6 +68,11 @@ func _physics_process(delta):
 	update_player_tile_coords()
 	find_closest_interactable()
 	update_focused_interactable()
+	
+	targeting_system.player_tile_coords = player_tile_coords
+	targeting_system.facing_direction = facing_direction
+
+	targeting_system.update_current_target()
 		
 func _input(event: InputEvent) -> void:
 	
@@ -86,13 +82,11 @@ func _input(event: InputEvent) -> void:
 			closest_interactable.interact()
 	
 	if Input.is_action_just_pressed("use_item"):
-		if current_target_coords == null:
-			return
 		
-		var target_tile = grid_manager.get_tile_at(current_target_coords)
+		var target_tile = grid_manager.get_tile_at(targeting_system.current_target_coords)
 		var selected_item = InventorySystem.get_selected_item()
-		
-		if selected_item == null:
+
+		if target_tile == null:
 			return
 			
 		selected_item.use(target_tile)
@@ -103,8 +97,6 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
 	if interactable_object is Interactable:
 
-		print(area)
-		print(area.get_parent())
 		nearby_interactables.append(interactable_object)
 		
 func _on_interaction_area_area_exited(area: Area2D) -> void:
@@ -154,17 +146,3 @@ func update_player_tile_coords():
 
 	var local_pos = tilemap.to_local(global_position)
 	player_tile_coords = tilemap.local_to_map(local_pos)
-	
-func get_tile_in_front():
-	
-	return player_tile_coords + facing_direction
-
-func update_current_target():
-	if current_hovered_coords != INVALID_COORD:
-		if grid_manager.get_tile_at(current_hovered_coords):
-			current_target_coords = current_hovered_coords
-		else:
-			current_target_coords = INVALID_COORD
-	else:
-		current_target_coords = get_tile_in_front()
-			
