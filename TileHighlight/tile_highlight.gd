@@ -9,3 +9,6 @@ func highlight_tile(grid_coordinate: Vector2i):
 	
 func remove_highlight():
 	hide()
+	
+func show_highlight():
+	show()

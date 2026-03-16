@@ -25,7 +25,6 @@ always_update = true
 
 [node name="TileHighlight" parent="tilemap_logic_layer" unique_id=2079784629 node_paths=PackedStringArray("tilemap") instance=ExtResource("3_47drt")]
 z_index = 1
-texture_filter = 1
 tilemap = NodePath("..")
 
 [node name="display_layer" type="TileMapLayer" parent="." unique_id=935761495]
@@ -48,38 +47,29 @@ tile_highlight = NodePath("../tilemap_logic_layer/TileHighlight")
 
 [node name="FarmTiles" type="Node" parent="." unique_id=195402022]
 
-[node name="FarmTile" parent="FarmTiles" unique_id=1563810621 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile" parent="." unique_id=1563810621 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(336, 560)
 
-[node name="FarmTile2" parent="FarmTiles" unique_id=777105537 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile2" parent="." unique_id=777105537 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(400, 528)
 
-[node name="FarmTile3" parent="FarmTiles" unique_id=884742562 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile3" parent="." unique_id=884742562 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(336, 528)
 
-[node name="FarmTile4" parent="FarmTiles" unique_id=1543004241 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile4" parent="." unique_id=1543004241 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(368, 528)
 
-[node name="FarmTile5" parent="FarmTiles" unique_id=295073268 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile5" parent="." unique_id=295073268 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(368, 560)
 
-[node name="FarmTile6" parent="FarmTiles" unique_id=1158065840 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile6" parent="." unique_id=1158065840 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(400, 560)
 
-[node name="FarmTile7" parent="FarmTiles" unique_id=1500721296 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile7" parent="." unique_id=1500721296 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(336, 592)
 
-[node name="FarmTile8" parent="FarmTiles" unique_id=342861598 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile8" parent="." unique_id=342861598 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(368, 592)
 
-[node name="FarmTile9" parent="FarmTiles" unique_id=1235092121 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
-y_sort_enabled = true
+[node name="FarmTile9" parent="." unique_id=1235092121 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 position = Vector2(400, 592)

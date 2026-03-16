@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 120
-var facing_direction = "down"
+var facing_direction = Vector2i(0, 1)
 
 @export var tilemap: TileMapLayer
 @export var grid_manager: Node2D
@@ -11,33 +11,35 @@ var facing_direction = "down"
 @onready var interaction_prompt = $InteractionPrompt
 @onready var tile_detector = $TileDetector
 
+const INVALID_COORD = Vector2i(-1, -1)
+
 var nearby_interactables = []
 var closest_interactable = null
 var focused_interactable = null
-var closest_tile = null
-var nearby_tiles = []
-var current_hovered_tile
+var player_tile_coords: Vector2i
+var current_target_coords: Vector2i
+var current_hovered_coords: Vector2i = INVALID_COORD
 
 func _process(delta):
+	update_mouse_target()
+	update_current_target()
+	
+	if current_target_coords == INVALID_COORD:
+		tile_highlight.remove_highlight()
+	else:
+		tile_highlight.show_highlight()
+		tile_highlight.highlight_tile(current_target_coords)
+
+func update_mouse_target():
 	
 	var mouse_pos = get_global_mouse_position()
 	var local_pos = tilemap.to_local(mouse_pos)
 	var grid_coords = tilemap.local_to_map(local_pos)
 	
-	var new_hovered_tile = grid_manager.get_tile_at(grid_coords)
-	
-	var farm_tiles = get_tree().get_nodes_in_group("farm_tiles")
-	
-	if new_hovered_tile != current_hovered_tile:
+	if grid_coords != current_hovered_coords:
+		current_hovered_coords = grid_coords
 		
-		current_hovered_tile = new_hovered_tile
-		tile_highlight.highlight_tile(grid_coords)
-
 func _physics_process(delta):
-	
-	find_closest_interactable()
-	update_focused_interactable()
-	find_closest_tile()
 
 	# Movement
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -46,55 +48,54 @@ func _physics_process(delta):
 	move_and_slide()
 
 	if velocity.x > 0:
-		facing_direction = "right"
-		update_tile_detector()
+		facing_direction = Vector2i(1, 0)
 
 		if sprite.animation != "walk_right":
 			sprite.play("walk_right")
 
 	elif velocity.x < 0:
-		facing_direction = "left"
-		update_tile_detector()
+		facing_direction = Vector2i(-1,0)
 		
 		if sprite.animation != "walk_left":
 			sprite.play("walk_left")
 
 	elif velocity.y < 0:
-		facing_direction = "up"
-		update_tile_detector()
+		facing_direction = Vector2i(0, -1)
 		
 		if sprite.animation != "walk_up":
 			sprite.play("walk_up")
 
 	elif velocity.y > 0:
-		facing_direction = "down"
-		update_tile_detector()
+		facing_direction = Vector2i(0, 1)
 		
 		if sprite.animation != "walk_down":
 			sprite.play("walk_down")
 
 	else:
 		sprite.play("idle_down")
+	
+	update_player_tile_coords()
+	find_closest_interactable()
+	update_focused_interactable()
 		
-	# OBJECT INTERACTION
+func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		
 		if closest_interactable:
 			closest_interactable.interact()
 	
-	# PLANTING
-	
 	if Input.is_action_just_pressed("use_item"):
-		if closest_tile == null:
+		if current_target_coords == null:
 			return
 		
+		var target_tile = grid_manager.get_tile_at(current_target_coords)
 		var selected_item = InventorySystem.get_selected_item()
 		
 		if selected_item == null:
 			return
 			
-		selected_item.use(closest_tile) 
+		selected_item.use(target_tile)
 	
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
@@ -149,40 +150,21 @@ func update_focused_interactable():
 		else:
 			interaction_prompt.hide()
 
-func _on_tile_detector_area_entered(area: Area2D) -> void:
+func update_player_tile_coords():
 
-	var farm_tile = area.get_parent()
-	nearby_tiles.append(farm_tile)
+	var local_pos = tilemap.to_local(global_position)
+	player_tile_coords = tilemap.local_to_map(local_pos)
 	
-func _on_tile_detector_area_exited(area: Area2D) -> void:
+func get_tile_in_front():
 	
-	var farm_tile = area.get_parent()
-	nearby_tiles.erase(farm_tile)
-	
-	find_closest_tile()
-	
-func find_closest_tile():
-	
-	var closest_object = null
-	var smallest_distance = INF
-	
-	for farm_tile in nearby_tiles:
-		var distance = global_position.distance_to(farm_tile.global_position)
-		
-		if distance < smallest_distance:
-			smallest_distance = distance
-			closest_object = farm_tile
-	
-	closest_tile = closest_object
-	
-func update_tile_detector():
-	match facing_direction:
-		"up":
-			tile_detector.position = Vector2(0, -32)
-		"down":
-			tile_detector.position = Vector2(0, 32)
-		"left":
-			tile_detector.position = Vector2(-32, 0)
-		"right":
-			tile_detector.position = Vector2(32, 0)
+	return player_tile_coords + facing_direction
+
+func update_current_target():
+	if current_hovered_coords != INVALID_COORD:
+		if grid_manager.get_tile_at(current_hovered_coords):
+			current_target_coords = current_hovered_coords
+		else:
+			current_target_coords = INVALID_COORD
+	else:
+		current_target_coords = get_tile_in_front()
 			
