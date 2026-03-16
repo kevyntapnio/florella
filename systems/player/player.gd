@@ -7,6 +7,7 @@ var facing_direction = Vector2i(0, 1)
 @export var grid_manager: Node2D
 @export var tile_highlight: Node2D
 @export var targeting_system: Node2D
+@export var interaction_system: Node2D
 
 @onready var sprite = $AnimatedSprite2D
 @onready var interaction_prompt = $InteractionPrompt
@@ -19,10 +20,11 @@ var closest_interactable = null
 var focused_interactable = null
 var player_tile_coords: Vector2i
 var current_target_coords: Vector2i
+var player_global_position
 
 func _process(delta):
 	
-	var target_tile = grid_manager.get_tile_at(targeting_system.current_target_coords)
+	var target_tile = grid_manager.get_grid_object(targeting_system.current_target_coords)
 
 	if target_tile != null:
 		tile_highlight.show_highlight()
@@ -67,10 +69,10 @@ func _physics_process(delta):
 	
 	update_player_tile_coords()
 	find_closest_interactable()
-	update_focused_interactable()
 	
 	targeting_system.player_tile_coords = player_tile_coords
 	targeting_system.facing_direction = facing_direction
+	targeting_system.player_global_position = global_position
 
 	targeting_system.update_current_target()
 		
@@ -83,7 +85,7 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("use_item"):
 		
-		var target_tile = grid_manager.get_tile_at(targeting_system.current_target_coords)
+		var target_tile = grid_manager.get_grid_object(targeting_system.current_target_coords)
 		var selected_item = InventorySystem.get_selected_item()
 
 		if target_tile == null:
@@ -96,18 +98,16 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	var interactable_object = area.get_parent()
 	
 	if interactable_object is Interactable:
-
-		nearby_interactables.append(interactable_object)
+		interaction_system.register_interactable(interactable_object)
 		
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	
 	var interactable_object = area.get_parent()
-		
+	
 	if interactable_object is Interactable:
-		nearby_interactables.erase(interactable_object)
+		interaction_system.unregister_interactable(interactable_object)
 		
 	find_closest_interactable()
-	update_focused_interactable()
 		
 func find_closest_interactable():
 	
@@ -122,25 +122,6 @@ func find_closest_interactable():
 			closest_object = object
 			
 	closest_interactable = closest_object
-
-func update_focused_interactable():
-
-	if closest_interactable != focused_interactable:
-		
-		if focused_interactable: 
-			focused_interactable.on_focus_exited()
-			
-		focused_interactable = closest_interactable
-		
-		if focused_interactable:
-			focused_interactable.on_focus_entered()
-			
-			var action = focused_interactable.get_interaction_action()
-			print (action)
-			
-			interaction_prompt.show()
-		else:
-			interaction_prompt.hide()
 
 func update_player_tile_coords():
 

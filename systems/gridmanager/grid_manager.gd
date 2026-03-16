@@ -2,23 +2,16 @@ extends Node2D
 
 @export var tilemap: TileMapLayer
 
-var tiles = {}
+var grid_objects = {}
 
 func _ready():
-	var farm_tiles = get_tree().get_nodes_in_group("farm_tiles")
-	print(farm_tiles)
+	print(grid_objects)
+		
+func register_grid_object(coords: Vector2i, object):
+	grid_objects[coords] = object
 	
-	## This can be compacted into 1 var, but can be written like this for readability
-	for tile in farm_tiles:
-		var tile_global = tile.global_position
-		var tile_local = tilemap.to_local(tile_global)
-		var tile_coords = tilemap.local_to_map(tile_local)
-		
-		tiles[tile_coords] = tile
-
-func get_tile_at(grid_coordinate):
-	if tiles.has(grid_coordinate):
-		return tiles[grid_coordinate]
-	else:
-		return null
-		
+func unregister_grid_object(coords: Vector2i):
+	grid_objects.erase(coords)
+	
+func get_grid_object(coords: Vector2i):
+	return grid_objects.get(coords)

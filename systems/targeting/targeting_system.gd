@@ -5,6 +5,7 @@ extends Node2D
 var current_target_coords
 var facing_direction
 var player_tile_coords
+var player_global_position
 
 func update_current_target():
 	

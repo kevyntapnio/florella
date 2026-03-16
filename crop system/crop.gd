@@ -53,7 +53,7 @@ func get_interaction_action():
 	if growth_stage == crop_data.harvest_stage:
 		return interaction_action
 	
-func interact():
+func interact(item):
 	if growth_stage == crop_data.harvest_stage:
 		harvest()
 
