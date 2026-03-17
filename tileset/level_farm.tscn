@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cqtguk5mgbqpi" path="res://objects/daisy.tscn" id="4_lurls"]
 [ext_resource type="PackedScene" uid="uid://sfbkfsohxfi0" path="res://farm_tile.tscn" id="5_d35qd"]
 [ext_resource type="PackedScene" uid="uid://cfts6c20x875h" path="res://systems/targeting/targeting_system.tscn" id="6_d6inf"]
+[ext_resource type="PackedScene" uid="uid://txwrw3hmnb6e" path="res://systems/interaction/interaction_system.tscn" id="7_5ubtp"]
 
 [node name="LevelFarm" type="Node2D" unique_id=1369154645]
 y_sort_enabled = true
@@ -38,7 +39,7 @@ tile_set = ExtResource("1_s088y")
 [node name="GridManager" parent="." unique_id=1360749178 node_paths=PackedStringArray("tilemap") instance=ExtResource("1_xuvbi")]
 tilemap = NodePath("../tilemap_logic_layer")
 
-[node name="Player" parent="." unique_id=1372264591 node_paths=PackedStringArray("tilemap", "grid_manager", "tile_highlight", "targeting_system") instance=ExtResource("3_k5frs")]
+[node name="Player" parent="." unique_id=1372264591 node_paths=PackedStringArray("tilemap", "grid_manager", "tile_highlight", "targeting_system", "interaction_system") instance=ExtResource("3_k5frs")]
 z_as_relative = false
 y_sort_enabled = true
 position = Vector2(367, 486)
@@ -46,9 +47,14 @@ tilemap = NodePath("../tilemap_logic_layer")
 grid_manager = NodePath("../GridManager")
 tile_highlight = NodePath("../tilemap_logic_layer/TileHighlight")
 targeting_system = NodePath("../TargetingSystem")
+interaction_system = NodePath("../InteractionSystem")
 
 [node name="TargetingSystem" parent="." unique_id=796433443 node_paths=PackedStringArray("tilemap") instance=ExtResource("6_d6inf")]
 tilemap = NodePath("../tilemap_logic_layer")
+
+[node name="InteractionSystem" parent="." unique_id=1383195371 node_paths=PackedStringArray("targeting_system", "grid_manager") instance=ExtResource("7_5ubtp")]
+targeting_system = NodePath("../TargetingSystem")
+grid_manager = NodePath("../GridManager")
 
 [node name="Daisy" parent="." unique_id=1747781451 instance=ExtResource("4_lurls")]
 y_sort_enabled = true
@@ -56,38 +62,56 @@ position = Vector2(123, 441)
 
 [node name="FarmTiles" type="Node" parent="." unique_id=195402022]
 
-[node name="FarmTile" parent="FarmTiles" unique_id=1563810621 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile" parent="FarmTiles" unique_id=1563810621 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(336, 560)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile2" parent="FarmTiles" unique_id=777105537 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile2" parent="FarmTiles" unique_id=777105537 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(400, 528)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile3" parent="FarmTiles" unique_id=884742562 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile3" parent="FarmTiles" unique_id=884742562 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(336, 528)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile4" parent="FarmTiles" unique_id=1543004241 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile4" parent="FarmTiles" unique_id=1543004241 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(368, 528)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile5" parent="FarmTiles" unique_id=295073268 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile5" parent="FarmTiles" unique_id=295073268 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(368, 560)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile6" parent="FarmTiles" unique_id=1158065840 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile6" parent="FarmTiles" unique_id=1158065840 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(400, 560)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile7" parent="FarmTiles" unique_id=1500721296 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile7" parent="FarmTiles" unique_id=1500721296 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(336, 592)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile8" parent="FarmTiles" unique_id=342861598 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile8" parent="FarmTiles" unique_id=342861598 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(368, 592)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")
 
-[node name="FarmTile9" parent="FarmTiles" unique_id=1235092121 groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
+[node name="FarmTile9" parent="FarmTiles" unique_id=1235092121 node_paths=PackedStringArray("grid_manager", "tilemap") groups=["farm_tiles"] instance=ExtResource("5_d35qd")]
 y_sort_enabled = true
 position = Vector2(400, 592)
+grid_manager = NodePath("../../GridManager")
+tilemap = NodePath("../../tilemap_logic_layer")

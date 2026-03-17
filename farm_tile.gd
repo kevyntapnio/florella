@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var grid_manager: Node2D
+@export var tilemap: TileMapLayer
+
 enum SoilState {
 	GRASS,
 	DIRT,
@@ -16,7 +19,9 @@ var current_crop: Node2D = null
 @export var crop_scene: PackedScene
 
 func _ready():
-	add_to_group("farm_tiles")
+
+	var coords = grid_manager.get_tile_coords(global_position)
+	grid_manager.register_grid_object(coords, self)
 
 func plant(crop_data) -> bool:
 	
@@ -44,3 +49,7 @@ func plant(crop_data) -> bool:
 	
 func clear_crop():
 	current_crop = null
+
+func _exit_tree():
+	var coords = grid_manager.get_tile_coords(global_position)
+	grid_manager.unregister_grid_object(coords)
