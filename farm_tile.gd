@@ -38,14 +38,23 @@ func plant(crop_data) -> bool:
 		return false
 		
 	var crop = crop_scene.instantiate()
-	print("Crop instantiated")
 		
 	add_child(crop)
 	current_crop = crop
-	crop.parent_tile = self
-	crop.receive_crop_data(crop_data)
+	crop.initialize(crop_data, self)
 		
 	return true
+	
+func interact(item):
+	
+	# If crop exists → let crop handle it
+	if current_crop != null:
+		current_crop.on_interact(item)
+		return
+	
+	# No crop → try planting
+	if item != null:
+		item.use(self)
 	
 func clear_crop():
 	current_crop = null

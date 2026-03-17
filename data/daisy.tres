@@ -2,7 +2,49 @@
 
 [ext_resource type="Script" uid="uid://b6htwwygn5nul" path="res://systems/crop system/crop_data.gd" id="1_2hy2w"]
 [ext_resource type="Script" uid="uid://buwm7thaoq20g" path="res://systems/crop system/crop_stage_data.gd" id="2_m3enk"]
+[ext_resource type="Texture2D" uid="uid://x8q6fdd1n5al" path="res://sprites/seed-daisy.png" id="3_kooim"]
+[ext_resource type="Texture2D" uid="uid://c11npck8qrswi" path="res://sprites/sprout-daisy.png" id="4_qwapp"]
+[ext_resource type="Texture2D" uid="uid://b1tb1ee0vjncd" path="res://sprites/small-bud-daisy.png" id="5_mrmvt"]
+
+[sub_resource type="Resource" id="Resource_xv5oj"]
+script = ExtResource("2_m3enk")
+duration = 1
+texture = ExtResource("3_kooim")
+metadata/_custom_type_script = "uid://buwm7thaoq20g"
+
+[sub_resource type="Resource" id="Resource_bdgnu"]
+script = ExtResource("2_m3enk")
+duration = 1
+texture = ExtResource("4_qwapp")
+metadata/_custom_type_script = "uid://buwm7thaoq20g"
+
+[sub_resource type="Resource" id="Resource_kooim"]
+script = ExtResource("2_m3enk")
+duration = 1
+texture = ExtResource("5_mrmvt")
+metadata/_custom_type_script = "uid://buwm7thaoq20g"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qwapp"]
+load_path = "res://.godot/imported/large-bud-daisy.png-5a44d648b7a2ed0cc976c233ad2ccfd7.ctex"
+
+[sub_resource type="Resource" id="Resource_mrmvt"]
+script = ExtResource("2_m3enk")
+duration = 1
+texture = SubResource("CompressedTexture2D_qwapp")
+metadata/_custom_type_script = "uid://buwm7thaoq20g"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cwhjr"]
+load_path = "res://.godot/imported/flower-daisy.png-c76fb905afa8d89eb130ef2d1e844402.ctex"
+
+[sub_resource type="Resource" id="Resource_f0lqq"]
+script = ExtResource("2_m3enk")
+duration = 1
+texture = SubResource("CompressedTexture2D_cwhjr")
+harvestable = true
+remove_on_harvest = true
+metadata/_custom_type_script = "uid://buwm7thaoq20g"
 
 [resource]
 script = ExtResource("1_2hy2w")
+stages = Array[ExtResource("2_m3enk")]([SubResource("Resource_xv5oj"), SubResource("Resource_bdgnu"), SubResource("Resource_kooim"), SubResource("Resource_mrmvt"), SubResource("Resource_f0lqq")])
 metadata/_custom_type_script = "uid://b6htwwygn5nul"

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SeedItem" format=3 uid="uid://bwsdcgn16muq5"]
 
 [ext_resource type="Script" uid="uid://bc0v31wu02bbn" path="res://SeedItems/SeedItem.gd" id="1_66abw"]
-[ext_resource type="Resource" uid="uid://dp08max0jpdvy" path="res://data/DaisyCropData.tres" id="1_j7l20"]
+[ext_resource type="Resource" uid="uid://vawldvd3va0a" path="res://data/daisy.tres" id="1_j7l20"]
 
 [resource]
 script = ExtResource("1_66abw")

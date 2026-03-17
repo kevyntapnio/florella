@@ -4,7 +4,7 @@ extends Node2D
 @export var grid_manager: Node2D
 
 # Can this be an autoload?
-@export var InventorySystem: Node2D
+@export var inventory_system: Node2D
 
 var nearby_interactables: Array = []
 var focused_interactable = null
@@ -48,24 +48,24 @@ func update_focused_interactable():
 	if closest_interactable != focused_interactable:
 		
 		if focused_interactable:
-			focused_interactable.on_focus_exited
+			focused_interactable.on_focus_exited()
 		
 		focused_interactable = closest_interactable
 		
 		if focused_interactable:
 			focused_interactable.on_focus_entered()
 			
-func handle_interact():
+func handle_interact(item):
 	
 	var interactable = get_closest_interactable()
-	var item = InventorySystem.get_selected_item()
-	
+
 	if interactable != null:
 		interactable.interact(item)
-	return
+		return
 	
 	var target_coords = targeting_system.current_target_coords
 	var target_object = grid_manager.get_grid_object(target_coords)
 	
 	if target_object != null:
 		target_object.interact(item)
+	print(target_object)

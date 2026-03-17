@@ -79,19 +79,12 @@ func _physics_process(delta):
 func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
+		interaction_system.handle_interact(null)
 		
-		if closest_interactable:
-			closest_interactable.interact()
-	
 	if Input.is_action_just_pressed("use_item"):
 		
-		var target_tile = grid_manager.get_grid_object(targeting_system.current_target_coords)
-		var selected_item = InventorySystem.get_selected_item()
-
-		if target_tile == null:
-			return
-			
-		selected_item.use(target_tile)
+		var item = InventorySystem.get_selected_item()
+		interaction_system.handle_interact(item)
 	
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
@@ -127,3 +120,6 @@ func update_player_tile_coords():
 
 	var local_pos = tilemap.to_local(global_position)
 	player_tile_coords = tilemap.local_to_map(local_pos)
+	
+func temporary():
+	pass

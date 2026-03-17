@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="CropStageData" format=3 uid="uid://dwgxsev1oyikt"]
-
-[ext_resource type="Script" uid="uid://buwm7thaoq20g" path="res://systems/crop system/crop_stage_data.gd" id="1_inne7"]
-
-[resource]
-script = ExtResource("1_inne7")
-metadata/_custom_type_script = "uid://buwm7thaoq20g"

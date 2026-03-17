@@ -1,76 +1,70 @@
-extends Interactable
+extends Node2D
 
-var growth_stage = 0
-var days_in_stage = 0
-var crop_data
-var is_regrowing = false
-var parent_tile: Node2D
+@export var crop_data: CropData
+@export var parent_tile: Node2D
+@onready var sprite: Sprite2D = $Sprite2D
 
-var interaction_action = "Harvest"
+var growth_stage: int = 0
+var days_in_stage: int = 0
+var is_regrowing: bool = false
 
-## Path to TimeManager doesn't exist yet because I haven't set it up
-@onready var time_manager = get_tree().root.get_node("Game/TimeManager")
-@export var sprite: Sprite2D
-
-# func _ready():
-#	time_manager.day_passed.connect(on_day_passed)
-
-func receive_crop_data(data):
+func initialize(data: CropData, parent_tile: Node2D):
+	
 	crop_data = data
+	self.parent_tile = parent_tile
 	growth_stage = 0
 	days_in_stage = 0
-	update_sprite()
+	update_visual()
 	
-func update_sprite():
-	sprite.texture = crop_data.stage_textures[growth_stage]
-	print(crop_data.stage_textures[growth_stage])
-
+func update_visual():
+	var current_stage = get_current_stage()
+	sprite.texture = current_stage.texture
+	
+func get_current_stage():
+	return crop_data.stages[growth_stage]
+	
 func on_day_passed():
-	if crop_data == null:
-		return
-	
-	if growth_stage == crop_data.harvest_stage and not is_regrowing:
-		return
-	
 	days_in_stage += 1
-
+	
+	var current_stage = get_current_stage()
+	
 	if is_regrowing:
 		if days_in_stage >= crop_data.regrow_days:
 			growth_stage = crop_data.harvest_stage
 			days_in_stage = 0
-			is_regrowing = false
-			update_sprite()
+			update_visual()
 	else:
-		var stage_days = crop_data.stage_days
-		
-		if days_in_stage >= stage_days[growth_stage]:
-			if growth_stage < crop_data.harvest_stage:
+		if days_in_stage >= current_stage.duration:
+			if growth_stage < crop_data.stages.size() - 1:
 				growth_stage += 1
 				days_in_stage = 0
-				update_sprite()
+				update_visual()
 			
-func get_interaction_action():
-	if growth_stage == crop_data.harvest_stage:
-		return interaction_action
+func on_interact(item):
+	var current_stage = get_current_stage()
 	
-func interact(item):
-	if growth_stage == crop_data.harvest_stage:
+	if current_stage.harvestable:
 		harvest()
-
-func harvest():
-	# InventorySystem.add_item(crop_data.harvest_item)  (later)
-
-	if crop_data.regrow_days > 0:
-		growth_stage = crop_data.regrow_stage
-		days_in_stage = 0
-		is_regrowing = true
-		update_sprite()
+		
+func harvest(): 
+	var current_stage = get_current_stage()
+	var item = current_stage.yield_item
+	
+	if current_stage.remove_on_harvest:
+		destroy_crop()
 	else:
-		parent_tile.clear_crop()
-		queue_free()
-		
-### Added for testing
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
+		if crop_data.is_regrowable:
+			growth_stage = crop_data.regrow_stage
+			days_in_stage = 0
+			is_regrowing = true
+			update_visual()
+		else:
+			destroy_crop()
+			
+func destroy_crop():
+	parent_tile.clear_crop()
+	queue_free()
+	
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
 		on_day_passed()
-		

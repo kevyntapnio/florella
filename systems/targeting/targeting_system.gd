@@ -13,6 +13,3 @@ func update_current_target():
 	var direction_tile = player_tile_coords + facing_direction
 	
 	current_target_coords = hovered_tile
-
-func _process(delta):
-	print(player_global_position)
