@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://dp08max0jpdvy"]
+
+[ext_resource type="Script" uid="uid://b6htwwygn5nul" path="res://systems/crop system/crop_data.gd" id="1_invrm"]
+[ext_resource type="Texture2D" uid="uid://x8q6fdd1n5al" path="res://sprites/seed-daisy.png" id="2_xseap"]
+[ext_resource type="Texture2D" uid="uid://c11npck8qrswi" path="res://sprites/sprout-daisy.png" id="3_urx7v"]
+[ext_resource type="Texture2D" uid="uid://b1tb1ee0vjncd" path="res://sprites/small-bud-daisy.png" id="4_vcmnf"]
+[ext_resource type="Texture2D" uid="uid://cd8rxon3j0o47" path="res://sprites/large-bud-daisy.png" id="5_jyl4b"]
+[ext_resource type="Texture2D" uid="uid://dm45vd3hp5y7r" path="res://sprites/flower-daisy.png" id="6_uk7qu"]
+
+[resource]
+script = ExtResource("1_invrm")
+stage_textures = Array[Texture2D]([ExtResource("2_xseap"), ExtResource("3_urx7v"), ExtResource("4_vcmnf"), ExtResource("5_jyl4b"), ExtResource("6_uk7qu")])
+stage_days = Array[int]([1, 1, 1, 2])
+harvest_stage = 4
+regrow_stage = 3
+regrow_days = 3
+metadata/_custom_type_script = "uid://b6htwwygn5nul"

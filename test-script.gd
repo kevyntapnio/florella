@@ -1,68 +1,65 @@
 extends Node2D
 
-@export var targeting_system: Node2D
-@export var grid_manager: Node2D
+@export var crop_data: CropData
+@export var parent_tile: Node2D
+@onready var sprite: Sprite2D = $Sprite2D
 
-# Can this be an autoload?
-@export var InventorySystem: Node2D
+var growth_stage: int = 0
+var days_in_stage: int = 0
+var is_regrowing: bool = false
 
-var nearby_interactables: Array = []
-var focused_interactable = null
-
-func _process(delta: float) -> void:\
-
-	update_focused_interactable()
+func initialize(data: CropData, parent_tile: Node2D):
+	crop_data = data
+	self.parent_tile = parent_tile
+	growth_stage = 0
+	days_in_stage = 0
+	update_visual()
 	
-func register_interactable(interactable):
+func update_visual():
+	var current_stage = get_current_stage()
+	sprite.texture = current_stage.texture
 	
-	nearby_interactables.append(interactable)
-
-func unregister_interactable(interactable):
+func get_current_stage():
+	return crop_data.stages[growth_stage]
 	
-	nearby_interactables.erase(interactable)
+func on_day_passed():
+	days_in_stage += 1
 	
-func get_closest_interactable():
+	var current_stage = get_current_stage()
 	
-	if nearby_interactables.is_empty():
-		return null
-	
-	var closest_object = null
-	var smallest_distance = INF
-	
-	for interactable in nearby_interactables:
-		var distance = targeting_system.player_global_position.distance_to(interactable.global_position)
+	if is_regrowing:
+		if days_in_stage >= crop_data.regrow_days:
+			growth_stage = crop_data.harvest_stage
+			days_in_stage = 0
+			update_visual()
+	else:
+		if days_in_stage >= current_stage.duration:
+			if growth_stage < crop_data.stages.size() - 1:
+				growth_stage += 1
+				days_in_stage = 0
+				update_visual()
 			
-		if distance < smallest_distance:
-			smallest_distance = distance
-			closest_object = interactable
+func on_interact(item):
+	var current_stage = get_current_stage()
 	
-	return closest_object
-	
-func update_focused_interactable():
-	
-	var closest_interactable = get_closest_interactable()
-	
-	if closest_interactable != focused_interactable:
+	if current_stage.harvestable:
+		harvest()
 		
-		if focused_interactable:
-			focused_interactable.on_focus_exited
-		
-		focused_interactable = closest_interactable
-		
-		if focused_interactable:
-			focused_interactable.on_focus_entered()
+func harvest(): 
+	var current_stage = get_current_stage()
+	var item = current_stage.yield_item
+	
+	if current_stage.remove_on_harvest:
+		destroy_crop()
+	else:
+		if crop_data.is_regrowable:
+			growth_stage = crop_data.regrow_stage
+			days_in_stage = 0
+			is_regrowing = true
+			update_visual()
+		else:
+			destroy_crop()
 			
-func handle_interact():
-	
-	var interactable = get_closest_interactable()
-	var item = InventorySystem.get_selected_item()
-	
-	if interactable != null:
-		interactable.interact(item)
-	return
-	
-	var target_coords = targeting_system.current_target_coords
-	var target_object = grid_manager.get_grid_object(target_coords)
-	
-	if target_object != null:
-		target_object.interact(item)
+func destroy_crop():
+	parent_tile.clear_crop()
+	queue_free()

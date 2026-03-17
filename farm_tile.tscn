@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sfbkfsohxfi0"]
 
 [ext_resource type="Script" uid="uid://b4mgtw1f3hk6" path="res://farm_tile.gd" id="1_jvyi0"]
-[ext_resource type="PackedScene" uid="uid://cd1s6enicxk2n" path="res://crop system/crop.tscn" id="2_5b145"]
+[ext_resource type="PackedScene" uid="uid://cd1s6enicxk2n" path="res://systems/crop system/crop.tscn" id="2_5b145"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxvgq"]
 size = Vector2(32, 32)
