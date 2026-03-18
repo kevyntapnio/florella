@@ -88,6 +88,13 @@ func _input(event: InputEvent) -> void:
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		TimeManager.advance_day()
+		
+	if Input.is_action_just_pressed("slot_1"):
+		InventorySystem.selected_index = 0
+		
+	if Input.is_action_just_pressed("slot_2"):
+		InventorySystem.selected_index = 1
+		print(InventorySystem.selected_index)
 	
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
@@ -125,4 +132,4 @@ func update_player_tile_coords():
 	player_tile_coords = tilemap.local_to_map(local_pos)
 	
 func _ready():
-	print(TimeManager)
+	pass

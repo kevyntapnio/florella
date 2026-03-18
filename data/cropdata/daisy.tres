@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://x8q6fdd1n5al" path="res://sprites/seed-daisy.png" id="3_kooim"]
 [ext_resource type="Texture2D" uid="uid://c11npck8qrswi" path="res://sprites/sprout-daisy.png" id="4_qwapp"]
 [ext_resource type="Texture2D" uid="uid://b1tb1ee0vjncd" path="res://sprites/small-bud-daisy.png" id="5_mrmvt"]
+[ext_resource type="Resource" uid="uid://baprk7xlhb4kx" path="res://data/itemdata/daisy.tres" id="6_pl1nm"]
 
 [sub_resource type="Resource" id="Resource_xv5oj"]
 script = ExtResource("2_m3enk")
@@ -41,7 +42,9 @@ script = ExtResource("2_m3enk")
 duration = 1
 texture = SubResource("CompressedTexture2D_cwhjr")
 harvestable = true
+yield_item = ExtResource("6_pl1nm")
 remove_on_harvest = true
+yield_amount = 1
 metadata/_custom_type_script = "uid://buwm7thaoq20g"
 
 [resource]

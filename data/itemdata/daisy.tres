@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://baprk7xlhb4kx"]
+
+[ext_resource type="Texture2D" uid="uid://dm45vd3hp5y7r" path="res://sprites/flower-daisy.png" id="1_yiga1"]
+[ext_resource type="Script" uid="uid://qpy31wq3lcps" path="res://systems/items/ItemData.gd" id="2_w5yhf"]
+
+[resource]
+script = ExtResource("2_w5yhf")
+id = "daisy"
+name = "\"Daisy\""
+icon = ExtResource("1_yiga1")
+metadata/_custom_type_script = "uid://qpy31wq3lcps"

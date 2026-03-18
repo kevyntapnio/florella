@@ -7,3 +7,4 @@ class_name CropStageData
 @export var harvestable: bool
 @export var yield_item: Resource ## change to ItemData once it exists
 @export var remove_on_harvest: bool
+@export var yield_amount: int

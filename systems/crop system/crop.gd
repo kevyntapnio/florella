@@ -52,7 +52,8 @@ func on_interact(item):
 		
 func harvest(): 
 	var current_stage = get_current_stage()
-	var item = current_stage.yield_item
+	var item_data = current_stage.yield_item
+	var amount = current_stage.yield_amount
 	
 	if current_stage.remove_on_harvest:
 		destroy_crop()
@@ -65,6 +66,10 @@ func harvest():
 		else:
 			destroy_crop()
 			
+	if item_data != null:
+		InventorySystem.add_item(item_data.id, amount)
+		print(InventorySystem.get_inventory())
+		
 func destroy_crop():
 	parent_tile.clear_crop()
 	queue_free()

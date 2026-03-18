@@ -45,15 +45,19 @@ func plant(crop_data) -> bool:
 	
 func interact(item):
 	
-	# If crop exists → let crop handle it
+
+		
+	var item_data = ItemDatabase.get_item(item["id"])
+	print(ItemDatabase.get_item(item["id"]))
+	if item_data == null:
+		return
+		
 	if current_crop != null:
 		current_crop.on_interact(item)
 		return
 	
-	# No crop → try planting
-	if item != null:
-		item.use(self)
-	
+	item_data.use(self)
+		
 func clear_crop():
 	current_crop = null
 

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://d0k270va0ej7g"]
+
+[ext_resource type="Script" uid="uid://vjq32rtcftgt" path="res://systems/inventory_ui/inventory_slot2.gd" id="1_p08f1"]
+
+[node name="Slot" type="Control" unique_id=49363863]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1088.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p08f1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=838490709]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.9764706, 0.9490196, 0.7647059, 1)
+
+[node name="Icon" type="TextureRect" parent="." unique_id=69088372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=1051547372]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 42.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.7895318, 0.60924375, 0.5263289, 1)
+text = "0"

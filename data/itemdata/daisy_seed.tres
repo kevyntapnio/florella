@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SeedItem" format=3 uid="uid://dcmmxa5sp8qrd"]
+
+[ext_resource type="Script" uid="uid://cocmcuylq1b4b" path="res://systems/items/seed_item.gd" id="1_38r8d"]
+[ext_resource type="Texture2D" uid="uid://x8q6fdd1n5al" path="res://sprites/seed-daisy.png" id="1_glyi0"]
+[ext_resource type="Resource" uid="uid://vawldvd3va0a" path="res://data/cropdata/daisy.tres" id="1_gm6cm"]
+
+[resource]
+script = ExtResource("1_38r8d")
+crop_data = ExtResource("1_gm6cm")
+id = "daisy_seed"
+name = "Daisy Seed"
+icon = ExtResource("1_glyi0")
+metadata/_custom_type_script = "uid://cocmcuylq1b4b"

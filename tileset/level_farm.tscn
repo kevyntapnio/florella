@@ -1,8 +1,12 @@
 [gd_scene format=4 uid="uid://us2ojftsqtjc"]
 
+[ext_resource type="Script" uid="uid://dyictx7cr3wag" path="res://tileset/inventory_ui.gd" id="1_2ox4o"]
+[ext_resource type="Script" uid="uid://itp22a1r57o5" path="res://tileset/level_farm.gd" id="1_k51qb"]
 [ext_resource type="TileSet" uid="uid://d14sq78rllnfu" path="res://tileset/grass-dirt.tres" id="1_s088y"]
 [ext_resource type="PackedScene" uid="uid://cria1kuscb0io" path="res://systems/gridmanager/grid_manager.tscn" id="1_xuvbi"]
+[ext_resource type="PackedScene" uid="uid://d0k270va0ej7g" path="res://systems/inventory_ui/inventory_slot2.tscn" id="2_2ox4o"]
 [ext_resource type="Script" uid="uid://m8ldb56nw16r" path="res://systems/tilemap/tilemap_logic_layer.gd" id="2_k5frs"]
+[ext_resource type="Script" uid="uid://d1in4bvcmpkt6" path="res://systems/inventory_ui/inventory_slot.gd" id="2_k51qb"]
 [ext_resource type="PackedScene" uid="uid://d30b6vfw84ppa" path="res://TileHighlight/tile_highlight.tscn" id="3_47drt"]
 [ext_resource type="PackedScene" uid="uid://btttkhmphug02" path="res://systems/player/player.tscn" id="3_k5frs"]
 [ext_resource type="PackedScene" uid="uid://cqtguk5mgbqpi" path="res://objects/daisy.tscn" id="4_lurls"]
@@ -13,6 +17,34 @@
 
 [node name="LevelFarm" type="Node2D" unique_id=1369154645]
 y_sort_enabled = true
+script = ExtResource("1_k51qb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=664852306]
+
+[node name="InventoryUI" type="Control" parent="CanvasLayer" unique_id=2130593972]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 189.0
+offset_top = 541.0
+offset_right = 253.0
+offset_bottom = 605.0
+script = ExtResource("1_2ox4o")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/InventoryUI" unique_id=1888496857]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+
+[node name="Slot" parent="CanvasLayer/InventoryUI/GridContainer" unique_id=49363863 instance=ExtResource("2_2ox4o")]
+layout_mode = 2
+script = ExtResource("2_k51qb")
+
+[node name="Slot2" parent="CanvasLayer/InventoryUI/GridContainer" unique_id=982902854 instance=ExtResource("2_2ox4o")]
+layout_mode = 2
+script = ExtResource("2_k51qb")
 
 [node name="tilemap_logic_layer" type="TileMapLayer" parent="." unique_id=1262344226 node_paths=PackedStringArray("dirt_layer")]
 z_index = -1
@@ -50,6 +82,7 @@ targeting_system = NodePath("../TargetingSystem")
 interaction_system = NodePath("../InteractionSystem")
 
 [node name="TimeDebugLabel" type="Label" parent="Player" unique_id=945649061]
+z_index = 5
 texture_filter = 1
 offset_left = -215.0
 offset_top = -118.0

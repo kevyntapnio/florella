@@ -56,7 +56,7 @@ func update_focused_interactable():
 			focused_interactable.on_focus_entered()
 			
 func handle_interact(item):
-	print("INTERACT CALLED")
+
 	var interactable = get_closest_interactable()
 
 	if interactable != null:
@@ -69,3 +69,4 @@ func handle_interact(item):
 	if target_object != null:
 		target_object.interact(item)
 	print(target_object)
+	print(item)
