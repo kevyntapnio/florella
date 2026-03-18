@@ -85,6 +85,9 @@ func _input(event: InputEvent) -> void:
 		
 		var item = InventorySystem.get_selected_item()
 		interaction_system.handle_interact(item)
+		
+	if Input.is_action_just_pressed("ui_accept"):
+		TimeManager.advance_day()
 	
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
@@ -121,5 +124,5 @@ func update_player_tile_coords():
 	var local_pos = tilemap.to_local(global_position)
 	player_tile_coords = tilemap.local_to_map(local_pos)
 	
-func temporary():
-	pass
+func _ready():
+	print(TimeManager)

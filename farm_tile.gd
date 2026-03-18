@@ -26,7 +26,6 @@ func _ready():
 func plant(crop_data) -> bool:
 	
 	if crop_data == null: 
-		print("crop_data is null")
 		return false
 		
 	if current_crop != null:
@@ -34,7 +33,6 @@ func plant(crop_data) -> bool:
 		return false
 			
 	if soil_state != SoilState.TILLED:
-		print("soil not tilled")
 		return false
 		
 	var crop = crop_scene.instantiate()

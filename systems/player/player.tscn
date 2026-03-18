@@ -167,6 +167,7 @@ radius = 11.04
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1372264591]
+y_sort_enabled = true
 collision_layer = 16
 collision_mask = 4
 script = ExtResource("1_onrkg")

@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cqtguk5mgbqpi" path="res://objects/daisy.tscn" id="4_lurls"]
 [ext_resource type="PackedScene" uid="uid://sfbkfsohxfi0" path="res://farm_tile.tscn" id="5_d35qd"]
 [ext_resource type="PackedScene" uid="uid://cfts6c20x875h" path="res://systems/targeting/targeting_system.tscn" id="6_d6inf"]
+[ext_resource type="Script" uid="uid://sfriifoj7uvu" path="res://tileset/time_debug_label.gd" id="6_q8hax"]
 [ext_resource type="PackedScene" uid="uid://txwrw3hmnb6e" path="res://systems/interaction/interaction_system.tscn" id="7_5ubtp"]
-[ext_resource type="PackedScene" uid="uid://cd1s6enicxk2n" path="res://systems/crop system/crop.tscn" id="10_q8hax"]
 
 [node name="LevelFarm" type="Node2D" unique_id=1369154645]
 y_sort_enabled = true
@@ -42,13 +42,21 @@ tilemap = NodePath("../tilemap_logic_layer")
 
 [node name="Player" parent="." unique_id=1372264591 node_paths=PackedStringArray("tilemap", "grid_manager", "tile_highlight", "targeting_system", "interaction_system") instance=ExtResource("3_k5frs")]
 z_as_relative = false
-y_sort_enabled = true
 position = Vector2(367, 486)
 tilemap = NodePath("../tilemap_logic_layer")
 grid_manager = NodePath("../GridManager")
 tile_highlight = NodePath("../tilemap_logic_layer/TileHighlight")
 targeting_system = NodePath("../TargetingSystem")
 interaction_system = NodePath("../InteractionSystem")
+
+[node name="TimeDebugLabel" type="Label" parent="Player" unique_id=945649061]
+texture_filter = 1
+offset_left = -215.0
+offset_top = -118.0
+offset_right = -173.0
+offset_bottom = -95.0
+text = "00:00"
+script = ExtResource("6_q8hax")
 
 [node name="TargetingSystem" parent="." unique_id=796433443 node_paths=PackedStringArray("tilemap") instance=ExtResource("6_d6inf")]
 tilemap = NodePath("../tilemap_logic_layer")
@@ -116,5 +124,3 @@ y_sort_enabled = true
 position = Vector2(400, 592)
 grid_manager = NodePath("../../GridManager")
 tilemap = NodePath("../../tilemap_logic_layer")
-
-[node name="Crop" parent="." unique_id=1254910331 instance=ExtResource("10_q8hax")]

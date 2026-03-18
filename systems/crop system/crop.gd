@@ -8,6 +8,10 @@ var growth_stage: int = 0
 var days_in_stage: int = 0
 var is_regrowing: bool = false
 
+func _ready():
+	print("READY:", self)
+	TimeManager.day_passed.connect(on_day_passed)
+	
 func initialize(data: CropData, parent_tile: Node2D):
 	
 	crop_data = data
@@ -64,7 +68,3 @@ func harvest():
 func destroy_crop():
 	parent_tile.clear_crop()
 	queue_free()
-	
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		on_day_passed()
