@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]
 
-InventorySystem="*uid://bgx6lm1cwnyaa"
 TimeManager="*uid://nhbm75nrjo40"
+InventorySystem="*uid://c56dlwcbkxmlm"
 
 [global_group]
 

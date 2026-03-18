@@ -16,8 +16,9 @@ func advance_day():
 	
 	print("ADVANCE DAY CALLED")	
 	current_day += 1
+	reset_day_timer()
 	emit_signal("day_passed")
-	
+
 func _process(delta):
 	if is_paused():
 		return
@@ -58,7 +59,6 @@ func is_paused() -> bool:
 func check_day_end():
 	if current_hour == 2 and current_minute == 0:
 		advance_day()
-		reset_day_timer()
 		
 func reset_day_timer():
 	current_hour = 6
@@ -88,4 +88,3 @@ func get_display_time():
 	}
 		
 		
-	
