@@ -13,6 +13,7 @@ script = ExtResource("1_doysg")
 crop_data = ExtResource("2_frnma")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=402152962]
+y_sort_enabled = true
 texture_filter = 1
 offset = Vector2(0, -13)
 region_rect = Rect2(128, 0, 32, 32)

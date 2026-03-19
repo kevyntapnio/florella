@@ -67,15 +67,18 @@ tile_set = ExtResource("1_s088y")
 [node name="grass variation" type="TileMapLayer" parent="display_layer" unique_id=680054870]
 tile_set = ExtResource("1_s088y")
 
-[node name="Player" parent="." unique_id=1372264591 node_paths=PackedStringArray("tilemap", "grid_manager", "tile_highlight", "targeting_system", "interaction_system") instance=ExtResource("3_k5frs")]
-position = Vector2(367, 486)
-tilemap = NodePath("../tilemap_logic_layer")
-grid_manager = NodePath("../GridManager")
-tile_highlight = NodePath("../tilemap_logic_layer/TileHighlight")
-targeting_system = NodePath("../TargetingSystem")
-interaction_system = NodePath("../InteractionSystem")
+[node name="YSortWorld" type="Node2D" parent="." unique_id=1508058470 groups=["ysort_world"]]
+y_sort_enabled = true
 
-[node name="TimeDebugLabel" type="Label" parent="Player" unique_id=945649061]
+[node name="Player" parent="YSortWorld" unique_id=1372264591 node_paths=PackedStringArray("tilemap", "grid_manager", "tile_highlight", "targeting_system", "interaction_system") instance=ExtResource("3_k5frs")]
+position = Vector2(367, 486)
+tilemap = NodePath("../../tilemap_logic_layer")
+grid_manager = NodePath("../../GridManager")
+tile_highlight = NodePath("../../tilemap_logic_layer/TileHighlight")
+targeting_system = NodePath("../../TargetingSystem")
+interaction_system = NodePath("../../InteractionSystem")
+
+[node name="TimeDebugLabel" type="Label" parent="YSortWorld/Player" unique_id=945649061]
 z_index = 5
 texture_filter = 1
 offset_left = -215.0

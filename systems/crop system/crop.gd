@@ -9,7 +9,7 @@ var days_in_stage: int = 0
 var is_regrowing: bool = false
 
 func _ready():
-	top_level = true
+
 	print("READY:", self)
 	TimeManager.day_passed.connect(on_day_passed)
 	
@@ -17,8 +17,6 @@ func initialize(data: CropData, parent_tile: Node2D):
 	
 	crop_data = data
 	self.parent_tile = parent_tile
-	
-	global_position = parent_tile.global_position
 	
 	growth_stage = 0
 	days_in_stage = 0
