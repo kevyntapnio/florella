@@ -2,71 +2,81 @@ extends Node
 
 signal inventory_changed
 
-var inventory: Array[Dictionary] = []
-var selected_index = 0
+var inventory = []
 
-func add_item(item_id, amount):
-
-	var found = false
-
-	for item in inventory:
-		if item["id"] == item_id:
-			item["quantity"] += amount
-			found = true
-			break
+func _ready():
+	for i in range(30):
+		inventory.append(null)
 		
-	if found == false:
-		inventory.append({"id": item_id,
-		"quantity": amount
-		})
-	print("EMITTING inventory_changed")
-	emit_signal("inventory_changed")
+func add_item(item_id, amount):
+	
+	## Check if item can be stacked
+	
+	for i in range(inventory.size()):
+		if inventory[i] != null and inventory[i]["id"] == item_id:
+				inventory[i]["quantity"] += amount
+				inventory_changed.emit()
+				return
+	## Check for first empty slot
+	
+	for i in range(inventory.size()):
+		if inventory[i] == null:
+			inventory[i] = {"id": item_id, "quantity": amount}
+			inventory_changed.emit()
+			return
+	
+	## Both checks done but return hasn't been called yet, so inventory is full
+	print("Inventory is full")
 		
 func has_item(item_id, amount) -> bool:
 	
+	var total = 0
+
 	for item in inventory:
+		if item == null:
+			continue
+		
 		if item["id"] == item_id:
-			if item["quantity"] >= amount:
+			total += item["quantity"]
+		
+			if total >= amount:
 				return true
-			else:
-				return false
+	
 	return false
 	
 func remove_item(item_id, amount):
 	
-	var item_removed = 0
+	var remaining_to_remove = amount
 	
-	for item in inventory:
+	for i in range(inventory.size()):
+		var item = inventory[i]
 		
-		if item["id"] == item_id:
-			if item["quantity"] >= amount:
-				item["quantity"] -= amount
-				item_removed = amount
-			else:
-				item_removed = item["quantity"]
-				inventory.erase(item)
-				return item_removed
-			
-			if item["quantity"] == 0:
-				inventory.erase(item)
+		if item == null:
+			continue
 				
-			emit_signal("inventory_changed")
-			return item_removed
-			
-	return item_removed
+		if item["id"] == item_id:
+			if item["quantity"] > remaining_to_remove:
+				item["quantity"] -= remaining_to_remove
+				remaining_to_remove = 0
+				break
+			else:
+				remaining_to_remove -= item["quantity"]
+				inventory[i] = null
+				
+		if remaining_to_remove == 0:
+			break
 	
+	# Signal for UI sync
+	inventory_changed.emit()
+	return amount - remaining_to_remove
+	
+## This is for Inventory UI
 func get_inventory() -> Array:
 	return inventory.duplicate()
 	
-func get_selected_item():
-
-	if inventory.is_empty():
-		return null
-		
-	if selected_index < 0:
-		return null
-		
-	if selected_index >= inventory.size():
-		return null
+func get_item(index):
 	
-	return inventory[selected_index]
+	if index < 0 or index >= inventory.size():
+		return null
+		
+	return inventory[index]

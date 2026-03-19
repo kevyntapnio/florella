@@ -83,19 +83,27 @@ func _input(event: InputEvent) -> void:
 		
 	if Input.is_action_just_pressed("use_item"):
 		
-		var item = InventorySystem.get_selected_item()
+		var item = Hotbar.get_selected_item()
 		interaction_system.handle_interact(item)
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		TimeManager.advance_day()
 		
-	if Input.is_action_just_pressed("slot_1"):
-		InventorySystem.selected_index = 0
-		
-	if Input.is_action_just_pressed("slot_2"):
-		InventorySystem.selected_index = 1
-		print(InventorySystem.selected_index)
+	## Hotbar input mapping
+	for i in range(1, 10):
+		if Input.is_action_just_pressed("hotbar_" + str(i)):
+			Hotbar.set_selected_index(i - 1)
+			
+		if Input.is_action_just_pressed("hotbar_0"):
+			Hotbar.set_selected_index(9)
 	
+	if Input.is_action_just_pressed("hotbar_next"):
+		Hotbar.change_selected_index(1)
+		print("Scroll input triggered")
+	
+	if Input.is_action_just_pressed("hotbar_previous"):
+		Hotbar.change_selected_index(-1)
+		
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
 	var interactable_object = area.get_parent()
