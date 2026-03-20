@@ -5,6 +5,6 @@ extends Node2D
 func _ready() -> void:
 	print(InventorySystem)
 	
-	InventorySystem.add_item("daisy_seed", 3)
-	InventorySystem.add_item("daisy", 3)
+	InventorySystem.add_item("daisy_seed", 9)
+	InventorySystem.add_item("daisy", 6)
 	print(InventorySystem.get_inventory())

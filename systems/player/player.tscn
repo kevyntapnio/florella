@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://btttkhmphug02"]
 
 [ext_resource type="Script" uid="uid://bdcbc70qm4xc" path="res://systems/player/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://d3jnemt5fsf4m" path="res://sprites/player sprite.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://d3jnemt5fsf4m" path="res://sprites/daisy/player sprite.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://ca70a8k8jdmka" path="res://objects/interact.png" id="3_i3pqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
@@ -167,6 +167,7 @@ radius = 11.04
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1372264591]
+process_mode = 1
 y_sort_enabled = true
 collision_layer = 16
 collision_mask = 4

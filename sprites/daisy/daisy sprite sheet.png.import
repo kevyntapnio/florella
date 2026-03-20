@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd8rxon3j0o47"
-path="res://.godot/imported/large-bud-daisy.png-5a44d648b7a2ed0cc976c233ad2ccfd7.ctex"
+uid="uid://b3c3j06x5equ8"
+path="res://.godot/imported/daisy sprite sheet.png-8d8971ee91dc0780f869efb036d49f76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/large-bud-daisy.png"
-dest_files=["res://.godot/imported/large-bud-daisy.png-5a44d648b7a2ed0cc976c233ad2ccfd7.ctex"]
+source_file="res://sprites/daisy/daisy sprite sheet.png"
+dest_files=["res://.godot/imported/daisy sprite sheet.png-8d8971ee91dc0780f869efb036d49f76.ctex"]
 
 [params]
 

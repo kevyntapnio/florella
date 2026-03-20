@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1tb1ee0vjncd"
-path="res://.godot/imported/small-bud-daisy.png-7568d9e7a202efd3f7537429c821edf4.ctex"
+uid="uid://dm45vd3hp5y7r"
+path="res://.godot/imported/flower-daisy.png-0ec1d09d31b47c4da2a8c9ee53dbf994.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/small-bud-daisy.png"
-dest_files=["res://.godot/imported/small-bud-daisy.png-7568d9e7a202efd3f7537429c821edf4.ctex"]
+source_file="res://sprites/daisy/flower-daisy.png"
+dest_files=["res://.godot/imported/flower-daisy.png-0ec1d09d31b47c4da2a8c9ee53dbf994.ctex"]
 
 [params]
 

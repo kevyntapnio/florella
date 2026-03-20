@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c11npck8qrswi"
-path="res://.godot/imported/sprout-daisy.png-726fd36e74a2e98694e29ecfea6384c8.ctex"
+uid="uid://dfne2fu2feud2"
+path="res://.godot/imported/slot.png-428840b88d7474e2b890b577f1c77610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/sprout-daisy.png"
-dest_files=["res://.godot/imported/sprout-daisy.png-726fd36e74a2e98694e29ecfea6384c8.ctex"]
+source_file="res://sprites/inventory_hotbar_ui/slot.png"
+dest_files=["res://.godot/imported/slot.png-428840b88d7474e2b890b577f1c77610.ctex"]
 
 [params]
 

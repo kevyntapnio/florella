@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm45vd3hp5y7r"
-path="res://.godot/imported/flower-daisy.png-c76fb905afa8d89eb130ef2d1e844402.ctex"
+uid="uid://gvv0rd6icdrc"
+path="res://.godot/imported/hotbar.png-eaf138149b5612b430264d775cdccc12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/flower-daisy.png"
-dest_files=["res://.godot/imported/flower-daisy.png-c76fb905afa8d89eb130ef2d1e844402.ctex"]
+source_file="res://sprites/inventory_hotbar_ui/hotbar.png"
+dest_files=["res://.godot/imported/hotbar.png-eaf138149b5612b430264d775cdccc12.ctex"]
 
 [params]
 

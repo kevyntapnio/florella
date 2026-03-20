@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3c3j06x5equ8"
-path="res://.godot/imported/daisy sprite sheet.png-5d0ea1fac3baeb40130c795382ed1668.ctex"
+uid="uid://co4bjcqipj3am"
+path="res://.godot/imported/inventory panel.png-d9d0a85221a28540d2e1e327b5bed4b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/daisy sprite sheet.png"
-dest_files=["res://.godot/imported/daisy sprite sheet.png-5d0ea1fac3baeb40130c795382ed1668.ctex"]
+source_file="res://sprites/inventory_hotbar_ui/inventory panel.png"
+dest_files=["res://.godot/imported/inventory panel.png-d9d0a85221a28540d2e1e327b5bed4b3.ctex"]
 
 [params]
 

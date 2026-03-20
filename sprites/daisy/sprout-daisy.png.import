@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3jnemt5fsf4m"
-path="res://.godot/imported/player sprite.png-b81bf24d3f2b0e86680864d8ad32c351.ctex"
+uid="uid://c11npck8qrswi"
+path="res://.godot/imported/sprout-daisy.png-a072a137fd97484e0b269a88e078a053.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/player sprite.png"
-dest_files=["res://.godot/imported/player sprite.png-b81bf24d3f2b0e86680864d8ad32c351.ctex"]
+source_file="res://sprites/daisy/sprout-daisy.png"
+dest_files=["res://.godot/imported/sprout-daisy.png-a072a137fd97484e0b269a88e078a053.ctex"]
 
 [params]
 
