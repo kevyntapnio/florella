@@ -3,6 +3,7 @@ extends Node
 signal inventory_changed
 
 var inventory = []
+var selected_index = -1
 
 func _ready():
 	for i in range(30):
@@ -80,3 +81,13 @@ func get_item(index):
 		return null
 		
 	return inventory[index]
+	
+func swap_items(index, i):
+	
+	var temp_item = inventory[index]
+	inventory[index] = inventory[i]
+	inventory[i] = temp_item
+			
+	inventory_changed.emit()
+			
+		
