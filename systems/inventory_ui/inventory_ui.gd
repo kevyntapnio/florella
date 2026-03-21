@@ -10,7 +10,8 @@ var held_quantity = 0
 var held_id = null
 var source_index = -1
 
-signal selection_changed(highlight_index)
+signal selection_changed(highlight_index) ## for slot highlight update
+signal held_changed(held_id, held_quantity) ## for HeldItemUI (mouse cursor)
 	
 func _ready():
 	slot_scene = load("res://systems/inventory_ui/inventory_slot.tscn")
@@ -35,6 +36,9 @@ func create_slots():
 func toggle():
 	is_open = !is_open
 	visible = is_open
+	
+	held_quantity = 0
+	held_changed.emit(held_id, held_quantity)
 
 	#if is_open:
 	#	TimeManager.pause_time(self)
@@ -62,12 +66,12 @@ func on_slot_clicked(slot_index):
 			
 			held_id = null
 			held_quantity = 0
+			held_changed.emit()
 		
 		elif item_in_slot["id"] == held_id:
 			if InventorySystem.add_to_slot(slot_index, held_id, held_quantity):
 				held_id = null
 				held_quantity = 0
-		
 		else:
 			var temp_item = item_in_slot
 			var new_item = {"id": held_id, "quantity": held_quantity}
@@ -77,6 +81,7 @@ func on_slot_clicked(slot_index):
 			held_quantity = temp_item["quantity"]
 		
 		highlight_index = -1
+		held_changed.emit(held_id, held_quantity)
 		selection_changed.emit(highlight_index)
 		return
 		
@@ -119,4 +124,5 @@ func on_right_click(slot_index):
 			held_quantity = 0
 			held_id = null
 			source_index = -1
+	held_changed.emit(held_id, held_quantity)
 				

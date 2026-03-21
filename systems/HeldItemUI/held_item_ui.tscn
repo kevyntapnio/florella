@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b2r44t7x6je43"]
+
+[ext_resource type="Script" uid="uid://dcd1ejfrx5h8m" path="res://systems/HeldItemUI/held_item_ui.gd" id="1_d82ne"]
+
+[node name="HeldItemUI" type="CanvasLayer" unique_id=1288905451]
+process_mode = 3
+layer = 10
+offset = Vector2(1, 1)
+transform = Transform2D(1, 0, 0, 1, 1, 1)
+script = ExtResource("1_d82ne")
+
+[node name="Root" type="Control" parent="." unique_id=2025108291]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchor_left = -0.049000002
+anchor_top = -0.086
+anchor_right = -0.049000002
+anchor_bottom = -0.086
+offset_left = -7.551998
+offset_top = -8.271999
+offset_right = 56.448
+offset_bottom = 55.728
+
+[node name="Icon" type="TextureRect" parent="Root" unique_id=135616640]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="Quantity" type="Label" parent="Root" unique_id=887443655]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
