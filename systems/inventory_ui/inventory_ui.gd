@@ -64,10 +64,10 @@ func on_slot_clicked(slot_index):
 			held_quantity = 0
 		
 		elif item_in_slot["id"] == held_id:
-			InventorySystem.add_item(held_id, held_quantity)
-			held_id = null
-			held_quantity = 0
-			
+			if InventorySystem.add_to_slot(slot_index, held_id, held_quantity):
+				held_id = null
+				held_quantity = 0
+		
 		else:
 			var temp_item = item_in_slot
 			var new_item = {"id": held_id, "quantity": held_quantity}
@@ -79,7 +79,8 @@ func on_slot_clicked(slot_index):
 		highlight_index = -1
 		selection_changed.emit(highlight_index)
 		return
-	
+		
+	##------- WHEN NOT HOLDING ANYTHING ---------##
 	if selected_index == -1:
 		if InventorySystem.get_item(slot_index) != null:
 			selected_index = slot_index
@@ -101,20 +102,21 @@ func on_right_click(slot_index):
 		if item_in_slot != null:
 			source_index = slot_index
 			held_id = item_in_slot["id"]
-			InventorySystem.remove_from_slot(slot_index, 1)
-			held_quantity = 1
+			var removed = InventorySystem.remove_from_slot(slot_index, 1)
+			held_quantity += removed
 	
 	# If already holding
 	else:
-		
-		if item_in_slot != null and held_id == item_in_slot["id"]:
-			InventorySystem.remove_from_slot(slot_index, 1)
-			held_quantity += 1
+		if slot_index == source_index:
+			var removed = InventorySystem.remove_from_slot(slot_index, 1)
+			held_quantity += removed
 		else:
-			InventorySystem.add_item(held_id, held_quantity)
-			
+			if InventorySystem.add_to_slot(source_index, held_id, held_quantity):
+				pass
+			else:
+				InventorySystem.add_item(held_id, held_quantity)
+		
 			held_quantity = 0
 			held_id = null
 			source_index = -1
 				
-	

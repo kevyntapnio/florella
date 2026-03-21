@@ -27,7 +27,26 @@ func add_item(item_id, amount):
 	
 	## Both checks done but return hasn't been called yet, so inventory is full
 	print("Inventory is full")
+	
+func add_to_slot(slot_index, item_id, quantity) -> bool:
+	
+	var item_in_slot = inventory[slot_index]
+	
+	if item_in_slot == null:
+		var new_item = {"id": item_id, "quantity": quantity}
+		inventory[slot_index] = new_item
+		inventory_changed.emit()
+		print(get_inventory())
+		return true
 		
+	elif item_in_slot["id"] == item_id:
+		item_in_slot["quantity"] += quantity
+		inventory_changed.emit()
+		print(get_inventory())
+		return true
+	else:
+		return false
+			
 func has_item(item_id, amount) -> bool:
 	
 	var total = 0
@@ -72,7 +91,7 @@ func remove_item(item_id, amount):
 	
 func remove_from_slot(slot_index, amount_requested):
 
-	var item = get_item(slot_index)
+	var item = inventory[slot_index]
 	
 	if item == null:
 		return 0
