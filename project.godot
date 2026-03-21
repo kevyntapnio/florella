@@ -21,6 +21,10 @@ InventorySystem="*uid://c56dlwcbkxmlm"
 ItemDatabase="*uid://cihl2odgqayhf"
 Hotbar="*uid://bsdwyi4yiv25r"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 farm_tiles=""

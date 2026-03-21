@@ -7,6 +7,9 @@
 
 [node name="InventoryUI" type="CanvasLayer" unique_id=405443883 node_paths=PackedStringArray("grid_container") groups=["inventory_ui"]]
 process_mode = 3
+offset = Vector2(-107, -87)
+scale = Vector2(1.3, 1.3)
+transform = Transform2D(1.3, 0, 0, 1.3, -107, -87)
 script = ExtResource("1_w8wow")
 grid_container = NodePath("TextureRect/MarginContainer/VBoxContainer/GridContainer")
 slot_scene = ExtResource("2_n8fuw")

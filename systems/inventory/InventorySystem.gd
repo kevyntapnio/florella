@@ -17,8 +17,8 @@ func add_item(item_id, amount):
 				inventory[i]["quantity"] += amount
 				inventory_changed.emit()
 				return
+				
 	## Check for first empty slot
-	
 	for i in range(inventory.size()):
 		if inventory[i] == null:
 			inventory[i] = {"id": item_id, "quantity": amount}
@@ -106,3 +106,6 @@ func swap_items(index, i):
 			
 	inventory_changed.emit()
 			
+func set_slot(slot_index, item):
+	inventory[slot_index] = item
+	inventory_changed.emit()

@@ -52,6 +52,34 @@ func on_slot_clicked(slot_index):
 	
 	highlight_index = slot_index
 	
+	## ----- WHEN HOLDING SOMETHING -----##
+	if held_quantity > 0:
+		var item_in_slot = InventorySystem.get_item(slot_index) ## remember this returns a dictionary
+		
+		if item_in_slot == null:
+			var new_item = {"id": held_id, "quantity": held_quantity}
+			InventorySystem.set_slot(slot_index, new_item)
+			
+			held_id = null
+			held_quantity = 0
+		
+		elif item_in_slot["id"] == held_id:
+			InventorySystem.add_item(held_id, held_quantity)
+			held_id = null
+			held_quantity = 0
+			
+		else:
+			var temp_item = item_in_slot
+			var new_item = {"id": held_id, "quantity": held_quantity}
+			
+			InventorySystem.set_slot(slot_index, new_item)
+			held_id = temp_item["id"]
+			held_quantity = temp_item["quantity"]
+		
+		highlight_index = -1
+		selection_changed.emit(highlight_index)
+		return
+	
 	if selected_index == -1:
 		if InventorySystem.get_item(slot_index) != null:
 			selected_index = slot_index
