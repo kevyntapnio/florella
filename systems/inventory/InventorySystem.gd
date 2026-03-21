@@ -53,7 +53,7 @@ func remove_item(item_id, amount):
 		
 		if item == null:
 			continue
-				
+			
 		if item["id"] == item_id:
 			if item["quantity"] > remaining_to_remove:
 				item["quantity"] -= remaining_to_remove
@@ -70,6 +70,23 @@ func remove_item(item_id, amount):
 	inventory_changed.emit()
 	return amount - remaining_to_remove
 	
+func remove_from_slot(slot_index, amount_requested):
+
+	var item = get_item(slot_index)
+	
+	if item == null:
+		return 0
+	
+	var amount_to_remove = min(amount_requested, item["quantity"])
+		
+	item["quantity"] -= amount_to_remove
+			
+	if item["quantity"] == 0:
+		inventory[slot_index] = null 
+		
+	inventory_changed.emit()
+	return amount_to_remove
+	
 ## This is for Inventory UI
 func get_inventory() -> Array:
 	return inventory.duplicate()
@@ -80,3 +97,12 @@ func get_item(index):
 		return null
 		
 	return inventory[index]
+
+func swap_items(index, i):
+	
+	var temp_item = inventory[index]
+	inventory[index] = inventory[i]
+	inventory[i] = temp_item
+			
+	inventory_changed.emit()
+			

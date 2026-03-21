@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cria1kuscb0io" path="res://systems/gridmanager/grid_manager.tscn" id="1_xuvbi"]
 [ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://sprites/daisy/PixelifySans-VariableFont_wght.ttf" id="2_2ox4o"]
 [ext_resource type="Script" uid="uid://m8ldb56nw16r" path="res://systems/tilemap/tilemap_logic_layer.gd" id="2_k5frs"]
+[ext_resource type="PackedScene" uid="uid://b7ks18o54lk0p" path="res://systems/inventory_ui/inventory_ui.tscn" id="2_k51qb"]
 [ext_resource type="PackedScene" uid="uid://d30b6vfw84ppa" path="res://TileHighlight/tile_highlight.tscn" id="3_47drt"]
 [ext_resource type="PackedScene" uid="uid://btttkhmphug02" path="res://systems/player/player.tscn" id="3_k5frs"]
 [ext_resource type="PackedScene" uid="uid://cqtguk5mgbqpi" path="res://objects/daisy.tscn" id="4_lurls"]
@@ -16,6 +17,8 @@
 [node name="LevelFarm" type="Node2D" unique_id=1369154645]
 y_sort_enabled = true
 script = ExtResource("1_k51qb")
+
+[node name="InventoryUI" parent="." unique_id=405443883 instance=ExtResource("2_k51qb")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=754423091]
 
