@@ -20,4 +20,3 @@ func on_selected_changed(selected_index):
 			slot.highlight.show()
 		else:
 			slot.highlight.hide()
-	print("selection update called", selected_index)

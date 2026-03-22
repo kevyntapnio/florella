@@ -59,8 +59,14 @@ func toggle():
 	is_open = !is_open
 	visible = is_open
 	
-	held_quantity = 0
-	held_changed.emit(held_id, held_quantity)
+	if held_quantity > 0: 
+		cancel_hold()
+	
+	if not is_open:
+		if held_quantity > 0:
+			held_id = null
+			held_quantity = 0
+			held_changed.emit(held_id, held_quantity)
 
 	##-------to-add later-------##
 	#if is_open:
@@ -136,7 +142,7 @@ func on_slot_clicked(slot_index):
 
 func on_right_click(slot_index):
 	var item_in_slot = InventorySystem.get_item(slot_index)
-	
+	print(held_quantity)
 	if held_quantity == 0:
 		if item_in_slot != null:
 			source_index = slot_index
@@ -146,20 +152,26 @@ func on_right_click(slot_index):
 	
 	# If already holding
 	else:
+		## ------ if same slot clicked ------ ###
 		if slot_index == source_index:
 			var removed = InventorySystem.remove_from_slot(slot_index, 1)
 			held_quantity += removed
-		else:
-			if InventorySystem.add_to_slot(source_index, held_id, held_quantity):
-				print(InventorySystem.add_to_slot(source_index, held_id, held_quantity))
-				pass
-			else:
-				InventorySystem.add_item(held_id, held_quantity)
-				print(held_quantity)
-			held_quantity = 0
-			held_id = null
+		else: 
+			## ------ when other slot is right-clicked, reset held_quantity -------##
+			cancel_hold()
 			source_index = -1
-			
+		
 	update_all_slots()
 	held_changed.emit(held_id, held_quantity)
 				
+func cancel_hold():
+	if InventorySystem.add_to_slot(source_index, held_id, held_quantity):
+		pass
+	else:
+		InventorySystem.add_item(held_id, held_quantity)
+	held_quantity = 0
+	held_id = null
+	source_index = -1
+	
+	update_all_slots()
+	held_changed.emit(held_id, held_quantity)
