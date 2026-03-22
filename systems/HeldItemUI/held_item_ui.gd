@@ -13,7 +13,6 @@ func _ready():
 		inventory_ui.held_changed.connect(on_held_changed)
 	else:
 		print("HeldItemUI ERROR: InventoryUI not found")
-	print("HeldItemUI READY")
 	
 	layer = 10  # ensure on top
 	
@@ -38,7 +37,6 @@ func on_held_changed(id, quantity):
 		
 	if quantity > 0:
 		icon.texture = item.icon
-		print("ICON", item.icon)
 		quantity_label.text = str(quantity)
 		visible = true
 		print

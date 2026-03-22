@@ -29,22 +29,17 @@ func plant(crop_data) -> bool:
 		return false
 		
 	if current_crop != null:
-		print("tile already has crop")
 		return false
 			
 	if soil_state != SoilState.TILLED:
 		return false
 		
 	var crop = crop_scene.instantiate()
-	print("crop created:", crop)
 	# add_child(crop)
 
 	var ysort = get_tree().get_first_node_in_group("ysort_world")
-	print("YSORT:", ysort)
 
 	ysort.add_child(crop)
-	
-	print("CROP PARENT:", crop.get_parent())
 	
 	crop.global_position = global_position
 	current_crop = crop

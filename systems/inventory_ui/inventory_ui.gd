@@ -73,7 +73,6 @@ func toggle():
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle()
-		print("inventory toggled")
 		
 func update_selection_visuals():
 	

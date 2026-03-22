@@ -68,5 +68,3 @@ func handle_interact(item):
 	
 	if target_object != null:
 		target_object.interact(item)
-	print(target_object)
-	print(item)
