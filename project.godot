@@ -21,6 +21,7 @@ InventorySystem="*uid://c56dlwcbkxmlm"
 ItemDatabase="*uid://cihl2odgqayhf"
 Hotbar="*uid://bsdwyi4yiv25r"
 HeldItemUI="*uid://b2r44t7x6je43"
+HotbarUI="*uid://cg2x2l5bhty88"
 
 [display]
 

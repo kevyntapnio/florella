@@ -15,7 +15,7 @@ signal held_changed(held_id, held_quantity) ## for HeldItemUI (mouse cursor)
 	
 func _ready():
 	slot_scene = load("res://systems/inventory_ui/inventory_slot.tscn")
-	print("slot_scene")
+	
 	visible = false
 	create_slots()
 		

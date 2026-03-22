@@ -8,7 +8,7 @@ extends Control
 signal slot_clicked(slot_index)
 signal slot_right_clicked(slot_index)
 
-var slot_index: int
+@export var slot_index: int
 
 func _ready():
 	InventorySystem.inventory_changed.connect(update_slot)
