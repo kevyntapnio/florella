@@ -152,10 +152,11 @@ func on_right_click(slot_index):
 			held_quantity += removed
 		else:
 			if InventorySystem.add_to_slot(source_index, held_id, held_quantity):
+				print(InventorySystem.add_to_slot(source_index, held_id, held_quantity))
 				pass
 			else:
 				InventorySystem.add_item(held_id, held_quantity)
-		
+				print(held_quantity)
 			held_quantity = 0
 			held_id = null
 			source_index = -1
