@@ -40,7 +40,6 @@ func advance_time():
 		if current_hour >= 24:
 			current_hour = 0
 	emit_signal("time_updated", current_hour, current_minute)
-	print("Time:", current_hour, ":", current_minute)
 		
 	check_day_end()
 

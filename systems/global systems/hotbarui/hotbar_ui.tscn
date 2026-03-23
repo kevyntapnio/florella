@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://systems/global systems/inventory_ui/inventory_slot.tscn" id="2_j0lli"]
 
 [node name="HotbarUI" type="CanvasLayer" unique_id=1656466573]
+layer = 11
 script = ExtResource("1_q7dou")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=845044448]

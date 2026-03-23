@@ -13,6 +13,8 @@ signal selection_changed(selected_index) ## for slot highlight update
 func _ready():
 	slot_scene = load("res://systems/global systems/inventory_ui/inventory_slot.tscn")
 	inventory = InventorySystem.get_inventory()
+	
+	layer = 10
 
 	visible = false
 	create_slots()

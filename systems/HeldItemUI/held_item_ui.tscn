@@ -5,12 +5,13 @@
 
 [node name="HeldItemUI" type="CanvasLayer" unique_id=1288905451]
 process_mode = 3
-layer = 10
 offset = Vector2(1, 1)
 transform = Transform2D(1, 0, 0, 1, 1, 1)
 script = ExtResource("1_d82ne")
 
 [node name="Root" type="Control" parent="." unique_id=2025108291]
+top_level = true
+z_index = 100
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
@@ -25,6 +26,7 @@ offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
+mouse_filter = 2
 stretch_mode = 5
 
 [node name="Quantity" type="Label" parent="Root/Icon" unique_id=887443655]

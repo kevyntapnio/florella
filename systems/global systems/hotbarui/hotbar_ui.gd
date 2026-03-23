@@ -6,6 +6,7 @@ func _ready():
 	Hotbar.selected_changed.connect(on_selected_changed)
 	InventorySystem.inventory_changed.connect(update_all_slots)
 	
+	layer = 10
 	
 	var hbox = $MarginContainer/HotbarPanel/HBoxContainer
 	if hbox:
@@ -44,7 +45,6 @@ func update_all_slots():
 			slot.update_slot(icon, quantity)
 			
 func on_slot_clicked(slot_index):
-	
 	if InventoryInteraction.held_quantity == 0:
 		Hotbar.set_selected_index(slot_index)
 	else:
