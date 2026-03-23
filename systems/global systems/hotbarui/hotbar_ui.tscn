@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cg2x2l5bhty88"]
 
-[ext_resource type="Script" uid="uid://dbskoiohroi7t" path="res://systems/hotbarui/hotbar_ui.gd" id="1_q7dou"]
+[ext_resource type="Script" uid="uid://dbskoiohroi7t" path="res://systems/global systems/hotbarui/hotbar_ui.gd" id="1_q7dou"]
 [ext_resource type="Texture2D" uid="uid://gvv0rd6icdrc" path="res://sprites/inventory_hotbar_ui/hotbar.png" id="1_qdu3w"]
-[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://systems/inventory_ui/inventory_slot.tscn" id="2_j0lli"]
+[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://systems/global systems/inventory_ui/inventory_slot.tscn" id="2_j0lli"]
 
 [node name="HotbarUI" type="CanvasLayer" unique_id=1656466573]
 script = ExtResource("1_q7dou")

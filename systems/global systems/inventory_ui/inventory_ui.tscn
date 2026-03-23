@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7ks18o54lk0p"]
 
-[ext_resource type="Script" uid="uid://dyictx7cr3wag" path="res://systems/inventory_ui/inventory_ui.gd" id="1_w8wow"]
-[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://systems/inventory_ui/inventory_slot.tscn" id="2_n8fuw"]
+[ext_resource type="Script" uid="uid://dyictx7cr3wag" path="res://systems/global systems/inventory_ui/inventory_ui.gd" id="1_w8wow"]
+[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://systems/global systems/inventory_ui/inventory_slot.tscn" id="2_n8fuw"]
 [ext_resource type="Texture2D" uid="uid://co4bjcqipj3am" path="res://sprites/inventory_hotbar_ui/inventory panel.png" id="3_heecw"]
 [ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://sprites/daisy/PixelifySans-VariableFont_wght.ttf" id="4_n8fuw"]
 
