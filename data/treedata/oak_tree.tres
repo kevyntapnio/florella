@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TreeData" format=3 uid="uid://b6onvyv7pyoms"]
+
+[ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://objects/trees/TreeData.gd" id="1_r8wkn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r8wkn"]
+load_path = "res://.godot/imported/oak tree.png-39671a0ecaecac2db287062dde5b8709.ctex"
+
+[resource]
+script = ExtResource("1_r8wkn")
+texture = SubResource("CompressedTexture2D_r8wkn")
+collision_size = Vector2(15, 22)
+collision_offset = Vector2(0, -8)
+metadata/_custom_type_script = "uid://xkjtylgsjc4e"

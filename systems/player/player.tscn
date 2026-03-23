@@ -169,12 +169,12 @@ radius = 11.04
 [node name="Player" type="CharacterBody2D" unique_id=1372264591]
 process_mode = 1
 y_sort_enabled = true
-collision_layer = 16
-collision_mask = 4
+collision_layer = 18
+collision_mask = 36
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=473465960]
-position = Vector2(0, 2)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_hqtel")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1293188439]
