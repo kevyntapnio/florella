@@ -4,15 +4,8 @@ extends CanvasLayer
 @onready var icon = $Root/Icon
 @onready var quantity_label = $Root/Quantity
 
-var inventory_ui 
-
 func _ready():
-	inventory_ui = get_tree().get_first_node_in_group("inventory_ui")
-	
-	if inventory_ui:
-		inventory_ui.held_changed.connect(on_held_changed)
-	else:
-		print("HeldItemUI ERROR: InventoryUI not found")
+	InventoryInteraction.held_changed.connect(on_held_changed)
 	
 	layer = 10  # ensure on top
 	

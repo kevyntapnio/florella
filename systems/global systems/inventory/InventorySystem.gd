@@ -36,13 +36,13 @@ func add_to_slot(slot_index, item_id, quantity) -> bool:
 		var new_item = {"id": item_id, "quantity": quantity}
 		inventory[slot_index] = new_item
 		inventory_changed.emit()
-		print(get_inventory())
+		
 		return true
 		
 	elif item_in_slot["id"] == item_id:
 		item_in_slot["quantity"] += quantity
 		inventory_changed.emit()
-		print(get_inventory())
+		
 		return true
 	else:
 		return false
@@ -116,14 +116,6 @@ func get_item(index):
 		return null
 		
 	return inventory[index]
-
-func swap_items(index, i):
-	
-	var temp_item = inventory[index]
-	inventory[index] = inventory[i]
-	inventory[i] = temp_item
-			
-	inventory_changed.emit()
 			
 func set_slot(slot_index, item):
 	inventory[slot_index] = item
