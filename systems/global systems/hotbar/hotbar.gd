@@ -2,6 +2,7 @@ extends Node
 
 var selected_index: int = 0
 var hotbar_size = 10
+var page = 0
 
 signal selected_changed(selected_index) ## connects to HotbarUI
 
@@ -27,4 +28,6 @@ func get_selected_item():
 	
 	return item
 	
-		
+func get_inventory_index(slot_index):
+	return slot_index + (page * hotbar_size)
+	

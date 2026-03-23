@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var root = $Root
 @onready var icon = $Root/Icon
-@onready var quantity_label = $Root/Quantity
+@onready var quantity_label = $Root/Icon/Quantity
 
 func _ready():
 	InventoryInteraction.held_changed.connect(on_held_changed)

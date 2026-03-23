@@ -21,6 +21,7 @@ var focused_interactable = null
 var player_tile_coords: Vector2i
 var current_target_coords: Vector2i
 var player_global_position
+var scroll_locked
 
 func _process(delta):
 	
@@ -97,13 +98,20 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("hotbar_0"):
 			Hotbar.set_selected_index(9)
 	
-	if Input.is_action_just_pressed("hotbar_next"):
-		Hotbar.change_selected_index(1)
-		print("Scroll input triggered")
+	if not scroll_locked:
+		if Input.is_action_just_pressed("hotbar_next"):
+			Hotbar.change_selected_index(1)
+			lock_scroll()
 	
-	if Input.is_action_just_pressed("hotbar_previous"):
-		Hotbar.change_selected_index(-1)
+		if Input.is_action_just_pressed("hotbar_previous"):
+			Hotbar.change_selected_index(-1)
+			lock_scroll()
 		
+func lock_scroll():
+		scroll_locked = true
+		await get_tree().create_timer(0.1).timeout
+		scroll_locked = false
+	
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
 	var interactable_object = area.get_parent()

@@ -187,7 +187,6 @@ offset = Vector2(0, -32)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2034566478]
 position = Vector2(0, 2)
-zoom = Vector2(2.5, 2.5)
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1981826413]
 position = Vector2(0, 2)
