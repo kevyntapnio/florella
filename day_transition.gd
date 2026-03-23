@@ -1,0 +1,40 @@
+extends CanvasLayer
+
+@onready var color_rect = $ColorRect
+
+var morning_color = Color(1.0, 0.754, 0.287, 0.2)
+var afternoon_color = Color(1.0, 1.0, 1.0, 0.0)
+var evening_color = Color(1.0, 0.5, 0.23, 0.267)
+var night_color = Color(0.174, 0.19, 0.63, 0.416)
+var current_tween: Tween = null
+
+func _ready():
+	
+	TimeManager.time_updated.connect(_on_time_updated)
+	color_rect.color = get_color_for_hour(TimeManager.current_hour)
+	update_time_of_day(TimeManager.current_hour)
+	
+func _on_time_updated(hour, minute):
+	update_time_of_day(hour)
+	
+func update_time_of_day(hour):
+	var target_color = get_color_for_hour(hour)
+	print("Target color", target_color)
+	apply_color(target_color)
+
+func get_color_for_hour(hour):
+	if hour >= 6 and hour < 12:
+		return morning_color
+	elif hour >= 12 and hour < 17:
+		return afternoon_color
+	elif hour >=17 and hour < 20:
+		return evening_color
+	else:
+		return night_color
+	
+func apply_color(target_color: Color):
+	if current_tween:
+		current_tween.kill()
+		
+	current_tween = create_tween()
+	current_tween.tween_property(color_rect, "color", target_color, 1.5)
