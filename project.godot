@@ -145,6 +145,7 @@ inventory={
 2d_physics/layer_4="FarmTile"
 2d_physics/layer_5="PlayerDetector"
 2d_physics/layer_6="Environment"
+2d_physics/layer_7="WorldItem"
 
 [physics]
 

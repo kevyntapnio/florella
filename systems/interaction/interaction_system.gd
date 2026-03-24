@@ -10,15 +10,12 @@ var nearby_interactables: Array = []
 var focused_interactable = null
 
 func _process(delta: float) -> void:
-
 	update_focused_interactable()
 	
 func register_interactable(interactable):
-	
 	nearby_interactables.append(interactable)
 
 func unregister_interactable(interactable):
-	
 	nearby_interactables.erase(interactable)
 	
 func get_closest_interactable():
@@ -67,4 +64,5 @@ func handle_interact(item):
 	var target_object = grid_manager.get_grid_object(target_coords)
 	
 	if target_object != null:
-		target_object.interact(item)
+		if target_object.interact(item):
+			return

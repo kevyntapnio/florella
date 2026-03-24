@@ -35,7 +35,6 @@ func plant(crop_data) -> bool:
 		return false
 		
 	var crop = crop_scene.instantiate()
-
 	var ysort = get_tree().get_first_node_in_group("ysort_world")
 
 	ysort.add_child(crop)
@@ -46,23 +45,24 @@ func plant(crop_data) -> bool:
 		
 	return true
 	
-func interact(item):
+func interact(item) -> bool:
 	
 	## Handle crop first
 	if current_crop != null:
 		current_crop.on_interact(item)
-		return
+		return false
 		
 	## If no crop, check for item
 	if item == null:
-		return
+		return false
 		
 	var item_data = ItemDatabase.get_item(item["id"])
 	
 	if item_data == null:
-		return
+		return false
 		
 	item_data.use(self)
+	return true
 		
 func clear_crop():
 	current_crop = null

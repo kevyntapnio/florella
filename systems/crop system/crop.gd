@@ -4,7 +4,8 @@ extends Node2D
 @export var parent_tile: Node2D
 @onready var sprite: Sprite2D = $Sprite2D
 @export var harvest_sfx: AudioStream
-
+@export var world_item_scene: PackedScene
+@onready var drop_point = $DropPoint
 
 var growth_stage: int = 0
 var days_in_stage: int = 0
@@ -47,20 +48,31 @@ func on_day_passed():
 				days_in_stage = 0
 				update_visual()
 			
-func on_interact(item):
+func on_interact(item) -> bool:
 	var current_stage = get_current_stage()
 	
 	if current_stage.harvestable:
 		harvest()
+		return true
+	
+	return false
 		
 func harvest(): 
 	play_harvest_sfx()
 	var tween = play_harvest_animation()
 	await tween.finished
-	# rest of your harvest logic...
+	
 	var current_stage = get_current_stage()
 	var item_data = current_stage.yield_item
+	
+	if item_data == null:
+		return
+		
+	var id = item_data.id
 	var amount = current_stage.yield_amount
+	
+	if item_data != null:
+		spawn_world_item(id, amount)
 	
 	if current_stage.remove_on_harvest:
 		destroy_crop()
@@ -73,8 +85,6 @@ func harvest():
 		else:
 			destroy_crop()
 			
-	if item_data != null:
-		InventorySystem.add_item(item_data.id, amount)
 
 func destroy_crop():
 
@@ -127,3 +137,16 @@ func play_harvest_animation():
 	tween.tween_property(self, "scale", Vector2(1, 1), 0.05) 
 	
 	return tween
+	
+func spawn_world_item(id, amount):
+	var ysort = get_tree().get_first_node_in_group("ysort_world")
+	var item_instance = world_item_scene.instantiate()
+	
+	item_instance.global_position = drop_point.global_position + Vector2(
+		randf_range(-4, 4),
+		randf_range(-4, 4)
+	)
+	ysort.add_child(item_instance)
+	item_instance.initialize(id, amount)
+	
+	
