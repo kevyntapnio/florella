@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SeedItem" format=3 uid="uid://diill7fusrbbw"]
+
+[ext_resource type="Script" uid="uid://cocmcuylq1b4b" path="res://systems/items/seed_item.gd" id="1_jfj0x"]
+[ext_resource type="Resource" uid="uid://demikxlaa0prh" path="res://data/cropdata/tulip.tres" id="1_y83lx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_me2fg"]
+load_path = "res://.godot/imported/tulipsprite000.png-963383066b3e65090e0aa1d6cf963d9c.ctex"
+
+[resource]
+script = ExtResource("1_jfj0x")
+crop_data = ExtResource("1_y83lx")
+id = "tulip_bulb"
+name = "Tulip Bulb"
+icon = SubResource("CompressedTexture2D_me2fg")
+metadata/_custom_type_script = "uid://cocmcuylq1b4b"

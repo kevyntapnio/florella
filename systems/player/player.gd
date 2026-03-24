@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 120
+const SPEED = 150
 var facing_direction = Vector2i(0, 1)
 
 @export var tilemap: TileMapLayer

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c2dq5sq5q458p"]
+
+[ext_resource type="Texture2D" uid="uid://cdndj2jsb06sk" path="res://sprites/flowers/tulipsprite004.png" id="1_ia2st"]
+[ext_resource type="Script" uid="uid://qpy31wq3lcps" path="res://systems/items/ItemData.gd" id="1_ylasp"]
+
+[resource]
+script = ExtResource("1_ylasp")
+id = "tulip"
+name = "Tulip"
+icon = ExtResource("1_ia2st")
+metadata/_custom_type_script = "uid://qpy31wq3lcps"

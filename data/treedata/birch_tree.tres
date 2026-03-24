@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="TreeData" format=3 uid="uid://dwhh6gwmnwkl6"]
 
 [ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://objects/trees/TreeData.gd" id="1_veuvq"]
-[ext_resource type="Texture2D" uid="uid://fh5lchh6f3ot" path="res://sprites/trees/birch tree.png" id="2_4yiue"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_veuvq"]
+load_path = "res://.godot/imported/birch tree.png-5833fa247086ba314c7f578f0a2c5207.ctex"
 
 [resource]
 script = ExtResource("1_veuvq")
-texture = ExtResource("2_4yiue")
+texture = SubResource("CompressedTexture2D_veuvq")
 collision_size = Vector2(15, 22)
 collision_offset = Vector2(0, -8)
 metadata/_custom_type_script = "uid://xkjtylgsjc4e"

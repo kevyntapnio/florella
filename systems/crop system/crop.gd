@@ -75,4 +75,21 @@ func harvest():
 func destroy_crop():
 	parent_tile.clear_crop()
 	queue_free()
-	
+
+func _on_sway_area_body_entered(body: Node2D) -> void:
+	if growth_stage == 0:
+		return
+		
+	if body.is_in_group("player"):
+		var tween = create_tween()
+		var direction = [-1, 1].pick_random()
+		var strength = randf_range(0.15, 0.25) * direction
+
+		
+		tween.tween_property(self, "rotation", strength, 0.1)\
+			.set_trans(Tween.TRANS_SINE)\
+			.set_ease(Tween.EASE_OUT)
+			
+		tween.tween_property(self, "rotation", 0.0, 0.3)\
+			.set_trans(Tween.TRANS_SINE)\
+			.set_ease(Tween.EASE_IN)

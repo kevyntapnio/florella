@@ -14,10 +14,12 @@
 [ext_resource type="Script" uid="uid://sfriifoj7uvu" path="res://tileset/time_debug_label.gd" id="6_q8hax"]
 [ext_resource type="PackedScene" uid="uid://txwrw3hmnb6e" path="res://systems/interaction/interaction_system.tscn" id="7_5ubtp"]
 [ext_resource type="PackedScene" uid="uid://dw4fkigoerc7e" path="res://objects/trees/tree.tscn" id="9_2ylty"]
+[ext_resource type="PackedScene" uid="uid://cs7lboxkqwucx" path="res://dog.tscn" id="9_hyev1"]
 [ext_resource type="PackedScene" uid="uid://cj48kuh8ujhcy" path="res://tree_spawner.tscn" id="15_1x10i"]
 
 [node name="LevelFarm" type="Node2D" unique_id=1369154645]
 y_sort_enabled = true
+texture_filter = 1
 script = ExtResource("1_k51qb")
 
 [node name="InventoryUI" parent="." unique_id=405443883 instance=ExtResource("2_k51qb")]
@@ -78,6 +80,9 @@ grid_manager = NodePath("../../GridManager")
 tile_highlight = NodePath("../../tilemap_logic_layer/TileHighlight")
 targeting_system = NodePath("../../TargetingSystem")
 interaction_system = NodePath("../../InteractionSystem")
+
+[node name="Dog" parent="YSortWorld" unique_id=290849294 instance=ExtResource("9_hyev1")]
+position = Vector2(290, 431)
 
 [node name="GridManager" parent="." unique_id=1360749178 node_paths=PackedStringArray("tilemap") instance=ExtResource("1_xuvbi")]
 tilemap = NodePath("../tilemap_logic_layer")
@@ -145,7 +150,8 @@ tilemap = NodePath("../../tilemap_logic_layer")
 [node name="TreeSpawner" parent="." unique_id=1374152600 instance=ExtResource("15_1x10i")]
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(1472, 824)
+position = Vector2(1040, 336)
 tree_scene = ExtResource("9_2ylty")
-quantity = 20
+quantity = 50
 spawn_area = Vector2(800, 800)
+max_attempts = 200
