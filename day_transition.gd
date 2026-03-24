@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var color_rect = $ColorRect
 
-var morning_color = Color(1.0, 0.754, 0.287, 0.2)
+var morning_color = Color(1.0, 0.755, 0.36, 0.192)
 var afternoon_color = Color(1.0, 1.0, 1.0, 0.0)
 var evening_color = Color(1.0, 0.5, 0.23, 0.267)
 var night_color = Color(0.156, 0.117, 0.45, 0.506)
@@ -24,9 +24,9 @@ func update_time_of_day(hour):
 func get_color_for_hour(hour):
 	if hour >= 6 and hour < 12:
 		return morning_color
-	elif hour >= 12 and hour < 17:
+	elif hour >= 12 and hour < 16:
 		return afternoon_color
-	elif hour >=17 and hour < 20:
+	elif hour >=16 and hour < 19:
 		return evening_color
 	else:
 		return night_color

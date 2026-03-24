@@ -35,7 +35,6 @@ func plant(crop_data) -> bool:
 		return false
 		
 	var crop = crop_scene.instantiate()
-	# add_child(crop)
 
 	var ysort = get_tree().get_first_node_in_group("ysort_world")
 

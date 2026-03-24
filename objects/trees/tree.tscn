@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dw4fkigoerc7e"]
 
 [ext_resource type="Script" uid="uid://rvuwrjxdrifo" path="res://objects/trees/tree.gd" id="1_nciir"]
-[ext_resource type="Resource" uid="uid://b6onvyv7pyoms" path="res://data/treedata/oak_tree.tres" id="2_0rnix"]
 [ext_resource type="Texture2D" uid="uid://11w2qmircnc3" path="res://sprites/trees/oak tree.png" id="3_0rnix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nciir"]
@@ -11,7 +10,6 @@ y_sort_enabled = true
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_nciir")
-tree_data = ExtResource("2_0rnix")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1715559130]
 y_sort_enabled = true
@@ -20,6 +18,5 @@ texture = ExtResource("3_0rnix")
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1242689237]
-visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_nciir")

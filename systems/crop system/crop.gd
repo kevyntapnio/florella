@@ -4,8 +4,6 @@ extends Node2D
 @export var parent_tile: Node2D
 @onready var sprite: Sprite2D = $Sprite2D
 
-# signal for slots
-signal selection_changed
 
 var growth_stage: int = 0
 var days_in_stage: int = 0
@@ -13,7 +11,6 @@ var is_regrowing: bool = false
 
 func _ready():
 
-	print("READY:", self)
 	TimeManager.day_passed.connect(on_day_passed)
 	
 func initialize(data: CropData, parent_tile: Node2D):

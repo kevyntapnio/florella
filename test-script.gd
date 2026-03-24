@@ -1,30 +1,28 @@
-var slot_index
-var source_index: int = -1
-var held_id = null
-var held_quantity = 0
+extends Node2D
 
-func test(slot_index):
-	var item_in_slot = InventorySystem.get_item(slot_index)
+@export var tree_instance: PackedScene
+@export var tree_data_list: Array = []
+@export var quantity = 15
+@export var spawn_area: Vector2
+
+var tree
+
+func _ready():
+	var ysort = get_tree().get_first_node_in_group("ysort_world")
 	
-	# Not holding anything
-	
-	if held_quantity == 0:
-		if item_in_slot != null:
-			source_index = slot_index
-			held_id = item_in_slot["id"]
-			InventorySystem.remove_item(slot_index, 1)
-			held_quantity = 1
-	
-	# If already holding
-	else:
+	for i in range(quantity):
 		
-		if item_in_slot != null and held_id == item_in_slot["id"]:
-			InventorySystem.remove_item(slot_index, 1)
-			held_quantity += 1
-		else:
-			InventorySystem.add_item(slot_index, held_quantity)
-			
-			held_quantity = 0
-			held_id = null
-			source_index = -1
-				
+		tree = tree.instantiate()
+		
+		var x = randf_range(-spawn_area.x, spawn_area.y)
+		var y = randf_range(-spawn_area.x, spawn_area.y)
+		tree.global_position = global_position + Vector2(x, y)
+		
+		var random_data = tree_data_list.pick_random()
+		tree.tree_data = random_data
+		
+		ysort.add_child(tree)
+		
+		
+		
+	

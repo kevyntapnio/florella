@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cj48kuh8ujhcy"]
+
+[ext_resource type="Script" uid="uid://dlhdrielb08ou" path="res://tree_spawner.gd" id="1_dkscf"]
+[ext_resource type="PackedScene" uid="uid://dw4fkigoerc7e" path="res://objects/trees/tree.tscn" id="2_y066e"]
+[ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://objects/trees/TreeData.gd" id="3_oxwuj"]
+[ext_resource type="Resource" uid="uid://dwhh6gwmnwkl6" path="res://data/treedata/birch_tree.tres" id="4_14cmd"]
+[ext_resource type="Resource" uid="uid://b6onvyv7pyoms" path="res://data/treedata/oak_tree.tres" id="5_ewcar"]
+
+[node name="TreeSpawner" type="Node2D" unique_id=1374152600]
+script = ExtResource("1_dkscf")
+tree_instance = ExtResource("2_y066e")
+tree_data_list = Array[ExtResource("3_oxwuj")]([ExtResource("4_14cmd"), ExtResource("5_ewcar")])
+quantity = 40
+spawn_area = Vector2(-501, 500)

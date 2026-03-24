@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://sfriifoj7uvu" path="res://tileset/time_debug_label.gd" id="6_q8hax"]
 [ext_resource type="PackedScene" uid="uid://txwrw3hmnb6e" path="res://systems/interaction/interaction_system.tscn" id="7_5ubtp"]
 [ext_resource type="PackedScene" uid="uid://dw4fkigoerc7e" path="res://objects/trees/tree.tscn" id="9_2ylty"]
+[ext_resource type="PackedScene" uid="uid://cj48kuh8ujhcy" path="res://tree_spawner.tscn" id="15_1x10i"]
 
 [node name="LevelFarm" type="Node2D" unique_id=1369154645]
 y_sort_enabled = true
@@ -71,28 +72,12 @@ tile_set = ExtResource("1_s088y")
 y_sort_enabled = true
 
 [node name="Player" parent="YSortWorld" unique_id=1372264591 node_paths=PackedStringArray("tilemap", "grid_manager", "tile_highlight", "targeting_system", "interaction_system") instance=ExtResource("3_k5frs")]
-position = Vector2(367, 486)
+position = Vector2(368, 488)
 tilemap = NodePath("../../tilemap_logic_layer")
 grid_manager = NodePath("../../GridManager")
 tile_highlight = NodePath("../../tilemap_logic_layer/TileHighlight")
 targeting_system = NodePath("../../TargetingSystem")
 interaction_system = NodePath("../../InteractionSystem")
-
-[node name="Tree" parent="YSortWorld" unique_id=662497196 instance=ExtResource("9_2ylty")]
-y_sort_enabled = true
-position = Vector2(31, 280)
-
-[node name="Tree2" parent="YSortWorld" unique_id=631514138 instance=ExtResource("9_2ylty")]
-y_sort_enabled = true
-position = Vector2(511, 445)
-
-[node name="Tree3" parent="YSortWorld" unique_id=314619202 instance=ExtResource("9_2ylty")]
-y_sort_enabled = true
-position = Vector2(575, 252)
-
-[node name="Tree4" parent="YSortWorld" unique_id=355416471 instance=ExtResource("9_2ylty")]
-y_sort_enabled = true
-position = Vector2(129, 511)
 
 [node name="GridManager" parent="." unique_id=1360749178 node_paths=PackedStringArray("tilemap") instance=ExtResource("1_xuvbi")]
 tilemap = NodePath("../tilemap_logic_layer")
@@ -156,3 +141,11 @@ tilemap = NodePath("../../tilemap_logic_layer")
 position = Vector2(400, 592)
 grid_manager = NodePath("../../GridManager")
 tilemap = NodePath("../../tilemap_logic_layer")
+
+[node name="TreeSpawner" parent="." unique_id=1374152600 instance=ExtResource("15_1x10i")]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1472, 824)
+tree_scene = ExtResource("9_2ylty")
+quantity = 20
+spawn_area = Vector2(800, 800)

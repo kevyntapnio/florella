@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TreeData" format=3 uid="uid://dwhh6gwmnwkl6"]
+
+[ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://objects/trees/TreeData.gd" id="1_veuvq"]
+[ext_resource type="Texture2D" uid="uid://fh5lchh6f3ot" path="res://sprites/trees/birch tree.png" id="2_4yiue"]
+
+[resource]
+script = ExtResource("1_veuvq")
+texture = ExtResource("2_4yiue")
+collision_size = Vector2(15, 22)
+collision_offset = Vector2(0, -8)
+metadata/_custom_type_script = "uid://xkjtylgsjc4e"

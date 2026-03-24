@@ -25,7 +25,7 @@ func _process(delta):
 		
 	time_accumulator += delta
 	
-	if time_accumulator >= 0.2:
+	if time_accumulator >=0.2:
 		time_accumulator = 0.0
 		advance_time()
 	
