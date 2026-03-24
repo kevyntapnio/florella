@@ -187,6 +187,11 @@ offset = Vector2(0, -32)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2034566478]
 position = Vector2(0, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1500
+limit_bottom = 980
+limit_smoothed = true
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1981826413]
 position = Vector2(0, 2)

@@ -3,6 +3,7 @@ extends Node2D
 @export var crop_data: CropData
 @export var parent_tile: Node2D
 @onready var sprite: Sprite2D = $Sprite2D
+@export var harvest_sfx: AudioStream
 
 
 var growth_stage: int = 0
@@ -10,7 +11,7 @@ var days_in_stage: int = 0
 var is_regrowing: bool = false
 
 func _ready():
-
+	print(has_node("HarvestSFX"))
 	TimeManager.day_passed.connect(on_day_passed)
 	
 func initialize(data: CropData, parent_tile: Node2D):
@@ -53,6 +54,10 @@ func on_interact(item):
 		harvest()
 		
 func harvest(): 
+	play_harvest_sfx()
+	var tween = play_harvest_animation()
+	await tween.finished
+	# rest of your harvest logic...
 	var current_stage = get_current_stage()
 	var item_data = current_stage.yield_item
 	var amount = current_stage.yield_amount
@@ -70,9 +75,9 @@ func harvest():
 			
 	if item_data != null:
 		InventorySystem.add_item(item_data.id, amount)
-		print(InventorySystem.get_inventory())
-		
+
 func destroy_crop():
+
 	parent_tile.clear_crop()
 	queue_free()
 
@@ -93,3 +98,32 @@ func _on_sway_area_body_entered(body: Node2D) -> void:
 		tween.tween_property(self, "rotation", 0.0, 0.3)\
 			.set_trans(Tween.TRANS_SINE)\
 			.set_ease(Tween.EASE_IN)
+
+		$SwaySFX.pitch_scale = randf_range(0.85, 1.15)
+		$SwaySFX.play()
+		
+func play_harvest_sfx():
+	var sfx = AudioStreamPlayer.new()
+	get_tree().current_scene.add_child(sfx)
+
+	sfx.stream = preload("res://sfx/pop.mp3")
+	sfx.pitch_scale = randf_range(0.9, 1.15)
+	sfx.volume_db = -10
+	sfx.play()
+
+	sfx.finished.connect(sfx.queue_free)
+	
+func play_harvest_animation():
+	var tween = create_tween()
+
+	tween.tween_property(self, "scale", Vector2(1.2, 0.8), 0.08) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(self, "scale", Vector2(0.9, 1.2), 0.08) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_IN)
+		
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.05) 
+	
+	return tween

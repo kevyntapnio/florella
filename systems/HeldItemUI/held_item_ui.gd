@@ -32,4 +32,3 @@ func on_held_changed(id, quantity):
 		icon.texture = item.icon
 		quantity_label.text = str(quantity)
 		visible = true
-		print

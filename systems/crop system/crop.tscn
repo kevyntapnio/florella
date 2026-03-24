@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mggu5cqcy304" path="res://systems/crop system/crop.gd" id="1_doysg"]
 [ext_resource type="Resource" uid="uid://vawldvd3va0a" path="res://data/cropdata/daisy.tres" id="2_frnma"]
 [ext_resource type="Texture2D" uid="uid://cdndj2jsb06sk" path="res://sprites/flowers/tulipsprite004.png" id="3_07uk2"]
+[ext_resource type="AudioStream" uid="uid://djyf3aqjva5pt" path="res://sfx/grass.mp3" id="4_y556i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kesr"]
 radius = 7.0
@@ -35,5 +36,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwayArea" unique_id=1098047071]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_4kesr")
+
+[node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=658522391]
+process_mode = 3
+stream = ExtResource("4_y556i")
+volume_db = -20.496
 
 [connection signal="body_entered" from="SwayArea" to="." method="_on_sway_area_body_entered"]
