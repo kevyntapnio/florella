@@ -4,7 +4,7 @@ class_name SeedItem
 
 @export var crop_data: CropData
 
-func use(player_tile, target):
+func use(target, context):
 	if target == null:
 		return false
 		

@@ -58,11 +58,11 @@ func plant(crop_data) -> bool:
 		
 	return true
 	
-func interact(item):
+func interact(item, context):
 	
 	## Handle crop first
 	if current_crop != null:
-		if current_crop.on_interact(item): # returns a bool. if false, let farmtile interact
+		if current_crop.on_interact(item, context): # returns a bool. if false, let farmtile interact
 			return
 		
 	## if hands are empty, do nothing
@@ -76,11 +76,11 @@ func interact(item):
 		return 
 	
 	if item_data is SeedItem:
-		item_data.use(self)
+		item_data.use(self, context)
 		return
 		
 	if item_data is ToolItem:
-		item_data.use(self)
+		item_data.use(self, context)
 		return
 		
 func use_tool(tool):

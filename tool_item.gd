@@ -9,21 +9,25 @@ enum ToolType {
 @export var range: int
 @export var tool_type: ToolType
 
-func use(player_coords, target_coords):
-	if target_coords == null:
+func use(target, context):
+	
+	if target == null:
 		return false
 	
-	if not can_use(player_coords, target_coords):
+	if not can_use(target, context):
 		return false
 		
-	return target_coords.use_tool(self)
+	return target.use_tool(self)
 
-func can_use(player_coords, target_coords) -> bool:
-	if target_coords == null:
+func can_use(target, context) -> bool:
+	var player = context["player"]
+	var target_coords = context["target"]
+	
+	if target == null:
 		return false
 			
-	var dx = abs(player_coords.x - target_coords.x)
-	var dy = abs(player_coords.y - target_coords.y)
+	var dx = abs(player.x - target_coords.x)
+	var dy = abs(player.y - target_coords.y)
 	var distance = max(dx, dy)
 	
-	return distance <= max(dx, dy)
+	return distance <= range

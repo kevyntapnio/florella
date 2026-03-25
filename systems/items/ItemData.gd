@@ -6,5 +6,5 @@ class_name ItemData
 @export var name: String
 @export var icon: Texture2D
 
-func use(player_tile, target):
+func use(player_tile, context):
 	pass

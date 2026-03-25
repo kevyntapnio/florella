@@ -49,7 +49,7 @@ func on_day_passed():
 					days_in_stage = 0
 					update_visual()
 			
-func on_interact(item) -> bool:
+func on_interact(item, context) -> bool:
 	var current_stage = get_current_stage()
 	
 	if current_stage.harvestable:
