@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bxhdxmc6uoen5"]
 
-[ext_resource type="Script" uid="uid://0kosgkp4tfoe" path="res://world_item.gd" id="1_m0g5d"]
+[ext_resource type="Script" uid="uid://0kosgkp4tfoe" path="res://systems/global systems/WorldItem/world_item.gd" id="1_m0g5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m0g5d"]
 radius = 54.63

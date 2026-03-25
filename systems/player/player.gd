@@ -109,7 +109,7 @@ func _input(event: InputEvent) -> void:
 		
 func lock_scroll():
 		scroll_locked = true
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.03).timeout
 		scroll_locked = false
 	
 func _on_interaction_area_area_entered(area: Area2D) -> void:

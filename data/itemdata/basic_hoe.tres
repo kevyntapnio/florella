@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ToolItem" format=3 uid="uid://o5y5vufmtsw5"]
+
+[ext_resource type="Texture2D" uid="uid://emkdihfndkfy" path="res://sprites/tools/basic hoe.png" id="1_2de30"]
+[ext_resource type="Script" uid="uid://bnehtbytnd36p" path="res://tool_item.gd" id="1_d6u0c"]
+
+[resource]
+script = ExtResource("1_d6u0c")
+id = "basic_hoe"
+name = "Basic Hoe"
+icon = ExtResource("1_2de30")
+metadata/_custom_type_script = "uid://bnehtbytnd36p"

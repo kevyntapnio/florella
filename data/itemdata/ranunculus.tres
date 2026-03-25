@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dtf7pm4x8547g"]
+
+[ext_resource type="Script" uid="uid://qpy31wq3lcps" path="res://systems/items/ItemData.gd" id="1_r7aub"]
+[ext_resource type="Texture2D" uid="uid://bv873rs7300h1" path="res://sprites/flowers/ranunculus004.png" id="1_wq8hq"]
+
+[resource]
+script = ExtResource("1_r7aub")
+id = "ranunculus"
+name = "Ranunculus"
+icon = ExtResource("1_wq8hq")
+metadata/_custom_type_script = "uid://qpy31wq3lcps"
