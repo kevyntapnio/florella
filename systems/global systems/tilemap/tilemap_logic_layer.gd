@@ -8,7 +8,7 @@ extends TileMapLayer
 @export var always_update := false
 @export var update_visuals := false
 
-const DISPLAY_SOURCE_ID := 0
+const DISPLAY_SOURCE_ID := 1
 const LOGIC_DIRT_ATLAS := Vector2i(2, 1)
 const DEFAULT_DISPLAY_ATLAS := Vector2i(0, 3)
 

@@ -2,6 +2,7 @@ extends Node
 
 signal day_passed
 signal time_updated(hour, minute)
+signal day_ended
 
 var current_day: int = 1
 var pause_sources: Array[String] = []
@@ -17,6 +18,8 @@ func advance_day():
 	print("ADVANCE DAY CALLED")	
 	current_day += 1
 	reset_day_timer()
+	
+	emit_signal("day_ended")
 	emit_signal("day_passed")
 
 func _process(delta):
@@ -57,6 +60,7 @@ func is_paused() -> bool:
 	
 func check_day_end():
 	if current_hour == 2 and current_minute == 0:
+		emit_signal("day_ended")
 		advance_day()
 		
 func reset_day_timer():

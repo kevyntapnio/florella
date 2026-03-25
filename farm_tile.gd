@@ -1,7 +1,12 @@
 extends Node2D
 
+class_name FarmTile
+
 @export var grid_manager: Node2D
 @export var tilemap: TileMapLayer
+@export var farm_visual_manager: FarmVisualManager
+
+var coords: Vector2i
 
 enum SoilState {
 	GRASS,
@@ -19,9 +24,17 @@ var current_crop: Node2D = null
 @export var crop_scene: PackedScene
 
 func _ready():
+	
+	TimeManager.day_ended.connect(on_day_ended)
 
-	var coords = grid_manager.get_tile_coords(global_position)
+	coords = grid_manager.get_tile_coords(global_position)
 	grid_manager.register_grid_object(coords, self)
+	
+func on_day_ended():
+	if soil_state == SoilState.WATERED:
+		await get_tree().process_frame
+		soil_state = SoilState.TILLED 
+		update_visual()
 
 func plant(crop_data) -> bool:
 	
@@ -31,7 +44,7 @@ func plant(crop_data) -> bool:
 	if current_crop != null:
 		return false
 			
-	if soil_state != SoilState.TILLED:
+	if soil_state != SoilState.TILLED and soil_state != SoilState.WATERED:
 		return false
 		
 	var crop = crop_scene.instantiate()
@@ -77,11 +90,13 @@ func use_tool(tool):
 		ToolItem.ToolType.HOE:
 			if soil_state == SoilState.UNTILLED:
 				soil_state = SoilState.TILLED
+				update_visual()
 				print("SOIL TILLED")
 				
 		ToolItem.ToolType.WATERING_CAN:
 			if soil_state == SoilState.TILLED:
 				soil_state = SoilState.WATERED
+				update_visual()
 				print("SOIL WATERED")
 				
 	return soil_state != prev_state
@@ -90,9 +105,15 @@ func clear_crop():
 	current_crop = null
 
 func _exit_tree():
-	var coords = grid_manager.get_tile_coords(global_position)
 	grid_manager.unregister_grid_object(coords)
 	
+func is_watered() -> bool:
+	if soil_state == SoilState.WATERED:
+		return true
+	else:
+		return false
+	
 func update_visual():
-	pass
+	
+	farm_visual_manager.update_tile(coords, soil_state)
 	

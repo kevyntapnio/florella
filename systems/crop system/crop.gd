@@ -13,7 +13,7 @@ var is_regrowing: bool = false
 
 func _ready():
 	TimeManager.day_passed.connect(on_day_passed)
-	
+
 func initialize(data: CropData, parent_tile: Node2D):
 	
 	crop_data = data
@@ -33,19 +33,21 @@ func get_current_stage():
 func on_day_passed():
 	days_in_stage += 1
 	
-	var current_stage = get_current_stage()
+	print(parent_tile.soil_state)
 	
-	if is_regrowing:
-		if days_in_stage >= crop_data.regrow_days:
-			growth_stage = crop_data.harvest_stage
-			days_in_stage = 0
-			update_visual()
-	else:
-		if days_in_stage >= current_stage.duration:
-			if growth_stage < crop_data.stages.size() - 1:
-				growth_stage += 1
+	var current_stage = get_current_stage()
+	if parent_tile.is_watered():
+		if is_regrowing:
+			if days_in_stage >= crop_data.regrow_days:
+				growth_stage = crop_data.harvest_stage
 				days_in_stage = 0
 				update_visual()
+		else:
+			if days_in_stage >= current_stage.duration:
+				if growth_stage < crop_data.stages.size() - 1:
+					growth_stage += 1
+					days_in_stage = 0
+					update_visual()
 			
 func on_interact(item) -> bool:
 	var current_stage = get_current_stage()
