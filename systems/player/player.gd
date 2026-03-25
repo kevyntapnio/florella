@@ -114,10 +114,14 @@ func lock_scroll():
 	
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
-	var interactable_object = area.get_parent()
+	var object = area.get_parent()
 	
-	if interactable_object is Interactable:
-		interaction_system.register_interactable(interactable_object)
+	if object is Interactable:
+		interaction_system.register_interactable(object)
+		
+	var item = area.get_parent()
+	if item != null and item is WorldItem:
+		item.start_magnet(self)
 		
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	

@@ -12,7 +12,6 @@ var days_in_stage: int = 0
 var is_regrowing: bool = false
 
 func _ready():
-	print(has_node("HarvestSFX"))
 	TimeManager.day_passed.connect(on_day_passed)
 	
 func initialize(data: CropData, parent_tile: Node2D):
@@ -99,7 +98,6 @@ func _on_sway_area_body_entered(body: Node2D) -> void:
 		var tween = create_tween()
 		var direction = [-1, 1].pick_random()
 		var strength = randf_range(0.15, 0.25) * direction
-
 		
 		tween.tween_property(self, "rotation", strength, 0.1)\
 			.set_trans(Tween.TRANS_SINE)\
@@ -118,7 +116,7 @@ func play_harvest_sfx():
 
 	sfx.stream = preload("res://sfx/pop.mp3")
 	sfx.pitch_scale = randf_range(0.9, 1.15)
-	sfx.volume_db = -10
+	sfx.volume_db = -15
 	sfx.play()
 
 	sfx.finished.connect(sfx.queue_free)

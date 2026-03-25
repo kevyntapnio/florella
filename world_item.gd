@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name WorldItem
+
 @onready var sprite = $Sprite2D
 var id: String
 var quantity: int
@@ -34,13 +36,14 @@ func initialize(item_id: String, item_quantity: int):
 		
 	sprite.texture = item_data.icon
 	
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func start_magnet(target: Node2D):
+	player = target
 	
-	var body = area.get_parent()
-	
-	if body != null and body.is_in_group("player"):
-		player = body
-		is_magnetized = true
+	if is_magnetized:
+		return
+		
+	player = target
+	is_magnetized = true
 	
 func _physics_process(delta: float) -> void:
 	if !is_instance_valid(player):
