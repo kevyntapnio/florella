@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_7ig0x")
+range = 1
 tool_type = 1
 id = "basic_watering_can"
 name = "Basic Watering Can"

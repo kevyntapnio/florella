@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_d6u0c")
+range = 1
 id = "basic_hoe"
 name = "Basic Hoe"
 icon = ExtResource("1_2de30")

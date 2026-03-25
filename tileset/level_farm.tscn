@@ -435,6 +435,7 @@ godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
 [node name="TileHighlight" parent="GroundTileMap" unique_id=2079784629 node_paths=PackedStringArray("tilemap") instance=ExtResource("3_47drt")]
+visible = false
 z_index = 1
 texture_filter = 1
 tilemap = NodePath("..")

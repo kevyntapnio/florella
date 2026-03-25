@@ -52,17 +52,19 @@ func update_focused_interactable():
 		if focused_interactable:
 			focused_interactable.on_focus_entered()
 			
-func handle_interact(item):
+func handle_interact(selected_item):
 
 	var interactable = get_closest_interactable()
 
 	if interactable != null:
-		interactable.interact(item)
+		interactable.interact(selected_item)
 		return
 	
 	var target_coords = targeting_system.current_target_coords
-	var target_object = grid_manager.get_grid_object(target_coords)
+	var player_coords = targeting_system.player_tile_coords
+	var target_tile = grid_manager.get_grid_object(target_coords)
 	
-	if target_object != null:
-		if target_object.interact(item):
-			return
+	if target_tile != null:
+		selected_item.use(player_coords, target_tile)
+		return
+				
