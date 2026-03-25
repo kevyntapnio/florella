@@ -20,4 +20,5 @@ func update_tile(grid_pos: Vector2i, state):
 		
 	if state == Soil.WATERED:
 		watered_layer.set_cell(grid_pos, 0, watered_tile)
+		watered_layer.modulate = Color(1, 1, 1, 0.6)
 		
