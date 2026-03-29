@@ -1,11 +1,5 @@
 extends Node2D
 
-@export var targeting_system: Node2D
-@export var grid_manager: Node2D
-
-# Can this be an autoload?
-@export var inventory_system: Node2D
-
 var nearby_interactables: Array = []
 var focused_interactable = null
 
@@ -22,14 +16,14 @@ func get_closest_interactable():
 	
 	if nearby_interactables.is_empty():
 		return null
-	if targeting_system.player_global_position == null:
+	if TargetingSystem.player_global_position == null:
 		return null
 		
 	var closest_object = null
 	var smallest_distance = INF
 	
 	for interactable in nearby_interactables:
-		var distance = targeting_system.player_global_position.distance_to(interactable.global_position)
+		var distance = TargetingSystem.player_global_position.distance_to(interactable.global_position)
 		
 		
 		if distance < smallest_distance:
@@ -54,15 +48,15 @@ func update_focused_interactable():
 			
 func handle_interact(selected_item):
 	
-	var player_tile = targeting_system.player_tile_coords
+	var player_tile = TargetingSystem.player_tile_coords
 	var interactable = get_closest_interactable()
 
 	if interactable != null:
 		interactable.interact(selected_item, player_tile)
 		return
 	
-	var target_tile = targeting_system.current_target_coords
-	var target_object = grid_manager.get_grid_object(target_tile)
+	var target_tile = TargetingSystem.current_target_coords
+	var target_object = GridManager.get_grid_object(target_tile)
 	
 	var context = InteractionContext.new(player_tile, target_tile)
 	

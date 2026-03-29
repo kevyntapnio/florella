@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("2_bfnsk")
 range = 1
-tool_type = 1
 id = "basic_watering_can"
 name = "Basic Watering Can"
 icon = ExtResource("1_urgtg")

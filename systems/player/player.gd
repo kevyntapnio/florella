@@ -4,10 +4,7 @@ const SPEED = 150
 var facing_direction = Vector2i(0, 1)
 
 @export var tilemap: TileMapLayer
-@export var grid_manager: Node2D
 @export var tile_highlight: Node2D
-@export var targeting_system: Node2D
-@export var interaction_system: Node2D
 
 @onready var sprite = $AnimatedSprite2D
 @onready var interaction_prompt = $InteractionPrompt
@@ -31,14 +28,14 @@ func _process(delta):
 		tile_highlight.hide()
 		return
 		
-	var target_tile = targeting_system.current_target_coords
-	var target_object = grid_manager.get_grid_object(target_tile)
+	var target_tile = TargetingSystem.current_target_coords
+	var target_object = GridManager.get_grid_object(target_tile)
 
 	if target_object == null:
 		tile_highlight.hide()
 		return
 		
-	var player_tile = targeting_system.player_tile_coords
+	var player_tile = TargetingSystem.player_tile_coords
 		
 	var context = InteractionContext.new(player_tile, target_tile)
 	var valid = item_data.can_use(target_object, context)
@@ -84,21 +81,21 @@ func _physics_process(delta):
 	update_player_tile_coords()
 	find_closest_interactable()
 	
-	targeting_system.player_tile_coords = player_tile_coords
-	targeting_system.facing_direction = facing_direction
-	targeting_system.player_global_position = global_position
+	TargetingSystem.player_tile_coords = player_tile_coords
+	TargetingSystem.facing_direction = facing_direction
+	TargetingSystem.player_global_position = global_position
 
-	targeting_system.update_current_target()
+	TargetingSystem.update_current_target()
 		
 func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
-		interaction_system.handle_interact(null)
+		InteractionSystem.handle_interact(null)
 		
 	if Input.is_action_just_pressed("use_item"):
 		
 		var item = Hotbar.get_selected_item()
-		interaction_system.handle_interact(item)
+		InteractionSystem.handle_interact(item)
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		TimeManager.advance_day()
@@ -130,7 +127,7 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	var object = area.get_parent()
 	
 	if object is Interactable:
-		interaction_system.register_interactable(object)
+		InteractionSystem.register_interactable(object)
 		
 	var item = area.get_parent()
 	if item != null and item is WorldItem:
@@ -141,7 +138,7 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 	var interactable_object = area.get_parent()
 	
 	if interactable_object is Interactable:
-		interaction_system.unregister_interactable(interactable_object)
+		InteractionSystem.unregister_interactable(interactable_object)
 		
 	find_closest_interactable()
 		

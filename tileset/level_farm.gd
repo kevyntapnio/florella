@@ -3,6 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GridManager.set_tilemap($World/GroundTileMap)
+	TargetingSystem.set_tilemap($World/GroundTileMap)
 	
 	InventorySystem.add_item("basic_watering_can", 1)
 	InventorySystem.add_item("basic_hoe", 1)

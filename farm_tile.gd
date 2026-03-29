@@ -2,7 +2,6 @@ extends Node2D
 
 class_name FarmTile
 
-@export var grid_manager: Node2D
 @export var tilemap: TileMapLayer
 @export var farm_visual_manager: FarmVisualManager
 
@@ -26,9 +25,10 @@ var current_crop: Node2D = null
 func _ready():
 	
 	TimeManager.day_ended.connect(on_day_ended)
-
-	coords = grid_manager.get_tile_coords(global_position)
-	grid_manager.register_grid_object(coords, self)
+	
+	await get_tree().process_frame
+	coords = GridManager.get_tile_coords(global_position)
+	GridManager.register_grid_object(coords, self)
 	
 func on_day_ended():
 	if soil_state == SoilState.WATERED:
@@ -111,7 +111,7 @@ func clear_crop():
 	current_crop = null
 
 func _exit_tree():
-	grid_manager.unregister_grid_object(coords)
+	GridManager.unregister_grid_object(coords)
 	
 func is_watered() -> bool:
 	if soil_state == SoilState.WATERED:

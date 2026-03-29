@@ -3,6 +3,9 @@ extends Node2D
 @export var tilemap: TileMapLayer
 
 var grid_objects = {}
+
+func set_tilemap(map: TileMapLayer):
+	tilemap = map
 		
 func register_grid_object(coords: Vector2i, object):
 	grid_objects[coords] = object
