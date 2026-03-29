@@ -82,29 +82,30 @@ func interact(item, context):
 	if item_data is ToolItem:
 		item_data.use(self, context)
 		return
-		
-func use_tool(tool):
-	var prev_state = soil_state
 	
-	match tool.tool_type:
-		ToolItem.ToolType.HOE:
-			if soil_state == SoilState.UNTILLED:
-				soil_state = SoilState.TILLED
-				update_visual()
-			elif is_tilled():
-				if current_crop != null:
-					return
-					
-				soil_state = SoilState.UNTILLED
-				update_visual()
-				
-		ToolItem.ToolType.WATERING_CAN:
-			if soil_state == SoilState.TILLED:
-				soil_state = SoilState.WATERED
-				update_visual()
+func use_hoe():
+	if soil_state == SoilState.UNTILLED:
+		soil_state = SoilState.TILLED
+		update_visual()
+		return true
+		
+	elif is_tilled():
+		if current_crop != null:
+			return false
 			
-				
-	return soil_state != prev_state
+		soil_state = SoilState.UNTILLED
+		update_visual()
+		return true
+	
+	return false
+
+func water():
+	if soil_state == SoilState.TILLED:
+		soil_state = SoilState.WATERED
+		update_visual()
+		return true
+	
+	return false
 		
 func clear_crop():
 	current_crop = null
@@ -119,10 +120,10 @@ func is_watered() -> bool:
 		return false
 		
 func is_tilled() -> bool:
-	if soil_state == SoilState.TILLED or soil_state == SoilState.WATERED:
-		return true
-	else:
-		return false
+	return soil_state == SoilState.TILLED or soil_state == SoilState.WATERED
+		
+func has_crop():
+	return current_crop != null
 	
 func update_visual():
 	

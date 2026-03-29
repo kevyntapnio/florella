@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="ToolItem" format=3 uid="uid://g7gviwgn4mda"]
+[gd_resource type="Resource" script_class="WateringCan" format=3 uid="uid://waxhbewgyyu2"]
 
-[ext_resource type="Script" uid="uid://bnehtbytnd36p" path="res://tool_item.gd" id="1_7ig0x"]
 [ext_resource type="Texture2D" uid="uid://cd45t88ps7be7" path="res://sprites/tools/watering can.png" id="1_urgtg"]
+[ext_resource type="Script" uid="uid://dmysosghdiosi" path="res://systems/items/watering_can.gd" id="2_bfnsk"]
 
 [resource]
-script = ExtResource("1_7ig0x")
+script = ExtResource("2_bfnsk")
 range = 1
 tool_type = 1
 id = "basic_watering_can"
 name = "Basic Watering Can"
 icon = ExtResource("1_urgtg")
-metadata/_custom_type_script = "uid://bnehtbytnd36p"
+metadata/_custom_type_script = "uid://dmysosghdiosi"
