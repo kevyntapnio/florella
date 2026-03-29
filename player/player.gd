@@ -29,7 +29,7 @@ func _process(delta):
 		return
 		
 	var target_tile = TargetingSystem.current_target_coords
-	var target_object = GridManager.get_grid_object(target_tile)
+	var target_object = GridManager.get_grid_objects(target_tile)
 
 	if target_object == null:
 		tile_highlight.hide()

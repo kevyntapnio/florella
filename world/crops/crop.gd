@@ -1,4 +1,4 @@
-extends Node2D
+extends GridObject
 
 @export var crop_data: CropData
 @export var parent_tile: Node2D

@@ -56,7 +56,7 @@ func handle_interact(selected_item):
 		return
 	
 	var target_tile = TargetingSystem.current_target_coords
-	var target_object = GridManager.get_grid_object(target_tile)
+	var target_object = GridManager.get_grid_objects(target_tile)
 	
 	var context = InteractionContext.new(player_tile, target_tile)
 	

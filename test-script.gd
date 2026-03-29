@@ -1,28 +1,37 @@
 extends Node2D
 
-@export var tree_instance: PackedScene
-@export var tree_data_list: Array = []
-@export var quantity = 15
-@export var spawn_area: Vector2
+@export var tilemap: TileMapLayer
 
-var tree
+var grid_objects: Dictionary = {}
 
-func _ready():
-	var ysort = get_tree().get_first_node_in_group("ysort_world")
+func set_tilemap(map: TileMapLayer):
+	tilemap = map
+		
+func register_grid_object(coords: Vector2i, object):
 	
-	for i in range(quantity):
+	if not grid_objects.has(coords):
+		grid_objects[coords] = [object]
+	else:
+		if object not in grid_objects[coords]:
+			grid_objects[coords].append(object)
 		
-		tree = tree.instantiate()
-		
-		var x = randf_range(-spawn_area.x, spawn_area.y)
-		var y = randf_range(-spawn_area.x, spawn_area.y)
-		tree.global_position = global_position + Vector2(x, y)
-		
-		var random_data = tree_data_list.pick_random()
-		tree.tree_data = random_data
-		
-		ysort.add_child(tree)
-		
-		
-		
+func unregister_grid_object(coords: Vector2i, object):
 	
+	if not grid_objects.has(coords):
+		return
+	
+	grid_objects[coords].erase(object)
+	
+	if grid_objects[coords].is_empty():
+		grid_objects.erase(coords)
+	
+func get_grid_objects(coords: Vector2i) -> Array:
+	if grid_objects.has(coords):
+		return grid_objects.get(coords, [])
+	else:
+		return []
+		print("GRID MANAGER ERROR: Coords not registered")
+
+func get_tile_coords(world_position: Vector2) -> Vector2i:
+	var local = tilemap.to_local(world_position)
+	return tilemap.local_to_map(local)
