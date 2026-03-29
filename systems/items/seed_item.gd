@@ -17,3 +17,6 @@ func use(target, context):
 		InventorySystem.remove_item(id, 1)
 	
 	return planted
+
+func can_use(target, context):
+	pass

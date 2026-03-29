@@ -25,13 +25,29 @@ var scroll_locked
 
 func _process(delta):
 	
+	var item_data = Hotbar.get_selected_item_data()
+	
+	if item_data == null:
+		tile_highlight.hide()
+		return
+		
+	if not item_data is ToolItem:
+		tile_highlight.hide()
+	
 	var target_tile = grid_manager.get_grid_object(targeting_system.current_target_coords)
 
-	if target_tile != null:
-		tile_highlight.show_highlight()
-		tile_highlight.highlight_tile(targeting_system.current_target_coords)
-	else:
-		tile_highlight.remove_highlight()
+	if target_tile == null:
+		tile_highlight.hide()
+		return
+		
+	var context = {
+		player = targeting_system.player_tile_coords,
+		target = targeting_system.current_target_coords,
+	}
+	var valid = item_data.can_use(target_tile, context)
+		
+	tile_highlight.show_highlight()
+	tile_highlight.highlight_tile(context["target"], valid)
 
 func _physics_process(delta):
 

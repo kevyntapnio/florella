@@ -31,3 +31,10 @@ func get_selected_item():
 func get_inventory_index(slot_index):
 	return slot_index + (page * hotbar_size)
 	
+func get_selected_item_data():
+	var item = get_selected_item()
+	
+	if item == null:
+		return
+	return ItemDatabase.get_item(item["id"])
+	
