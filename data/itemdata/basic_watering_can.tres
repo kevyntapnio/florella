@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WateringCan" format=3 uid="uid://waxhbewgyyu2"]
 
-[ext_resource type="Texture2D" uid="uid://cd45t88ps7be7" path="res://sprites/tools/watering can.png" id="1_urgtg"]
-[ext_resource type="Script" uid="uid://dmysosghdiosi" path="res://systems/items/watering_can.gd" id="2_bfnsk"]
+[ext_resource type="Texture2D" uid="uid://cd45t88ps7be7" path="res://assets/art/tools/icons/tool_watering_can_icon.png" id="1_urgtg"]
+[ext_resource type="Script" uid="uid://dmysosghdiosi" path="res://items/tools/watering_can.gd" id="2_bfnsk"]
 
 [resource]
 script = ExtResource("2_bfnsk")

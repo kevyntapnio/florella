@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://panrqlkuefw8"]
+
+[ext_resource type="Script" uid="uid://dcd1ejfrx5h8m" path="res://ui/HeldItemUI/held_item_ui.gd" id="1_pxauc"]
+
+[node name="Control" type="CanvasLayer" unique_id=2131941075]
+script = ExtResource("1_pxauc")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1281142992]
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Quantity" type="Label" parent="." unique_id=1715868832]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "99"

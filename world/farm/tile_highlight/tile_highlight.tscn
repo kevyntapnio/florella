@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d30b6vfw84ppa"]
+
+[ext_resource type="Script" uid="uid://c8rs6grxkt2e5" path="res://world/farm/tile_highlight/tile_highlight.gd" id="1_tdwih"]
+[ext_resource type="Texture2D" uid="uid://d2cea13eeqf8s" path="res://world/farm/tile_highlight/tile_highlight.png" id="2_7gm5d"]
+
+[node name="TileHighlight" type="Node2D" unique_id=2079784629]
+script = ExtResource("1_tdwih")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=120136840]
+texture_filter = 1
+texture = ExtResource("2_7gm5d")

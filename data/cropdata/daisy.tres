@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CropData" format=3 uid="uid://vawldvd3va0a"]
 
-[ext_resource type="Script" uid="uid://b6htwwygn5nul" path="res://systems/crop system/crop_data.gd" id="1_2hy2w"]
-[ext_resource type="Script" uid="uid://buwm7thaoq20g" path="res://systems/crop system/crop_stage_data.gd" id="2_m3enk"]
-[ext_resource type="Texture2D" uid="uid://x8q6fdd1n5al" path="res://sprites/daisy/seed-daisy.png" id="3_kooim"]
-[ext_resource type="Texture2D" uid="uid://c11npck8qrswi" path="res://sprites/daisy/sprout-daisy.png" id="4_qwapp"]
-[ext_resource type="Texture2D" uid="uid://b1tb1ee0vjncd" path="res://sprites/daisy/small-bud-daisy.png" id="5_mrmvt"]
+[ext_resource type="Script" uid="uid://b6htwwygn5nul" path="res://data/cropdata/crop_data.gd" id="1_2hy2w"]
+[ext_resource type="Script" uid="uid://buwm7thaoq20g" path="res://data/cropdata/crop_stage_data.gd" id="2_m3enk"]
+[ext_resource type="Texture2D" uid="uid://x8q6fdd1n5al" path="res://assets/art/crops/sprites/daisy000.png" id="3_kooim"]
+[ext_resource type="Texture2D" uid="uid://c11npck8qrswi" path="res://assets/art/crops/sprites/daisy001.png" id="4_qwapp"]
+[ext_resource type="Texture2D" uid="uid://b1tb1ee0vjncd" path="res://assets/art/crops/sprites/daisy002.png" id="5_mrmvt"]
 [ext_resource type="Resource" uid="uid://baprk7xlhb4kx" path="res://data/itemdata/daisy.tres" id="6_pl1nm"]
 
 [sub_resource type="Resource" id="Resource_pl1nm"]

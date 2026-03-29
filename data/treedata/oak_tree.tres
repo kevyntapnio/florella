@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TreeData" format=3 uid="uid://b6onvyv7pyoms"]
 
-[ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://objects/trees/TreeData.gd" id="1_r8wkn"]
+[ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://world/trees/TreeData.gd" id="1_r8wkn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r8wkn"]
 load_path = "res://.godot/imported/oak tree.png-39671a0ecaecac2db287062dde5b8709.ctex"

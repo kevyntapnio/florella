@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://b2r44t7x6je43"]
+
+[ext_resource type="Script" uid="uid://dcd1ejfrx5h8m" path="res://ui/HeldItemUI/held_item_ui.gd" id="1_d82ne"]
+[ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="2_1gva8"]
+
+[node name="HeldItemUI" type="CanvasLayer" unique_id=1288905451]
+process_mode = 3
+offset = Vector2(1, 1)
+transform = Transform2D(1, 0, 0, 1, 1, 1)
+script = ExtResource("1_d82ne")
+
+[node name="Root" type="Control" parent="." unique_id=2025108291]
+top_level = true
+z_index = 100
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Root" unique_id=135616640]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="Quantity" type="Label" parent="Root/Icon" unique_id=887443655]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 1.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.51324844, 0.32255676, 0.08120941, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_1gva8")
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 2

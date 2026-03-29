@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TreeData" format=3 uid="uid://dwhh6gwmnwkl6"]
 
-[ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://objects/trees/TreeData.gd" id="1_veuvq"]
+[ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://world/trees/TreeData.gd" id="1_veuvq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_veuvq"]
 load_path = "res://.godot/imported/birch tree.png-5833fa247086ba314c7f578f0a2c5207.ctex"

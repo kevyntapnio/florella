@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="HoeTool" format=3 uid="uid://o5y5vufmtsw5"]
 
-[ext_resource type="Texture2D" uid="uid://emkdihfndkfy" path="res://sprites/tools/basic hoe.png" id="1_2de30"]
-[ext_resource type="Script" uid="uid://c7bnntr3xrpaa" path="res://systems/items/hoe_item.gd" id="1_d6u0c"]
+[ext_resource type="Texture2D" uid="uid://emkdihfndkfy" path="res://assets/art/tools/icons/tool_hoe_icon.png" id="1_2de30"]
+[ext_resource type="Script" uid="uid://c7bnntr3xrpaa" path="res://items/tools/hoe.gd" id="1_d6u0c"]
 
 [resource]
 script = ExtResource("1_d6u0c")

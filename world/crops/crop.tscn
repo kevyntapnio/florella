@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cd1s6enicxk2n"]
+
+[ext_resource type="Script" uid="uid://mggu5cqcy304" path="res://world/crops/crop.gd" id="1_doysg"]
+[ext_resource type="Resource" uid="uid://vawldvd3va0a" path="res://data/cropdata/daisy.tres" id="2_frnma"]
+[ext_resource type="Texture2D" uid="uid://cdndj2jsb06sk" path="res://assets/art/crops/sprites/tulipsprite004.png" id="3_07uk2"]
+[ext_resource type="PackedScene" uid="uid://bxhdxmc6uoen5" path="res://world/entities/world_item/world_item.tscn" id="3_cfe4w"]
+[ext_resource type="AudioStream" uid="uid://djyf3aqjva5pt" path="res://assets/art/ui/ui_prompts/audio/sfx/grass.mp3" id="4_y556i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kesr"]
+radius = 7.0
+
+[node name="Crop" type="Node2D" unique_id=1254910331]
+y_sort_enabled = true
+position = Vector2(0, -3)
+script = ExtResource("1_doysg")
+crop_data = ExtResource("2_frnma")
+world_item_scene = ExtResource("3_cfe4w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=402152962]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("3_07uk2")
+offset = Vector2(0, -13)
+region_rect = Rect2(128, 0, 32, 32)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1770395996]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=827168425]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_4kesr")
+
+[node name="SwayArea" type="Area2D" parent="." unique_id=825549112]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwayArea" unique_id=1098047071]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_4kesr")
+
+[node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=658522391]
+process_mode = 3
+stream = ExtResource("4_y556i")
+volume_db = -20.496
+
+[node name="DropPoint" type="Node2D" parent="." unique_id=8495369]
+position = Vector2(1, -8)
+
+[connection signal="body_entered" from="SwayArea" to="." method="_on_sway_area_body_entered"]

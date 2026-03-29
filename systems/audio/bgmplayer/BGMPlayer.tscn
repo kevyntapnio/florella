@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dhrjg6s01yru7"]
+
+[ext_resource type="Script" uid="uid://b8rbu000vig3p" path="res://systems/audio/bgmplayer/bgm_player.gd" id="1_xudmx"]
+[ext_resource type="AudioStream" uid="uid://bdi2ngeqm7dsw" path="res://assets/audio/ambient/Gymnopédie No.1.mp3" id="2_btudq"]
+
+[node name="BGMPlayer" type="Node" unique_id=1385338912]
+script = ExtResource("1_xudmx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2108462454]
+process_mode = 3
+stream = ExtResource("2_btudq")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bdo3q6g5xt88r"]
+
+[ext_resource type="Texture2D" uid="uid://bf2ma2on33jv5" path="res://assets/art/buildings/prop_farmhouse.png" id="1_sta4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ebhw"]
+size = Vector2(96, 72)
+
+[node name="FarmCottage" type="StaticBody2D" unique_id=1448608620]
+collision_layer = 32
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=207591685]
+y_sort_enabled = true
+position = Vector2(0, -1)
+texture = ExtResource("1_sta4h")
+offset = Vector2(0, -47)
+region_enabled = true
+region_rect = Rect2(73, 33, 111, 148)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1968747968]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_8ebhw")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c2dq5sq5q458p"]
 
-[ext_resource type="Texture2D" uid="uid://clsug7y871lpv" path="res://sprites/icons/tulip icon.png" id="1_ia2st"]
-[ext_resource type="Script" uid="uid://qpy31wq3lcps" path="res://systems/items/ItemData.gd" id="1_ylasp"]
+[ext_resource type="Texture2D" uid="uid://clsug7y871lpv" path="res://assets/art/crops/icons/crop_tulip_icon.png" id="1_ia2st"]
+[ext_resource type="Script" uid="uid://qpy31wq3lcps" path="res://items/base/itemdata.gd" id="1_ylasp"]
 
 [resource]
 script = ExtResource("1_ylasp")
