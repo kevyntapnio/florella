@@ -3,8 +3,12 @@ extends ItemData
 class_name SeedItem
 
 @export var crop_data: CropData
+@export var range: int
 
 func use(target, context):
+	if not can_use(target, context):
+		return false
+		
 	if target == null:
 		return false
 		
@@ -19,4 +23,21 @@ func use(target, context):
 	return planted
 
 func can_use(target, context):
-	pass
+	if target == null:
+		return false
+		
+	var player_tile = context.player_tile
+	var target_tile = context.target_tile
+	
+	var dx = abs(player_tile.x - target_tile. x)
+	var dy = abs(player_tile.y - target_tile.y)
+	
+	var distance = max(dx, dy)
+	
+	if distance > range:
+		return false
+		
+	if not target.is_tilled(): 
+		return false
+	
+	return true

@@ -9,6 +9,7 @@ load_path = "res://.godot/imported/tulipsprite000.png-963383066b3e65090e0aa1d6cf
 [resource]
 script = ExtResource("1_jfj0x")
 crop_data = ExtResource("1_y83lx")
+range = 1
 id = "tulip_bulb"
 name = "Tulip Bulb"
 icon = SubResource("CompressedTexture2D_me2fg")

@@ -91,13 +91,18 @@ func use_tool(tool):
 			if soil_state == SoilState.UNTILLED:
 				soil_state = SoilState.TILLED
 				update_visual()
-				print("SOIL TILLED")
+			elif is_tilled():
+				if current_crop != null:
+					return
+					
+				soil_state = SoilState.UNTILLED
+				update_visual()
 				
 		ToolItem.ToolType.WATERING_CAN:
 			if soil_state == SoilState.TILLED:
 				soil_state = SoilState.WATERED
 				update_visual()
-				print("SOIL WATERED")
+			
 				
 	return soil_state != prev_state
 		
@@ -109,6 +114,12 @@ func _exit_tree():
 	
 func is_watered() -> bool:
 	if soil_state == SoilState.WATERED:
+		return true
+	else:
+		return false
+		
+func is_tilled() -> bool:
+	if soil_state == SoilState.TILLED or soil_state == SoilState.WATERED:
 		return true
 	else:
 		return false

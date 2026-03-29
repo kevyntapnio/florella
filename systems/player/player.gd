@@ -31,23 +31,20 @@ func _process(delta):
 		tile_highlight.hide()
 		return
 		
-	if not item_data is ToolItem:
-		tile_highlight.hide()
-	
-	var target_tile = grid_manager.get_grid_object(targeting_system.current_target_coords)
+	var target_tile = targeting_system.current_target_coords
+	var target_object = grid_manager.get_grid_object(target_tile)
 
-	if target_tile == null:
+	if target_object == null:
 		tile_highlight.hide()
 		return
 		
-	var context = {
-		player = targeting_system.player_tile_coords,
-		target = targeting_system.current_target_coords,
-	}
-	var valid = item_data.can_use(target_tile, context)
+	var player_tile = targeting_system.player_tile_coords
+		
+	var context = InteractionContext.new(player_tile, target_tile)
+	var valid = item_data.can_use(target_object, context)
 		
 	tile_highlight.show_highlight()
-	tile_highlight.highlight_tile(context["target"], valid)
+	tile_highlight.highlight_tile(context.target_tile, valid)
 
 func _physics_process(delta):
 

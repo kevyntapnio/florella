@@ -20,14 +20,26 @@ func use(target, context):
 	return target.use_tool(self)
 
 func can_use(target, context) -> bool:
-	var player = context["player"]
-	var target_coords = context["target"]
+	var player = context.player_tile
+	var target_coords = context.target_tile
 	
 	if target == null:
 		return false
-			
+	
 	var dx = abs(player.x - target_coords.x)
 	var dy = abs(player.y - target_coords.y)
+	
 	var distance = max(dx, dy)
 	
-	return distance <= range
+	if distance > range:
+		return false
+		
+	match tool_type:
+		ToolType.HOE:
+			if target.current_crop:
+				return false
+			return true
+		ToolType.WATERING_CAN:
+			return target.is_tilled()
+	
+	return false

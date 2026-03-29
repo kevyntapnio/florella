@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_k1ep8")
 crop_data = ExtResource("1_64x04")
+range = 1
 id = "ranunculus_corms"
 name = "Ranunculus Corms"
 icon = ExtResource("2_3di5l")

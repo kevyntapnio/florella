@@ -15,6 +15,9 @@ func update_tile(grid_pos: Vector2i, state):
 	
 	watered_layer.set_cell(grid_pos, 0, empty_tile)
 	
+	if state == Soil.UNTILLED:
+		tilled_layer.set_cell(grid_pos, 0, empty_tile)
+	
 	if state == Soil.TILLED:
 		tilled_layer.set_cell(grid_pos, 0, tilled_tile)
 		
