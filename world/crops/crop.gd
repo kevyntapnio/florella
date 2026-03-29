@@ -33,8 +33,6 @@ func get_current_stage():
 func on_day_passed():
 	days_in_stage += 1
 	
-	print(parent_tile.soil_state)
-	
 	var current_stage = get_current_stage()
 	if parent_tile.is_watered():
 		if is_regrowing:

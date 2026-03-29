@@ -20,4 +20,4 @@ func can_use(target, context) -> bool:
 	return target.soil_state == target.SoilState.TILLED
 	
 func apply_tool(target, context):
-	return target.interact_with_tool()
+	return target.interact_with_tool(self, context)
