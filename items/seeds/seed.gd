@@ -1,9 +1,8 @@
-extends ItemData
+extends UsableItem
 
 class_name SeedItem
 
 @export var crop_data: CropData
-@export var range: int
 
 func use(target, context):
 	if not can_use(target, context):

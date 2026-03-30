@@ -21,39 +21,48 @@ var player_global_position
 var scroll_locked
 
 func _process(delta):
+	update_targeting_visual()
 	
+func update_targeting_visual():
 	var item_data = Hotbar.get_selected_item_data()
 	
-	if item_data == null:
-		tile_highlight.hide()
-		return
-		
+	var usable_item = null
+	
+	if item_data is UsableItem:
+		usable_item = item_data
+	
 	var target_tile = TargetingSystem.current_target_coords
+	var player_tile = TargetingSystem.player_tile_coords
+	
 	var objects = GridManager.get_grid_objects(target_tile)
 
 	if objects.is_empty():
 		tile_highlight.hide()
+		TargetingVisual.update_target(null)
 		return
 		
-	var player_tile = TargetingSystem.player_tile_coords
 	var context = InteractionContext.new(player_tile, target_tile)
+	context.tool = usable_item
 	
+	var best_object = null
 	var best_score = -1
-	var valid = false
 	
 	for obj in objects:
-		if obj.has_method("get_interaction_score") and obj.has_method("interact"):
+		if obj.has_method("get_interaction_score") and obj.has_method("can_accept_item"):
+			
 			var score = obj.get_interaction_score(context)
 			
-			if score > 0:
-				if item_data.can_use(obj, context):
-					valid = true
-			
-			if score > best_score:
-				best_score = score
-		
+			if score > 0 and obj.can_accept_item(usable_item, context):
+				if score > best_score:
+					best_score = score
+					best_object = obj
+	
+	var valid = best_object != null
+	
 	tile_highlight.show_highlight()
-	tile_highlight.highlight_tile(context.target_tile, valid)
+	tile_highlight.highlight_tile(target_tile, valid)
+	
+	TargetingVisual.update_target(best_object)
 
 func _physics_process(delta):
 
@@ -102,12 +111,12 @@ func _physics_process(delta):
 func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
-		InteractionSystem.handle_interact(null)
+		try_interact()
 		
 	if Input.is_action_just_pressed("use_item"):
 		
 		var item = Hotbar.get_selected_item()
-		InteractionSystem.handle_interact(item)
+		try_interact()
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		TimeManager.advance_day()
@@ -128,6 +137,11 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("hotbar_previous"):
 			Hotbar.change_selected_index(-1)
 			lock_scroll()
+			
+func try_interact():
+	var item = Hotbar.get_selected_item()
+	
+	InteractionSystem.handle_interact(item)
 		
 func lock_scroll():
 		scroll_locked = true

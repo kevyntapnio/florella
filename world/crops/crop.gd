@@ -64,6 +64,9 @@ func interact(item, context) -> bool:
 		return true
 	
 	return false
+
+func can_accept_item(item, context):
+	return crop_data.harvest_stage
 		
 func harvest(): 
 	play_harvest_sfx()
@@ -156,4 +159,9 @@ func spawn_world_item(id, amount):
 	ysort.add_child(item_instance)
 	item_instance.initialize(id, amount)
 	
+func set_targeted(is_targeted: bool):
 	
+	if is_targeted:
+		modulate = Color(1.2, 1.2, 1.2)
+	else:
+		modulate = Color(1, 1, 1)

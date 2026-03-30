@@ -28,6 +28,7 @@ Hotbar="*uid://bsdwyi4yiv25r"
 HotbarUI="*uid://cg2x2l5bhty88"
 HeldItemUI="*uid://b2r44t7x6je43"
 BgmPlayer="*uid://dhrjg6s01yru7"
+TargetingVisual="*uid://clblglbyxcfdx"
 
 [display]
 

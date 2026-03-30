@@ -52,7 +52,16 @@ func handle_interact(selected_item):
 	
 	var grid_objects = GridManager.get_grid_objects(target_tile)
 	
+	var usable_item = null
+	
+	if selected_item != null:
+		var item_data = ItemDatabase.get_item(selected_item["id"])
+		
+		if item_data is UsableItem:
+			usable_item = item_data
+			
 	var context = InteractionContext.new(player_tile, target_tile)
+	context.tool = usable_item
 	
 	var best_object = null
 	var best_score = -1
@@ -61,9 +70,13 @@ func handle_interact(selected_item):
 		if obj.has_method("get_interaction_score") and obj.has_method("interact"):
 			var score = obj.get_interaction_score(context)
 			
+			if score > 0 and obj.has_method("can_accept_item"):
+				if not obj.can_accept_item(usable_item, context):
+					continue
+			
 			if score > best_score:
 				best_score = score
 				best_object = obj
 		
 	if best_object != null:
-		best_object.interact(selected_item, context)
+		best_object.interact(usable_item, context)

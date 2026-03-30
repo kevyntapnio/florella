@@ -53,29 +53,19 @@ func plant(crop_data) -> bool:
 	return true
 	
 func get_interaction_score(context):
-	if current_crop and current_crop.get_interaction_score(context) > 0:
-		return 0
-		
 	return 1
 	
 func interact(item, context):
 		
-	## if hands are empty, do nothing
 	if item == null:
-		return 
-		
-	var item_data = ItemDatabase.get_item(item["id"])
-	
-	if item_data == null:
-		print("FARM TILE ERROR: item used not in database")
-		return 
-	
-	if item_data is SeedItem:
-		item_data.use(self, context)
 		return
-		
-	if item_data is ToolItem:
-		item_data.use(self, context)
+	
+	if item is ToolItem:
+		interact_with_tool(item, context)
+		return
+	
+	if item is SeedItem:
+		item.use(self, context)
 		return
 		
 func interact_with_tool(tool, context):
@@ -84,7 +74,22 @@ func interact_with_tool(tool, context):
 		use_hoe()
 	elif tool is WateringCan:
 		water()
+		
+func can_accept_item(item, context):
 	
+	if item == null:
+		return false
+		
+	if item is HoeTool: 
+		return soil_state == SoilState.UNTILLED or (is_tilled() and current_crop == null)
+		
+	if item is WateringCan:
+		return soil_state == SoilState.TILLED
+	
+	if item is SeedItem:
+		return is_tilled() and current_crop == null
+		
+	return false
 func use_hoe():
 	
 	if soil_state == SoilState.UNTILLED:
