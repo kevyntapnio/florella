@@ -47,21 +47,23 @@ func update_focused_interactable():
 			focused_interactable.on_focus_entered()
 			
 func handle_interact(selected_item):
-	
 	var player_tile = TargetingSystem.player_tile_coords
-	var interactable = get_closest_interactable()
-
-	if interactable != null:
-		interactable.interact(selected_item, player_tile)
-		return
-	
 	var target_tile = TargetingSystem.current_target_coords
-	var target_object = GridManager.get_grid_objects(target_tile)
+	
+	var grid_objects = GridManager.get_grid_objects(target_tile)
 	
 	var context = InteractionContext.new(player_tile, target_tile)
 	
+	var best_object = null
+	var best_score = -1
 	
-	if target_object != null:
-		target_object.interact(selected_item, context)
-		return
-				
+	for obj in grid_objects:
+		if obj.has_method("get_interaction_score") and obj.has_method("interact"):
+			var score = obj.get_interaction_score(context)
+			
+			if score > best_score:
+				best_score = score
+				best_object = obj
+		
+	if best_object != null:
+		best_object.interact(selected_item, context)

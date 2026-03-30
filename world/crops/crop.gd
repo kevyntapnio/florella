@@ -11,7 +11,10 @@ var growth_stage: int = 0
 var days_in_stage: int = 0
 var is_regrowing: bool = false
 
+const INTERACT_PRIORITY = 10
+
 func _ready():
+	super()
 	TimeManager.day_passed.connect(on_day_passed)
 
 func initialize(data: CropData, parent_tile: Node2D):
@@ -46,8 +49,14 @@ func on_day_passed():
 					growth_stage += 1
 					days_in_stage = 0
 					update_visual()
+					
+func get_interaction_score(context):
+	var current_stage = get_current_stage()
+	if current_stage.remove_on_harvest or growth_stage == crop_data.harvest_stage:
+		return INTERACT_PRIORITY
+	return 0
 			
-func on_interact(item, context) -> bool:
+func interact(item, context) -> bool:
 	var current_stage = get_current_stage()
 	
 	if current_stage.harvestable:

@@ -12,7 +12,7 @@ func set_tilemap(map: TileMapLayer):
 	tilemap = map
 	initialized = true
 
-func update_current_target():	
+func update_current_target():
 	if not initialized:
 		return
 		

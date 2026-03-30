@@ -5,8 +5,6 @@ class_name FarmTile
 @export var tilemap: TileMapLayer
 @export var farm_visual_manager: FarmVisualManager
 
-var coords: Vector2i
-
 enum SoilState {
 	GRASS,
 	UNTILLED,
@@ -23,7 +21,7 @@ var current_crop: Node2D = null
 @export var crop_scene: PackedScene
 
 func _ready():
-	
+	super()
 	TimeManager.day_ended.connect(on_day_ended)
 	
 func on_day_ended():
@@ -54,12 +52,13 @@ func plant(crop_data) -> bool:
 		
 	return true
 	
-func interact(item, context):
+func get_interaction_score(context):
+	if current_crop and current_crop.get_interaction_score(context) > 0:
+		return 0
+		
+	return 1
 	
-	## Handle crop first
-	if current_crop != null:
-		if current_crop.on_interact(item, context): # returns a bool. if false, let farmtile interact
-			return
+func interact(item, context):
 		
 	## if hands are empty, do nothing
 	if item == null:
@@ -80,12 +79,14 @@ func interact(item, context):
 		return
 		
 func interact_with_tool(tool, context):
+
 	if tool is HoeTool:
 		use_hoe()
 	elif tool is WateringCan:
 		water()
 	
 func use_hoe():
+	
 	if soil_state == SoilState.UNTILLED:
 		soil_state = SoilState.TILLED
 		update_visual()
@@ -126,5 +127,5 @@ func has_crop():
 	
 func update_visual():
 	
-	farm_visual_manager.update_tile(coords, soil_state)
+	farm_visual_manager.update_tile(grid_position, soil_state)
 	

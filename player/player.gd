@@ -29,16 +29,28 @@ func _process(delta):
 		return
 		
 	var target_tile = TargetingSystem.current_target_coords
-	var target_object = GridManager.get_grid_objects(target_tile)
+	var objects = GridManager.get_grid_objects(target_tile)
 
-	if target_object == null:
+	if objects.is_empty():
 		tile_highlight.hide()
 		return
 		
 	var player_tile = TargetingSystem.player_tile_coords
-		
 	var context = InteractionContext.new(player_tile, target_tile)
-	var valid = item_data.can_use(target_object, context)
+	
+	var best_score = -1
+	var valid = false
+	
+	for obj in objects:
+		if obj.has_method("get_interaction_score") and obj.has_method("interact"):
+			var score = obj.get_interaction_score(context)
+			
+			if score > 0:
+				if item_data.can_use(obj, context):
+					valid = true
+			
+			if score > best_score:
+				best_score = score
 		
 	tile_highlight.show_highlight()
 	tile_highlight.highlight_tile(context.target_tile, valid)

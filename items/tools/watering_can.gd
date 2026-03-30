@@ -6,6 +6,9 @@ func can_use(target, context) -> bool:
 	if target == null:
 		return false
 		
+	if not target.has_method("water"):
+		return false
+		
 	var player_tile = context.player_tile
 	var target_tile = context.target_tile
 	

@@ -9,11 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bv873rs7300h1" path="res://assets/art/crops/sprites/ranunculus004.png" id="7_5slhv"]
 [ext_resource type="Resource" uid="uid://dtf7pm4x8547g" path="res://data/itemdata/ranunculus.tres" id="8_5b5u1"]
 
-[sub_resource type="Resource" id="Resource_6o1al"]
+[sub_resource type="Resource" id="Resource_5b5u1"]
 script = ExtResource("2_udbhm")
 duration = 1
 texture = ExtResource("3_mqi2w")
-yield_amount = 1
 metadata/_custom_type_script = "uid://buwm7thaoq20g"
 
 [sub_resource type="Resource" id="Resource_n0grs"]
@@ -44,7 +43,7 @@ metadata/_custom_type_script = "uid://buwm7thaoq20g"
 
 [resource]
 script = ExtResource("1_s8roa")
-stages = Array[ExtResource("2_udbhm")]([SubResource("Resource_6o1al"), SubResource("Resource_n0grs"), SubResource("Resource_a1oox"), SubResource("Resource_wmnc8"), SubResource("Resource_pdak5")])
+stages = Array[ExtResource("2_udbhm")]([SubResource("Resource_5b5u1"), SubResource("Resource_n0grs"), SubResource("Resource_a1oox"), SubResource("Resource_wmnc8"), SubResource("Resource_pdak5")])
 is_regrowable = true
 regrow_stage = 3
 regrow_days = 3
