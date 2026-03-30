@@ -165,3 +165,6 @@ func set_targeted(is_targeted: bool):
 		modulate = Color(1.2, 1.2, 1.2)
 	else:
 		modulate = Color(1, 1, 1)
+		
+func is_focusable():
+	return true

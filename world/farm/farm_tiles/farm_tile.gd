@@ -134,3 +134,5 @@ func update_visual():
 	
 	farm_visual_manager.update_tile(grid_position, soil_state)
 	
+func is_focusable():
+	return false

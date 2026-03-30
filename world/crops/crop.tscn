@@ -7,7 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://djyf3aqjva5pt" path="res://assets/art/ui/ui_prompts/audio/sfx/grass.mp3" id="4_y556i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kesr"]
-radius = 7.0
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6lk3"]
+radius = 6.0
 
 [node name="Crop" type="Node2D" unique_id=1254910331]
 y_sort_enabled = true
@@ -28,7 +31,7 @@ collision_layer = 4
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=827168425]
-position = Vector2(0, -13)
+position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_4kesr")
 
 [node name="SwayArea" type="Area2D" parent="." unique_id=825549112]
@@ -36,8 +39,7 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwayArea" unique_id=1098047071]
-position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_4kesr")
+shape = SubResource("CircleShape2D_p6lk3")
 
 [node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=658522391]
 process_mode = 3

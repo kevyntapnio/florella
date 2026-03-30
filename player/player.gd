@@ -24,46 +24,42 @@ func _process(delta):
 	update_targeting_visual()
 	
 func update_targeting_visual():
+
 	var item_data = Hotbar.get_selected_item_data()
 	
 	var usable_item = null
-	
 	if item_data is UsableItem:
 		usable_item = item_data
 	
-	var target_tile = TargetingSystem.current_target_coords
-	var player_tile = TargetingSystem.player_tile_coords
-	
-	var objects = GridManager.get_grid_objects(target_tile)
-
-	if objects.is_empty():
-		tile_highlight.hide()
-		TargetingVisual.update_target(null)
-		return
+	if usable_item != null:
 		
-	var context = InteractionContext.new(player_tile, target_tile)
-	context.tool = usable_item
-	
-	var best_object = null
-	var best_score = -1
-	
-	for obj in objects:
-		if obj.has_method("get_interaction_score") and obj.has_method("can_accept_item"):
+		var player_tile = player_tile_coords
+		var target_tile = TargetingSystem.current_target_coords
+		
+		var objects = GridManager.get_grid_objects(target_tile)
+		
+		var context = InteractionContext.new(player_tile, target_tile)
+		context.tool = usable_item
+		
+		var valid = false
+		
+		for obj in objects:
 			
-			var score = obj.get_interaction_score(context)
-			
-			if score > 0 and obj.can_accept_item(usable_item, context):
-				if score > best_score:
-					best_score = score
-					best_object = obj
+			if obj.has_method("get_interaction_score"):
+				var score = obj.get_interaction_score(context)
+				
+				if score > 0 and obj.can_accept_item(usable_item, context):
+					valid = true
+					break
+					
+		tile_highlight.show_highlight()
+		tile_highlight.highlight_tile(target_tile, valid)
 	
-	var valid = best_object != null
+	else:
+		tile_highlight.hide()
+		
+	TargetingVisual.update_target(InteractionSystem.focused_interactable)
 	
-	tile_highlight.show_highlight()
-	tile_highlight.highlight_tile(target_tile, valid)
-	
-	TargetingVisual.update_target(best_object)
-
 func _physics_process(delta):
 
 	# Movement
@@ -111,12 +107,19 @@ func _physics_process(delta):
 func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
-		try_interact()
+		InteractionSystem.handle_interact_proximity(null)
 		
 	if Input.is_action_just_pressed("use_item"):
-		
 		var item = Hotbar.get_selected_item()
-		try_interact()
+		
+		if item == null:
+			return
+		var item_data = ItemDatabase.get_item(item["id"])
+		
+		if not (item_data is UsableItem):
+			return
+			
+		InteractionSystem.handle_interact_grid(item)
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		TimeManager.advance_day()
@@ -137,11 +140,6 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("hotbar_previous"):
 			Hotbar.change_selected_index(-1)
 			lock_scroll()
-			
-func try_interact():
-	var item = Hotbar.get_selected_item()
-	
-	InteractionSystem.handle_interact(item)
 		
 func lock_scroll():
 		scroll_locked = true
@@ -152,19 +150,18 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	
 	var object = area.get_parent()
 	
-	if object is Interactable:
+	if object.has_method("interact"):
 		InteractionSystem.register_interactable(object)
 		
-	var item = area.get_parent()
-	if item != null and item is WorldItem:
-		item.start_magnet(self)
+	if object != null and object is WorldItem:
+		object.start_magnet(self)
 		
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	
-	var interactable_object = area.get_parent()
+	var object = area.get_parent()
 	
-	if interactable_object is Interactable:
-		InteractionSystem.unregister_interactable(interactable_object)
+	if object.has_method("interact"):
+		InteractionSystem.unregister_interactable(object)
 		
 	find_closest_interactable()
 		

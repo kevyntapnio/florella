@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 	
 func register_interactable(interactable):
 	nearby_interactables.append(interactable)
-
+	
 func unregister_interactable(interactable):
 	nearby_interactables.erase(interactable)
 	
@@ -29,24 +29,12 @@ func get_closest_interactable():
 		if distance < smallest_distance:
 			smallest_distance = distance
 			closest_object = interactable
-	
 	return closest_object
 	
 func update_focused_interactable():
-	
-	var closest_interactable = get_closest_interactable()
-	
-	if closest_interactable != focused_interactable:
-		
-		if focused_interactable:
-			focused_interactable.on_focus_exited()
-		
-		focused_interactable = closest_interactable
-		
-		if focused_interactable:
-			focused_interactable.on_focus_entered()
+	focused_interactable = get_closest_interactable()
 			
-func handle_interact(selected_item):
+func handle_interact_grid(selected_item):
 	var player_tile = TargetingSystem.player_tile_coords
 	var target_tile = TargetingSystem.current_target_coords
 	
@@ -80,3 +68,20 @@ func handle_interact(selected_item):
 		
 	if best_object != null:
 		best_object.interact(usable_item, context)
+		
+func handle_interact_proximity(_selected_item):
+	
+	if focused_interactable == null:
+		return
+		
+	var player_tile = TargetingSystem.player_tile_coords
+	var target_tile = focused_interactable.grid_position
+	
+	var context = InteractionContext.new(player_tile, target_tile)
+	context.tool = null
+	
+	if focused_interactable.has_method("can_accept_item"):
+		if not focused_interactable.can_accept_item(null, context):
+			return
+			
+	focused_interactable.interact(null, context)
