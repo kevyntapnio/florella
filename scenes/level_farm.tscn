@@ -778,9 +778,10 @@ z_as_relative = false
 y_sort_enabled = true
 position = Vector2(760, 448)
 tree_scene = ExtResource("9_2ylty")
-quantity = 50
+quantity = 100
 spawn_area = Vector2(500, 500)
-seed_value = 666
+seed_value = 32
+min_spacing = 24.0
 max_attempts = 200
 
 [node name="TempUI" type="CanvasLayer" parent="." unique_id=754423091]

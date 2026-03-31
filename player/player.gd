@@ -13,7 +13,6 @@ var facing_direction = Vector2i(0, 1)
 const INVALID_COORD = Vector2i(-1, -1)
 
 var nearby_interactables = []
-var closest_interactable = null
 var focused_interactable = null
 var player_tile_coords: Vector2i
 var current_target_coords: Vector2i
@@ -49,8 +48,9 @@ func update_targeting_visual():
 				var score = obj.get_interaction_score(context)
 				
 				if score > 0 and obj.can_accept_item(usable_item, context):
-					valid = true
-					break
+					if usable_item.is_in_range(target_tile, context):
+						valid = true
+						break
 					
 		tile_highlight.show_highlight()
 		tile_highlight.highlight_tile(target_tile, valid)
@@ -96,7 +96,6 @@ func _physics_process(delta):
 		sprite.play("idle_down")
 	
 	update_player_tile_coords()
-	find_closest_interactable()
 	
 	TargetingSystem.player_tile_coords = player_tile_coords
 	TargetingSystem.facing_direction = facing_direction
@@ -162,22 +161,6 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 	
 	if object.has_method("interact"):
 		InteractionSystem.unregister_interactable(object)
-		
-	find_closest_interactable()
-		
-func find_closest_interactable():
-	
-	var closest_object = null
-	var current_smallest_distance = INF
-	
-	for object in nearby_interactables:
-		var distance = global_position.distance_to(object.global_position)
-		
-		if distance < current_smallest_distance:
-			current_smallest_distance = distance
-			closest_object = object
-			
-	closest_interactable = closest_object
 
 func update_player_tile_coords():
 

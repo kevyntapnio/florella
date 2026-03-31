@@ -61,7 +61,7 @@ func interact(item, context):
 		return
 	
 	if item is ToolItem:
-		interact_with_tool(item, context)
+		item.use(self, context)
 		return
 	
 	if item is SeedItem:

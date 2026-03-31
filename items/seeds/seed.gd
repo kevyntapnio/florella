@@ -40,3 +40,6 @@ func can_use(target, context):
 		return false
 	
 	return true
+	
+func is_in_range(target, context):
+	pass
