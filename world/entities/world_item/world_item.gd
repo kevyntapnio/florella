@@ -3,6 +3,8 @@ extends Node2D
 class_name WorldItem
 
 @onready var sprite = $Sprite2D
+
+var stack: ItemStack
 var id: String
 var quantity: int
 var is_magnetized: bool = false
@@ -12,7 +14,7 @@ var is_spawning := true
 var magnet_delay := 0.08
 var can_magnetize := false
 	
-func initialize(item_id: String, item_quantity: int):
+func initialize(new_stack: ItemStack):
 	velocity = Vector2(
 		randf_range(-50, 50),
 		-120
@@ -24,18 +26,12 @@ func initialize(item_id: String, item_quantity: int):
 		.set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)
 		
-		
-	id = item_id
-	quantity = item_quantity
-	print(quantity)
+	stack = new_stack
 	
-	var item_data = ItemDatabase.get_item(id)
+	quantity = stack.quantity
 	
-	if item_data == null:
-		print("WORLD_ITEM item_data not found")
-		return
-		
-	sprite.texture = item_data.icon
+	if sprite:
+		sprite.texture = stack.item_data.icon
 	
 func start_magnet(target: Node2D):
 	player = target
@@ -61,8 +57,12 @@ func _physics_process(delta: float) -> void:
 		global_position += direction * speed * delta
 		
 		if global_position.distance_to(player.get_global_position()) <= 5.0:
-			InventorySystem.add_item(id, quantity) # refactor Inventory later so this function can return a bool
+			var leftover = InventorySystem.add_stack(stack)
 			queue_free()
+			
+			if leftover.quantity > 0:
+				stack = leftover
+				
 		return
 
 	if is_spawning:

@@ -5,7 +5,6 @@ extends GridObject
 @onready var sprite: Sprite2D = $Sprite2D
 @export var harvest_sfx: AudioStream
 @export var world_item_scene: PackedScene
-@onready var drop_point = $DropPoint
 
 var growth_stage: int = 0
 var days_in_stage: int = 0
@@ -40,7 +39,7 @@ func on_day_passed():
 	if parent_tile.is_watered():
 		if is_regrowing:
 			if days_in_stage >= crop_data.regrow_days:
-				growth_stage = crop_data.harvest_stage
+				growth_stage = crop_data.regrow_target_stage
 				days_in_stage = 0
 				update_visual()
 		else:
@@ -52,7 +51,7 @@ func on_day_passed():
 					
 func get_interaction_score(context):
 	var current_stage = get_current_stage()
-	if current_stage.remove_on_harvest or growth_stage == crop_data.harvest_stage:
+	if current_stage.harvestable:
 		return INTERACT_PRIORITY
 	return 0
 			
@@ -70,9 +69,11 @@ func can_accept_item(item, context):
 	if item is UsableItem:
 		return false
 		
-	return crop_data.harvest_stage
+	var current_stage = get_current_stage()
+		
+	return current_stage.harvestable
 	
-	## Note for later: Add if item is Shears: return crop_data.harvest_stage
+	## Note for later: Add if item is Shears: return current_stage.harvestable
 		
 func harvest(): 
 	play_harvest_sfx()
@@ -85,11 +86,13 @@ func harvest():
 	if item_data == null:
 		return
 		
-	var id = item_data.id
 	var amount = current_stage.yield_amount
 	
-	if item_data != null:
-		spawn_world_item(id, amount)
+	var stack = ItemStack.new()
+	stack.item_data = item_data
+	stack.quantity = amount
+	
+	WorldItemSpawner.spawn(stack, global_position)
 	
 	if current_stage.remove_on_harvest:
 		destroy_crop()
@@ -154,19 +157,10 @@ func play_harvest_animation():
 	
 	return tween
 	
-func spawn_world_item(id, amount):
-	var ysort = get_tree().get_first_node_in_group("ysort_world")
-	var item_instance = world_item_scene.instantiate()
-	
-	item_instance.global_position = drop_point.global_position + Vector2(
-		randf_range(-4, 4),
-		randf_range(-4, 4)
-	)
-	ysort.add_child(item_instance)
-	item_instance.initialize(id, amount)
-	
 func set_targeted(is_targeted: bool):
-	if growth_stage == crop_data.harvest_stage:
+	var current_stage = get_current_stage()
+	
+	if current_stage.harvestable:
 		if is_targeted:
 			modulate = Color(1.2, 1.2, 1.2)
 		else:

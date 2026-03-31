@@ -47,5 +47,5 @@ stages = Array[ExtResource("2_udbhm")]([SubResource("Resource_5b5u1"), SubResour
 is_regrowable = true
 regrow_stage = 3
 regrow_days = 3
-harvest_stage = 4
+regrow_target_stage = 4
 metadata/_custom_type_script = "uid://b6htwwygn5nul"

@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_bfnsk")
-range = 1
 id = "basic_watering_can"
 name = "Basic Watering Can"
 icon = ExtResource("1_urgtg")
+category = 2
+max_stack = 1
 metadata/_custom_type_script = "uid://dmysosghdiosi"

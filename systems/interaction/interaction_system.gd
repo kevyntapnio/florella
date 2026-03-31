@@ -69,7 +69,7 @@ func handle_interact_grid(selected_item):
 	if selected_item == null:
 		return
 		
-	var item_data = ItemDatabase.get_item(selected_item["id"])
+	var item_data = ItemDatabase.get_item(selected_item.item_data.id)
 	
 	if not (item_data is UsableItem):
 		return

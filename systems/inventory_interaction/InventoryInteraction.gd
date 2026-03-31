@@ -1,101 +1,107 @@
 extends Node
 
 var held_id = null
-var held_quantity = 0
+var held_stack: ItemStack = null
 var source_index = -1
 
-signal held_changed(held_id, held_quantity)
+signal held_changed(held_stack)
 
 func handle_left_click(inventory_index):
 
 	var item_in_slot = InventorySystem.get_item(inventory_index)
 	
-	if held_quantity == 0:
+	if held_stack == null:
 		if item_in_slot != null:
-			held_id = item_in_slot["id"]
-			held_quantity = item_in_slot["quantity"]
+			held_stack = item_in_slot
 			InventorySystem.set_slot(inventory_index, null)
 			
-			held_changed.emit(held_id, held_quantity)
+			held_changed.emit(held_stack)
 		return
 		
-	if held_quantity > 0:
-		if item_in_slot == null:
-			var new_item = {"id": held_id, "quantity": held_quantity}
-			InventorySystem.set_slot(inventory_index, new_item)
-			clear_held()
-			held_changed.emit(held_id, held_quantity)
-			return
+	if item_in_slot == null:
+		InventorySystem.set_slot(inventory_index, held_stack)
+		held_stack = null
+		
+		held_changed.emit(held_stack)
+		return
 			
-		elif item_in_slot["id"] == held_id:
-			if InventorySystem.add_to_slot(inventory_index, held_id, held_quantity):
-				clear_held()
-			else:
-				InventorySystem.add_item(held_id, held_quantity)
-				clear_held()
-			held_changed.emit(held_id, held_quantity)
-			return
-			
+	elif item_in_slot.item_data.id == held_stack.item_data.id:
+		if InventorySystem.add_to_slot(inventory_index, held_stack):
+			held_stack = null
 		else:
+			InventorySystem.add_stack(held_stack)
+			held_stack = null
 			
-			var temp_item = {"id": item_in_slot["id"], "quantity": item_in_slot["quantity"]}
-			var new_item = {"id": held_id, "quantity": held_quantity}
+		held_changed.emit(held_stack)
+		return
 			
-			InventorySystem.set_slot(inventory_index, new_item)
+	else:
 			
-			held_id = temp_item["id"]
-			held_quantity = temp_item["quantity"]
+		var temp_stack = item_in_slot
 			
-			held_changed.emit(held_id, held_quantity)
+		InventorySystem.set_slot(inventory_index, held_stack)
 			
-			return
+		held_stack = temp_stack
+			
+		held_changed.emit(held_stack)
+			
+		return
 		
 func handle_right_click(inventory_index):
 	
 	var item_in_slot = InventorySystem.get_item(inventory_index)
 	
-	if held_quantity == 0:
+	if held_stack == null:
 		if item_in_slot != null:
-			held_id = item_in_slot["id"]
+			var new_stack = ItemStack.new()
+			new_stack.item_data = item_in_slot.item_data
+			
 			var removed = InventorySystem.remove_from_slot(inventory_index, 1)
-			held_quantity += removed
+			
+			new_stack.quantity = removed
+			
+			held_stack = new_stack
 			source_index = inventory_index
-			held_changed.emit(held_id, held_quantity)
+			held_changed.emit(held_stack)
 		return
 		
 	if inventory_index == source_index:
-		if item_in_slot != null and item_in_slot["id"] == held_id:
+		if item_in_slot != null and item_in_slot.item_data == held_stack.item_data:
 			var removed = InventorySystem.remove_from_slot(inventory_index, 1)
-			held_quantity += removed
-			held_changed.emit(held_id, held_quantity)
+			held_stack.quantity += removed
+			held_changed.emit(held_stack)
 		return
 			
 	else: # right click different item -> cancel
-		if InventorySystem.add_to_slot(source_index, held_id, held_quantity):
-			clear_held()
-			held_changed.emit(held_id, held_quantity)
+		if InventorySystem.add_to_slot(source_index, held_stack):
+			held_stack = null
+			held_changed.emit(held_stack)
 		else:
-			InventorySystem.add_item(held_id, held_quantity)
-			clear_held()
-			held_changed.emit(held_id, held_quantity)
+			InventorySystem.add_stack(held_stack)
+			held_stack = null
+			held_changed.emit(held_stack)
 		return
 			
 func clear_held():
 	
-	held_id = null
-	held_quantity = 0
+	held_stack = null
 	source_index = -1
-	
 	
 func cancel_held():
 	
-	if held_quantity == 0:
+	if held_stack == null:
 		return
+	
+	var success = InventorySystem.add_to_slot(source_index, held_stack)
+	
+	if success and held_stack.quantity <= 0:
+		held_stack = null
 	else:
-		if InventorySystem.add_to_slot(source_index, held_id, held_quantity):
-			pass
+		var leftover = InventorySystem.add_stack(held_stack)
+	
+		if leftover.quantity > 0: 
+			held_stack = leftover
 		else:
-			InventorySystem.add_item(held_id, held_quantity)
-		clear_held()
-		held_changed.emit(held_id, held_quantity)
-		return
+			held_stack = null
+		
+	held_changed.emit(held_stack)

@@ -10,37 +10,79 @@ func _ready():
 		
 func add_item(item_id, amount):
 	
-	## Check if item can be stacked
+	var item_data = ItemDatabase.get_item(item_id)
 	
-	for i in range(inventory.size()):
-		if inventory[i] != null and inventory[i]["id"] == item_id:
-				inventory[i]["quantity"] += amount
-				inventory_changed.emit()
-				return
-				
-	## Check for first empty slot
+	if item_data == null:
+		print("INVALID ITEM", item_id)
+		return
+		
+	var stack = ItemStack.new()
+	stack.item_data = item_data
+	stack.quantity = amount
+	
+	add_stack(stack)
+	
+func add_stack(stack):
+	
 	for i in range(inventory.size()):
 		if inventory[i] == null:
-			inventory[i] = {"id": item_id, "quantity": amount}
+			continue
+			
+		if inventory[i].item_data == stack.item_data:
+			var max_stack = stack.item_data.max_stack
+			var space = max_stack - inventory[i].quantity
+				
+			if space > 0:
+				var to_add = min(space, stack.quantity)
+			
+				inventory[i].quantity += to_add
+				inventory_changed.emit()
+				
+				stack.quantity -= to_add
+				if stack.quantity <= 0:
+					return stack
+			
+	for i in range(inventory.size()):
+			
+		if inventory[i] == null:
+			var new_stack = ItemStack.new()
+			new_stack.item_data = stack.item_data
+			
+			var to_add = min(stack.item_data.max_stack, stack.quantity)
+			new_stack.quantity = to_add
+			
+			inventory[i] = new_stack
 			inventory_changed.emit()
-			return
+			
+			stack.quantity -= to_add
+			
+			if stack.quantity <= 0:
+				return stack
+		
+	return stack
 	
-	## Both checks done but return hasn't been called yet, so inventory is full
-	print("Inventory is full")
-	
-func add_to_slot(slot_index, item_id, quantity) -> bool:
+func add_to_slot(slot_index, stack: ItemStack) -> bool:
+	var slot_stack = inventory[slot_index]
 	
 	var item_in_slot = inventory[slot_index]
 	
-	if item_in_slot == null:
-		var new_item = {"id": item_id, "quantity": quantity}
-		inventory[slot_index] = new_item
+	if slot_stack == null:
+		inventory[slot_index] = stack
 		inventory_changed.emit()
 		
 		return true
 		
-	elif item_in_slot["id"] == item_id:
-		item_in_slot["quantity"] += quantity
+	if slot_stack.item_data == stack.item_data:
+		var max_stack = stack.item_data.max_stack
+		var space = max_stack - slot_stack.quantity
+		
+		if space <= 0:
+			return false
+			
+		var to_add = min(space, stack.quantity)
+		
+		slot_stack.quantity += to_add
+		stack.quantity -= to_add
 		inventory_changed.emit()
 		
 		return true
@@ -55,8 +97,8 @@ func has_item(item_id, amount) -> bool:
 		if item == null:
 			continue
 		
-		if item["id"] == item_id:
-			total += item["quantity"]
+		if item.stack.item_data.id == item_id:
+			total += item.quantity
 		
 			if total >= amount:
 				return true
@@ -73,13 +115,13 @@ func remove_item(item_id, amount):
 		if item == null:
 			continue
 			
-		if item["id"] == item_id:
-			if item["quantity"] > remaining_to_remove:
-				item["quantity"] -= remaining_to_remove
+		if item.item_data.id == item_id:
+			if item.quantity > remaining_to_remove:
+				item.quantity -= remaining_to_remove
 				remaining_to_remove = 0
 				break
 			else:
-				remaining_to_remove -= item["quantity"]
+				remaining_to_remove -= item.quantity
 				inventory[i] = null
 				
 		if remaining_to_remove == 0:
@@ -96,11 +138,11 @@ func remove_from_slot(slot_index, amount_requested):
 	if item == null:
 		return 0
 	
-	var amount_to_remove = min(amount_requested, item["quantity"])
+	var amount_to_remove = min(amount_requested, item.quantity)
 		
-	item["quantity"] -= amount_to_remove
+	item.quantity -= amount_to_remove
 			
-	if item["quantity"] == 0:
+	if item.quantity == 0:
 		inventory[slot_index] = null 
 		
 	inventory_changed.emit()
@@ -117,6 +159,6 @@ func get_item(index):
 		
 	return inventory[index]
 			
-func set_slot(slot_index, item):
-	inventory[slot_index] = item
+func set_slot(slot_index, stack: ItemStack):
+	inventory[slot_index] = stack
 	inventory_changed.emit()

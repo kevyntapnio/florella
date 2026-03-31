@@ -38,14 +38,14 @@ func update_all_slots():
 		if item == null: 
 			slot.update_slot(null, 0)
 		else:
-			var item_data = ItemDatabase.get_item(item["id"])
+			var item_data = ItemDatabase.get_item(item.item_data.id)
 			var icon = item_data.icon
-			var quantity = item["quantity"]
+			var quantity = item.quantity
 
 			slot.update_slot(icon, quantity)
 			
 func on_slot_clicked(slot_index):
-	if InventoryInteraction.held_quantity == 0:
+	if InventoryInteraction.held_stack == null:
 		Hotbar.set_selected_index(slot_index)
 	else:
 		var inventory_index = Hotbar.get_inventory_index(slot_index)

@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_38r8d")
 crop_data = ExtResource("1_gm6cm")
-range = 1
 id = "daisy_seed"
 name = "Daisy Seed"
 icon = ExtResource("1_glyi0")
+category = 0
 metadata/_custom_type_script = "uid://cocmcuylq1b4b"

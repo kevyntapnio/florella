@@ -46,7 +46,4 @@ process_mode = 3
 stream = ExtResource("4_y556i")
 volume_db = -20.496
 
-[node name="DropPoint" type="Node2D" parent="." unique_id=8495369]
-position = Vector2(1, -8)
-
 [connection signal="body_entered" from="SwayArea" to="." method="_on_sway_area_body_entered"]

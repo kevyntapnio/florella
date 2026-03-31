@@ -36,5 +36,5 @@ func get_selected_item_data():
 	
 	if item == null:
 		return
-	return ItemDatabase.get_item(item["id"])
+	return ItemDatabase.get_item(item.item_data.id)
 	

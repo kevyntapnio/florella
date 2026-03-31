@@ -46,9 +46,9 @@ func update_all_slots():
 			slot.update_slot(null, 0)
 		
 		else:
-			var item_data = ItemDatabase.get_item(item["id"])
+			var item_data = item.item_data
 			var icon = item_data.icon
-			var quantity = item["quantity"]
+			var quantity = item.quantity
 
 			slot.update_slot(icon, quantity)
 		

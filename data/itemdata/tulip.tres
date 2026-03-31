@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c2dq5sq5q458p"]
+[gd_resource type="Resource" format=3 uid="uid://c2dq5sq5q458p"]
 
 [ext_resource type="Texture2D" uid="uid://clsug7y871lpv" path="res://assets/art/crops/icons/crop_tulip_icon.png" id="1_ia2st"]
-[ext_resource type="Script" uid="uid://qpy31wq3lcps" path="res://items/base/itemdata.gd" id="1_ylasp"]
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://items/flowers/flower_data.gd" id="2_ia2st"]
 
 [resource]
-script = ExtResource("1_ylasp")
+script = ExtResource("2_ia2st")
 id = "tulip"
 name = "Tulip"
 icon = ExtResource("1_ia2st")
+category = 1
 metadata/_custom_type_script = "uid://qpy31wq3lcps"

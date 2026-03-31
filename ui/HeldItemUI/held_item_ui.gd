@@ -15,20 +15,21 @@ func _ready():
 func _process(delta):
 	root.position = get_viewport().get_mouse_position()
 	
-func on_held_changed(id, quantity):
-	if quantity == 0:
+func on_held_changed(stack: ItemStack):
+	if stack == null:
 		icon.visible = false
 		quantity_label.visible = false
 		return
 	
+	if stack.quantity == 0:
+		icon.visible = true
+		quantity_label.visible = true
+		return
+		
 	icon.visible = true
 	quantity_label.visible = true
 	
-	var item = ItemDatabase.get_item(id)
-	icon.texture = item.icon
-	quantity_label.text = str(quantity)
+	var item = stack.item_data
 		
-	if quantity > 0:
-		icon.texture = item.icon
-		quantity_label.text = str(quantity)
-		visible = true
+	icon.texture = item.icon
+	quantity_label.text = str(stack.quantity)

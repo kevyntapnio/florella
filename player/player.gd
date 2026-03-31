@@ -113,7 +113,7 @@ func _input(event: InputEvent) -> void:
 		
 		if item == null:
 			return
-		var item_data = ItemDatabase.get_item(item["id"])
+		var item_data = ItemDatabase.get_item(item.item_data.id)
 		
 		if not (item_data is UsableItem):
 			return
