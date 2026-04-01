@@ -11,3 +11,11 @@ func _ready() -> void:
 	InventorySystem.add_item("tulip_bulb", 99)
 	InventorySystem.add_item("daisy_seed", 99)
 	InventorySystem.add_item("ranunculus_corms", 99)
+
+	var world_tile_query = $Systems/WorldTileQuery
+	
+	world_tile_query.set_terrain_layers()
+	print(world_tile_query.terrain_layers)
+	
+	await get_tree().process_frame
+	print(world_tile_query.get_tile_info(Vector2i(9,11)))
