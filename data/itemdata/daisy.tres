@@ -1,4 +1,4 @@
-[gd_resource type="Resource" format=3 uid="uid://baprk7xlhb4kx"]
+[gd_resource type="Resource" script_class="FlowerData" format=3 uid="uid://baprk7xlhb4kx"]
 
 [ext_resource type="Texture2D" uid="uid://dflchod5mex4h" path="res://assets/art/crops/icons/crop_daisy_icon.png" id="1_yiga1"]
 [ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://items/flowers/flower_data.gd" id="2_yiga1"]

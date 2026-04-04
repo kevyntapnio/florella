@@ -2,6 +2,19 @@ extends Node
 class_name WorldTileLookup
 
 var terrain_layers = []
+const EMPTY_TILE = Vector2i(0, 3)
+const FULL_TILE = Vector2i(2, 1)
+
+var cliff_top_tiles = [
+	Vector2i(0, 0),
+	Vector2i(1, 0),
+	Vector2i(2, 0),
+	Vector2i(3, 0),
+	Vector2i(1, 1),
+	Vector2i(2, 1),
+	Vector2i(3, 2),
+	Vector2i(1, 3)
+	]
 
 func set_terrain_layers():
 	## Level Node calls this function
@@ -27,13 +40,19 @@ func get_tile_info(cell):
 	for terrain in terrain_layers: 
 		
 		tile_atlas = terrain.get_cell_atlas_coords(cell)
+		var type = terrain.get_meta("terrain_type")
 		
-		if tile_atlas != Vector2i(-1, -1):
+		if tile_atlas == Vector2i(-1, -1):
+			continue
+			
+		if not is_tile_meaningful(type, tile_atlas):
+			continue
+		else:
 			terrain_layer = terrain
 			break
 	
 	if terrain_layer == null:
-		print("WorldTileQuery ERROR: No TileMapLayer found")
+		print("WorldTileQuery ERROR: No valid terrain layer found")
 		return _get_default_cell_info()
 		
 	var terrain_properties = {
@@ -58,20 +77,19 @@ func get_tile_info(cell):
 			"buildable": false
 		}
 	}
-
 		
 	var tile = terrain_layer.get_cell_atlas_coords(cell)
 	var subtype = null
 	var terrain_type = terrain_layer.get_meta("terrain_type")
 	
 	if terrain_type == "ground":
-		if tile == Vector2i(2, 1):
+		if tile == FULL_TILE:
 			subtype = "dirt"
 		else:
 			subtype = "grass"
 	
 	elif terrain_type == "cliff":
-		if tile == Vector2i(2, 1):
+		if tile in cliff_top_tiles:
 			subtype = "cliff_top"
 		else:
 			subtype = "cliff_face"
@@ -94,3 +112,16 @@ func _get_default_cell_info():
 			"buildable": false
 		}
 	}
+
+func is_tile_meaningful(type, atlas):
+	
+	if atlas == Vector2i(-1, -1):
+		return false
+		
+	if type == "cliff" and atlas == EMPTY_TILE:
+		return false
+	
+	if type == "water" and atlas == EMPTY_TILE:
+		return false
+		
+	return true

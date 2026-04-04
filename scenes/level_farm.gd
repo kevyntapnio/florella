@@ -18,4 +18,4 @@ func _ready() -> void:
 	print(world_tile_query.terrain_layers)
 	
 	await get_tree().process_frame
-	print(world_tile_query.get_tile_info(Vector2i(9,11)))
+	print(world_tile_query.get_tile_info(Vector2i(16, 6)))

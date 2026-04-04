@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" format=3 uid="uid://cdw3qi6xs3ash"]
+
+[ext_resource type="Texture2D" uid="uid://v6chro5aenlt" path="res://assets/art/tilesets/cliff_tile_set.png" id="1_xyvpm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6gc8"]
+texture = ExtResource("1_xyvpm")
+texture_region_size = Vector2i(32, 32)
+0:3/next_alternative_id = 3
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:3/1 = 1
+0:3/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.5931549, 16, 1.5931549, 16, 16, -16, 16)
+0:3/2 = 2
+0:3/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 32
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_u6gc8")
