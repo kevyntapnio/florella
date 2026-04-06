@@ -22,7 +22,7 @@ func initialize(new_stack: ItemStack):
 	scale = Vector2(0.05, 0.05)
 	
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(0., 0.7), 0.15) \
+	tween.tween_property(self, "scale", Vector2(0.8, 0.8), 0.15) \
 		.set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)
 		

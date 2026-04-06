@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GridManager.set_tilemap($World/GroundTileMap)
@@ -15,7 +14,8 @@ func _ready() -> void:
 	var world_tile_query = $Systems/WorldTileQuery
 	
 	world_tile_query.set_terrain_layers()
-	print(world_tile_query.terrain_layers)
 	
-	await get_tree().process_frame
-	print(world_tile_query.get_tile_info(Vector2i(16, 6)))
+	var collision_builder = $Systems/CollisionBuilder
+	if collision_builder.is_inside_tree():
+		collision_builder.set_colliders()
+	

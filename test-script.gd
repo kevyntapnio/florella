@@ -1,36 +1,48 @@
+func find_terrain_subtype(cell):
+	var terrain_layer
 	
-	for i in range(inventory.size()):
-		var slot = inventory[i]
-		var current_stack = slot.stack
+	for layer in terrain_layers:
+		var tile = layer.get_cell_atlas_coords(cell)
+		var type = layer.get_meta("terrain_type")
 		
-		if current_stack == null:
-			continue
-		
-		if current_stack.item_data == stack.item_data:
-			var max_stack = stack.item_data.max_stack
-			var space = max_stack - current_stack.quantity
+		if tile != Vector2i(-1, -1):
+			if is_tile_meaningful(type, tile):
+				terrain_layer = layer
+				break
 				
-			if space > 0:
-				var to_add = min(space, stack.quantity)
-			
-				current_stack.quantity += to_add
-				stack.quantity -= to_add
-				
-				if stack.quantity <= 0:
-					return stack
-			
-	for i in range(inventory.size()):
-		var slot = inventory[i]
-			
-		if slot.stack == null:
-			slot.stack = ItemStack.new()
-			slot.stack.item_data = stack.item_data
-			
-			var to_add = min(stack.item_data.max_stack, stack.quantity)
-			slot.stack.quantity = to_add
-			stack.quantity -= to_add
-			
-			if stack.quantity <= 0:
-				return stack
+	var subtype = DEFAULT_INFO["subtype"]
+	var cell_below = cell + Vector2i(0, 1)
+	var cell_above = cell + Vector2i(0, -1)
 	
-	return stack
+	var cell_type = find_terrain_type(cell)
+	
+	var cell_below_type = DEFAULT_INFO["terrain_type"]
+	var cell_above_type = DEFAULT_INFO["terrain_type"]
+	
+	if terrain_layer.get_cell_atlas_coords(cell_below) == Vector2i(-1, -1):
+		pass
+	
+	cell_below_type = find_terrain_type(cell_below)
+	
+	if terrain_layer.get_cell_atlas_coords(cell_above):
+		pass
+		
+	cell_above_type = find_terrain_type(cell_above)
+	
+	if cell_type == "ground":
+		var tile_atlas = terrain_layer.get_cell_atlas_coords(cell)
+		if tile_atlas == FULL_TILE:
+			subtype = "dirt"
+		elif tile_atlas == EMPTY_TILE:
+			subtype = "grass"
+		elif tile_atlas == EMPTY_TILE and cell_above_type == "cliff":
+			subtype = "cliff_face"
+			
+	if cell_type == "cliff":
+		if cell_below_type == "cliff":
+			subtype = "cliff_top"
+		else:
+			subtype = "cliff_face"
+	
+	return subtype
+	
