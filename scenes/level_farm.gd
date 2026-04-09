@@ -19,3 +19,7 @@ func _ready() -> void:
 	if collision_builder.is_inside_tree():
 		collision_builder.set_colliders()
 	
+	await get_tree().process_frame
+	
+	if $Spawners/TreeSpawner.is_inside_tree():
+		$Spawners/TreeSpawner.spawn_trees()

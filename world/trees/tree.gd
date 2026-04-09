@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends GridObject
 
 @export var tree_data: TreeData
 

@@ -7,11 +7,11 @@ texture = ExtResource("1_xyvpm")
 texture_region_size = Vector2i(32, 32)
 0:3/next_alternative_id = 3
 0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-19.2, -19.2, 19.2, -19.2, 19.2, 19.2, -19.2, 19.2)
 0:3/1 = 1
-0:3/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.5931549, 16, 1.5931549, 16, 16, -16, 16)
+0:3/1/physics_layer_0/polygon_0/points = PackedVector2Array(-19.2, 0, 19.2, 0, 19.2, 32, -19.2, 32)
 0:3/2 = 2
-0:3/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+0:3/2/physics_layer_0/polygon_0/points = PackedVector2Array(-19.2, -32, 19.2, -32, 19.2, 0, -19.2, 0)
 
 [resource]
 tile_size = Vector2i(32, 32)
