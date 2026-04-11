@@ -3,12 +3,13 @@ extends Node2D
 @export var tilemap: TileMapLayer
 
 var grid_objects: Dictionary = {}
+var tile_size: int
 
 func set_tilemap(map: TileMapLayer):
 	tilemap = map
+	get_tile_size()
 		
 func register_grid_object(coords: Vector2i, object):
-	print("registering tree at:", coords)
 	if not grid_objects.has(coords):
 		grid_objects[coords] = [object]
 	else:
@@ -42,3 +43,7 @@ func get_tile_coords(world_position: Vector2) -> Vector2i:
 func get_world_position(grid_coordinate: Vector2i) -> Vector2:
 	var local = tilemap.map_to_local(grid_coordinate)
 	return tilemap.to_global(local)
+	
+func get_tile_size():
+	var size = tilemap.tile_set.tile_size
+	tile_size = size.x

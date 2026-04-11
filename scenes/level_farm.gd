@@ -23,3 +23,6 @@ func _ready() -> void:
 	
 	if $Spawners/TreeSpawner.is_inside_tree():
 		$Spawners/TreeSpawner.spawn_trees()
+		
+	if $Spawners/GrassSpawner.is_inside_tree():
+		$Spawners/GrassSpawner.spawn_grass()

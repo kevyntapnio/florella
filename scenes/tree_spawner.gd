@@ -42,7 +42,6 @@ func spawn_trees():
 			
 		spawn_tree(tile)
 		placed_positions.append(tile)
-		print("placed_trees:", placed_positions.size())
 		
 		if placed_positions.size() >= quantity:
 			break

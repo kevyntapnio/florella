@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d1mprm1ge26c5"]
+
+[ext_resource type="Script" uid="uid://cyob4vrqndaci" path="res://world/foliage/tall_grass/tall_grass.gd" id="1_xh5gk"]
+[ext_resource type="AudioStream" uid="uid://dm8p7ppsijq63" path="res://assets/audio/sfx/soft_grass_rustle.mp3" id="2_yftpu"]
+[ext_resource type="Texture2D" uid="uid://clr2yibrowd5l" path="res://assets/art/foliage/grass/tall-grass-2.png" id="3_t467i"]
+[ext_resource type="Texture2D" uid="uid://civbv0rtq1rq1" path="res://assets/art/foliage/grass/tall-grass-1.png" id="4_ivmob"]
+[ext_resource type="Texture2D" uid="uid://u0khak5ajxrc" path="res://assets/art/foliage/grass/tall-grass-0.png" id="5_3o0bb"]
+
+[node name="TallGrass" type="Node2D" unique_id=423580306]
+y_sort_enabled = true
+script = ExtResource("1_xh5gk")
+
+[node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=503867132]
+stream = ExtResource("2_yftpu")
+volume_db = -10.628
+
+[node name="blade2" type="Sprite2D" parent="." unique_id=1205213912]
+position = Vector2(-8, 0)
+texture = ExtResource("4_ivmob")
+offset = Vector2(0, -9)
+flip_h = true
+
+[node name="blade3" type="Sprite2D" parent="." unique_id=1205743627]
+position = Vector2(1, 3)
+texture = ExtResource("5_3o0bb")
+offset = Vector2(0, -5)
+flip_h = true
+
+[node name="blade5" type="Sprite2D" parent="." unique_id=20123811]
+position = Vector2(7, 0)
+texture = ExtResource("5_3o0bb")
+offset = Vector2(0, -5)
+flip_h = true
+
+[node name="blade4" type="Sprite2D" parent="." unique_id=294136432]
+position = Vector2(-4, 1)
+texture = ExtResource("5_3o0bb")
+offset = Vector2(0, -5)
+
+[node name="TallGrass2" type="Sprite2D" parent="." unique_id=63431124]
+position = Vector2(5, -1)
+texture = ExtResource("3_t467i")
+offset = Vector2(0, -7)
+flip_h = true

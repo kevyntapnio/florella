@@ -18,6 +18,7 @@ var player_tile_coords: Vector2i
 var current_target_coords: Vector2i
 var player_global_position
 var scroll_locked
+var reactive_objects: Dictionary = {}
 
 func _process(delta):
 	update_targeting_visual()
@@ -102,6 +103,8 @@ func _physics_process(delta):
 	TargetingSystem.player_global_position = global_position
 
 	TargetingSystem.update_current_target()
+	
+	find_reactive_objects()
 		
 func _input(event: InputEvent) -> void:
 	
@@ -167,5 +170,20 @@ func update_player_tile_coords():
 	var local_pos = tilemap.to_local(global_position)
 	player_tile_coords = tilemap.local_to_map(local_pos)
 	
-func _ready():
-	pass
+func find_reactive_objects():
+	var current_tile = player_tile_coords
+	var objects = GridManager.get_grid_objects(current_tile)
+	
+	var new_reactive := {}
+	
+	for obj in objects:
+		if obj.has_method("react"):
+			
+			var dist = global_position.distance_to(obj.global_position)
+			
+			if dist < 12:
+				new_reactive[obj] = true
+				
+				if not reactive_objects.has(obj):
+					obj.react()
+	reactive_objects = new_reactive
