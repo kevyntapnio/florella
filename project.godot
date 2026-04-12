@@ -30,6 +30,7 @@ HotbarUI="*uid://cg2x2l5bhty88"
 HeldItemUI="*uid://b2r44t7x6je43"
 BgmPlayer="*uid://dhrjg6s01yru7"
 TargetingVisual="*uid://clblglbyxcfdx"
+VisibilitySystem="*uid://dnxebntx2go01"
 
 [display]
 
@@ -155,6 +156,7 @@ inventory={
 2d_physics/layer_5="PlayerDetector"
 2d_physics/layer_6="Environment"
 2d_physics/layer_7="WorldItem"
+2d_physics/layer_8="OcclusionItem"
 
 [physics]
 

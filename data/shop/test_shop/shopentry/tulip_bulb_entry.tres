@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://ce3d04qrl0h7w"]
+
+[ext_resource type="Resource" uid="uid://diill7fusrbbw" path="res://data/itemdata/tulip_bulb.tres" id="1_aiqme"]
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_svwp8"]
+
+[resource]
+script = ExtResource("1_svwp8")
+item = ExtResource("1_aiqme")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

@@ -46,5 +46,4 @@ metadata/_custom_type_script = "uid://buwm7thaoq20g"
 [resource]
 script = ExtResource("1_pqwgl")
 stages = Array[ExtResource("2_kcedk")]([SubResource("Resource_8ucba"), SubResource("Resource_jtsa2"), SubResource("Resource_ddkb6"), SubResource("Resource_e3rrf"), SubResource("Resource_48nx1")])
-harvest_stage = 4
 metadata/_custom_type_script = "uid://b6htwwygn5nul"

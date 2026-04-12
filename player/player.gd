@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED = 150
 var facing_direction = Vector2i(0, 1)
 
+@onready var interaction_area = $InteractionArea
+
 @export var tilemap: TileMapLayer
 @export var tile_highlight: Node2D
 
@@ -158,13 +160,17 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if object != null and object is WorldItem:
 		object.start_magnet(self)
 		
+	VisibilitySystem.register_object(object)
+	
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	
 	var object = area.get_parent()
 	
 	if object.has_method("interact"):
 		InteractionSystem.unregister_interactable(object)
-
+		
+	VisibilitySystem.unregister_object(object)
+	
 func update_player_tile_coords():
 
 	var local_pos = tilemap.to_local(global_position)

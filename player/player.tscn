@@ -169,8 +169,8 @@ radius = 11.04
 [node name="Player" type="CharacterBody2D" unique_id=1372264591 groups=["player"]]
 process_mode = 1
 y_sort_enabled = true
-collision_layer = 18
-collision_mask = 36
+collision_layer = 2
+collision_mask = 164
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=473465960]
@@ -196,7 +196,7 @@ limit_smoothed = true
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1981826413]
 position = Vector2(0, 2)
 collision_layer = 16
-collision_mask = 68
+collision_mask = 196
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=114551351]
 position = Vector2(0, -7)

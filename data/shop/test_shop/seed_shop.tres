@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopData" format=3 uid="uid://bbb7rie0ocoe2"]
+
+[ext_resource type="Script" uid="uid://wyiybuh7c3eg" path="res://world/shop/shopdata/shop_data.gd" id="1_nfd80"]
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="2_lho51"]
+[ext_resource type="Resource" uid="uid://ce3d04qrl0h7w" path="res://data/shop/test_shop/shopentry/tulip_bulb_entry.tres" id="3_x4rir"]
+
+[resource]
+script = ExtResource("1_nfd80")
+shop_type = "Seed"
+shop_entries = Array[ExtResource("2_lho51")]([ExtResource("3_x4rir")])
+metadata/_custom_type_script = "uid://wyiybuh7c3eg"
