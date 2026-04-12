@@ -35,7 +35,9 @@
 [ext_resource type="PackedScene" uid="uid://ip6w5cr0y1f0" path="res://world/foliage/tall_grass/tall_grass2.tscn" id="22_kea2j"]
 [ext_resource type="PackedScene" uid="uid://d1mprm1ge26c5" path="res://world/foliage/tall_grass/tall_grass3.tscn" id="23_g2dj5"]
 [ext_resource type="PackedScene" uid="uid://v8m624gy43nw" path="res://world/foliage/tall_grass/tall_grass4.tscn" id="24_jgmuv"]
+[ext_resource type="PackedScene" uid="uid://d1g5v6rv40y8w" path="res://data/shop/shop_counter.tscn" id="25_dlwqu"]
 [ext_resource type="PackedScene" uid="uid://18m8t6ns0um6" path="res://world/foliage/tall_grass/tall_grass5.tscn" id="25_g2dj5"]
+[ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vk3p0"]
 texture = ExtResource("6_u6gc8")
@@ -1067,6 +1069,10 @@ position = Vector2(216, 592)
 
 [node name="FarmCottage" parent="World/YSortWorld" unique_id=1448608620 instance=ExtResource("17_41ixy")]
 position = Vector2(192, 552)
+
+[node name="ShopCounter" parent="World/YSortWorld" unique_id=1571945230 instance=ExtResource("25_dlwqu")]
+position = Vector2(456, 472)
+shop_info = ExtResource("26_bsn28")
 
 [node name="Spawners" type="Node2D" parent="." unique_id=1237077743]
 

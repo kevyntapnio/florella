@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopInfo" format=3 uid="uid://cx01fnxwuqntv"]
+
+[ext_resource type="Script" uid="uid://b0dc4k22behxs" path="res://world/shop/shopdata/shop_info.gd" id="1_s4n6o"]
+
+[resource]
+script = ExtResource("1_s4n6o")
+id = "test"
+name = "Test"
+opening_time = 480
+closing_time = 1050
+metadata/_custom_type_script = "uid://b0dc4k22behxs"
