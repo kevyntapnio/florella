@@ -48,7 +48,7 @@ func react():
 		set_meta("sway_tween", tween)
 		
 		var direction = [-1, 1].pick_random()
-		var strength = randf_range(0.3, 0.6) * direction
+		var strength = randf_range(0.2, 0.4) * direction
 			
 		tween.tween_property(blade, "rotation", strength, 0.1)\
 			.set_trans(Tween.TRANS_SINE)\

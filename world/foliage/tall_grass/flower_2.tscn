@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://ct27amg7pej5m"]
+
+[ext_resource type="Texture2D" uid="uid://u0khak5ajxrc" path="res://assets/art/foliage/grass/tall-grass-0.png" id="1_5q1w5"]
+[ext_resource type="Texture2D" uid="uid://civbv0rtq1rq1" path="res://assets/art/foliage/grass/tall-grass-1.png" id="2_gwcwh"]
+[ext_resource type="Texture2D" uid="uid://clr2yibrowd5l" path="res://assets/art/foliage/grass/tall-grass-2.png" id="3_deqn7"]
+[ext_resource type="AudioStream" uid="uid://dm8p7ppsijq63" path="res://assets/audio/sfx/soft_grass_rustle.mp3" id="4_7lniu"]
+[ext_resource type="Texture2D" uid="uid://bh2tygvried0j" path="res://assets/art/foliage/flower/IMG_5499.PNG" id="5_5q1w5"]
+
+[sub_resource type="GDScript" id="GDScript_jdhtg"]
+script/source = "extends GridObject
+
+@onready var wind_shader = preload(\"res://shaders/wind_sway.gdshader\")
+
+@export var grass_textures: Array[Texture2D]
+
+@export var blocks_tile:= false
+
+static var last_sfx_time:= 0.0
+static var sfx_cooldown:= 0.1
+var rng:= RandomNumberGenerator.new()
+var sprite 
+var blades = []
+
+func _ready(): 	
+	get_blades()
+	apply_shader()
+	
+func apply_shader():
+	for blade in blades:
+		
+		var mat = ShaderMaterial.new()
+		mat.shader = wind_shader
+		
+		mat.set_shader_parameter(\"world_y\", global_position.y)
+		mat.set_shader_parameter(\"blade_offset\", rng.randf_range(0.0, 3.0))
+		
+		blade.material = mat
+	
+func get_blades():
+	
+	get_children()
+	
+	for child in get_children():
+		if child is Sprite2D:
+			blades.append(child)
+			
+func react():
+	for blade in blades:
+		## -- Remove existing tween on this blade -- ##
+		if blade.has_meta(\"sway_tween\"): 
+			var old_tween = blade.get_meta(\"sway_tween\")
+			if old_tween and old_tween.is_running():
+				old_tween.kill()
+		
+		## -- Add new tween -- ##
+		var tween = create_tween()
+		set_meta(\"sway_tween\", tween)
+		
+		var direction = [-1, 1].pick_random()
+		var strength = randf_range(0.3, 0.6) * direction
+			
+		tween.tween_property(blade, \"rotation\", strength, 0.1)\\
+			.set_trans(Tween.TRANS_SINE)\\
+			.set_ease(Tween.EASE_OUT)
+				
+		tween.tween_property(blade, \"rotation\", 0.0, 0.3)\\
+			.set_trans(Tween.TRANS_SINE)\\
+			.set_ease(Tween.EASE_IN)
+	
+	play_sfx()
+	
+func play_sfx():
+	var sfx = $SwaySFX
+	var current_time = Time.get_ticks_msec() / 1000.0
+	
+	if current_time - last_sfx_time > sfx_cooldown:
+		last_sfx_time = current_time
+
+		sfx.pitch_scale = randf_range(0.85, 1.15)
+		sfx.play()
+		
+		var tween = create_tween()
+		var duration = 0.7
+		
+		tween.tween_interval(duration * 0.5)
+		
+		tween.tween_property(sfx, \"volume_db\", -80.0, duration * 0.5)
+		
+		tween.finished.connect(sfx.stop)
+		
+"
+
+[node name="TallGrass" type="Node2D" unique_id=423580306]
+y_sort_enabled = true
+script = SubResource("GDScript_jdhtg")
+grass_textures = Array[Texture2D]([ExtResource("1_5q1w5"), ExtResource("2_gwcwh"), ExtResource("3_deqn7")])
+
+[node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=503867132]
+stream = ExtResource("4_7lniu")
+volume_db = -10.628
+
+[node name="Img5499" type="Sprite2D" parent="." unique_id=525997615]
+position = Vector2(0, -1)
+texture = ExtResource("5_5q1w5")
+offset = Vector2(0, -6)
