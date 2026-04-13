@@ -56,10 +56,11 @@ func toggle():
 	is_open = !is_open
 	visible = is_open
 
-	get_tree().paused = is_open
+	TimeManager.pause_time(self)
 	
 	if not is_open:
 		InventoryInteraction.cancel_held()
+		TimeManager.resume_time(self)
 	update_all_slots()
 		
 func _input(event: InputEvent) -> void:

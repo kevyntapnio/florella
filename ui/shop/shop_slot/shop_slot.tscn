@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://8g84i404iqif"]
+
+[ext_resource type="Script" uid="uid://dakxkp0nas8kx" path="res://world/shop/shop_slot.gd" id="1_f0456"]
+[ext_resource type="Texture2D" uid="uid://cy5wtbjmv2rsq" path="res://assets/art/ui/shop_ui/shop_slot.png" id="2_m8ww5"]
+
+[node name="ShopSlot" type="Control" unique_id=674836291]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_f0456")
+
+[node name="Background" type="TextureRect" parent="." unique_id=724817856]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m8ww5")
+
+[node name="Icon" type="TextureRect" parent="Background" unique_id=507073041]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="Background" unique_id=1086409484]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 36.0
+offset_right = 30.0
+offset_bottom = 47.0
+theme_override_colors/font_outline_color = Color(0.54131806, 0.47400236, 0.14204064, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 7
+text = "00"

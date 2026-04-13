@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://ce3d04qrl0h7w" path="res://data/shop/test_shop/shopentry/tulip_bulb_entry.tres" id="3_x4rir"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_nfd80")
 shop_type = "Seed"
 shop_entries = Array[ExtResource("2_lho51")]([ExtResource("3_x4rir")])

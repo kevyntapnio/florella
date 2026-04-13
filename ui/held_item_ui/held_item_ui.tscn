@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2r44t7x6je43"]
 
-[ext_resource type="Script" uid="uid://dcd1ejfrx5h8m" path="res://ui/HeldItemUI/held_item_ui.gd" id="1_d82ne"]
+[ext_resource type="Script" uid="uid://dcd1ejfrx5h8m" path="res://ui/held_item_ui/held_item_ui.gd" id="1_d82ne"]
 [ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="2_1gva8"]
 
 [node name="HeldItemUI" type="CanvasLayer" unique_id=1288905451]

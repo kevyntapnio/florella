@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://panrqlkuefw8"]
 
-[ext_resource type="Script" uid="uid://dcd1ejfrx5h8m" path="res://ui/HeldItemUI/held_item_ui.gd" id="1_pxauc"]
+[ext_resource type="Script" uid="uid://dcd1ejfrx5h8m" path="res://ui/held_item_ui/held_item_ui.gd" id="1_pxauc"]
 
 [node name="Control" type="CanvasLayer" unique_id=2131941075]
 script = ExtResource("1_pxauc")

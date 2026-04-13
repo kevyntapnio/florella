@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1g5v6rv40y8w"]
 
-[ext_resource type="Script" uid="uid://b6smnu5mbsgox" path="res://shop_counter.gd" id="1_k4fde"]
+[ext_resource type="Script" uid="uid://b6smnu5mbsgox" path="res://world/shop/shop_counter.gd" id="1_k4fde"]
 [ext_resource type="Texture2D" uid="uid://dx8b8lwuhvoa" path="res://assets/art/shop_objects/shop_counter.PNG" id="2_8ft7r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k4fde"]

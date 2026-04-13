@@ -5,12 +5,15 @@ signal time_updated(hour, minute)
 signal day_ended
 
 var current_day: int = 1
-var pause_sources: Array[String] = []
+var pause_sources: Array = []
 var current_hour = 6
 var current_minute = 0
 
 var time_accumulator: float = 0.0
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 func advance_day():
 	if is_paused():
 		return
@@ -49,11 +52,13 @@ func advance_time():
 func pause_time(source):
 	if source not in pause_sources:
 		pause_sources.append(source)
+		update_pause_state()
 		
 func resume_time(source):
 	if source not in pause_sources:
 		return
 	pause_sources.erase(source)
+	update_pause_state()
 	
 func is_paused() -> bool:
 	return pause_sources.size() > 0
@@ -90,4 +95,6 @@ func get_display_time():
 		"am_pm": am_pm
 	}
 		
-		
+func update_pause_state():
+	print(pause_sources)
+	get_tree().paused = is_paused()

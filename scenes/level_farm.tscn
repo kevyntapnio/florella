@@ -38,6 +38,8 @@
 [ext_resource type="PackedScene" uid="uid://d1g5v6rv40y8w" path="res://data/shop/shop_counter.tscn" id="25_dlwqu"]
 [ext_resource type="PackedScene" uid="uid://18m8t6ns0um6" path="res://world/foliage/tall_grass/tall_grass5.tscn" id="25_g2dj5"]
 [ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
+[ext_resource type="PackedScene" uid="uid://ydbht2g3q5ux" path="res://ui/shop/shop_ui/shop_ui.tscn" id="36_e2aru"]
+[ext_resource type="Script" uid="uid://c0njn6sf47qjg" path="res://world/shop/shop_system.gd" id="40_0p3ls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vk3p0"]
 texture = ExtResource("6_u6gc8")
@@ -1070,8 +1072,9 @@ position = Vector2(216, 592)
 [node name="FarmCottage" parent="World/YSortWorld" unique_id=1448608620 instance=ExtResource("17_41ixy")]
 position = Vector2(192, 552)
 
-[node name="ShopCounter" parent="World/YSortWorld" unique_id=1571945230 instance=ExtResource("25_dlwqu")]
+[node name="ShopCounter" parent="World/YSortWorld" unique_id=1571945230 node_paths=PackedStringArray("shop_system") instance=ExtResource("25_dlwqu")]
 position = Vector2(456, 472)
+shop_system = NodePath("../../../Systems/ShopSystem")
 shop_info = ExtResource("26_bsn28")
 
 [node name="Spawners" type="Node2D" parent="." unique_id=1237077743]
@@ -1113,6 +1116,10 @@ script = ExtResource("6_q8hax")
 
 [node name="InventoryUI" parent="." unique_id=405443883 instance=ExtResource("2_k51qb")]
 
+[node name="ShopUI" parent="." unique_id=1274632242 instance=ExtResource("36_e2aru")]
+process_mode = 3
+visible = false
+
 [node name="Systems" type="Node2D" parent="." unique_id=1370087006]
 
 [node name="FarmVisualManager" type="Node" parent="Systems" unique_id=1157675117 node_paths=PackedStringArray("tilled_layer", "watered_layer")]
@@ -1129,6 +1136,10 @@ tile_query = NodePath("../WorldTileQuery")
 cliff_layer = NodePath("../../World/YSortWorld/CliffTileMap")
 cliff_top_colliders = NodePath("../../World/CliffTopCollision")
 cliff_ground_colliders = NodePath("../../World/CliffGroundCollision")
+
+[node name="ShopSystem" type="Node" parent="Systems" unique_id=1541733244 node_paths=PackedStringArray("shop_ui")]
+script = ExtResource("40_0p3ls")
+shop_ui = NodePath("../../ShopUI")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=2080620194]
 
