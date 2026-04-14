@@ -3,29 +3,24 @@
 [ext_resource type="Script" uid="uid://b6smnu5mbsgox" path="res://world/shop/shop_counter.gd" id="1_k4fde"]
 [ext_resource type="Texture2D" uid="uid://dx8b8lwuhvoa" path="res://assets/art/shop_objects/shop_counter.PNG" id="2_8ft7r"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k4fde"]
-radius = 11.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ft7r"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4fde"]
+size = Vector2(32, 56)
 
 [node name="ShopCounter" type="StaticBody2D" unique_id=915095846]
+position = Vector2(0, -5)
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_k4fde")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1173555034]
+position = Vector2(0, 5)
 texture = ExtResource("2_8ft7r")
-offset = Vector2(0, -9)
+offset = Vector2(0, -41)
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1784261124]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=645038054]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_k4fde")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=784898501]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_8ft7r")
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_k4fde")

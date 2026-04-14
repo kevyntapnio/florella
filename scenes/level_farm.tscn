@@ -35,11 +35,12 @@
 [ext_resource type="PackedScene" uid="uid://ip6w5cr0y1f0" path="res://world/foliage/tall_grass/tall_grass2.tscn" id="22_kea2j"]
 [ext_resource type="PackedScene" uid="uid://d1mprm1ge26c5" path="res://world/foliage/tall_grass/tall_grass3.tscn" id="23_g2dj5"]
 [ext_resource type="PackedScene" uid="uid://v8m624gy43nw" path="res://world/foliage/tall_grass/tall_grass4.tscn" id="24_jgmuv"]
+[ext_resource type="PackedScene" uid="uid://ff610jhqwei2" path="res://world/buildings/mobile_carts/mobile_cart.tscn" id="25_crid3"]
 [ext_resource type="PackedScene" uid="uid://d1g5v6rv40y8w" path="res://data/shop/shop_counter.tscn" id="25_dlwqu"]
 [ext_resource type="PackedScene" uid="uid://18m8t6ns0um6" path="res://world/foliage/tall_grass/tall_grass5.tscn" id="25_g2dj5"]
 [ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
 [ext_resource type="Script" uid="uid://coxtildet1c5e" path="res://ui/current_gold_label.gd" id="35_0p3ls"]
-[ext_resource type="PackedScene" uid="uid://ydbht2g3q5ux" path="res://ui/shop/shop_ui/shop_ui.tscn" id="36_e2aru"]
+[ext_resource type="PackedScene" uid="uid://c1jaq6kvtgerl" path="res://ui/shop/cart_ui/shop_menu.tscn" id="36_0p3ls"]
 [ext_resource type="Script" uid="uid://c0njn6sf47qjg" path="res://world/shop/shop_system.gd" id="40_0p3ls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vk3p0"]
@@ -731,317 +732,317 @@ metadata/_custom_type_script = "uid://cjk8nronimk5r"
 [node name="FarmTile" parent="World/FarmLogic/FarmTiles" unique_id=1563810621 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile5" parent="World/FarmLogic/FarmTiles" unique_id=238332172 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile2" parent="World/FarmLogic/FarmTiles" unique_id=2119950371 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(560, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile3" parent="World/FarmLogic/FarmTiles" unique_id=944988252 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile4" parent="World/FarmLogic/FarmTiles" unique_id=1917467716 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(560, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile6" parent="World/FarmLogic/FarmTiles" unique_id=314202739 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile7" parent="World/FarmLogic/FarmTiles" unique_id=993774642 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile8" parent="World/FarmLogic/FarmTiles" unique_id=570345786 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(560, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile9" parent="World/FarmLogic/FarmTiles" unique_id=115913898 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile10" parent="World/FarmLogic/FarmTiles" unique_id=1477362137 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile11" parent="World/FarmLogic/FarmTiles" unique_id=766345200 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile12" parent="World/FarmLogic/FarmTiles" unique_id=968823037 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(688, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile13" parent="World/FarmLogic/FarmTiles" unique_id=696841875 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile14" parent="World/FarmLogic/FarmTiles" unique_id=577646321 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(688, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile15" parent="World/FarmLogic/FarmTiles" unique_id=310424883 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile16" parent="World/FarmLogic/FarmTiles" unique_id=251420767 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile17" parent="World/FarmLogic/FarmTiles" unique_id=736971807 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(688, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile18" parent="World/FarmLogic/FarmTiles" unique_id=1462100486 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile19" parent="World/FarmLogic/FarmTiles" unique_id=1845220371 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile20" parent="World/FarmLogic/FarmTiles" unique_id=774260757 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(848, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile21" parent="World/FarmLogic/FarmTiles" unique_id=458914952 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(816, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile22" parent="World/FarmLogic/FarmTiles" unique_id=1748573589 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile23" parent="World/FarmLogic/FarmTiles" unique_id=1773702338 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(816, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile24" parent="World/FarmLogic/FarmTiles" unique_id=1908828894 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(848, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile25" parent="World/FarmLogic/FarmTiles" unique_id=299224267 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile26" parent="World/FarmLogic/FarmTiles" unique_id=1418442412 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(816, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile27" parent="World/FarmLogic/FarmTiles" unique_id=1974007603 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(848, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile28" parent="World/FarmLogic/FarmTiles" unique_id=464724313 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(336, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile29" parent="World/FarmLogic/FarmTiles" unique_id=1180205087 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(400, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile30" parent="World/FarmLogic/FarmTiles" unique_id=165825471 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(368, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile31" parent="World/FarmLogic/FarmTiles" unique_id=1142933324 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(336, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile32" parent="World/FarmLogic/FarmTiles" unique_id=1253179139 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(368, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile33" parent="World/FarmLogic/FarmTiles" unique_id=1962937710 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(400, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile34" parent="World/FarmLogic/FarmTiles" unique_id=2037538723 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(336, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile35" parent="World/FarmLogic/FarmTiles" unique_id=849443109 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(368, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile36" parent="World/FarmLogic/FarmTiles" unique_id=395544795 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(400, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile37" parent="World/FarmLogic/FarmTiles" unique_id=1290413405 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(464, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile38" parent="World/FarmLogic/FarmTiles" unique_id=629292831 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile39" parent="World/FarmLogic/FarmTiles" unique_id=1797757284 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(496, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile40" parent="World/FarmLogic/FarmTiles" unique_id=1500648213 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(464, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile41" parent="World/FarmLogic/FarmTiles" unique_id=1741726397 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(496, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile42" parent="World/FarmLogic/FarmTiles" unique_id=1552317104 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile43" parent="World/FarmLogic/FarmTiles" unique_id=1189448864 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(464, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile44" parent="World/FarmLogic/FarmTiles" unique_id=1467125694 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(496, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile45" parent="World/FarmLogic/FarmTiles" unique_id=1793641336 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile46" parent="World/FarmLogic/FarmTiles" unique_id=635890870 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile47" parent="World/FarmLogic/FarmTiles" unique_id=956031067 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile48" parent="World/FarmLogic/FarmTiles" unique_id=47034860 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(624, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile49" parent="World/FarmLogic/FarmTiles" unique_id=830462087 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile50" parent="World/FarmLogic/FarmTiles" unique_id=989869709 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(624, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile51" parent="World/FarmLogic/FarmTiles" unique_id=1034582240 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile52" parent="World/FarmLogic/FarmTiles" unique_id=119588341 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile53" parent="World/FarmLogic/FarmTiles" unique_id=1471518016 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(624, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile54" parent="World/FarmLogic/FarmTiles" unique_id=2045904040 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile55" parent="World/FarmLogic/FarmTiles" unique_id=1748798651 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile56" parent="World/FarmLogic/FarmTiles" unique_id=930748253 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile57" parent="World/FarmLogic/FarmTiles" unique_id=455258670 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(752, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile58" parent="World/FarmLogic/FarmTiles" unique_id=2019813067 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile59" parent="World/FarmLogic/FarmTiles" unique_id=188439523 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(752, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile60" parent="World/FarmLogic/FarmTiles" unique_id=546079355 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile61" parent="World/FarmLogic/FarmTiles" unique_id=697717941 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile62" parent="World/FarmLogic/FarmTiles" unique_id=1700810645 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(752, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="FarmTile63" parent="World/FarmLogic/FarmTiles" unique_id=231667390 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/FarmVisualManager")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="YSortWorld" type="Node2D" parent="World" unique_id=1508058470 groups=["ysort_world"]]
 y_sort_enabled = true
@@ -1064,7 +1065,7 @@ metadata/terrain_priority = 10
 
 [node name="TallGrassMap" type="TileMapLayer" parent="World/YSortWorld" unique_id=840521083]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAARACEAAAAAAAAABgASACIAAAAAAAAABgASACEAAAAAAAAABQAQACAAAAAAAAAABQARAB8AAAAAAAAABAAUACAAAAAAAAAAAwAGACMAAAAAAAAAAwAFACEAAAAAAAAAAwAEACIAAAAAAAAAAwAGACIAAAAAAAAAAQADAB8AAAAAAAAAAQAHAB0AAAAAAAAAAQAGAB4AAAAAAAAABQAHAB8AAAAAAAAABQAHACAAAAAAAAAABgAEABwAAAAAAAAABgARACMAAAAAAAAABQAQACQAAAAAAAAABQASACQAAAAAAAAAAgATACQAAAAAAAAAAwAIACMAAAAAAAAABAAJACQAAAAAAAAAAwAWABsAAAAAAAAABgAXABwAAAAAAAAABQAYABsAAAAAAAAAAQAXABsAAAAAAAAAAwAZAB0AAAAAAAAABQATAC8AAAAAAAAAAwANACoAAAAAAAAAAQANACwAAAAAAAAAAgAYADAAAAAAAAAABAAbAC8AAAAAAAAAAQAZADAAAAAAAAAABQAZADEAAAAAAAAABgAYAC8AAAAAAAAAAwAbADEAAAAAAAAAAgAeADIAAAAAAAAAAQAZADIAAAAAAAAAAQAXADEAAAAAAAAABQAVADIAAAAAAAAABQAAACcAAAAAAAAAAQD//yYAAAAAAAAABAAAACUAAAAAAAAABgABACUAAAAAAAAAAQABACYAAAAAAAAABgD8/y4AAAAAAAAABgD9/y0AAAAAAAAABAD+/y4AAAAAAAAABAD8/zAAAAAAAAAAAwD+/y8AAAAAAAAAAQD+/zAAAAAAAAAABQAAAC8AAAAAAAAABAD+/zEAAAAAAAAAAgD7/zEAAAAAAAAAAwD6/zMAAAAAAAAAAQAAAC0AAAAAAAAAAQAqACIAAAAAAAAABQApACAAAAAAAAAAAgAoACAAAAAAAAAABQApACEAAAAAAAAABQAsACEAAAAAAAAAAwArACMAAAAAAAAABgACABUAAAAAAAAAAgABABQAAAAAAAAAAQAAABMAAAAAAAAABAAAABQAAAAAAAAABgD+/xUAAAAAAAAABgAAABUAAAAAAAAAAgABABUAAAAAAAAABAABABYAAAAAAAAAAwADABYAAAAAAAAAAQADABUAAAAAAAAAAgACABQAAAAAAAAAAwACABYAAAAAAAAABAACABgAAAAAAAAA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BQA3ABgAAAAAAAAABAA2ABgAAAAAAAAABgA3ABcAAAAAAAAAAgA5ABkAAAAAAAAAAwA6ABkAAAAAAAAAAQA6ABoAAAAAAAAABgA/ABoAAAAAAAAABgA/ABkAAAAAAAAABAA+ABkAAAAAAAAAAwBBABsAAAAAAAAABgBAABsAAAAAAAAAAwBAABwAAAAAAAAABQA+ABsAAAAAAAAABQA/ABwAAAAAAAAABQA+ABwAAAAAAAAAAQBBAB4AAAAAAAAABABCABwAAAAAAAAABAAIABEAAAAAAAAAAgAKABEAAAAAAAAAAwAJABEAAAAAAAAAAwALABIAAAAAAAAABgAJABIAAAAAAAAAAQAIABQAAAAAAAAAAQAKABUAAAAAAAAABAADABEAAAAAAAAABAABABEAAAAAAAAABgACABIAAAAAAAAAAQD//xEAAAAAAAAABgAAACEAAAAAAAAABgAAACIAAAAAAAAABAD+/yYAAAAAAAAAAgD+/ykAAAAAAAAAAwD//ygAAAAAAAAABgD//ycAAAAAAAAABgAGACoAAAAAAAAAAwAHACEAAAAAAAAABAAFACIAAAAAAAAAAgAHACMAAAAAAAAABAAIACIAAAAAAAAABgArACEAAAAAAAAAAgAlACUAAAAAAAAABQAmADQAAAAAAAAAAQA4ADAAAAAAAAAABAAGACQAAAAAAAAACAAYABwAAAAAAAAACAAZABsAAAAAAAAABwAlACYAAAAAAAAABwAmACcAAAAAAAAACAAPACIAAAAAAAAACQAIACEAAAAAAAAACgAVABsAAAAAAAAACgAhABwAAAAAAAAACgAiABsAAAAAAAAACQAjACUAAAAAAAAACQAFACMAAAAAAAAACgAQACEAAAAAAAAACAARACQAAAAAAAAACgAKAC4AAAAAAAAACgAKACsAAAAAAAAACQAMACwAAAAAAAAACAAjACgAAAAAAAAACQAjAB0AAAAAAAAACQABABIAAAAAAAAACQD+/xMAAAAAAAAACgAIABIAAAAAAAAACgAJABMAAAAAAAAACQAAABEAAAAAAAAACQADABQAAAAAAAAACAA=")
+tile_map_data = PackedByteArray("AAARACEAAAAAAAAABgASACIAAAAAAAAABgASACEAAAAAAAAABQAQACAAAAAAAAAABQARAB8AAAAAAAAABAAUACAAAAAAAAAAAwAGACMAAAAAAAAAAwAFACEAAAAAAAAAAwAEACIAAAAAAAAAAwAGACIAAAAAAAAAAQADAB8AAAAAAAAAAQAHAB0AAAAAAAAAAQAGAB4AAAAAAAAABQAHAB8AAAAAAAAABQAHACAAAAAAAAAABgAEABwAAAAAAAAABgARACMAAAAAAAAABQAQACQAAAAAAAAABQASACQAAAAAAAAAAgATACQAAAAAAAAAAwAIACMAAAAAAAAABAAJACQAAAAAAAAAAwAWABsAAAAAAAAABgAXABwAAAAAAAAABQAYABsAAAAAAAAAAQAXABsAAAAAAAAAAwAZAB0AAAAAAAAABQATAC8AAAAAAAAAAwANACoAAAAAAAAAAQANACwAAAAAAAAAAgAYADAAAAAAAAAABAAbAC8AAAAAAAAAAQAZADAAAAAAAAAABQAZADEAAAAAAAAABgAYAC8AAAAAAAAAAwAbADEAAAAAAAAAAgAeADIAAAAAAAAAAQAZADIAAAAAAAAAAQAXADEAAAAAAAAABQAVADIAAAAAAAAABQAAACcAAAAAAAAAAQD//yYAAAAAAAAABAAAACUAAAAAAAAABgABACUAAAAAAAAAAQABACYAAAAAAAAABgD8/y4AAAAAAAAABgD9/y0AAAAAAAAABAD+/y4AAAAAAAAABAD8/zAAAAAAAAAAAwD+/y8AAAAAAAAAAQD+/zAAAAAAAAAABQAAAC8AAAAAAAAABAD+/zEAAAAAAAAAAgD7/zEAAAAAAAAAAwD6/zMAAAAAAAAAAQAAAC0AAAAAAAAAAQAqACIAAAAAAAAABQApACAAAAAAAAAAAgAoACAAAAAAAAAABQApACEAAAAAAAAABQAsACEAAAAAAAAAAwArACMAAAAAAAAABgACABUAAAAAAAAAAgABABQAAAAAAAAAAQAAABMAAAAAAAAABAAAABQAAAAAAAAABgD+/xUAAAAAAAAABgAAABUAAAAAAAAAAgABABUAAAAAAAAABAABABYAAAAAAAAAAwADABYAAAAAAAAAAQADABUAAAAAAAAAAgACABQAAAAAAAAAAwACABYAAAAAAAAABAACABgAAAAAAAAA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BQA3ABgAAAAAAAAABAA2ABgAAAAAAAAABgA3ABcAAAAAAAAAAgA5ABkAAAAAAAAAAwA6ABkAAAAAAAAAAQA6ABoAAAAAAAAABgA/ABoAAAAAAAAABgA/ABkAAAAAAAAABAA+ABkAAAAAAAAAAwBBABsAAAAAAAAABgBAABsAAAAAAAAAAwBAABwAAAAAAAAABQA+ABsAAAAAAAAABQA/ABwAAAAAAAAABQA+ABwAAAAAAAAAAQBBAB4AAAAAAAAABABCABwAAAAAAAAABAAIABEAAAAAAAAAAgAKABEAAAAAAAAAAwAJABEAAAAAAAAAAwALABIAAAAAAAAABgAJABIAAAAAAAAAAQAIABQAAAAAAAAAAQAKABUAAAAAAAAABAADABEAAAAAAAAABAABABEAAAAAAAAABgACABIAAAAAAAAAAQD//xEAAAAAAAAABgAAACEAAAAAAAAABgAAACIAAAAAAAAABAD+/yYAAAAAAAAAAgD+/ykAAAAAAAAAAwD//ygAAAAAAAAABgD//ycAAAAAAAAABgAGACoAAAAAAAAAAwAHACEAAAAAAAAABAAFACIAAAAAAAAAAgAHACMAAAAAAAAABAAIACIAAAAAAAAABgArACEAAAAAAAAAAgAlACUAAAAAAAAABQAmADQAAAAAAAAAAQA4ADAAAAAAAAAABAAGACQAAAAAAAAACAAYABwAAAAAAAAACAAZABsAAAAAAAAABwAlACYAAAAAAAAABwAmACcAAAAAAAAACAAPACIAAAAAAAAACQAIACEAAAAAAAAACgAVABsAAAAAAAAACgAhABwAAAAAAAAACgAiABsAAAAAAAAACQAjACUAAAAAAAAACQAFACMAAAAAAAAACgAQACEAAAAAAAAACAARACQAAAAAAAAACgAKAC4AAAAAAAAACgAKACsAAAAAAAAACQAMACwAAAAAAAAACAAjACgAAAAAAAAACQAjAB0AAAAAAAAACQABABIAAAAAAAAACQD+/xMAAAAAAAAACgAIABIAAAAAAAAACgAJABMAAAAAAAAACQAAABEAAAAAAAAACQADABQAAAAAAAAACAAiACAAAAAAAAAABAAdAB0AAAAAAAAABAAeAB8AAAAAAAAAAQAfACAAAAAAAAAAAwAeACEAAAAAAAAAAQAfACEAAAAAAAAABwAeACAAAAAAAAAACQAdAB4AAAAAAAAACgA=")
 tile_set = SubResource("TileSet_jgmuv")
 
 [node name="Dog" parent="World/YSortWorld" unique_id=290849294 instance=ExtResource("9_hyev1")]
@@ -1073,8 +1074,12 @@ position = Vector2(216, 592)
 [node name="FarmCottage" parent="World/YSortWorld" unique_id=1448608620 instance=ExtResource("17_41ixy")]
 position = Vector2(192, 552)
 
+[node name="mobile_cart" parent="World/YSortWorld" unique_id=2078024401 instance=ExtResource("25_crid3")]
+position = Vector2(520, 512)
+
 [node name="ShopCounter" parent="World/YSortWorld" unique_id=1571945230 node_paths=PackedStringArray("shop_system") instance=ExtResource("25_dlwqu")]
-position = Vector2(456, 472)
+y_sort_enabled = true
+position = Vector2(512, 512)
 shop_system = NodePath("../../../Systems/ShopSystem")
 shop_info = ExtResource("26_bsn28")
 
@@ -1122,21 +1127,20 @@ offset_right = 626.0
 offset_bottom = 64.0
 script = ExtResource("35_0p3ls")
 
-[node name="InventoryUI" parent="." unique_id=405443883 instance=ExtResource("2_k51qb")]
+[node name="ShopMenu" parent="." unique_id=1390379076 node_paths=PackedStringArray("shop_system") instance=ExtResource("36_0p3ls")]
+shop_system = NodePath("../Systems/ShopSystem")
 
-[node name="ShopUI" parent="." unique_id=1274632242 instance=ExtResource("36_e2aru")]
-process_mode = 3
-visible = false
+[node name="InventoryUI" parent="." unique_id=405443883 instance=ExtResource("2_k51qb")]
 
 [node name="Systems" type="Node2D" parent="." unique_id=1370087006]
 
-[node name="FarmVisualManager" type="Node" parent="Systems" unique_id=1157675117 node_paths=PackedStringArray("tilled_layer", "watered_layer")]
-script = ExtResource("21_b8io8")
-tilled_layer = NodePath("../../World/FarmLogic/FarmVisuals/TilledLayer")
-watered_layer = NodePath("../../World/FarmLogic/FarmVisuals/WateredLayer")
-
 [node name="WorldTileQuery" type="Node2D" parent="Systems" unique_id=666533549]
 script = ExtResource("18_wkult")
+
+[node name="FarmVisualManager" type="Node" parent="Systems/WorldTileQuery" unique_id=1157675117 node_paths=PackedStringArray("tilled_layer", "watered_layer")]
+script = ExtResource("21_b8io8")
+tilled_layer = NodePath("../../../World/FarmLogic/FarmVisuals/TilledLayer")
+watered_layer = NodePath("../../../World/FarmLogic/FarmVisuals/WateredLayer")
 
 [node name="CollisionBuilder" type="Node" parent="Systems" unique_id=1752818086 node_paths=PackedStringArray("tile_query", "cliff_layer", "cliff_top_colliders", "cliff_ground_colliders")]
 script = ExtResource("19_2ul0j")
@@ -1145,9 +1149,9 @@ cliff_layer = NodePath("../../World/YSortWorld/CliffTileMap")
 cliff_top_colliders = NodePath("../../World/CliffTopCollision")
 cliff_ground_colliders = NodePath("../../World/CliffGroundCollision")
 
-[node name="ShopSystem" type="Node" parent="Systems" unique_id=1541733244 node_paths=PackedStringArray("shop_ui")]
+[node name="ShopSystem" type="Node" parent="Systems" unique_id=1541733244 node_paths=PackedStringArray("shop_menu_ui")]
 script = ExtResource("40_0p3ls")
-shop_ui = NodePath("../../ShopUI")
+shop_menu_ui = NodePath("../../ShopMenu")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=2080620194]
 

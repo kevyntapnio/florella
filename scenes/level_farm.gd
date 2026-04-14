@@ -7,9 +7,6 @@ func _ready() -> void:
 	
 	InventorySystem.add_item("basic_hoe", 1)
 	InventorySystem.add_item("basic_watering_can", 1)
-	InventorySystem.add_item("tulip_bulb", 99)
-	InventorySystem.add_item("daisy_seed", 99)
-	InventorySystem.add_item("ranunculus_corms", 99)
 
 	var world_tile_query = $Systems/WorldTileQuery
 	
@@ -30,4 +27,4 @@ func _ready() -> void:
 	if $World/GrassDetailMap.is_inside_tree():
 		$World/GrassDetailMap.add_grass_tile_variants()
 
-	PlayerGlobalStats.add_to_wallet(1000)
+	PlayerGlobalStats.add_to_wallet(5000)

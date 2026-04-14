@@ -12,6 +12,14 @@ script = ExtResource("1_w8wow")
 grid_container = NodePath("TextureRect/MarginContainer/VBoxContainer/GridContainer")
 slot_scene = ExtResource("2_n8fuw")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1647486444]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34117648)
+
 [node name="TextureRect" type="NinePatchRect" parent="." unique_id=832997566]
 custom_minimum_size = Vector2(230, 281)
 anchors_preset = 5

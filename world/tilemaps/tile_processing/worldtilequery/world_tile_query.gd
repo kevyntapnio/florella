@@ -27,8 +27,6 @@ func set_terrain_layers():
 	sort_layer_priority()
 	build_cache()
 	
-	print(tile_cache[Vector2i(4, 12)])
-	
 func sort_layer_priority():
 	terrain_layers.sort_custom(func(a, b):
 		return a.get_meta("terrain_priority", 0) > b.get_meta("terrain_priority", 0)

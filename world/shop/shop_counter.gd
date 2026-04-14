@@ -4,6 +4,8 @@ class_name ShopCounter
 @export var shop_system: Node
 @export var shop_info: ShopInfo
 
+const INTERACT_PRIORITY = 10
+
 func interact(item, context) -> bool:
 
 	if shop_info == null:
@@ -36,3 +38,12 @@ func open_shop_menu():
 	else:
 		print("shop is closed")
 		
+func set_targeted(is_targeted: bool):
+	
+	if is_targeted:
+		modulate = Color(1.5, 1.5, 1.5)
+	else:
+		modulate = Color(1, 1, 1)
+		
+func get_interaction_score(context):
+	return INTERACT_PRIORITY

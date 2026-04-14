@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ff610jhqwei2"]
+
+[ext_resource type="Script" uid="uid://q3bjlc6wwqxu" path="res://world/buildings/mobile_carts/mobile_cart.gd" id="1_8kf3d"]
+[ext_resource type="Texture2D" uid="uid://cphnvlilmsbx4" path="res://assets/art/shop_objects/mobile_carts/base_cart.png" id="1_mym3s"]
+[ext_resource type="Texture2D" uid="uid://ds627kbnyd8p" path="res://assets/art/shop_objects/mobile_carts/base_canopy.png" id="2_8kf3d"]
+[ext_resource type="Texture2D" uid="uid://cjfmgurojulhp" path="res://assets/art/shop_objects/mobile_carts/base_wheel.png" id="3_n0hdu"]
+
+[node name="MobileCart" type="StaticBody2D" unique_id=2078024401]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_8kf3d")
+
+[node name="Cart" type="Sprite2D" parent="." unique_id=423761335]
+texture = ExtResource("1_mym3s")
+offset = Vector2(0, -48)
+
+[node name="Canopy" type="Sprite2D" parent="." unique_id=1189439860]
+texture = ExtResource("2_8kf3d")
+offset = Vector2(0, -48)
+
+[node name="Wheel" type="Sprite2D" parent="." unique_id=287024753]
+texture = ExtResource("3_n0hdu")
+offset = Vector2(0, -48)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=696602467]
+polygon = PackedVector2Array(-2, 0, -12, 0, -18, 0, -45, 0, -45, -27, 41, -27, 41, 0, 36, 0)

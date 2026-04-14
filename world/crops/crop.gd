@@ -160,10 +160,10 @@ func play_harvest_animation():
 func set_targeted(is_targeted: bool):
 	var current_stage = get_current_stage()
 	
-	if current_stage.harvestable:
-		if is_targeted:
-			modulate = Color(1.2, 1.2, 1.2)
-		else:
-			modulate = Color(1, 1, 1)
+	if is_targeted and current_stage.harvestable:
+		modulate = Color(1.5, 1.5, 1.5)
+	else:
+		modulate = Color(1, 1, 1)
+		
 func is_focusable():
 	return true

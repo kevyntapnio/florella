@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdcbc70qm4xc" path="res://player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://d3jnemt5fsf4m" path="res://assets/art/characters/base/player sprite.png" id="2_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://ca70a8k8jdmka" path="res://assets/art/ui/interact.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://i1jjm0wtyrg4" path="res://assets/art/ui/interaction_prompt.png" id="3_g1dw6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
 radius = 6.0827627
@@ -204,11 +204,11 @@ shape = SubResource("CircleShape2D_onrkg")
 
 [node name="InteractionPrompt" type="Sprite2D" parent="." unique_id=2061459619]
 visible = false
-y_sort_enabled = true
+z_index = 1
 texture_filter = 1
-position = Vector2(0, -40)
-scale = Vector2(0.5625, 0.5625)
-texture = ExtResource("3_i3pqv")
+position = Vector2(-1.1388897, -42.32143)
+scale = Vector2(2.0277777, 1.8928573)
+texture = ExtResource("3_g1dw6")
 
 [node name="TileDetector" type="Area2D" parent="." unique_id=564237202]
 position = Vector2(0, 2)

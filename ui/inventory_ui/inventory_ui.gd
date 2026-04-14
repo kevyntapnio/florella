@@ -21,7 +21,7 @@ func _ready():
 		
 func create_slots():
 	if slot_scene == null:
-		print("FAILED TO LOAD SLOT SCENE")
+		print("InventoryUI ERROR: FAILED TO LOAD SLOT SCENE")
 		
 	for i in range(30):
 		var slot = slot_scene.instantiate()
@@ -63,8 +63,8 @@ func toggle():
 		TimeManager.resume_time(self)
 	update_all_slots()
 		
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("inventory"):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
 		toggle()
 		
 func update_selection_visuals():

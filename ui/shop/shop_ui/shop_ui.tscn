@@ -4,26 +4,32 @@
 [ext_resource type="PackedScene" uid="uid://8g84i404iqif" path="res://ui/shop/shop_slot/shop_slot.tscn" id="2_1rbvm"]
 [ext_resource type="Texture2D" uid="uid://1kmiwuwe2qb0" path="res://assets/art/ui/shop_ui/shop_ui_background.PNG" id="3_hdvcj"]
 
-[node name="ShopUI" type="CanvasLayer" unique_id=1274632242]
+[node name="ShopUI" type="Control" unique_id=1488926804]
+custom_minimum_size = Vector2(225, 320)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_a3nsf")
 slot_scene = ExtResource("2_1rbvm")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1039828928]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -160.0
-offset_right = 225.0
-offset_bottom = 160.0
+[node name="Background" type="NinePatchRect" parent="." unique_id=1524013623]
+custom_minimum_size = Vector2(225, 320)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 55
-
-[node name="Background" type="TextureRect" parent="MarginContainer" unique_id=1388008753]
-layout_mode = 2
 texture = ExtResource("3_hdvcj")
-stretch_mode = 5
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Background" unique_id=1810649513]
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1810649513]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +41,7 @@ theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Background/MarginContainer" unique_id=1547870860]
+[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer" unique_id=1547870860]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8

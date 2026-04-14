@@ -123,3 +123,9 @@ func handle_interact_proximity(_selected_item):
 			return
 			
 	focused_interactable.interact(null, context)
+	
+func has_valid_interaction() -> bool:
+	if focused_interactable == null:
+		return false
+		
+	return focused_interactable.get_interaction_score(null) > 0

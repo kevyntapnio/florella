@@ -10,7 +10,7 @@ var shop_entry: Resource
 signal slot_clicked
 
 func _ready() -> void:
-	print("slot ready")
+	pass
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

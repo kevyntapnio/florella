@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c1jaq6kvtgerl"]
+
+[ext_resource type="Script" uid="uid://fjchrvwkjx8v" path="res://ui/shop/shop_ui/shop_menu_ui.gd" id="1_8t8cc"]
+[ext_resource type="PackedScene" uid="uid://ydbht2g3q5ux" path="res://ui/shop/shop_ui/shop_ui.tscn" id="1_y3bw4"]
+[ext_resource type="PackedScene" uid="uid://hqokhtay1gqf" path="res://ui/shop/cart_ui/cart_ui.tscn" id="2_8t8cc"]
+
+[node name="ShopMenu" type="CanvasLayer" unique_id=1390379076 node_paths=PackedStringArray("shop_ui", "cart_ui", "buy_button")]
+process_mode = 3
+layer = 11
+script = ExtResource("1_8t8cc")
+shop_ui = NodePath("MarginContainer/HBoxContainer/ShopUI")
+cart_ui = NodePath("MarginContainer/HBoxContainer/VBoxContainer/CartUI")
+buy_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/BuyButton")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=887608399]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34117648)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1069906187]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1115445541]
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="ShopUI" parent="MarginContainer/HBoxContainer" unique_id=1488926804 instance=ExtResource("1_y3bw4")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1795469555]
+layout_mode = 2
+alignment = 1
+
+[node name="CartUI" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=555686226 instance=ExtResource("2_8t8cc")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BuyButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=67827117]
+layout_mode = 2
+text = "BUY"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]

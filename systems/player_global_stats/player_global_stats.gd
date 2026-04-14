@@ -18,5 +18,4 @@ func add_to_wallet(amount):
 
 func remove_from_wallet(price):
 	current_gold = current_gold - price
-	print(current_gold, "-", price, "=", current_gold)
 	wallet_changed.emit(current_gold)

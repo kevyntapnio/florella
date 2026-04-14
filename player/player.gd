@@ -14,14 +14,15 @@ var facing_direction = Vector2i(0, 1)
 
 const INVALID_COORD = Vector2i(-1, -1)
 
-var nearby_interactables = []
 var focused_interactable = null
 var player_tile_coords: Vector2i
-var current_target_coords: Vector2i
 var player_global_position
 var scroll_locked
 var reactive_objects: Dictionary = {}
 
+func _ready() -> void:
+	interaction_prompt.hide()
+	
 func _process(delta):
 	update_targeting_visual()
 	
@@ -47,7 +48,7 @@ func update_targeting_visual():
 		
 		for obj in objects:
 			
-			if obj.has_method("get_interaction_score"):
+			if obj.has_method("get_interaction_score") and obj.has_method("can_accept_item"):
 				var score = obj.get_interaction_score(context)
 				
 				if score > 0 and obj.can_accept_item(usable_item, context):
@@ -61,7 +62,13 @@ func update_targeting_visual():
 	else:
 		tile_highlight.hide()
 		
-	TargetingVisual.update_target(InteractionSystem.focused_interactable)
+	var valid = InteractionSystem.has_valid_interaction()
+	if valid:
+		interaction_prompt.show()
+	else:
+		interaction_prompt.hide()
+		
+	TargetingVisual.update_target(InteractionSystem.focused_interactable, valid)
 	
 func _physics_process(delta):
 

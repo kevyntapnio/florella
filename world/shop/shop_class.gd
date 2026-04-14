@@ -2,7 +2,7 @@ extends Node
 class_name Shop
 
 var shop_system
-var shop_ui: CanvasLayer
+var shop_ui: Control
 var shop_entries: Array[Resource] = []
 
 func initialize(shop_items, ui):
@@ -24,8 +24,9 @@ func handle_left_click(index):
 	var stack = ItemStack.new()
 	stack.item_data = item_in_slot.item
 	stack.quantity = 1
+	stack.unit_price = price
 		
-	shop_system.handle_current_stack(stack, price)
+	shop_system.handle_current_stack(stack)
 
 func get_adjusted_price(price):
 	#check for discount day, adjust pricing
