@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends CanvasModulate
 
 @onready var color_rect = $ColorRect
 

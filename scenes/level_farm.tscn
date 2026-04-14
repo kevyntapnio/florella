@@ -39,6 +39,8 @@
 [ext_resource type="PackedScene" uid="uid://d1g5v6rv40y8w" path="res://data/shop/shop_counter.tscn" id="25_dlwqu"]
 [ext_resource type="PackedScene" uid="uid://18m8t6ns0um6" path="res://world/foliage/tall_grass/tall_grass5.tscn" id="25_g2dj5"]
 [ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
+[ext_resource type="Texture2D" uid="uid://dflchod5mex4h" path="res://assets/art/crops/icons/crop_daisy_icon.png" id="28_p8dsh"]
+[ext_resource type="Script" uid="uid://2md1mo0fftce" path="res://point_light_2d.gd" id="29_a5i0f"]
 [ext_resource type="Script" uid="uid://coxtildet1c5e" path="res://ui/current_gold_label.gd" id="35_0p3ls"]
 [ext_resource type="PackedScene" uid="uid://c1jaq6kvtgerl" path="res://ui/shop/cart_ui/shop_menu.tscn" id="36_0p3ls"]
 [ext_resource type="Script" uid="uid://c0njn6sf47qjg" path="res://world/shop/shop_system.gd" id="40_0p3ls"]
@@ -1082,6 +1084,11 @@ y_sort_enabled = true
 position = Vector2(512, 512)
 shop_system = NodePath("../../../Systems/ShopSystem")
 shop_info = ExtResource("26_bsn28")
+
+[node name="PointLight2D" type="PointLight2D" parent="World/YSortWorld" unique_id=35035684]
+position = Vector2(304, 496)
+texture = ExtResource("28_p8dsh")
+script = ExtResource("29_a5i0f")
 
 [node name="Spawners" type="Node2D" parent="." unique_id=1237077743]
 
