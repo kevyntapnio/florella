@@ -23,7 +23,7 @@ func add_item(item_id, amount):
 	add_stack(stack)
 	
 func add_stack(stack):
-	
+
 	for i in range(inventory.size()):
 		if inventory[i] == null:
 			continue
@@ -43,7 +43,6 @@ func add_stack(stack):
 					return stack
 			
 	for i in range(inventory.size()):
-			
 		if inventory[i] == null:
 			var new_stack = ItemStack.new()
 			new_stack.item_data = stack.item_data

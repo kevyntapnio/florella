@@ -65,7 +65,6 @@ func is_paused() -> bool:
 	
 func check_day_end():
 	if current_hour == 2 and current_minute == 0:
-		emit_signal("day_ended")
 		advance_day()
 		
 func reset_day_timer():

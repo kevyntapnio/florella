@@ -4,6 +4,7 @@ extends CanvasLayer
 
 @onready var grid_container = $MarginContainer/Background/MarginContainer/GridContainer
 
+var shop
 var slots: Array = []
 var is_open = false
 	
@@ -25,7 +26,6 @@ func close_menu():
 	is_open = false
 	visible = false
 	clear_slots()
-	#cart.clear_slots()
 	
 func _input(event: InputEvent) -> void:
 	if not is_open:
@@ -33,6 +33,10 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("ui_cancel"):
 		close_menu()
+		get_viewport().set_input_as_handled()
+		
+	if event.is_action_pressed("ui_accept"):
+		shop.confirm_purchase()
 		get_viewport().set_input_as_handled()
 	
 func create_slots(shop_entries):
@@ -54,7 +58,7 @@ func create_slots(shop_entries):
 	update_slots(shop_entries)
 		
 func on_slot_clicked(slot_index):
-	print("slot clicked:", slot_index)
+	shop.handle_left_click(slot_index)
 
 func clear_slots():
 	if slots == null:

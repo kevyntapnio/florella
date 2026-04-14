@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Mobile")
 [autoload]
 
 TimeManager="*uid://nhbm75nrjo40"
+PlayerGlobalStats="*uid://r1jq13wuyr26"
 InventorySystem="*uid://c56dlwcbkxmlm"
 TargetingSystem="*uid://c8rd2bjpyuhok"
 GridManager="*uid://bdh6epucito8u"
@@ -30,6 +31,7 @@ HotbarUI="*uid://cg2x2l5bhty88"
 HeldItemUI="*uid://b2r44t7x6je43"
 BgmPlayer="*uid://dhrjg6s01yru7"
 TargetingVisual="*uid://clblglbyxcfdx"
+TransactionSystem="*uid://8m8wbtfdjn8j"
 VisibilitySystem="*uid://dnxebntx2go01"
 
 [display]

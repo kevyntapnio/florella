@@ -2,13 +2,14 @@
 
 [ext_resource type="Resource" uid="uid://wukk5bq8gb1w" path="res://data/cropdata/ranunculus.tres" id="1_64x04"]
 [ext_resource type="Script" uid="uid://cocmcuylq1b4b" path="res://items/seeds/seed.gd" id="1_k1ep8"]
-[ext_resource type="Texture2D" uid="uid://cdlg7v2c2nciq" path="res://assets/art/crops/sprites/ranunculus000.png" id="2_3di5l"]
+[ext_resource type="Texture2D" uid="uid://cit7obyjobsn2" path="res://assets/art/icons/seeds/ranunculus_corms.png" id="2_64x04"]
 
 [resource]
 script = ExtResource("1_k1ep8")
 crop_data = ExtResource("1_64x04")
 id = "ranunculus_corms"
 name = "Ranunculus Corms"
-icon = ExtResource("2_3di5l")
+icon = ExtResource("2_64x04")
 category = 0
+price = 200
 metadata/_custom_type_script = "uid://cocmcuylq1b4b"

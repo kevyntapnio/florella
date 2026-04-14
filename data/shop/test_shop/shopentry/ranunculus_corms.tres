@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://b2ukqsqe5h7qk"]
+
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_ewdeg"]
+[ext_resource type="Resource" uid="uid://b11ahok5ffift" path="res://data/itemdata/ranunculus_corms.tres" id="1_wft2e"]
+
+[resource]
+script = ExtResource("1_ewdeg")
+item = ExtResource("1_wft2e")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

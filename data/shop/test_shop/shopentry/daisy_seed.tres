@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://beypk3hsuybbs"]
+
+[ext_resource type="Resource" uid="uid://dcmmxa5sp8qrd" path="res://data/itemdata/daisy_seed.tres" id="1_i17ue"]
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_shsfv"]
+
+[resource]
+script = ExtResource("1_shsfv")
+item = ExtResource("1_i17ue")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

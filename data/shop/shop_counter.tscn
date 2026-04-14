@@ -18,11 +18,11 @@ script = ExtResource("1_k4fde")
 texture = ExtResource("2_8ft7r")
 offset = Vector2(0, -9)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1784261124]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1784261124]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=645038054]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=645038054]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_k4fde")
 

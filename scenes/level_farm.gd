@@ -29,3 +29,5 @@ func _ready() -> void:
 
 	if $World/GrassDetailMap.is_inside_tree():
 		$World/GrassDetailMap.add_grass_tile_variants()
+
+	PlayerGlobalStats.add_to_wallet(1000)

@@ -38,7 +38,6 @@
 [ext_resource type="PackedScene" uid="uid://d1g5v6rv40y8w" path="res://data/shop/shop_counter.tscn" id="25_dlwqu"]
 [ext_resource type="PackedScene" uid="uid://18m8t6ns0um6" path="res://world/foliage/tall_grass/tall_grass5.tscn" id="25_g2dj5"]
 [ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
-[ext_resource type="Script" uid="uid://coxtildet1c5e" path="res://ui/current_gold_label.gd" id="35_0p3ls"]
 [ext_resource type="PackedScene" uid="uid://ydbht2g3q5ux" path="res://ui/shop/shop_ui/shop_ui.tscn" id="36_e2aru"]
 [ext_resource type="Script" uid="uid://c0njn6sf47qjg" path="res://world/shop/shop_system.gd" id="40_0p3ls"]
 
@@ -1114,13 +1113,6 @@ theme_override_fonts/font = ExtResource("2_2ox4o")
 theme_override_font_sizes/font_size = 25
 text = "00:00"
 script = ExtResource("6_q8hax")
-
-[node name="CurrentGoldLabel" type="Label" parent="TempUI" unique_id=1239074577]
-offset_left = 544.0
-offset_top = 24.0
-offset_right = 626.0
-offset_bottom = 64.0
-script = ExtResource("35_0p3ls")
 
 [node name="InventoryUI" parent="." unique_id=405443883 instance=ExtResource("2_k51qb")]
 
