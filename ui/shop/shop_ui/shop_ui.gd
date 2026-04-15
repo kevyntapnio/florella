@@ -35,6 +35,8 @@ func create_slots(shop_entries):
 		slot.slot_index = i
 		
 		slot.slot_clicked.connect(on_slot_clicked)
+		slot.hovered.connect(_on_hovered)
+		slot.unhovered.connect(_on_unhovered)
 	
 	update_slots(shop_entries)
 		
@@ -62,3 +64,15 @@ func update_slots(shop_entries):
 		var price = entry.get_price()
 			
 		slot.update_slot(icon, price)
+
+func _on_hovered(index):
+	
+	var slot = slots[index]
+	slot.modulate = Color(1.1, 1.1, 1.1, 1.1)
+	slot.scale = Vector2(1.03, 1.03)
+	
+func _on_unhovered(index):
+	
+	var slot = slots[index]
+	slot.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	slot.scale = Vector2i(1.0, 1.0)

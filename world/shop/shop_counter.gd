@@ -41,7 +41,7 @@ func open_shop_menu():
 func set_targeted(is_targeted: bool):
 	
 	if is_targeted:
-		modulate = Color(1.5, 1.5, 1.5)
+		modulate = Color(1.4, 1.4, 1.4)
 	else:
 		modulate = Color(1, 1, 1)
 		

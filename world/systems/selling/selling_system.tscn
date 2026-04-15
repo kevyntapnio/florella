@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://q8qydbdkg7lh"]
+
+[ext_resource type="Script" uid="uid://cnhnyvldpwb72" path="res://world/systems/selling/selling_system.gd" id="1_dsjfl"]
+
+[node name="SellingSystem" type="Node2D" unique_id=1792082976]
+script = ExtResource("1_dsjfl")

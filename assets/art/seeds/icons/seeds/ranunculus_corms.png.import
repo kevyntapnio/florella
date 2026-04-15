@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gbhm80uip8vc"
-path="res://.godot/imported/tulip_bulb.png-4a7bc2bcbb01a7d4159e81699157d5d9.ctex"
+uid="uid://cit7obyjobsn2"
+path="res://.godot/imported/ranunculus_corms.png-4c00170f7acdeda78916c306756aa9a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/icons/seeds/tulip_bulb.png"
-dest_files=["res://.godot/imported/tulip_bulb.png-4a7bc2bcbb01a7d4159e81699157d5d9.ctex"]
+source_file="res://assets/art/seeds/icons/seeds/ranunculus_corms.png"
+dest_files=["res://.godot/imported/ranunculus_corms.png-4c00170f7acdeda78916c306756aa9a7.ctex"]
 
 [params]
 

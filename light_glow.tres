@@ -1,9 +1,0 @@
-[gd_resource type="GradientTexture2D" format=3 uid="uid://ci67bsh63iola"]
-
-[sub_resource type="Gradient" id="Gradient_6doos"]
-colors = PackedColorArray(0.995575, 0.9089091, 0.6466903, 1, 1, 1, 1, 0.627451)
-
-[resource]
-gradient = SubResource("Gradient_6doos")
-fill = 1
-fill_from = Vector2(0.51282054, 0.5)

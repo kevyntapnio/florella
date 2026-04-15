@@ -127,5 +127,7 @@ func handle_interact_proximity(_selected_item):
 func has_valid_interaction() -> bool:
 	if focused_interactable == null:
 		return false
-		
-	return focused_interactable.get_interaction_score(null) > 0
+	
+	if focused_interactable.has_method("get_interaction_score"):
+		return focused_interactable.get_interaction_score(null) > 0
+	return false

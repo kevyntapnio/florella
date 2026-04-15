@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dp8tigonc3r05"]
+
+[ext_resource type="Script" uid="uid://2md1mo0fftce" path="res://test_objects/light_source/light_source.gd" id="1_gbl34"]
+[ext_resource type="Texture2D" uid="uid://dflchod5mex4h" path="res://assets/art/crops/icons/crop_daisy_icon.png" id="2_i2a56"]
+[ext_resource type="Texture2D" uid="uid://ci67bsh63iola" path="res://test_objects/light_source/light_glow.tres" id="3_diop3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbl34"]
+radius = 24.0
+
+[node name="DaisyLamp" type="Node2D" unique_id=294373437]
+script = ExtResource("1_gbl34")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=418497896]
+texture = ExtResource("2_i2a56")
+offset = Vector2(0, -16)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=543551052]
+position = Vector2(0, -16)
+color = Color(0.9999997, 0.8538839, 0.559188, 1)
+texture = ExtResource("3_diop3")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1090308797]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1148047111]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_gbl34")

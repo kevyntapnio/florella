@@ -8,9 +8,13 @@ var shop_entry: Resource
 @onready var price_label = $Background/PriceLabel
 
 signal slot_clicked
+signal hovered
+signal unhovered
 
 func _ready() -> void:
-	pass
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -21,4 +25,10 @@ func _gui_input(event: InputEvent) -> void:
 func update_slot(item_icon: Texture, price: int):
 	icon.texture = item_icon
 	price_label.text = str(price)
+	
+func _on_mouse_entered():
+	hovered.emit(slot_index)
+	
+func _on_mouse_exited():
+	unhovered.emit(slot_index)
 	

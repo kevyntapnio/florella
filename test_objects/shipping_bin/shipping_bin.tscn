@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cmaocmag6pv57"]
+
+[ext_resource type="Script" uid="uid://cnt1844dt41vf" path="res://test_objects/shipping_bin/shipping_bin.gd" id="1_nhn0j"]
+[ext_resource type="Texture2D" uid="uid://bqy8bph6v8voe" path="res://assets/art/shop_objects/crate/crate.png" id="2_lt3en"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq6og"]
+size = Vector2(28, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnwyr"]
+size = Vector2(34, 37)
+
+[node name="ShippingBin" type="StaticBody2D" unique_id=123653949]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_nhn0j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=526538795]
+texture = ExtResource("2_lt3en")
+offset = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202451469]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_tq6og")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1698132908]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1231748816]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_nnwyr")
