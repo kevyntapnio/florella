@@ -1,24 +1,17 @@
 extends Control
 class_name SlotContainerUI
 
-@export var total_slots: int
 @export var slot_scene: PackedScene
 @export var grid_container: GridContainer
 
+var container: SlotContainer
 var slots: Array = []
 
-func _ready() -> void:
-	slot_scene = load("res://ui/inventory_ui/slot.tscn")
-	
-	create_slots()
-	
-func create_slots():
-	
-	if slot_scene == null:
-		push_error("SlotContainer ERROR: slot_scene not found")
-		return
+func create_slots(size):
+	if slot_scene == null or grid_container == null:
+		push_error("SlotContainerUI ERROR: assign slot_scene or grid_container in Editor")
 		
-	for i in range(total_slots):
+	for i in range(size):
 		var slot = slot_scene.instantiate()
 		grid_container.add_child(slot)
 		slot.slot_index = i
@@ -26,12 +19,9 @@ func create_slots():
 		
 		slot.slot_clicked.connect(_on_slot_clicked)
 		slot.slot_right_clicked.connect(_on_slot_right_clicked)
-
-func _on_slot_clicked():
+		
+func _on_slot_clicked(slot_index):
 	pass
 	
-func _on_slot_right_clicked():
+func _on_slot_right_clicked(slot_index):
 	pass
-	
-func update_all_slots():
-	

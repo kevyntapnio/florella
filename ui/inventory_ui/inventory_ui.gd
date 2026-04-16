@@ -59,7 +59,7 @@ func toggle():
 	TimeManager.pause_time(self)
 	
 	if not is_open:
-		InventoryInteraction.cancel_held()
+		SlotInteraction.cancel_held()
 		TimeManager.resume_time(self)
 	update_all_slots()
 		
@@ -79,7 +79,7 @@ func update_selection_visuals():
 			
 func on_slot_clicked(slot_index):
 	
-	InventoryInteraction.handle_left_click(slot_index)
+	SlotInteraction.handle_left_click(InventorySystem, slot_index)
 	
 	if selected_index != slot_index:
 		selected_index = slot_index
@@ -91,7 +91,7 @@ func on_slot_clicked(slot_index):
 
 func on_right_click(slot_index):
 	
-	InventoryInteraction.handle_right_click(slot_index)
+	SlotInteraction.handle_right_click(InventorySystem, slot_index)
 		
 	update_all_slots()
 				

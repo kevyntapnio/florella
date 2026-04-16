@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var quantity_label = $Root/Icon/Quantity
 
 func _ready():
-	InventoryInteraction.held_changed.connect(on_held_changed)
+	SlotInteraction.held_changed.connect(on_held_changed)
 	
 	layer = 11  # ensure on top
 	

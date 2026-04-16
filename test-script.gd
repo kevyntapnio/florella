@@ -1,48 +1,130 @@
-func find_terrain_subtype(cell):
-	var terrain_layer
+extends Node
+
+
+signal slots_changed
+
+var slots: Array = []
+
+func initialize(container_size):
+	slots.clear()
 	
-	for layer in terrain_layers:
-		var tile = layer.get_cell_atlas_coords(cell)
-		var type = layer.get_meta("terrain_type")
-		
-		if tile != Vector2i(-1, -1):
-			if is_tile_meaningful(type, tile):
-				terrain_layer = layer
-				break
-				
-	var subtype = DEFAULT_INFO["subtype"]
-	var cell_below = cell + Vector2i(0, 1)
-	var cell_above = cell + Vector2i(0, -1)
+	for i in range(container_size):
+		slots.append(null)
 	
-	var cell_type = find_terrain_type(cell)
-	
-	var cell_below_type = DEFAULT_INFO["terrain_type"]
-	var cell_above_type = DEFAULT_INFO["terrain_type"]
-	
-	if terrain_layer.get_cell_atlas_coords(cell_below) == Vector2i(-1, -1):
-		pass
-	
-	cell_below_type = find_terrain_type(cell_below)
-	
-	if terrain_layer.get_cell_atlas_coords(cell_above):
-		pass
-		
-	cell_above_type = find_terrain_type(cell_above)
-	
-	if cell_type == "ground":
-		var tile_atlas = terrain_layer.get_cell_atlas_coords(cell)
-		if tile_atlas == FULL_TILE:
-			subtype = "dirt"
-		elif tile_atlas == EMPTY_TILE:
-			subtype = "grass"
-		elif tile_atlas == EMPTY_TILE and cell_above_type == "cliff":
-			subtype = "cliff_face"
+func add_stack(stack):
+
+	for i in range(slots.size()):
+		if slots[i] == null:
+			continue
 			
-	if cell_type == "cliff":
-		if cell_below_type == "cliff":
-			subtype = "cliff_top"
-		else:
-			subtype = "cliff_face"
+		if slots[i].item_data == stack.item_data:
+			var max_stack = stack.item_data.max_stack
+			var space = max_stack - slots[i].quantity
+				
+			if space > 0:
+				var to_add = min(space, stack.quantity)
+			
+				slots[i].quantity += to_add
+				slots_changed.emit()
+				
+				stack.quantity -= to_add
+				if stack.quantity <= 0:
+					return stack
+			
+	for i in range(slots.size()):
+		if slots[i] == null:
+			var new_stack = ItemStack.new()
+			new_stack.item_data = stack.item_data
+			
+			var to_add = min(stack.item_data.max_stack, stack.quantity)
+			new_stack.quantity = to_add
+			
+			slots[i] = new_stack
+			slots_changed.emit()
+			
+			stack.quantity -= to_add
+			
+			if stack.quantity <= 0:
+				return stack
+		
+	return stack
 	
-	return subtype
+func add_to_slot(slot_index, stack: ItemStack) -> bool:
+	var slot_stack = slots[slot_index]
 	
+	if slot_stack == null:
+		slots[slot_index] = stack
+		slots_changed.emit()
+		
+		return true
+		
+	if slot_stack.item_data == stack.item_data:
+		var max_stack = stack.item_data.max_stack
+		var space = max_stack - slot_stack.quantity
+		
+		if space <= 0:
+			return false
+			
+		var to_add = min(space, stack.quantity)
+		
+		slot_stack.quantity += to_add
+		stack.quantity -= to_add
+		slots_changed.emit()
+		
+		return true
+	else:
+		return false
+			
+func remove_item(item_id, amount):
+	
+	var remaining_to_remove = amount
+	
+	for i in range(slots.size()):
+		var item = slots[i]
+		
+		if item == null:
+			continue
+			
+		if item.item_data.id == item_id:
+			if item.quantity > remaining_to_remove:
+				item.quantity -= remaining_to_remove
+				remaining_to_remove = 0
+				break
+			else:
+				remaining_to_remove -= item.quantity
+				slots[i] = null
+				
+		if remaining_to_remove == 0:
+			break
+	
+	# Signal for UI sync
+	slots_changed.emit()
+	return amount - remaining_to_remove
+	
+func remove_from_slot(slot_index, amount_requested):
+
+	var item = slots[slot_index]
+	
+	if item == null:
+		return 0
+	
+	var amount_to_remove = min(amount_requested, item.quantity)
+		
+	item.quantity -= amount_to_remove
+			
+	if item.quantity == 0:
+		slots[slot_index] = null 
+		
+	slots_changed.emit()
+	return amount_to_remove
+	
+func get_item(index):
+	
+	if index < 0 or index >= slots.size():
+		return null
+		
+	return slots[index]
+			
+func set_slot(slot_index, stack: ItemStack):
+	slots[slot_index] = stack
+	slots_changed.emit()

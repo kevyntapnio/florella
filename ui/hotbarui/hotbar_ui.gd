@@ -4,7 +4,7 @@ var slots: Array = []
 
 func _ready():
 	Hotbar.selected_changed.connect(on_selected_changed)
-	InventorySystem.inventory_changed.connect(update_all_slots)
+	InventorySystem.slots_changed.connect(update_all_slots)
 	
 	layer = 10
 	
@@ -45,14 +45,14 @@ func update_all_slots():
 			slot.update_slot(icon, quantity)
 			
 func on_slot_clicked(slot_index):
-	if InventoryInteraction.held_stack == null:
+	if SlotInteraction.held_stack == null:
 		Hotbar.set_selected_index(slot_index)
 	else:
 		var inventory_index = Hotbar.get_inventory_index(slot_index)
-		InventoryInteraction.handle_left_click(inventory_index)
+		SlotInteraction.handle_left_click(InventorySystem, inventory_index)
 	
 func on_right_click(slot_index):
 	var inventory_index = Hotbar.get_inventory_index(slot_index)
-	InventoryInteraction.handle_right_click(inventory_index)
+	SlotInteraction.handle_right_click(InventorySystem, inventory_index)
 	
 	

@@ -1,21 +1,27 @@
 [gd_scene format=3 uid="uid://b7ks18o54lk0p"]
 
-[ext_resource type="Script" uid="uid://dy0bkiw7dxmjx" path="res://inventory_ui.gd" id="1_84fpp"]
+[ext_resource type="Script" uid="uid://dyictx7cr3wag" path="res://ui/inventory_ui/inventory_ui.gd" id="1_w8wow"]
 [ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://ui/inventory_ui/slot.tscn" id="2_n8fuw"]
 [ext_resource type="Texture2D" uid="uid://co4bjcqipj3am" path="res://assets/art/ui/inventory_hotbar_ui/inventory panel.png" id="3_heecw"]
 [ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_n8fuw"]
 
-[node name="InventoryUI" type="Control" unique_id=763682832 node_paths=PackedStringArray("grid_container") groups=["inventory_ui"]]
+[node name="InventoryUI" type="CanvasLayer" unique_id=405443883 node_paths=PackedStringArray("grid_container") groups=["inventory_ui"]]
 process_mode = 3
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_84fpp")
+layer = 10
+script = ExtResource("1_w8wow")
+grid_container = NodePath("TextureRect/MarginContainer/VBoxContainer/GridContainer")
 slot_scene = ExtResource("2_n8fuw")
-grid_container = NodePath("Background/MarginContainer/VBoxContainer/GridContainer")
 
-[node name="Background" type="NinePatchRect" parent="." unique_id=832997566]
-custom_minimum_size = Vector2(210, 281)
-layout_mode = 1
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1647486444]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34117648)
+
+[node name="TextureRect" type="NinePatchRect" parent="." unique_id=832997566]
+custom_minimum_size = Vector2(230, 281)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -27,7 +33,7 @@ texture = ExtResource("3_heecw")
 region_rect = Rect2(92, 33, 225, 320)
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=619101665]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=619101665]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,11 +45,11 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer" unique_id=759250687]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=759250687]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer" unique_id=792440232]
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=792440232]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -55,7 +61,7 @@ theme_override_font_sizes/font_size = 23
 text = "Inventory"
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/VBoxContainer" unique_id=1791477740]
+[node name="GridContainer" type="GridContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1791477740]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
