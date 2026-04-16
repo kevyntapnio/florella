@@ -7,6 +7,7 @@ func _ready() -> void:
 	
 	InventorySystem.add_item("basic_hoe", 1)
 	InventorySystem.add_item("basic_watering_can", 1)
+	InventorySystem.add_item("tulip", 1)
 
 	var world_tile_query = $Systems/WorldTileQuery
 	

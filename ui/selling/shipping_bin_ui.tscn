@@ -16,7 +16,7 @@ slot_scene = ExtResource("2_tkagw")
 grid_container = NodePath("Background/MarginContainer/GridContainer")
 
 [node name="Background" type="NinePatchRect" parent="." unique_id=894020339]
-custom_minimum_size = Vector2(186, 40)
+custom_minimum_size = Vector2(194, 46)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

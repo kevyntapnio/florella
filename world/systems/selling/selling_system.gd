@@ -9,5 +9,21 @@ func initialize():
 	
 func create_sell_container():
 	sell_container = SellContainer.new()
-	sell_container.container_ui = sell_menu_ui.shipping_bin_ui
 	
+	var shipping_bin_ui = sell_menu_ui.shipping_bin_ui
+	
+	sell_container.container_ui = shipping_bin_ui
+	shipping_bin_ui.initialize(sell_container)
+	
+	add_child(sell_container)
+
+func handle_sell_request():
+	var sell_items = sell_container.get_sell_items()
+	var price = sell_container.get_total_price()
+
+	## in the future, sell_price multipliers may be calculated here
+	## example: bouquet scoring
+	
+	if TransactionSystem.perform_sell_transaction(sell_items, price):
+		sell_container.reset_session()
+		

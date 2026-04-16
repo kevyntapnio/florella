@@ -19,3 +19,8 @@ func is_transaction_valid(cart_items, total_price) -> bool:
 		return false
 		
 	return true
+	
+func perform_sell_transaction(items, total_price) -> bool:
+	
+	PlayerGlobalStats.add_to_wallet(total_price)
+	return true

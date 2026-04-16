@@ -4,12 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://b7ks18o54lk0p" path="res://ui/inventory_ui/inventory_ui.tscn" id="2_5gcrt"]
 [ext_resource type="PackedScene" uid="uid://kbwo8858b67m" path="res://ui/selling/shipping_bin_ui.tscn" id="2_piur1"]
 
-[node name="SellMenuUI" type="CanvasLayer" unique_id=1230154816 node_paths=PackedStringArray("shipping_bin_ui", "inventory_copy", "confirm_button")]
+[node name="SellMenuUI" type="CanvasLayer" unique_id=1230154816 node_paths=PackedStringArray("shipping_bin_ui")]
 process_mode = 3
 script = ExtResource("1_piur1")
 shipping_bin_ui = NodePath("MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/ShippingBinUI")
-inventory_copy = NodePath("MarginContainer/CenterContainer/HBoxContainer/InventoryUI")
-confirm_button = NodePath("MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/Button")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=590081072]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3529412)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=764334615]
 anchors_preset = 15
@@ -37,17 +43,19 @@ theme_override_constants/separation = 4
 alignment = 1
 
 [node name="ShippingBinUI" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1822433370 instance=ExtResource("2_piur1")]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(196, 48)
 layout_mode = 2
 
 [node name="Button" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1173492568]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 4
-text = "CONFIRM"
+text = "SELL"
 
 [node name="InventoryUI" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=763682832 instance=ExtResource("2_5gcrt")]
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

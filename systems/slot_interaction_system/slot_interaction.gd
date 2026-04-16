@@ -1,6 +1,5 @@
 extends Node
 
-var held_id = null
 var held_stack: ItemStack = null
 var source_index = -1
 var source_container: SlotContainer = null
@@ -116,7 +115,7 @@ func cancel_held():
 	
 	var success = source_container.add_to_slot(source_index, held_stack)
 	
-	if success and held_stack.quantity <= 0:
+	if success:
 		clear_held()
 	else:
 		

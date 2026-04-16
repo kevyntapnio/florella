@@ -9,4 +9,6 @@ id = "daisy"
 name = "\"Daisy\""
 icon = ExtResource("1_yiga1")
 category = 1
+sell_price = 100
+is_sellable = true
 metadata/_custom_type_script = "uid://qpy31wq3lcps"

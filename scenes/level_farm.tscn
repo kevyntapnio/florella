@@ -1114,7 +1114,6 @@ seed_value = 2
 min_spacing = 3
 
 [node name="TempUI" type="CanvasLayer" parent="." unique_id=754423091]
-visible = false
 
 [node name="TimeDebugLabel" type="Label" parent="TempUI" unique_id=945649061]
 z_index = 5

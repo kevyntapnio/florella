@@ -6,9 +6,8 @@ var selected_index = -1
 signal selection_changed(selected_index)
 
 func _ready():
-	container = InventorySystem
-	
 	var inventory = InventorySystem.get_inventory()
+	initialize(InventorySystem)
 	create_slots(inventory.size())
 	
 	await get_tree().process_frame

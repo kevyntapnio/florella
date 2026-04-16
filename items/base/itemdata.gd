@@ -20,6 +20,8 @@ enum ItemCategory {
 @export var tags: Array[String] = []
 
 @export var price: int
+@export var sell_price: int = 0
+@export var is_sellable: bool = false
 
 func use(player_tile, context):
 	pass
