@@ -7,7 +7,7 @@ extends CanvasLayer
 func _ready():
 	InventoryInteraction.held_changed.connect(on_held_changed)
 	
-	layer = 10  # ensure on top
+	layer = 11  # ensure on top
 	
 	root.visible = true
 	root.size = Vector2(64, 64)

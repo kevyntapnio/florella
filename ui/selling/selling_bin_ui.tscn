@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bnv6i34boeurt"]
+
+[ext_resource type="Script" uid="uid://c05u7wi0g2uwi" path="res://ui/shop/cart_ui/cart_ui.gd" id="1_frrq8"]
+[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://ui/inventory_ui/inventory_slot.tscn" id="2_2lgp2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qn4gc"]
+load_path = "res://.godot/imported/hotbar.png-0e0fae95df5a6d93db578f6473bae1b8.ctex"
+
+[node name="CartUI" type="Control" unique_id=555686226]
+custom_minimum_size = Vector2(196, 42)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frrq8")
+slot_scene = ExtResource("2_2lgp2")
+
+[node name="Background" type="NinePatchRect" parent="." unique_id=2005387513]
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_qn4gc")
+region_rect = Rect2(19, 9, 370, 49)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1439526956]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer" unique_id=338681882]
+layout_mode = 2
+columns = 5

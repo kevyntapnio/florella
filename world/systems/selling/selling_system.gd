@@ -1,12 +1,11 @@
 extends Node2D
 
 @export var sell_menu_ui: CanvasLayer
-var cart: Cart
 
 func initialize():
-	var inventory_copy = InventorySystem.get_inventory()
 	
-	#sell_menu_ui.initialize(inventory_copy)
-	var cart = Cart.new()
-	add_child(cart)
-	print(cart)
+	sell_menu_ui.open_sell_menu()
+	
+	var bin = SellingBin.new()
+	bin.selling_bin_ui = sell_menu_ui.selling_bin_ui
+	add_child(bin)

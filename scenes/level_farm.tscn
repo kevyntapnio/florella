@@ -42,8 +42,11 @@
 [ext_resource type="PackedScene" uid="uid://dp8tigonc3r05" path="res://test_objects/light_source/light_source.tscn" id="28_p8dsh"]
 [ext_resource type="PackedScene" uid="uid://hvubnck8s1kr" path="res://systems/timemanager/day_transition.tscn" id="30_a5i0f"]
 [ext_resource type="Script" uid="uid://coxtildet1c5e" path="res://ui/current_gold_label.gd" id="35_0p3ls"]
-[ext_resource type="PackedScene" uid="uid://c1jaq6kvtgerl" path="res://ui/shop/cart_ui/shop_menu.tscn" id="36_0p3ls"]
+[ext_resource type="PackedScene" uid="uid://c1jaq6kvtgerl" path="res://ui/shop/shop_ui/shop_menu.tscn" id="36_0p3ls"]
 [ext_resource type="Script" uid="uid://c0njn6sf47qjg" path="res://world/shop/shop_system.gd" id="40_0p3ls"]
+[ext_resource type="PackedScene" uid="uid://c7iidivcpxqy0" path="res://ui/selling/sell_menu_ui.tscn" id="41_dudpv"]
+[ext_resource type="PackedScene" uid="uid://cmaocmag6pv57" path="res://test_objects/shipping_bin/shipping_bin.tscn" id="45_a5i0f"]
+[ext_resource type="PackedScene" uid="uid://q8qydbdkg7lh" path="res://world/systems/selling/selling_system.tscn" id="46_w643r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vk3p0"]
 texture = ExtResource("6_u6gc8")
@@ -1085,6 +1088,10 @@ shop_info = ExtResource("26_bsn28")
 [node name="DaisyLamp" parent="World/YSortWorld" unique_id=294373437 instance=ExtResource("28_p8dsh")]
 position = Vector2(128, 600)
 
+[node name="ShippingBin" parent="World/YSortWorld" unique_id=123653949 node_paths=PackedStringArray("selling_system") instance=ExtResource("45_a5i0f")]
+position = Vector2(432, 512)
+selling_system = NodePath("../../../Systems/SellingSystem")
+
 [node name="DayTransition" parent="." unique_id=1584597748 instance=ExtResource("30_a5i0f")]
 
 [node name="Spawners" type="Node2D" parent="." unique_id=1237077743]
@@ -1132,9 +1139,15 @@ offset_bottom = 64.0
 script = ExtResource("35_0p3ls")
 
 [node name="ShopMenu" parent="." unique_id=1390379076 node_paths=PackedStringArray("shop_system") instance=ExtResource("36_0p3ls")]
+visible = false
 shop_system = NodePath("../Systems/ShopSystem")
 
+[node name="SellMenuUI" parent="." unique_id=1230154816 node_paths=PackedStringArray("selling_system") instance=ExtResource("41_dudpv")]
+visible = false
+selling_system = NodePath("../Systems/SellingSystem")
+
 [node name="InventoryUI" parent="." unique_id=405443883 instance=ExtResource("2_k51qb")]
+visible = false
 
 [node name="Systems" type="Node2D" parent="." unique_id=1370087006]
 
@@ -1156,3 +1169,6 @@ cliff_ground_colliders = NodePath("../../World/CliffGroundCollision")
 [node name="ShopSystem" type="Node" parent="Systems" unique_id=1541733244 node_paths=PackedStringArray("shop_menu_ui")]
 script = ExtResource("40_0p3ls")
 shop_menu_ui = NodePath("../../ShopMenu")
+
+[node name="SellingSystem" parent="Systems" unique_id=1792082976 node_paths=PackedStringArray("sell_menu_ui") instance=ExtResource("46_w643r")]
+sell_menu_ui = NodePath("../../SellMenuUI")

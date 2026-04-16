@@ -112,3 +112,4 @@ func handle_right_click(index):
 		
 func clear_slot(index):
 	cart_items[index] = null
+	

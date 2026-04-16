@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c7iidivcpxqy0"]
+
+[ext_resource type="Script" uid="uid://c2lowg4mre7w6" path="res://ui/selling/sell_menu_ui.gd" id="1_piur1"]
+[ext_resource type="PackedScene" uid="uid://dgqnqie4pl63a" path="res://ui/selling/inventory_copy.tscn" id="2_piur1"]
+[ext_resource type="PackedScene" uid="uid://hqokhtay1gqf" path="res://ui/shop/cart_ui/cart_ui.tscn" id="3_ks3e7"]
+
+[node name="SellMenuUI" type="CanvasLayer" unique_id=1230154816 node_paths=PackedStringArray("inventory_copy", "confirm_button")]
+process_mode = 3
+script = ExtResource("1_piur1")
+inventory_copy = NodePath("MarginContainer/CenterContainer/HBoxContainer/InventoryCopy")
+confirm_button = NodePath("MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/SellButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=764334615]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=720458658]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer" unique_id=329167653]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=1409921685]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="CartUI" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=555686226 instance=ExtResource("3_ks3e7")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SellButton" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=779935089]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "CONFIRM
+"
+
+[node name="InventoryCopy" parent="MarginContainer/CenterContainer/HBoxContainer" unique_id=1633720009 instance=ExtResource("2_piur1")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.0

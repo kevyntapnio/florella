@@ -28,9 +28,15 @@ func create_slots(size):
 		slots.append(slot)
 		slot.slot_index = i
 		
+		slot.slot_clicked.connect(on_left_click)
 		slot.slot_right_clicked.connect(on_right_click)
-		
+	
+func on_left_click(index):
+	
+	cart.handle_left_click(index)
+	
 func on_right_click(index):
+	
 	cart.handle_right_click(index)
 	
 func update_display(total_price):
