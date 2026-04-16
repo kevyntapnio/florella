@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c2lowg4mre7w6" path="res://ui/selling/sell_menu_ui.gd" id="1_piur1"]
 [ext_resource type="PackedScene" uid="uid://dgqnqie4pl63a" path="res://ui/selling/inventory_copy.tscn" id="2_piur1"]
-[ext_resource type="PackedScene" uid="uid://hqokhtay1gqf" path="res://ui/shop/cart_ui/cart_ui.tscn" id="3_ks3e7"]
 
 [node name="SellMenuUI" type="CanvasLayer" unique_id=1230154816 node_paths=PackedStringArray("inventory_copy", "confirm_button")]
 process_mode = 3
@@ -35,11 +34,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 0.0
 alignment = 1
-
-[node name="CartUI" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=555686226 instance=ExtResource("3_ks3e7")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="SellButton" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=779935089]
 layout_mode = 2

@@ -11,7 +11,7 @@ var slots: Array = []
 signal selection_changed(selected_index) ## for slot highlight update
 	
 func _ready():
-	slot_scene = load("res://ui/inventory_ui/inventory_slot.tscn")
+	slot_scene = load("res://ui/inventory_ui/slot.tscn")
 	inventory = InventorySystem.get_inventory()
 	
 	layer = 10
