@@ -12,6 +12,4 @@ func interact(item, context):
 	if selling_system == null:
 		push_error("ShippingBin ERROR: selling_system not assigned in Editor!")
 		
-	print("Shipping bin interaction triggered")
-	#selling_system.initialize()
-	
+	selling_system.initialize()

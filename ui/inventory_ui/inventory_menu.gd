@@ -11,7 +11,9 @@ func toggle():
 		open()
 		
 func _input(event: InputEvent) -> void:
-	
+	if TimeManager.is_paused() and not is_open:
+		return
+		
 	if event.is_action_pressed("ui_cancel"):
 		toggle()
 		get_viewport().set_input_as_handled()

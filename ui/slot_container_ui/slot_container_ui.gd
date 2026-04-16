@@ -8,6 +8,7 @@ var container: SlotContainer
 var slots: Array = []
 
 func create_slots(size):
+	
 	if slot_scene == null or grid_container == null:
 		push_error("SlotContainerUI ERROR: assign slot_scene or grid_container in Editor")
 		

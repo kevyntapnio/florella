@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://hqokhtay1gqf"]
 
 [ext_resource type="Script" uid="uid://c05u7wi0g2uwi" path="res://ui/shop/cart_ui/cart_ui.gd" id="1_qn4gc"]
-[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://ui/inventory_ui/slot.tscn" id="2_sopmi"]
+[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://ui/slot/slot.tscn" id="2_sopmi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qn4gc"]
 load_path = "res://.godot/imported/hotbar.png-0e0fae95df5a6d93db578f6473bae1b8.ctex"

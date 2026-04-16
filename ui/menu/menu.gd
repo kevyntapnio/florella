@@ -18,3 +18,11 @@ func close():
 	is_open = false
 	visible = false
 	TimeManager.resume_time(self)
+
+func _input(event: InputEvent) -> void:
+	if not is_open: 
+		return
+		
+	if event.is_action_pressed("ui_cancel"):
+		close()
+		get_viewport().set_input_as_handled()

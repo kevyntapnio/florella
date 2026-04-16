@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://kbwo8858b67m"]
+
+[ext_resource type="Script" uid="uid://bg5okqe80h5r7" path="res://shipping_bin_ui.gd" id="1_npcla"]
+[ext_resource type="Texture2D" uid="uid://co4bjcqipj3am" path="res://assets/art/ui/inventory_hotbar_ui/inventory panel.png" id="2_cxiej"]
+[ext_resource type="PackedScene" uid="uid://bqqmapiyelqc5" path="res://ui/slot/slot.tscn" id="2_tkagw"]
+
+[node name="ShippingBinUI" type="Control" unique_id=1822433370 node_paths=PackedStringArray("grid_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_npcla")
+slot_scene = ExtResource("2_tkagw")
+grid_container = NodePath("Background/MarginContainer/GridContainer")
+
+[node name="Background" type="NinePatchRect" parent="." unique_id=894020339]
+custom_minimum_size = Vector2(186, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_cxiej")
+region_rect = Rect2(92, 33, 225, 320)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=1375998599]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer" unique_id=2088564735]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5

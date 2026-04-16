@@ -1,6 +1,5 @@
 extends Node
 
-
 signal slots_changed
 
 var slots: Array = []
