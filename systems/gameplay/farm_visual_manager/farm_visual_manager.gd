@@ -25,3 +25,15 @@ func update_tile(grid_pos: Vector2i, state):
 		watered_layer.set_cell(grid_pos, 0, watered_tile)
 		watered_layer.modulate = Color(1, 1, 1, 0.6)
 		
+func update_tile_debug(grid_pos: Vector2i, state):
+	watered_layer.set_cell(grid_pos, 0, empty_tile)
+	
+	if state == "untilled":
+		tilled_layer.set_cell(grid_pos, 0, empty_tile)
+		
+	if state == "tilled":
+		tilled_layer.set_cell(grid_pos, 0, tilled_tile)
+		
+	if state == "watered":
+		watered_layer.set_cell(grid_pos, 0, watered_tile)
+		watered_layer.modulate = Color(1, 1, 1, 0.6)

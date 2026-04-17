@@ -161,7 +161,7 @@ func set_targeted(is_targeted: bool):
 	var current_stage = get_current_stage()
 	
 	if is_targeted and current_stage.harvestable:
-		modulate = Color(1.5, 1.5, 1.5)
+		modulate = Color(1.3, 1.3, 1.3)
 	else:
 		modulate = Color(1, 1, 1)
 		

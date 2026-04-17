@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dvem2to6ddc11"]
+
+[ext_resource type="Script" uid="uid://cii5c6kmu2n21" path="res://farm_tile_test.gd" id="1_5gxp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v3qk"]
+size = Vector2(32, 32)
+
+[node name="FarmTileTest" type="Node2D" unique_id=974946717]
+script = ExtResource("1_5gxp2")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=141712558]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1235530584]
+shape = SubResource("RectangleShape2D_4v3qk")
