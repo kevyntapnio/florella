@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hvubnck8s1kr"]
 
-[ext_resource type="Script" uid="uid://b4eytmal7y87k" path="res://systems/timemanager/day_transition.gd" id="1_rs8fr"]
+[ext_resource type="Script" uid="uid://b4eytmal7y87k" path="res://systems/global_managers/timemanager/day_transition.gd" id="1_rs8fr"]
 
 [node name="DayTransition" type="CanvasModulate" unique_id=1584597748]
 script = ExtResource("1_rs8fr")

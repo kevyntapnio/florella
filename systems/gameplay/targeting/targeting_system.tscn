@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfts6c20x875h"]
 
-[ext_resource type="Script" uid="uid://c8rd2bjpyuhok" path="res://systems/targeting/targeting_system.gd" id="1_dwngt"]
+[ext_resource type="Script" uid="uid://c8rd2bjpyuhok" path="res://systems/gameplay/targeting/targeting_system.gd" id="1_dwngt"]
 
 [node name="TargetingSystem" type="Node2D" unique_id=796433443]
 script = ExtResource("1_dwngt")

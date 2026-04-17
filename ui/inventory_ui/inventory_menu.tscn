@@ -21,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_bottom = 62
 
 [node name="InventoryUI" parent="MarginContainer" unique_id=763682832 instance=ExtResource("2_cxtyf")]
 layout_mode = 2

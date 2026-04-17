@@ -7,7 +7,7 @@
 size = Vector2(28, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnwyr"]
-size = Vector2(34, 37)
+size = Vector2(41, 48)
 
 [node name="ShippingBin" type="StaticBody2D" unique_id=123653949]
 collision_layer = 32
@@ -27,5 +27,5 @@ collision_layer = 4
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1231748816]
-position = Vector2(0, -11.5)
+position = Vector2(-0.5, -13)
 shape = SubResource("RectangleShape2D_nnwyr")

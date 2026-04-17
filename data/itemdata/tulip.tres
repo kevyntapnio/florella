@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FlowerData" format=3 uid="uid://c2dq5sq5q458p"]
 
 [ext_resource type="Texture2D" uid="uid://clsug7y871lpv" path="res://assets/art/crops/icons/crop_tulip_icon.png" id="1_ia2st"]
-[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://items/flowers/flower_data.gd" id="2_ia2st"]
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="2_ia2st"]
 
 [resource]
 script = ExtResource("2_ia2st")

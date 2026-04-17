@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SeedItem" format=3 uid="uid://b11ahok5ffift"]
 
 [ext_resource type="Resource" uid="uid://wukk5bq8gb1w" path="res://data/cropdata/ranunculus.tres" id="1_64x04"]
-[ext_resource type="Script" uid="uid://cocmcuylq1b4b" path="res://items/seeds/seed.gd" id="1_k1ep8"]
+[ext_resource type="Script" uid="uid://cocmcuylq1b4b" path="res://systems/modules/items/seeds/seed.gd" id="1_k1ep8"]
 [ext_resource type="Texture2D" uid="uid://cit7obyjobsn2" path="res://assets/art/seeds/icons/seeds/ranunculus_corms.png" id="2_64x04"]
 
 [resource]

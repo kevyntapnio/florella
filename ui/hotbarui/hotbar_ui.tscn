@@ -20,7 +20,7 @@ offset_top = -64.0
 offset_right = 200.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 5
 
 [node name="HotbarPanel" type="NinePatchRect" parent="MarginContainer" unique_id=629554711]
 texture_filter = 1

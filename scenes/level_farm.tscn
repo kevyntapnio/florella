@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://ct27amg7pej5m" path="res://world/foliage/tall_grass/flower_2.tscn" id="20_4xv46"]
 [ext_resource type="PackedScene" uid="uid://cqfah4pggyu7t" path="res://world/foliage/tall_grass/tall_grass1.tscn" id="20_vm771"]
 [ext_resource type="Script" uid="uid://64mdjgsf3qfi" path="res://scenes/grass_spawner.gd" id="20_ybccc"]
-[ext_resource type="Script" uid="uid://c21e2c58rbf87" path="res://systems/farm_visual_manager/farm_visual_manager.gd" id="21_b8io8"]
+[ext_resource type="Script" uid="uid://c21e2c58rbf87" path="res://systems/gameplay/farm_visual_manager/farm_visual_manager.gd" id="21_b8io8"]
 [ext_resource type="PackedScene" uid="uid://ip6w5cr0y1f0" path="res://world/foliage/tall_grass/tall_grass2.tscn" id="22_kea2j"]
 [ext_resource type="PackedScene" uid="uid://d1mprm1ge26c5" path="res://world/foliage/tall_grass/tall_grass3.tscn" id="23_g2dj5"]
 [ext_resource type="PackedScene" uid="uid://v8m624gy43nw" path="res://world/foliage/tall_grass/tall_grass4.tscn" id="24_jgmuv"]
@@ -39,7 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://18m8t6ns0um6" path="res://world/foliage/tall_grass/tall_grass5.tscn" id="25_g2dj5"]
 [ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
 [ext_resource type="PackedScene" uid="uid://dp8tigonc3r05" path="res://test_objects/light_source/light_source.tscn" id="28_p8dsh"]
-[ext_resource type="PackedScene" uid="uid://hvubnck8s1kr" path="res://systems/timemanager/day_transition.tscn" id="30_a5i0f"]
+[ext_resource type="PackedScene" uid="uid://hvubnck8s1kr" path="res://systems/global_managers/timemanager/day_transition.tscn" id="30_a5i0f"]
 [ext_resource type="Script" uid="uid://coxtildet1c5e" path="res://ui/current_gold_label.gd" id="35_0p3ls"]
 [ext_resource type="PackedScene" uid="uid://c1jaq6kvtgerl" path="res://ui/shop/shop_ui/shop_menu.tscn" id="36_0p3ls"]
 [ext_resource type="Script" uid="uid://c0njn6sf47qjg" path="res://world/shop/shop_system.gd" id="40_0p3ls"]
@@ -1089,7 +1089,7 @@ shop_info = ExtResource("26_bsn28")
 position = Vector2(128, 600)
 
 [node name="ShippingBin" parent="World/YSortWorld" unique_id=123653949 node_paths=PackedStringArray("selling_system") instance=ExtResource("45_a5i0f")]
-position = Vector2(432, 512)
+position = Vector2(416, 512)
 selling_system = NodePath("../../../Systems/SellingSystem")
 
 [node name="DayTransition" parent="." unique_id=1584597748 instance=ExtResource("30_a5i0f")]
@@ -1142,12 +1142,11 @@ script = ExtResource("35_0p3ls")
 visible = false
 shop_system = NodePath("../Systems/ShopSystem")
 
-[node name="InventoryMenu" parent="." unique_id=1289641458 instance=ExtResource("41_w643r")]
-process_mode = 3
-visible = false
-
 [node name="SellMenuUI" parent="." unique_id=1230154816 node_paths=PackedStringArray("selling_system") instance=ExtResource("42_dudpv")]
 selling_system = NodePath("../Systems/SellingSystem")
+
+[node name="InventoryMenu" parent="." unique_id=1289641458 instance=ExtResource("41_w643r")]
+process_mode = 3
 
 [node name="Systems" type="Node2D" parent="." unique_id=1370087006]
 

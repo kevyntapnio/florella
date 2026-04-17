@@ -85,7 +85,8 @@ func clear_cart():
 		if cart != null:
 			cart.item_data = null
 			cart.quantity = 0
-			
+	
+	total_price = 0
 	cart_changed.emit(total_price)
 	
 func handle_right_click(index):
