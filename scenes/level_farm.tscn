@@ -1142,11 +1142,10 @@ script = ExtResource("35_0p3ls")
 visible = false
 shop_system = NodePath("../Systems/ShopSystem")
 
+[node name="InventoryMenu" parent="." unique_id=1289641458 instance=ExtResource("41_w643r")]
+
 [node name="SellMenuUI" parent="." unique_id=1230154816 node_paths=PackedStringArray("selling_system") instance=ExtResource("42_dudpv")]
 selling_system = NodePath("../Systems/SellingSystem")
-
-[node name="InventoryMenu" parent="." unique_id=1289641458 instance=ExtResource("41_w643r")]
-process_mode = 3
 
 [node name="Systems" type="Node2D" parent="." unique_id=1370087006]
 

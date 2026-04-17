@@ -189,8 +189,8 @@ offset = Vector2(0, -32)
 position = Vector2(0, 2)
 limit_left = 0
 limit_top = 0
-limit_right = 1500
-limit_bottom = 980
+limit_right = 1650
+limit_bottom = 1100
 limit_smoothed = true
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1981826413]
