@@ -76,7 +76,8 @@ func interact_with_tool(tool, context):
 		water()
 		
 func can_accept_item(item, context):
-	## used by targeting_system
+	## This function is used to update TileHighlight
+	
 	if item == null:
 		return false
 		

@@ -2,6 +2,7 @@ extends Resource
 
 class_name CropData
 
+@export var id: String
 @export var stages: Array[CropStageData] = []
 @export var is_regrowable: bool
 @export var regrow_stage: int

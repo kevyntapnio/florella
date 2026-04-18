@@ -14,7 +14,7 @@ func use(target, context):
 	if crop_data == null:
 		return false
 		
-	var planted = target.plant(crop_data)
+	var planted = FarmSystem.plant(target.grid_position, crop_data)
 	
 	if planted:
 		InventorySystem.remove_item(id, 1)
@@ -36,7 +36,7 @@ func can_use(target, context):
 	if distance > range:
 		return false
 		
-	if not target.is_tilled(): 
+	if not FarmSystem.is_tilled(target.grid_position): 
 		return false
 	
 	return true

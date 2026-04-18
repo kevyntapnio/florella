@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/tile_map_dual.gd" id="10_b8io8"]
 [ext_resource type="Texture2D" uid="uid://cocd7u1m762hb" path="res://assets/art/tilesets/watered_dirt_tiles.png" id="10_nkyni"]
 [ext_resource type="PackedScene" uid="uid://8fu27x2eekb3" path="res://world/foliage/tall_grass/flower_3.tscn" id="12_ii5s6"]
+[ext_resource type="PackedScene" uid="uid://lc3vja5g22dj" path="res://crop_test.tscn" id="12_jwf87"]
 [ext_resource type="Script" uid="uid://bwrv50mw3200u" path="res://scenes/tree_spawner.gd" id="14_vk3p0"]
 [ext_resource type="PackedScene" uid="uid://dw4fkigoerc7e" path="res://world/trees/tree.tscn" id="15_52aj1"]
 [ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://world/trees/TreeData.gd" id="15_ahd6e"]
@@ -732,6 +733,11 @@ metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
 [node name="FarmTiles" type="Node" parent="World/FarmLogic" unique_id=655994396]
 
+[node name="FarmTileTest" parent="World/FarmLogic/FarmTiles" unique_id=974946717 node_paths=PackedStringArray("farm_visual_manager") instance=ExtResource("30_ivnov")]
+position = Vector2(400, 624)
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
+crop_scene = ExtResource("12_jwf87")
+
 [node name="FarmTile" parent="World/FarmLogic/FarmTiles" unique_id=1563810621 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 176)
 tilemap = NodePath("../../../GroundTileMap")
@@ -1045,10 +1051,6 @@ farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualMan
 [node name="FarmTile63" parent="World/FarmLogic/FarmTiles" unique_id=231667390 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
-
-[node name="FarmTileTest" parent="World/FarmLogic/FarmTiles" unique_id=974946717 node_paths=PackedStringArray("farm_visual_manager") instance=ExtResource("30_ivnov")]
-position = Vector2(400, 624)
 farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="YSortWorld" type="Node2D" parent="World" unique_id=1508058470 groups=["ysort_world"]]

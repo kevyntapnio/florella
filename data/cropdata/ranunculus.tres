@@ -43,6 +43,7 @@ metadata/_custom_type_script = "uid://buwm7thaoq20g"
 
 [resource]
 script = ExtResource("1_s8roa")
+id = "ranunculus"
 stages = Array[ExtResource("2_udbhm")]([SubResource("Resource_5b5u1"), SubResource("Resource_n0grs"), SubResource("Resource_a1oox"), SubResource("Resource_wmnc8"), SubResource("Resource_pdak5")])
 is_regrowable = true
 regrow_stage = 3
