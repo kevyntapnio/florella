@@ -24,6 +24,7 @@ func advance_day():
 	
 	emit_signal("day_ended")
 	emit_signal("day_passed")
+	time_updated.emit(current_hour, current_minute)
 
 func _process(delta):
 	if is_paused():
@@ -100,3 +101,19 @@ func update_pause_state():
 	
 func get_current_hour():
 	return current_hour
+	
+func get_save_data() -> Dictionary:
+	var save_data = {
+		"current_day": current_day,
+		"current_hour": current_hour,
+		"current_minute": current_minute
+	}
+	return save_data
+	
+func load_from_data(data: Dictionary):
+	
+	current_day = data.get("current_day", 1)
+	current_hour = data.get("current_hour", 6)
+	current_minute = data.get("current_minute", 0)
+	
+	time_updated.emit(current_hour, current_minute)

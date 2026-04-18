@@ -206,3 +206,17 @@ func find_reactive_objects():
 				if not reactive_objects.has(obj):
 					obj.react()
 	reactive_objects = new_reactive
+	
+func get_save_data() -> Dictionary:
+	return{
+		"position": {
+			"x": global_position.x,
+			"y": global_position.y
+			}
+	}
+	
+func load_from_data(data: Dictionary):
+	var pos = data.get("position", {"x": 0, "y": 0})
+	print(data.get("position"))
+	
+	global_position = Vector2(pos["x"], pos["y"])
