@@ -165,6 +165,7 @@ func harvest(position: Vector2i) -> bool:
 		crop["growth_stage"] = crop_res.regrow_stage
 		crop["days_in_stage"] = 0
 		crop["is_regrowing"] = true
+		
 	## fallback/safety net
 	else:
 		tile_data["crop"] = null
@@ -185,3 +186,16 @@ func spawn_yield_stack(item, quantity, position):
 	var pos = GridManager.get_world_position(position)
 	
 	WorldItemSpawner.spawn(stack, pos)
+	
+func is_harvestable(position: Vector2i) -> bool:
+	var tile_data = get_tile_data(position)
+	var crop = tile_data.get("crop")
+	
+	if crop == null:
+		return false
+		
+	var growth_stage = crop["growth_stage"]
+	
+	var current_stage = crop["resource"].stages[growth_stage]
+	
+	return current_stage.harvestable

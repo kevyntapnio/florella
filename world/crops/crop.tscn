@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://cd1s6enicxk2n"]
 
 [ext_resource type="Script" uid="uid://mggu5cqcy304" path="res://world/crops/crop.gd" id="1_doysg"]
-[ext_resource type="Resource" uid="uid://vawldvd3va0a" path="res://data/cropdata/daisy.tres" id="2_frnma"]
+[ext_resource type="AudioStream" uid="uid://d1pis8r7ku3mc" path="res://assets/audio/sfx/pop.mp3" id="2_qrxi7"]
 [ext_resource type="Texture2D" uid="uid://cdndj2jsb06sk" path="res://assets/art/crops/sprites/tulipsprite004.png" id="3_07uk2"]
-[ext_resource type="PackedScene" uid="uid://bxhdxmc6uoen5" path="res://world/entities/world_item/world_item.tscn" id="3_cfe4w"]
 [ext_resource type="AudioStream" uid="uid://djyf3aqjva5pt" path="res://assets/art/ui/ui_prompts/audio/sfx/grass.mp3" id="4_y556i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kesr"]
@@ -16,8 +15,7 @@ radius = 6.0
 y_sort_enabled = true
 position = Vector2(0, -3)
 script = ExtResource("1_doysg")
-crop_data = ExtResource("2_frnma")
-world_item_scene = ExtResource("3_cfe4w")
+harvest_sfx = ExtResource("2_qrxi7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=402152962]
 y_sort_enabled = true

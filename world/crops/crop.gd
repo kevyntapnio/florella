@@ -1,67 +1,38 @@
 extends GridObject
 
-@export var crop_data: CropData
-@export var parent_tile: Node2D
 @onready var sprite: Sprite2D = $Sprite2D
 @export var harvest_sfx: AudioStream
-@export var world_item_scene: PackedScene
-
-var growth_stage: int = 0
-var days_in_stage: int = 0
-var is_regrowing: bool = false
 
 const INTERACT_PRIORITY = 10
 
-func _ready():
-	super()
-	TimeManager.day_passed.connect(on_day_passed)
-
-func initialize(data: CropData, parent_tile: Node2D):
+func update_visual(crop_state):
 	
-	crop_data = data
-	self.parent_tile = parent_tile
+	var crop_id = crop_state["crop_id"]
+	var resource = crop_state["resource"]
 	
-	growth_stage = 0
-	days_in_stage = 0
-	update_visual()
+	if resource == null:
+		push_error("Crop ERROR: crop_data resource missing in crop_state")
+		return
+		
+	var stage = crop_state["growth_stage"]
 	
-func update_visual():
-	var current_stage = get_current_stage()
-	sprite.texture = current_stage.texture
+	if stage >= resource.stages.size():
+		push_error("Crop ERROR: Invalid growth stage")
+		return
+		
+	sprite.texture = resource.stages[stage].texture
 	
-func get_current_stage():
-	return crop_data.stages[growth_stage]
-	
-func on_day_passed():
-	days_in_stage += 1
-	
-	var current_stage = get_current_stage()
-	if parent_tile.is_watered():
-		if is_regrowing:
-			if days_in_stage >= crop_data.regrow_days:
-				growth_stage = crop_data.regrow_target_stage
-				days_in_stage = 0
-				update_visual()
-		else:
-			if days_in_stage >= current_stage.duration:
-				if growth_stage < crop_data.stages.size() - 1:
-					growth_stage += 1
-					days_in_stage = 0
-					update_visual()
-					
 func get_interaction_score(context):
-	var current_stage = get_current_stage()
-	if current_stage.harvestable:
+	if FarmSystem.is_harvestable(grid_position):
 		return INTERACT_PRIORITY
 	return 0
 			
 func interact(item, context) -> bool:
-	var current_stage = get_current_stage()
-	
-	if current_stage.harvestable:
-		harvest()
+	if FarmSystem.harvest(grid_position):
+		play_harvest_sfx()
+		var tween = play_harvest_animation()
+		await tween.finished
 		return true
-	
 	return false
 
 func can_accept_item(item, context):
@@ -69,50 +40,18 @@ func can_accept_item(item, context):
 	if item is UsableItem:
 		return false
 		
-	var current_stage = get_current_stage()
-		
-	return current_stage.harvestable
+	return FarmSystem.is_harvestable(grid_position)
 	
 	## Note for later: Add if item is Shears: return current_stage.harvestable
 		
-func harvest(): 
-	play_harvest_sfx()
-	var tween = play_harvest_animation()
-	await tween.finished
+func _on_sway_area_body_entered(body: Node2D) -> void:
+	var data = FarmSystem.get_tile_data(grid_position)
+	var crop = data.get("crop")
 	
-	var current_stage = get_current_stage()
-	var item_data = current_stage.yield_item
-	
-	if item_data == null:
+	if crop == null:
 		return
 		
-	var amount = current_stage.yield_amount
-	
-	var stack = ItemStack.new()
-	stack.item_data = item_data
-	stack.quantity = amount
-	
-	WorldItemSpawner.spawn(stack, global_position)
-	
-	if current_stage.remove_on_harvest:
-		destroy_crop()
-	else:
-		if crop_data.is_regrowable:
-			growth_stage = crop_data.regrow_stage
-			days_in_stage = 0
-			is_regrowing = true
-			update_visual()
-		else:
-			destroy_crop()
-			
-
-func destroy_crop():
-
-	parent_tile.clear_crop()
-	queue_free()
-
-func _on_sway_area_body_entered(body: Node2D) -> void:
-	if growth_stage == 0:
+	if data["crop"]["growth_stage"] == 0:
 		return
 		
 	if body.is_in_group("player"):
@@ -158,9 +97,7 @@ func play_harvest_animation():
 	return tween
 	
 func set_targeted(is_targeted: bool):
-	var current_stage = get_current_stage()
-	
-	if is_targeted and current_stage.harvestable:
+	if is_targeted and FarmSystem.is_harvestable(grid_position):
 		modulate = Color(1.3, 1.3, 1.3)
 	else:
 		modulate = Color(1, 1, 1)
