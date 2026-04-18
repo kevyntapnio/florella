@@ -5,7 +5,8 @@ const INTERACTION_PRIORITY = 10
 
 	
 func interact(item, context):
-	pass
+	if FarmSystem.harvest(grid_position):
+		play_feedback()
 	
 func is_focusable(item, context):
 	pass
@@ -27,3 +28,5 @@ func update_visual(crop_state):
 		
 	sprite.texture = resource.stages[stage].texture
 	
+func play_feedback():
+	pass

@@ -96,23 +96,31 @@ func _on_day_passed():
 		var tile = tiles_data[pos]
 		var crop = tile.get("crop")
 		
-		if not crop or not is_watered(pos):
+		if not crop or not tile["soil"]["watered"]:
 			continue
 			
 		var crop_res = crop["resource"]
+		if crop_res == null: 
+			push_error("FarmSystem ERROR: crop resource not found in tile_data")
+			continue
+			
 		var growth_stage = crop["growth_stage"]
-
 		var current_stage = crop_res.stages[growth_stage]
 		
-		if current_stage < crop_res.stages.size() - 1 or crop["is_regrowing"]: 
+		var can_advance = growth_stage < crop_res.stages.size() - 1
+		
+		if can_advance or crop["is_regrowing"]: 
 			crop["days_in_stage"] += 1
 		
-		var days = tiles_data[pos]["crop"]["days_in_stage"]
+		var days = crop["days_in_stage"]
 		
 		if crop["is_regrowing"]:
 			if days >= crop_res.regrow_days:
 				crop["growth_stage"] = crop_res.regrow_target_stage
 				crop["days_in_stage"] = 0
+				
+				tile["soil"]["watered"] = false
+				
 				tile_updated.emit(pos, tiles_data[pos])
 		else:
 			if days >= current_stage.duration:
@@ -120,5 +128,60 @@ func _on_day_passed():
 					crop["growth_stage"] += 1
 					crop["days_in_stage"] = 0
 					
+					tile["soil"]["watered"] = false
+					
 					tile_updated.emit(pos, tiles_data[pos])
 				
+func harvest(position: Vector2i) -> bool:
+
+	var tile_data = get_tile_data(position)
+	
+	var crop = tile_data.get("crop")
+	
+	if crop == null:
+		return false
+		
+	var growth_stage = crop["growth_stage"]
+	var crop_res = crop["resource"]
+	
+	if crop_res == null: 
+		push_error("FarmSystem ERROR: crop resource not found in tile_data")
+		return false
+		
+	var current_stage = crop_res.stages[growth_stage]
+	
+	if not current_stage.harvestable:
+		return false
+		
+	## check if current_stage (final seed_pod stage) forces crop destruction
+	## this is added because seed_pod stage overrides is_regrowable and is always destroyed when harvested
+	
+	if current_stage.remove_on_harvest:
+		tile_data["crop"] = null
+		tile_updated.emit(position, tile_data)
+	
+	## check if crop is regrowable
+	elif crop_res.is_regrowable:
+		crop["growth_stage"] = crop_res.regrow_stage
+		crop["days_in_stage"] = 0
+		crop["is_regrowing"] = true
+	## fallback/safety net
+	else:
+		tile_data["crop"] = null
+	
+	spawn_yield_stack(current_stage.yield_item, current_stage.yield_amount, position)
+		
+	tile_updated.emit(position, tile_data)
+	
+	return true
+		
+func spawn_yield_stack(item, quantity, position):
+	
+	var stack = ItemStack.new()
+	
+	stack.item_data = item
+	stack.quantity = quantity
+	
+	var pos = GridManager.get_world_position(position)
+	
+	WorldItemSpawner.spawn(stack, pos)
