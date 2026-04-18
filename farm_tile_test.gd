@@ -36,8 +36,7 @@ func update_visual(data):
 	
 	var state = resolve_soil_state(data["soil"])
 	
-	## temporary function before replacing old logic that used Enum ##
-	farm_visual_manager.update_tile_debug(grid_position, state)
+	farm_visual_manager.update_tile(grid_position, state)
 	
 	var crop_data = data["crop"]
 	
