@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://wyiybuh7c3eg" path="res://world/shop/shopdata/shop_data.gd" id="1_nfd80"]
 [ext_resource type="Resource" uid="uid://beypk3hsuybbs" path="res://data/shop/test_shop/shopentry/daisy_seed.tres" id="3_ft8ae"]
 [ext_resource type="Resource" uid="uid://ce3d04qrl0h7w" path="res://data/shop/test_shop/shopentry/tulip_bulb_entry.tres" id="3_x4rir"]
+[ext_resource type="Resource" uid="uid://b2ukqsqe5h7qk" path="res://data/shop/test_shop/shopentry/ranunculus_corms.tres" id="4_ft8ae"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_nfd80")
 shop_type = "Seed"
-shop_entries = Array[Resource]([ExtResource("3_x4rir"), ExtResource("3_ft8ae")])
+shop_entries = Array[Resource]([ExtResource("3_x4rir"), ExtResource("3_ft8ae"), ExtResource("4_ft8ae")])
 metadata/_custom_type_script = "uid://wyiybuh7c3eg"

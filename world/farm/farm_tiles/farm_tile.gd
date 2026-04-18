@@ -3,7 +3,6 @@ extends GridObject
 class_name FarmTile
 
 @export var tilemap: TileMapLayer
-@export var farm_visual_manager: FarmVisualManager
 @export var crop_scene: PackedScene
 
 const STATE_PRIORITY = {
@@ -23,8 +22,8 @@ func _ready():
 	update_visual(data)
 	
 func _on_tile_updated(tile_position, data):
-	if farm_visual_manager == null:
-		push_error("FarmTileTest ERROR: FarmVisualManager not assigned in Editor!")
+	if FarmVisual == null:
+		push_error("FarmTileTest ERROR: FarmVisualManager didn't load")
 		return
 		
 	if tile_position != grid_position:
@@ -37,7 +36,7 @@ func update_visual(data):
 	var state = resolve_soil_state(data["soil"])
 	
 	## temporary function before replacing old logic that used Enum ##
-	farm_visual_manager.update_tile(grid_position, state)
+	FarmVisual.update_tile(grid_position, state)
 	
 	var crop_data = data["crop"]
 	

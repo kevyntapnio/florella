@@ -4,6 +4,11 @@ signal tile_updated(grid_position: Vector2i, data)
 
 var tiles_data: Dictionary = {}
 
+const STATE_PRIORITY = {
+	"watered" = 2,
+	"tilled" = 1,
+}
+
 func _ready() -> void:
 	TimeManager.day_passed.connect(_on_day_passed)
 
@@ -93,44 +98,44 @@ func is_watered(position: Vector2i):
 func _on_day_passed():
 	
 	for pos in tiles_data:
+		
 		var tile = tiles_data[pos]
 		var crop = tile.get("crop")
 		
-		if not crop or not tile["soil"]["watered"]:
-			continue
+		var watered = tile["soil"]["watered"]
+		
+		tile["soil"]["watered"] = false
+		
+		if watered and crop:
 			
-		var crop_res = crop["resource"]
-		if crop_res == null: 
-			push_error("FarmSystem ERROR: crop resource not found in tile_data")
-			continue
+			var crop_res = crop["resource"]
 			
-		var growth_stage = crop["growth_stage"]
-		var current_stage = crop_res.stages[growth_stage]
-		
-		var can_advance = growth_stage < crop_res.stages.size() - 1
-		
-		if can_advance or crop["is_regrowing"]: 
-			crop["days_in_stage"] += 1
-		
-		var days = crop["days_in_stage"]
-		
-		if crop["is_regrowing"]:
-			if days >= crop_res.regrow_days:
-				crop["growth_stage"] = crop_res.regrow_target_stage
-				crop["days_in_stage"] = 0
+			if crop_res == null: 
+				push_error("FarmSystem ERROR: crop resource not found in tile_data")
+				continue
 				
-				tile["soil"]["watered"] = false
-				
-				tile_updated.emit(pos, tiles_data[pos])
-		else:
-			if days >= current_stage.duration:
-				if growth_stage < crop_res.stages.size() - 1:
-					crop["growth_stage"] += 1
+			var growth_stage = crop["growth_stage"]
+			var current_stage = crop_res.stages[growth_stage]
+			
+			var can_advance = growth_stage < crop_res.stages.size() - 1
+			
+			if can_advance or crop["is_regrowing"]: 
+				crop["days_in_stage"] += 1
+			
+			var days = crop["days_in_stage"]
+			
+			if crop["is_regrowing"]:
+				if days >= crop_res.regrow_days:
+					crop["growth_stage"] = crop_res.regrow_target_stage
 					crop["days_in_stage"] = 0
-					
-					tile["soil"]["watered"] = false
-					
-					tile_updated.emit(pos, tiles_data[pos])
+			else:
+				if days >= current_stage.duration:
+					if can_advance:
+						crop["growth_stage"] += 1
+						crop["days_in_stage"] = 0
+						
+		tile_updated.emit(pos, tile)
+				
 				
 func harvest(position: Vector2i) -> bool:
 
@@ -199,3 +204,64 @@ func is_harvestable(position: Vector2i) -> bool:
 	var current_stage = crop["resource"].stages[growth_stage]
 	
 	return current_stage.harvestable
+	
+func get_save_data() -> Dictionary:
+	
+	var save_data:= {}
+	
+	for pos in tiles_data:
+		var tile = tiles_data[pos]
+		
+		var tile_copy = tile.duplicate(true)
+		
+		var crop = tile_copy.get("crop")
+		
+		if crop != null:
+			crop.erase("resource")
+			
+		var key = str(pos.x) + "," + str(pos.y)
+		save_data[key] = tile_copy
+		
+	return save_data
+	
+func load_from_data(save_data: Dictionary):
+	
+	tiles_data.clear()
+	
+	for key in save_data:
+		
+		var parts = key.split(",")
+		var pos = Vector2i(parts[0].to_int(), parts[1].to_int())
+		
+		var tile = save_data[key]
+		var crop = tile.get("crop")
+		
+		if crop != null:
+			var crop_id = crop["crop_id"]
+			var resource = ItemDatabase.get_crop(crop_id)
+			
+			if resource == null:
+				push_error("FarmSystem ERROR: crop resource not found in ItemDatabase")
+			else:
+				crop["resource"] = resource
+		
+		tiles_data[pos] = tile
+		
+		tile_updated.emit(pos, tile)
+
+func resolve_soil_state(soil: Dictionary):
+	
+	var best_state = null
+	var best_priority = -1
+	
+	for state in soil:
+		if not soil[state]:
+			continue
+			
+		var priority = STATE_PRIORITY.get(state, 0)
+		
+		if priority > best_priority:
+			best_priority = priority
+			best_state = state
+	
+	return best_state

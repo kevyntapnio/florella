@@ -738,320 +738,257 @@ position = Vector2(400, 624)
 farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 crop_scene = ExtResource("12_jwf87")
 
-[node name="FarmTile" parent="World/FarmLogic/FarmTiles" unique_id=1563810621 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile" parent="World/FarmLogic/FarmTiles" unique_id=1563810621 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile5" parent="World/FarmLogic/FarmTiles" unique_id=238332172 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile5" parent="World/FarmLogic/FarmTiles" unique_id=238332172 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile2" parent="World/FarmLogic/FarmTiles" unique_id=2119950371 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile2" parent="World/FarmLogic/FarmTiles" unique_id=2119950371 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(560, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile3" parent="World/FarmLogic/FarmTiles" unique_id=944988252 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile3" parent="World/FarmLogic/FarmTiles" unique_id=944988252 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile4" parent="World/FarmLogic/FarmTiles" unique_id=1917467716 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile4" parent="World/FarmLogic/FarmTiles" unique_id=1917467716 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(560, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile6" parent="World/FarmLogic/FarmTiles" unique_id=314202739 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile6" parent="World/FarmLogic/FarmTiles" unique_id=314202739 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile7" parent="World/FarmLogic/FarmTiles" unique_id=993774642 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile7" parent="World/FarmLogic/FarmTiles" unique_id=993774642 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile8" parent="World/FarmLogic/FarmTiles" unique_id=570345786 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile8" parent="World/FarmLogic/FarmTiles" unique_id=570345786 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(560, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile9" parent="World/FarmLogic/FarmTiles" unique_id=115913898 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile9" parent="World/FarmLogic/FarmTiles" unique_id=115913898 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile10" parent="World/FarmLogic/FarmTiles" unique_id=1477362137 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile10" parent="World/FarmLogic/FarmTiles" unique_id=1477362137 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile11" parent="World/FarmLogic/FarmTiles" unique_id=766345200 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile11" parent="World/FarmLogic/FarmTiles" unique_id=766345200 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile12" parent="World/FarmLogic/FarmTiles" unique_id=968823037 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile12" parent="World/FarmLogic/FarmTiles" unique_id=968823037 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(688, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile13" parent="World/FarmLogic/FarmTiles" unique_id=696841875 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile13" parent="World/FarmLogic/FarmTiles" unique_id=696841875 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile14" parent="World/FarmLogic/FarmTiles" unique_id=577646321 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile14" parent="World/FarmLogic/FarmTiles" unique_id=577646321 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(688, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile15" parent="World/FarmLogic/FarmTiles" unique_id=310424883 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile15" parent="World/FarmLogic/FarmTiles" unique_id=310424883 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile16" parent="World/FarmLogic/FarmTiles" unique_id=251420767 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile16" parent="World/FarmLogic/FarmTiles" unique_id=251420767 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile17" parent="World/FarmLogic/FarmTiles" unique_id=736971807 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile17" parent="World/FarmLogic/FarmTiles" unique_id=736971807 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(688, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile18" parent="World/FarmLogic/FarmTiles" unique_id=1462100486 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile18" parent="World/FarmLogic/FarmTiles" unique_id=1462100486 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile19" parent="World/FarmLogic/FarmTiles" unique_id=1845220371 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile19" parent="World/FarmLogic/FarmTiles" unique_id=1845220371 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile20" parent="World/FarmLogic/FarmTiles" unique_id=774260757 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile20" parent="World/FarmLogic/FarmTiles" unique_id=774260757 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(848, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile21" parent="World/FarmLogic/FarmTiles" unique_id=458914952 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile21" parent="World/FarmLogic/FarmTiles" unique_id=458914952 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(816, 176)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile22" parent="World/FarmLogic/FarmTiles" unique_id=1748573589 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile22" parent="World/FarmLogic/FarmTiles" unique_id=1748573589 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile23" parent="World/FarmLogic/FarmTiles" unique_id=1773702338 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile23" parent="World/FarmLogic/FarmTiles" unique_id=1773702338 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(816, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile24" parent="World/FarmLogic/FarmTiles" unique_id=1908828894 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile24" parent="World/FarmLogic/FarmTiles" unique_id=1908828894 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(848, 208)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile25" parent="World/FarmLogic/FarmTiles" unique_id=299224267 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile25" parent="World/FarmLogic/FarmTiles" unique_id=299224267 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile26" parent="World/FarmLogic/FarmTiles" unique_id=1418442412 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile26" parent="World/FarmLogic/FarmTiles" unique_id=1418442412 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(816, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile27" parent="World/FarmLogic/FarmTiles" unique_id=1974007603 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile27" parent="World/FarmLogic/FarmTiles" unique_id=1974007603 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(848, 240)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile28" parent="World/FarmLogic/FarmTiles" unique_id=464724313 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile28" parent="World/FarmLogic/FarmTiles" unique_id=464724313 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(336, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile29" parent="World/FarmLogic/FarmTiles" unique_id=1180205087 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile29" parent="World/FarmLogic/FarmTiles" unique_id=1180205087 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(400, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile30" parent="World/FarmLogic/FarmTiles" unique_id=165825471 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile30" parent="World/FarmLogic/FarmTiles" unique_id=165825471 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(368, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile31" parent="World/FarmLogic/FarmTiles" unique_id=1142933324 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile31" parent="World/FarmLogic/FarmTiles" unique_id=1142933324 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(336, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile32" parent="World/FarmLogic/FarmTiles" unique_id=1253179139 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile32" parent="World/FarmLogic/FarmTiles" unique_id=1253179139 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(368, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile33" parent="World/FarmLogic/FarmTiles" unique_id=1962937710 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile33" parent="World/FarmLogic/FarmTiles" unique_id=1962937710 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(400, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile34" parent="World/FarmLogic/FarmTiles" unique_id=2037538723 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile34" parent="World/FarmLogic/FarmTiles" unique_id=2037538723 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(336, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile35" parent="World/FarmLogic/FarmTiles" unique_id=849443109 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile35" parent="World/FarmLogic/FarmTiles" unique_id=849443109 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(368, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile36" parent="World/FarmLogic/FarmTiles" unique_id=395544795 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile36" parent="World/FarmLogic/FarmTiles" unique_id=395544795 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(400, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile37" parent="World/FarmLogic/FarmTiles" unique_id=1290413405 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile37" parent="World/FarmLogic/FarmTiles" unique_id=1290413405 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(464, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile38" parent="World/FarmLogic/FarmTiles" unique_id=629292831 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile38" parent="World/FarmLogic/FarmTiles" unique_id=629292831 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile39" parent="World/FarmLogic/FarmTiles" unique_id=1797757284 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile39" parent="World/FarmLogic/FarmTiles" unique_id=1797757284 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(496, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile40" parent="World/FarmLogic/FarmTiles" unique_id=1500648213 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile40" parent="World/FarmLogic/FarmTiles" unique_id=1500648213 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(464, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile41" parent="World/FarmLogic/FarmTiles" unique_id=1741726397 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile41" parent="World/FarmLogic/FarmTiles" unique_id=1741726397 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(496, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile42" parent="World/FarmLogic/FarmTiles" unique_id=1552317104 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile42" parent="World/FarmLogic/FarmTiles" unique_id=1552317104 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile43" parent="World/FarmLogic/FarmTiles" unique_id=1189448864 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile43" parent="World/FarmLogic/FarmTiles" unique_id=1189448864 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(464, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile44" parent="World/FarmLogic/FarmTiles" unique_id=1467125694 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile44" parent="World/FarmLogic/FarmTiles" unique_id=1467125694 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(496, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile45" parent="World/FarmLogic/FarmTiles" unique_id=1793641336 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile45" parent="World/FarmLogic/FarmTiles" unique_id=1793641336 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(528, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile46" parent="World/FarmLogic/FarmTiles" unique_id=635890870 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile46" parent="World/FarmLogic/FarmTiles" unique_id=635890870 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile47" parent="World/FarmLogic/FarmTiles" unique_id=956031067 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile47" parent="World/FarmLogic/FarmTiles" unique_id=956031067 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile48" parent="World/FarmLogic/FarmTiles" unique_id=47034860 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile48" parent="World/FarmLogic/FarmTiles" unique_id=47034860 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(624, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile49" parent="World/FarmLogic/FarmTiles" unique_id=830462087 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile49" parent="World/FarmLogic/FarmTiles" unique_id=830462087 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile50" parent="World/FarmLogic/FarmTiles" unique_id=989869709 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile50" parent="World/FarmLogic/FarmTiles" unique_id=989869709 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(624, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile51" parent="World/FarmLogic/FarmTiles" unique_id=1034582240 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile51" parent="World/FarmLogic/FarmTiles" unique_id=1034582240 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile52" parent="World/FarmLogic/FarmTiles" unique_id=119588341 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile52" parent="World/FarmLogic/FarmTiles" unique_id=119588341 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(592, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile53" parent="World/FarmLogic/FarmTiles" unique_id=1471518016 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile53" parent="World/FarmLogic/FarmTiles" unique_id=1471518016 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(624, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile54" parent="World/FarmLogic/FarmTiles" unique_id=2045904040 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile54" parent="World/FarmLogic/FarmTiles" unique_id=2045904040 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(656, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile55" parent="World/FarmLogic/FarmTiles" unique_id=1748798651 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile55" parent="World/FarmLogic/FarmTiles" unique_id=1748798651 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile56" parent="World/FarmLogic/FarmTiles" unique_id=930748253 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile56" parent="World/FarmLogic/FarmTiles" unique_id=930748253 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile57" parent="World/FarmLogic/FarmTiles" unique_id=455258670 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile57" parent="World/FarmLogic/FarmTiles" unique_id=455258670 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(752, 656)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile58" parent="World/FarmLogic/FarmTiles" unique_id=2019813067 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile58" parent="World/FarmLogic/FarmTiles" unique_id=2019813067 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile59" parent="World/FarmLogic/FarmTiles" unique_id=188439523 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile59" parent="World/FarmLogic/FarmTiles" unique_id=188439523 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(752, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile60" parent="World/FarmLogic/FarmTiles" unique_id=546079355 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile60" parent="World/FarmLogic/FarmTiles" unique_id=546079355 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 688)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile61" parent="World/FarmLogic/FarmTiles" unique_id=697717941 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile61" parent="World/FarmLogic/FarmTiles" unique_id=697717941 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(720, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile62" parent="World/FarmLogic/FarmTiles" unique_id=1700810645 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile62" parent="World/FarmLogic/FarmTiles" unique_id=1700810645 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(752, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile63" parent="World/FarmLogic/FarmTiles" unique_id=231667390 node_paths=PackedStringArray("tilemap", "farm_visual_manager") instance=ExtResource("5_d35qd")]
+[node name="FarmTile63" parent="World/FarmLogic/FarmTiles" unique_id=231667390 node_paths=PackedStringArray("tilemap") instance=ExtResource("5_d35qd")]
 position = Vector2(784, 720)
 tilemap = NodePath("../../../GroundTileMap")
-farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
 [node name="YSortWorld" type="Node2D" parent="World" unique_id=1508058470 groups=["ysort_world"]]
 y_sort_enabled = true

@@ -29,9 +29,12 @@ func get_interaction_score(context):
 			
 func interact(item, context) -> bool:
 	if FarmSystem.harvest(grid_position):
+		
 		play_harvest_sfx()
+		
 		var tween = play_harvest_animation()
 		await tween.finished
+		
 		return true
 	return false
 

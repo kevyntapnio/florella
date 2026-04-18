@@ -117,6 +117,12 @@ func _physics_process(delta):
 		
 func _input(event: InputEvent) -> void:
 	
+	if Input.is_action_just_pressed("save_data"):
+		SaveSystem.save_game()
+		
+	if Input.is_action_just_pressed("load_data"):
+		SaveSystem.load_game()
+	
 	if Input.is_action_just_pressed("interact"):
 		InteractionSystem.handle_interact_proximity(null)
 		

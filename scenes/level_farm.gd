@@ -5,6 +5,9 @@ func _ready() -> void:
 	GridManager.set_tilemap($World/GroundTileMap)
 	TargetingSystem.set_tilemap($World/GroundTileMap)
 	
+	FarmVisual.tilled_layer = $World/FarmLogic/FarmVisuals/TilledLayer
+	FarmVisual.watered_layer = $World/FarmLogic/FarmVisuals/WateredLayer
+	
 	InventorySystem.add_item("basic_hoe", 1)
 	InventorySystem.add_item("basic_watering_can", 1)
 	InventorySystem.add_item("tulip", 1)
