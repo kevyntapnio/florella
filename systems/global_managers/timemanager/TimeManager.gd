@@ -96,7 +96,6 @@ func get_display_time():
 	}
 		
 func update_pause_state():
-	print(pause_sources)
 	get_tree().paused = is_paused()
 	
 func get_current_hour():

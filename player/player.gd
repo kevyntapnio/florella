@@ -217,6 +217,5 @@ func get_save_data() -> Dictionary:
 	
 func load_from_data(data: Dictionary):
 	var pos = data.get("position", {"x": 0, "y": 0})
-	print(data.get("position"))
 	
 	global_position = Vector2(pos["x"], pos["y"])

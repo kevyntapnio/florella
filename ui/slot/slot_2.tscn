@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://bqqmapiyelqc5"]
+[gd_scene format=3 uid="uid://ipm4ajwd7kup"]
 
-[ext_resource type="Script" uid="uid://d1in4bvcmpkt6" path="res://ui/slot/slot.gd" id="1_7a5ct"]
-[ext_resource type="Texture2D" uid="uid://cew7wquo44law" path="res://assets/art/ui/main_menu_theme_1/slot.png" id="2_0410v"]
-[ext_resource type="Texture2D" uid="uid://cd75ij66bukf4" path="res://assets/art/ui/inventory_hotbar_ui/slot highlight.png" id="3_oqidn"]
-[ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_qu2q0"]
+[ext_resource type="Script" uid="uid://d1in4bvcmpkt6" path="res://ui/slot/slot.gd" id="1_viqvp"]
+[ext_resource type="Texture2D" uid="uid://cew7wquo44law" path="res://assets/art/ui/main_menu_theme_1/slot.png" id="2_viqvp"]
+[ext_resource type="Texture2D" uid="uid://cd75ij66bukf4" path="res://assets/art/ui/inventory_hotbar_ui/slot highlight.png" id="3_6h1ha"]
+[ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_4eh33"]
 
 [node name="Slot" type="Control" unique_id=49363863]
 custom_minimum_size = Vector2(32, 32)
@@ -14,21 +14,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_stretch_ratio = 0.52
-script = ExtResource("1_7a5ct")
+script = ExtResource("1_viqvp")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1460691346]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
-texture = ExtResource("2_0410v")
+texture = ExtResource("2_viqvp")
 stretch_mode = 5
 
 [node name="Highlight" type="TextureRect" parent="." unique_id=900264149]
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 34.0
-texture = ExtResource("3_oqidn")
+texture = ExtResource("3_6h1ha")
 stretch_mode = 5
 
 [node name="Icon" type="TextureRect" parent="." unique_id=69088372]
@@ -49,6 +48,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.318805, 0.22140706, 0.13911226, 1)
 theme_override_constants/outline_size = 3
 theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("4_qu2q0")
+theme_override_fonts/font = ExtResource("4_4eh33")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 2

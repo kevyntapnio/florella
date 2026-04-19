@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lc3vja5g22dj"]
 
-[ext_resource type="Script" uid="uid://4rvmsj3bkmdy" path="res://crop_test.gd" id="1_818to"]
+[ext_resource type="Script" uid="uid://4rvmsj3bkmdy" path="res://test_objects/crop_test.gd" id="1_818to"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_818to"]
 radius = 15.0

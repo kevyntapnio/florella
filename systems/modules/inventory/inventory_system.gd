@@ -47,6 +47,7 @@ func get_save_data() -> Dictionary:
 	for i in range(slots.size()):
 		var slot = slots[i]
 		
+		## Only save entry if slot isn't empty
 		if slot == null:
 			continue
 			
@@ -62,6 +63,11 @@ func get_save_data() -> Dictionary:
 	
 func load_from_data(data: Dictionary):
 	
+	## Clear inventory and assign null to each slot
+	for i in range(slots.size()):
+		slots[i] = null
+	
+	## Load items in slots that aren't empty
 	var saved_slots = data.get("slots", [])
 	
 	for entry in saved_slots:
@@ -71,7 +77,6 @@ func load_from_data(data: Dictionary):
 		var quantity = entry["quantity"]
 		
 		if item_id == null:
-			slots[index] = ItemStack.new()
 			continue
 			
 		var item_data = ItemDatabase.get_item(item_id)

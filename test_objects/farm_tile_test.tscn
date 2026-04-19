@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvem2to6ddc11"]
 
-[ext_resource type="Script" uid="uid://cii5c6kmu2n21" path="res://farm_tile_test.gd" id="1_5gxp2"]
+[ext_resource type="Script" uid="uid://cii5c6kmu2n21" path="res://test_objects/farm_tile_test.gd" id="1_5gxp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v3qk"]
 size = Vector2(32, 32)
