@@ -10,6 +10,7 @@ crop_data = ExtResource("1_gm6cm")
 id = "daisy_seed"
 name = "Daisy Seed"
 icon = ExtResource("2_gm6cm")
+description = "Grow in spring. Takes 4 days to mature."
 category = 0
 price = 40
 metadata/_custom_type_script = "uid://cocmcuylq1b4b"

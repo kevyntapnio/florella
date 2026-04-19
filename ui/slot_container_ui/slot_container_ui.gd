@@ -26,13 +26,21 @@ func create_slots(size):
 		
 		slot.slot_clicked.connect(_on_slot_clicked)
 		slot.slot_right_clicked.connect(_on_slot_right_clicked)
+		slot.slot_hovered.connect(_on_slot_hovered)
+		slot.slot_unhovered.connect(_on_slot_unhovered)
 		
 func _on_slot_clicked(slot_index):
 	pass
 	
 func _on_slot_right_clicked(slot_index):
 	pass
+	
+func _on_slot_hovered(slot_index):
+	pass
 
+func _on_slot_unhovered(slot_index):
+	pass
+	
 func update_all_slots():
 	pass
 

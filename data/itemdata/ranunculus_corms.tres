@@ -10,6 +10,7 @@ crop_data = ExtResource("1_64x04")
 id = "ranunculus_corms"
 name = "Ranunculus Corms"
 icon = ExtResource("2_64x04")
+description = "Grow in spring. Takes 6 days to mature."
 category = 0
 price = 200
 metadata/_custom_type_script = "uid://cocmcuylq1b4b"

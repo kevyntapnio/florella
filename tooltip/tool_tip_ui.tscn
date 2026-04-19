@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://kgnbky2qxio2"]
+
+[ext_resource type="Script" uid="uid://cdfnscpxjsu1o" path="res://tooltip/tool_tip.gd" id="1_44qmi"]
+[ext_resource type="Texture2D" uid="uid://cilui32o5uc4c" path="res://assets/art/ui/main_menu_theme_1/panels_boxes/tooltip.png" id="2_md4oa"]
+[ext_resource type="FontFile" uid="uid://cnfdulewx7n12" path="res://assets/fonts/ARCADECLASSIC.TTF" id="3_md4oa"]
+[ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_6bqwb"]
+
+[node name="ToolTipUi" type="CanvasLayer" unique_id=1282035555]
+process_mode = 3
+script = ExtResource("1_44qmi")
+
+[node name="Control" type="Control" parent="." unique_id=949646958]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="NinePatchRect" parent="Control" unique_id=355629214]
+custom_minimum_size = Vector2(184, 76)
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("2_md4oa")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MainMargin" type="MarginContainer" parent="Control/Panel" unique_id=1210048503]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ItemInfo" type="VBoxContainer" parent="Control/Panel/MainMargin" unique_id=115069526]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Control/Panel/MainMargin/ItemInfo" unique_id=494996000]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0.16590658, 0.21443185, 0.08711674, 1)
+theme_override_fonts/font = ExtResource("3_md4oa")
+text = "Name"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="Control/Panel/MainMargin/ItemInfo" unique_id=1782880922]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.16590658, 0.21443185, 0.08711674, 1)
+theme_override_constants/line_spacing = -8
+theme_override_fonts/font = ExtResource("4_6bqwb")
+theme_override_font_sizes/font_size = 14
+text = "Lorem ipsum "
+autowrap_mode = 2
+
+[node name="Toggle" type="Label" parent="Control/Panel/MainMargin/ItemInfo" unique_id=201467908]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.16590658, 0.21443185, 0.08711674, 1)
+theme_override_constants/line_spacing = -8
+theme_override_fonts/font = ExtResource("4_6bqwb")
+theme_override_font_sizes/font_size = 9
+text = "Press TAB to hide."
+autowrap_mode = 2

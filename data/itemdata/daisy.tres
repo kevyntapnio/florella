@@ -8,6 +8,7 @@ script = ExtResource("2_yiga1")
 id = "daisy"
 name = "\"Daisy\""
 icon = ExtResource("1_yiga1")
+description = "Common spring flower"
 category = 1
 sell_price = 100
 is_sellable = true

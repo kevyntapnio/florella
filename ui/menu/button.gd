@@ -3,7 +3,7 @@ class_name ButtonUI
 
 @export var hover_modulate:= Color(1.1, 1.1, 1.1)
 @export var normal_modulate:= Color(1.0, 1.0, 1.0)
-@export var pressed_modulate:= Color(0.95, 0.9, 0.9)
+@export var pressed_modulate:= Color(0.7, 0.7, 0.7)
 @export var inactive_modulate:= Color(0.5, 0.5, 0.5)
 
 func _ready():
@@ -20,7 +20,7 @@ func _on_mouse_exited():
 
 func _on_button_down():
 	modulate = pressed_modulate
-	scale = Vector2(0.97, 0.97)
+	scale = Vector2(0.98, 0.98)
 	
 func _on_button_up():
 	scale = Vector2(1.0, 1.0)

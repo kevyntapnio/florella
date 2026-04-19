@@ -10,6 +10,7 @@ crop_data = ExtResource("1_y83lx")
 id = "tulip_bulb"
 name = "Tulip Bulb"
 icon = ExtResource("2_me2fg")
+description = "Grow in spring. Takes 4 days to mature."
 category = 0
 price = 40
 metadata/_custom_type_script = "uid://cocmcuylq1b4b"

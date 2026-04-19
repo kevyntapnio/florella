@@ -54,3 +54,18 @@ func _on_slot_right_clicked(slot_index):
 
 	update_all_slots()
 	
+func _on_slot_hovered(slot_index):
+	if slot_index == -1:
+		return
+		
+	var item = InventorySystem.get_item(slot_index)
+	
+	if item == null:
+		return
+		
+	var item_data = item.item_data
+	
+	ToolTipUI.show_tooltip(item_data)
+	
+func _on_slot_unhovered(slot_index):
+	ToolTipUI.remove_tooltip()

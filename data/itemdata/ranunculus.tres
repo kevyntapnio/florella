@@ -8,6 +8,7 @@ script = ExtResource("2_wq8hq")
 id = "ranunculus"
 name = "Ranunculus"
 icon = ExtResource("1_wq8hq")
+description = "I am ranunculus"
 category = 1
 sell_price = 160
 is_sellable = true

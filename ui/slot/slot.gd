@@ -6,6 +6,8 @@ extends Control
 
 signal slot_clicked(slot_index)
 signal slot_right_clicked(slot_index)
+signal slot_hovered(slot_index)
+signal slot_unhovered(slot_index)
 
 @export var slot_index: int
 
@@ -51,10 +53,14 @@ func set_highlight(is_active: bool):
 		
 func _on_mouse_entered():
 	icon.scale = Vector2(1.05, 1.05)
-	
+	slot_hovered.emit(slot_index)
 	set_highlight(true)
+	
+	slot_hovered.emit(slot_index)
 	
 func _on_mouse_exited():
 	icon.scale = Vector2(1.0, 1.0)
-	
+	slot_hovered.emit(slot_index)
 	set_highlight(false)
+
+	slot_unhovered.emit(slot_index)

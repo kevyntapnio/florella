@@ -8,6 +8,7 @@ script = ExtResource("2_bfnsk")
 id = "basic_watering_can"
 name = "Basic Watering Can"
 icon = ExtResource("1_urgtg")
+description = "It's a little old, but it works."
 category = 2
 max_stack = 1
 metadata/_custom_type_script = "uid://dmysosghdiosi"
