@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qu22elh3o6jk"
-path="res://.godot/imported/shirt_piece.png-1b83a59b6cee3b8d2cf964463c30b1fa.ctex"
+uid="uid://cspegvtmt8cym"
+path="res://.godot/imported/close_button.png-334bd106ad33ea5d3da5e2dfdb59b537.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/main_menu_theme_1/shirt_piece.png"
-dest_files=["res://.godot/imported/shirt_piece.png-1b83a59b6cee3b8d2cf964463c30b1fa.ctex"]
+source_file="res://assets/art/ui/main_menu_theme_1/buttons/close_button.png"
+dest_files=["res://.godot/imported/close_button.png-334bd106ad33ea5d3da5e2dfdb59b537.ctex"]
 
 [params]
 

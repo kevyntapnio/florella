@@ -12,6 +12,9 @@ signal slot_right_clicked(slot_index)
 func _ready():
 	highlight.hide() # default highlight state
 	
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	
 func update_slot(new_item, new_quantity):
 	if new_item == null:
 		clear_slot()
@@ -45,3 +48,13 @@ func set_highlight(is_active: bool):
 		highlight.visible = is_active
 	else:
 		print("INVENTORY_SLOT ERROR: highlight texture not found")
+		
+func _on_mouse_entered():
+	icon.scale = Vector2(1.05, 1.05)
+	
+	set_highlight(true)
+	
+func _on_mouse_exited():
+	icon.scale = Vector2(1.0, 1.0)
+	
+	set_highlight(false)

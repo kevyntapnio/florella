@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://67ikvs81o8lb"
-path="res://.godot/imported/pants.png-21cc7d2cb7082750f4c419449e3d8cc1.ctex"
+uid="uid://bb8qeii15qxty"
+path="res://.godot/imported/ribbon_tab.png-04556b7483e4d45c18e8f844383c3678.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/main_menu_theme_1/pants.png"
-dest_files=["res://.godot/imported/pants.png-21cc7d2cb7082750f4c419449e3d8cc1.ctex"]
+source_file="res://assets/art/ui/main_menu_theme_1/buttons/ribbon_tab.png"
+dest_files=["res://.godot/imported/ribbon_tab.png-04556b7483e4d45c18e8f844383c3678.ctex"]
 
 [params]
 

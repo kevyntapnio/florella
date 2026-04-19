@@ -101,6 +101,14 @@ func update_pause_state():
 func get_current_hour():
 	return current_hour
 	
+func get_current_day():
+	## Year temporarily set to 1
+	var day = {
+		"day": current_day,
+		"year": 1
+	}
+	return day
+	
 func get_save_data() -> Dictionary:
 	var save_data = {
 		"current_day": current_day,

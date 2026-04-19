@@ -1,30 +1,35 @@
 [gd_scene format=3 uid="uid://coyocp112lqqs"]
 
 [ext_resource type="Script" uid="uid://bcgbrpkbhb0sd" path="res://ui/inventory_ui/inventory_menu.gd" id="1_hut73"]
-[ext_resource type="Texture2D" uid="uid://blwm5xgkf5tm7" path="res://assets/art/ui/main_menu_theme_1/background.png" id="2_3pyrn"]
-[ext_resource type="Texture2D" uid="uid://uksh5jgguyat" path="res://assets/art/ui/main_menu_theme_1/panel.png" id="3_kf8oo"]
-[ext_resource type="Texture2D" uid="uid://cspegvtmt8cym" path="res://assets/art/ui/main_menu_theme_1/close_button.png" id="4_kf8oo"]
-[ext_resource type="Texture2D" uid="uid://ct3i6hsbdppei" path="res://assets/art/ui/main_menu_theme_1/box_3.png" id="4_kurrx"]
-[ext_resource type="Texture2D" uid="uid://ujjcbbna715m" path="res://assets/art/ui/main_menu_theme_1/box_2.png" id="5_yime1"]
+[ext_resource type="Texture2D" uid="uid://blwm5xgkf5tm7" path="res://assets/art/ui/main_menu_theme_1/background/background.png" id="2_3pyrn"]
+[ext_resource type="Texture2D" uid="uid://uksh5jgguyat" path="res://assets/art/ui/main_menu_theme_1/panels_boxes/panel.png" id="3_kf8oo"]
+[ext_resource type="Texture2D" uid="uid://cspegvtmt8cym" path="res://assets/art/ui/main_menu_theme_1/buttons/close_button.png" id="4_kf8oo"]
+[ext_resource type="Texture2D" uid="uid://ct3i6hsbdppei" path="res://assets/art/ui/main_menu_theme_1/panels_boxes/box_3.png" id="4_kurrx"]
+[ext_resource type="Texture2D" uid="uid://ujjcbbna715m" path="res://assets/art/ui/main_menu_theme_1/panels_boxes/box_2.png" id="5_yime1"]
 [ext_resource type="Texture2D" uid="uid://dtmvh7ndmbhq0" path="res://assets/art/ui/main_menu_theme_1/player_sprite_temp.png" id="6_3pyrn"]
-[ext_resource type="Texture2D" uid="uid://b35mwfn4603t4" path="res://assets/art/ui/main_menu_theme_1/head_piece.png" id="6_jhv5v"]
-[ext_resource type="Texture2D" uid="uid://qu22elh3o6jk" path="res://assets/art/ui/main_menu_theme_1/shirt_piece.png" id="7_7vvdv"]
-[ext_resource type="Texture2D" uid="uid://67ikvs81o8lb" path="res://assets/art/ui/main_menu_theme_1/pants.png" id="8_kdptx"]
-[ext_resource type="Texture2D" uid="uid://bvmekgos2clgw" path="res://assets/art/ui/main_menu_theme_1/shoes.png" id="9_qfqop"]
-[ext_resource type="Texture2D" uid="uid://c231d7rwy6qti" path="res://assets/art/ui/main_menu_theme_1/accessories.png" id="10_x5md7"]
-[ext_resource type="Texture2D" uid="uid://dp3p57vphal1u" path="res://assets/art/ui/main_menu_theme_1/box_1.png" id="11_43o14"]
+[ext_resource type="Texture2D" uid="uid://b35mwfn4603t4" path="res://assets/art/ui/main_menu_theme_1/slots_texture/head_piece.png" id="6_jhv5v"]
+[ext_resource type="Texture2D" uid="uid://qu22elh3o6jk" path="res://assets/art/ui/main_menu_theme_1/slots_texture/shirt_piece.png" id="7_7vvdv"]
+[ext_resource type="Texture2D" uid="uid://67ikvs81o8lb" path="res://assets/art/ui/main_menu_theme_1/slots_texture/pants.png" id="8_kdptx"]
+[ext_resource type="Texture2D" uid="uid://bvmekgos2clgw" path="res://assets/art/ui/main_menu_theme_1/slots_texture/shoes.png" id="9_qfqop"]
+[ext_resource type="Texture2D" uid="uid://c231d7rwy6qti" path="res://assets/art/ui/main_menu_theme_1/slots_texture/accessories.png" id="10_x5md7"]
+[ext_resource type="Texture2D" uid="uid://dp3p57vphal1u" path="res://assets/art/ui/main_menu_theme_1/panels_boxes/box_1.png" id="11_43o14"]
 [ext_resource type="Script" uid="uid://dy0bkiw7dxmjx" path="res://ui/inventory_ui/inventory_ui.gd" id="12_8xuyq"]
 [ext_resource type="PackedScene" uid="uid://ipm4ajwd7kup" path="res://ui/slot/slot_2.tscn" id="13_nbl23"]
-[ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="14_jhv5v"]
-[ext_resource type="Texture2D" uid="uid://cilui32o5uc4c" path="res://assets/art/ui/main_menu_theme_1/tooltip.png" id="15_7vvdv"]
-[ext_resource type="Texture2D" uid="uid://bb8qeii15qxty" path="res://assets/art/ui/main_menu_theme_1/ribbon_tab.png" id="16_kurrx"]
+[ext_resource type="FontFile" uid="uid://cnfdulewx7n12" path="res://assets/fonts/ARCADECLASSIC.TTF" id="14_jhv5v"]
+[ext_resource type="Texture2D" uid="uid://b5rpg6qc32hk1" path="res://assets/art/ui/main_menu_theme_1/buttons/button.png" id="15_jhv5v"]
+[ext_resource type="Script" uid="uid://fpet5lwa8isw" path="res://ui/menu/button.gd" id="16_7vvdv"]
+[ext_resource type="Texture2D" uid="uid://bb8qeii15qxty" path="res://assets/art/ui/main_menu_theme_1/buttons/ribbon_tab.png" id="16_kurrx"]
+[ext_resource type="Script" uid="uid://dmkef2njnocxw" path="res://ui/menu/tabs_button.gd" id="20_kdptx"]
 
-[node name="MainMenu" type="CanvasLayer" unique_id=1185807406]
+[node name="MainMenu" type="CanvasLayer" unique_id=1185807406 node_paths=PackedStringArray("current_day_label", "current_gold_label", "exit_button")]
 process_mode = 3
 script = ExtResource("1_hut73")
+current_day_label = NodePath("MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/FarmStats/MarginContainer/CurrentDay")
+current_gold_label = NodePath("MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer/Gold")
+exit_button = NodePath("MarginContainer/Panel/PanelMargin/ExitButton")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1531714065]
-modulate = Color(1, 1, 1, 0.827451)
+modulate = Color(1, 1, 1, 0.92941177)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,6 +45,7 @@ offset_top = -6.5
 offset_bottom = 6.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 40
@@ -56,38 +62,71 @@ patch_margin_bottom = 59
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=302399860]
+[node name="PanelMargin" type="MarginContainer" parent="MarginContainer/Panel" unique_id=302399860]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 28
 theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 29
 theme_override_constants/margin_bottom = 27
 
-[node name="ExitButton" type="TextureButton" parent="MarginContainer/Panel/MarginContainer" unique_id=301082305]
+[node name="ExitButton" type="TextureButton" parent="MarginContainer/Panel/PanelMargin" unique_id=301082305]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture_normal = ExtResource("4_kf8oo")
+script = ExtResource("16_7vvdv")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=754546609]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Panel/PanelMargin" unique_id=754546609]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer" unique_id=322675182]
+[node name="MainHbox" type="HBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer" unique_id=322675182]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 21
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer" unique_id=598891907]
+[node name="PlayerPanel" type="VBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox" unique_id=598891907]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="PlayerStats" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=876481057]
+[node name="FarmStats" type="NinePatchRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel" unique_id=1813525770]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_yime1")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
-[node name="Player" type="NinePatchRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats" unique_id=1958201558]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/FarmStats" unique_id=793416643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CurrentDay" type="Label" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/FarmStats/MarginContainer" unique_id=1879370869]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.4683333, 0.5, 0.31, 1)
+theme_override_fonts/font = ExtResource("14_jhv5v")
+theme_override_font_sizes/font_size = 14
+text = "Day 1"
+
+[node name="PlayerStats" type="VBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel" unique_id=876481057]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Player" type="NinePatchRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats" unique_id=1958201558]
 custom_minimum_size = Vector2(180, 154)
 layout_mode = 2
 texture = ExtResource("4_kurrx")
@@ -97,26 +136,29 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player" unique_id=1224615844]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player" unique_id=1224615844]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer" unique_id=2051662937]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer" unique_id=2051662937]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer" unique_id=211726995]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer" unique_id=211726995]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 4
 
-[node name="PlayerAvatar" type="NinePatchRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1442841255]
+[node name="PlayerAvatar" type="NinePatchRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1442841255]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("5_yime1")
@@ -125,54 +167,62 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerAvatar" unique_id=1245239914]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerAvatar" unique_id=1245239914]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("6_3pyrn")
 
-[node name="PlayerEquipment" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer" unique_id=554446066]
+[node name="PlayerEquipment" type="GridContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer" unique_id=554446066]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 2
 
-[node name="Head" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=369306814]
+[node name="Head" type="TextureRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=369306814]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("6_jhv5v")
 
-[node name="Shirt" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=941195589]
+[node name="Shirt" type="TextureRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=941195589]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("7_7vvdv")
 
-[node name="Pants" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=1721918714]
+[node name="Pants" type="TextureRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=1721918714]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("8_kdptx")
 
-[node name="Shoes" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=277137841]
+[node name="Shoes" type="TextureRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=277137841]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("9_qfqop")
 
-[node name="Accessories" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=1851445662]
+[node name="Accessories" type="TextureRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=1851445662]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("10_x5md7")
 
-[node name="Accessories2" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=40945301]
+[node name="Accessories2" type="TextureRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer/PlayerEquipment" unique_id=40945301]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("10_x5md7")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer" unique_id=1135935450]
+[node name="PlayerStats" type="NinePatchRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer" unique_id=1135935450]
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("11_43o14")
@@ -181,64 +231,85 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/NinePatchRect" unique_id=932668819]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/PlayerStats" unique_id=932668819]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer" unique_id=259931872]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/PlayerStats/MarginContainer" unique_id=259931872]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Username" type="Label" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=80013924]
+[node name="Username" type="Label" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer" unique_id=80013924]
 layout_mode = 2
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("14_jhv5v")
 theme_override_font_sizes/font_size = 12
 text = "Alunsina"
 
-[node name="Gold" type="Label" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/PlayerStats/Player/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1049078603]
+[node name="Gold" type="Label" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer" unique_id=1049078603]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("14_jhv5v")
 theme_override_font_sizes/font_size = 12
 text = "0"
 
-[node name="FarmStats" type="NinePatchRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1813525770]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel" unique_id=456556158]
 layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("15_7vvdv")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/FarmStats" unique_id=793416643]
+[node name="SaveButton" type="TextureButton" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/HBoxContainer" unique_id=1881753120]
+layout_mode = 2
+texture_normal = ExtResource("15_jhv5v")
+script = ExtResource("16_7vvdv")
+
+[node name="SaveLabel" type="Label" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/HBoxContainer/SaveButton" unique_id=1091887553]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/VBoxContainer/FarmStats/MarginContainer" unique_id=1879370869]
-layout_mode = 2
 theme_override_fonts/font = ExtResource("14_jhv5v")
-theme_override_font_sizes/font_size = 14
-text = "Day 1"
+text = "save"
 
-[node name="Inventory" type="NinePatchRect" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer" unique_id=2061811603 node_paths=PackedStringArray("grid_container")]
-modulate = Color(0.7, 0.7, 0.7, 1)
+[node name="LoadButton" type="TextureButton" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/HBoxContainer" unique_id=238232707]
+layout_mode = 2
+texture_normal = ExtResource("15_jhv5v")
+script = ExtResource("16_7vvdv")
+
+[node name="LoadLabel" type="Label" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/HBoxContainer/LoadButton" unique_id=805732734]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("14_jhv5v")
+text = "load"
+
+[node name="Inventory" type="NinePatchRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox" unique_id=2061811603 node_paths=PackedStringArray("grid_container")]
+process_mode = 3
+self_modulate = Color(0.79, 0.79, 0.79, 1)
 custom_minimum_size = Vector2(180, 214)
 layout_mode = 2
 texture = ExtResource("4_kurrx")
@@ -251,52 +322,67 @@ script = ExtResource("12_8xuyq")
 slot_scene = ExtResource("13_nbl23")
 grid_container = NodePath("MarginContainer/GridContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/Inventory" unique_id=199895281]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/Inventory" unique_id=199895281]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/CenterContainer/HBoxContainer/Inventory/MarginContainer" unique_id=586438774]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/Inventory/MarginContainer" unique_id=586438774]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1346761754]
-anchors_preset = -1
+[node name="Tabs" type="VBoxContainer" parent="." unique_id=1346761754]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 19.0
 offset_top = 79.0
+offset_right = -560.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = 11
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer2" unique_id=1690388010]
+[node name="TextureButton" type="TextureButton" parent="Tabs" unique_id=1690388010]
 layout_mode = 2
 texture_normal = ExtResource("16_kurrx")
+script = ExtResource("20_kdptx")
+is_active = true
 
-[node name="TextureButton2" type="TextureButton" parent="VBoxContainer2" unique_id=1452984061]
+[node name="TextureButton2" type="TextureButton" parent="Tabs" unique_id=1452984061]
 modulate = Color(0.55, 0.55, 0.55, 1)
 layout_mode = 2
 texture_normal = ExtResource("16_kurrx")
+script = ExtResource("20_kdptx")
 
-[node name="TextureButton3" type="TextureButton" parent="VBoxContainer2" unique_id=148034004]
+[node name="TextureButton3" type="TextureButton" parent="Tabs" unique_id=148034004]
 modulate = Color(0.55, 0.55, 0.55, 1)
 layout_mode = 2
 texture_normal = ExtResource("16_kurrx")
+script = ExtResource("20_kdptx")
 
-[node name="TextureButton4" type="TextureButton" parent="VBoxContainer2" unique_id=583915568]
+[node name="TextureButton4" type="TextureButton" parent="Tabs" unique_id=583915568]
 modulate = Color(0.55, 0.55, 0.55, 1)
 layout_mode = 2
 texture_normal = ExtResource("16_kurrx")
+script = ExtResource("20_kdptx")
+
+[connection signal="mouse_entered" from="MarginContainer/Panel/PanelMargin/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Panel/PanelMargin/ExitButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Panel/PanelMargin/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]

@@ -36,6 +36,7 @@ SaveSystem="*uid://bms05ko3eaoem"
 VisibilitySystem="*uid://dnxebntx2go01"
 TransactionSystem="*uid://8m8wbtfdjn8j"
 FarmVisual="*uid://c21e2c58rbf87"
+SoundManager="*uid://3lq8cw1qa7p4"
 
 [display]
 
@@ -51,7 +52,6 @@ enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg")
 [global_group]
 
 farm_tiles=""
-inventory_ui=""
 player=""
 
 [input]

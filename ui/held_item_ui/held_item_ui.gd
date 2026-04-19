@@ -7,7 +7,7 @@ extends CanvasLayer
 func _ready():
 	SlotInteraction.held_changed.connect(on_held_changed)
 	
-	layer = 11  # ensure on top
+	layer = 15  # ensure on top
 	
 	root.visible = true
 	root.size = Vector2(64, 64)

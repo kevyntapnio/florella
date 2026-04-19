@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ipm4ajwd7kup"]
 
 [ext_resource type="Script" uid="uid://d1in4bvcmpkt6" path="res://ui/slot/slot.gd" id="1_viqvp"]
-[ext_resource type="Texture2D" uid="uid://cew7wquo44law" path="res://assets/art/ui/main_menu_theme_1/slot.png" id="2_viqvp"]
+[ext_resource type="Texture2D" uid="uid://cew7wquo44law" path="res://assets/art/ui/main_menu_theme_1/slots_texture/slot.png" id="2_viqvp"]
 [ext_resource type="Texture2D" uid="uid://cd75ij66bukf4" path="res://assets/art/ui/inventory_hotbar_ui/slot highlight.png" id="3_6h1ha"]
 [ext_resource type="FontFile" uid="uid://cmc6iem1jp4gk" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="4_4eh33"]
 
@@ -24,6 +24,7 @@ texture = ExtResource("2_viqvp")
 stretch_mode = 5
 
 [node name="Highlight" type="TextureRect" parent="." unique_id=900264149]
+visible = false
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 34.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvmekgos2clgw"
-path="res://.godot/imported/shoes.png-3f6289929f9a2f91a2c7fae53abea4b3.ctex"
+uid="uid://c231d7rwy6qti"
+path="res://.godot/imported/accessories.png-a78dbe4d962e435bf186ce5ce47a0607.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/main_menu_theme_1/shoes.png"
-dest_files=["res://.godot/imported/shoes.png-3f6289929f9a2f91a2c7fae53abea4b3.ctex"]
+source_file="res://assets/art/ui/main_menu_theme_1/slots_texture/accessories.png"
+dest_files=["res://.godot/imported/accessories.png-a78dbe4d962e435bf186ce5ce47a0607.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cilui32o5uc4c"
-path="res://.godot/imported/tooltip.png-05858308eea0749eab326df4d9930948.ctex"
+uid="uid://blwm5xgkf5tm7"
+path="res://.godot/imported/background.png-98b8adaa9b4a04cca68d99133a6f57d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/main_menu_theme_1/tooltip.png"
-dest_files=["res://.godot/imported/tooltip.png-05858308eea0749eab326df4d9930948.ctex"]
+source_file="res://assets/art/ui/main_menu_theme_1/background/background.png"
+dest_files=["res://.godot/imported/background.png-98b8adaa9b4a04cca68d99133a6f57d0.ctex"]
 
 [params]
 
