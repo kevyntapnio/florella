@@ -144,10 +144,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer" unique_id=2051662937]
 layout_mode = 2
@@ -155,8 +155,9 @@ mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer" unique_id=211726995]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 8
 
 [node name="PlayerAvatar" type="NinePatchRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox/PlayerPanel/PlayerStats/Player/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1442841255]
 custom_minimum_size = Vector2(96, 96)
@@ -309,7 +310,7 @@ text = "load"
 
 [node name="Inventory" type="NinePatchRect" parent="MarginContainer/Panel/PanelMargin/CenterContainer/MainHbox" unique_id=2061811603 node_paths=PackedStringArray("grid_container")]
 process_mode = 3
-self_modulate = Color(0.79, 0.79, 0.79, 1)
+self_modulate = Color(0.88, 0.8624, 0.8624, 1)
 custom_minimum_size = Vector2(180, 214)
 layout_mode = 2
 texture = ExtResource("4_kurrx")

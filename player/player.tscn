@@ -182,7 +182,6 @@ y_sort_enabled = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7lmhl")
 animation = &"idle_down"
-frame_progress = 0.34689435
 offset = Vector2(0, -32)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2034566478]
@@ -219,6 +218,7 @@ collision_mask = 8
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_i3pqv")
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

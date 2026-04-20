@@ -213,3 +213,18 @@ func load_from_data(data: Dictionary):
 	var pos = data.get("position", {"x": 0, "y": 0})
 	
 	global_position = Vector2(pos["x"], pos["y"])
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	var walk_anim = [
+		"walk_down",
+		"walk_up",
+		"walk_left",
+		"walk_right"
+	]
+
+	if not sprite.animation in walk_anim: 
+		return
+		
+	if sprite.frame == 0 or sprite.frame == 2:
+		SoundManager.play("walk_grass")

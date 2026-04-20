@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dgjc0ql3fkko3"
-path="res://.godot/imported/walk_dirt.wav-234170bde2f0713194dd64e0585f23cf.sample"
+path="res://.godot/imported/walk_grass.wav-8a897a8f9a230101d442ed72767db516.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/walk_dirt.wav"
-dest_files=["res://.godot/imported/walk_dirt.wav-234170bde2f0713194dd64e0585f23cf.sample"]
+source_file="res://assets/audio/sfx/walk_grass.wav"
+dest_files=["res://.godot/imported/walk_grass.wav-8a897a8f9a230101d442ed72767db516.sample"]
 
 [params]
 

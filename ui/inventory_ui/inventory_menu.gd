@@ -43,7 +43,7 @@ func update_day_display():
 		push_error("MainMenu ERROR: current_day_label not assigned in Editor")
 		return
 		
-	current_day_label.text = "Spring %d, Year: %d" % [day, year]
+	current_day_label.text = "Spring, Day %d, Year: %d" % [day, year]
 
 func on_wallet_changed(current_gold):
 	
