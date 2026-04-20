@@ -47,6 +47,7 @@ func handle_purchase_confirmation():
 	var total_price = cart.total_price
 	
 	if TransactionSystem.perform_transaction(cart_items, total_price):
+		SoundManager.play("coin")
 		clear_shop_menu()
 	else:
 		print("Not enough money")

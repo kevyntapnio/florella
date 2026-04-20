@@ -25,5 +25,6 @@ func handle_sell_request():
 	## example: bouquet scoring
 	
 	if TransactionSystem.perform_sell_transaction(sell_items, price):
+		SoundManager.play("coin")
 		sell_container.reset_session()
 		

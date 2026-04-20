@@ -43,6 +43,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="ItemInfo" type="VBoxContainer" parent="Control/Panel/MainMargin" unique_id=115069526]
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="Name" type="Label" parent="Control/Panel/MainMargin/ItemInfo" unique_id=494996000]
 custom_minimum_size = Vector2(1, 1)
@@ -50,8 +51,10 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(0.16590658, 0.21443185, 0.08711674, 1)
+theme_override_constants/line_spacing = -10
 theme_override_fonts/font = ExtResource("3_md4oa")
-text = "Name"
+theme_override_font_sizes/font_size = 17
+text = "Basic Watering Can"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="Control/Panel/MainMargin/ItemInfo" unique_id=1782880922]
@@ -61,7 +64,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.16590658, 0.21443185, 0.08711674, 1)
 theme_override_constants/line_spacing = -8
 theme_override_fonts/font = ExtResource("4_6bqwb")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "Lorem ipsum "
 autowrap_mode = 2
 

@@ -3,8 +3,10 @@ extends Node
 signal day_passed
 signal time_updated(hour, minute)
 signal day_ended
+signal day_updated(current_day, current_year)
 
 var current_day: int = 1
+var current_year: int = 1
 var pause_sources: Array = []
 var current_hour = 6
 var current_minute = 0
@@ -24,6 +26,7 @@ func advance_day():
 	
 	emit_signal("day_ended")
 	emit_signal("day_passed")
+	day_updated.emit(current_day, current_year)
 	time_updated.emit(current_hour, current_minute)
 
 func _process(delta):
@@ -124,3 +127,4 @@ func load_from_data(data: Dictionary):
 	current_minute = data.get("current_minute", 0)
 	
 	time_updated.emit(current_hour, current_minute)
+	day_updated.emit(current_day, current_year)

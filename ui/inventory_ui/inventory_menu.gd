@@ -8,7 +8,7 @@ func _ready():
 	layer = 15
 	visible = false
 	
-	TimeManager.day_passed.connect(on_day_passed)
+	TimeManager.day_updated.connect(on_day_updated)
 	PlayerGlobalStats.wallet_changed.connect(on_wallet_changed)
 	
 	update_day_display()
@@ -31,8 +31,12 @@ func _input(event: InputEvent) -> void:
 func _on_exit_button_pressed() -> void:
 	close()
 
-func on_day_passed():
-	update_day_display()
+func on_day_updated(current_day, current_year):
+	if current_day_label == null:
+		push_error("MainMenu ERROR: current_day_label not assigned in Editor")
+		return
+		
+	current_day_label.text = "Spring, Day %d, Year %d" % [current_day, current_year]
 	
 func update_day_display():
 	var current_day = TimeManager.get_current_day()
