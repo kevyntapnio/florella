@@ -2,6 +2,7 @@ extends SlotContainerUI
 class_name SellContainerUI
 
 var max_slots = 5
+@export var price_label: Label
 
 func _ready() -> void:
 	create_slots(max_slots)
@@ -44,6 +45,10 @@ func update_all_slots():
 		slot.update_slot(icon, quantity)
 		
 func update_price_display():
-	# to be added later
-	pass
+	if price_label == null:
+		push_error("ShippingBinUI: price_label not assigned in Editor")
+		return
+	
+	var total = container.get_total_price()
+	price_label.text = "Total:  " + str(total)
 	

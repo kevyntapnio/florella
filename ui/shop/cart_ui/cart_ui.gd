@@ -2,6 +2,9 @@ extends Control
 
 @export var slot_scene: PackedScene
 @onready var grid_container = $Background/MarginContainer/GridContainer
+
+@export var price_label: Label
+
 var cart: Cart
 
 var slots = []
@@ -61,12 +64,19 @@ func update_all_slots():
 			slot.update_slot(icon, quantity)
 		
 func update_price_display(total_price):
+	if price_label == null:
+		push_error("CartUI ERROR: price_label not assigned in Editor")
+		return
+		
 	var current_gold = PlayerGlobalStats.get_current_gold()
 	
-	#temporary. no price display added to UI yet
+	price_label.text = "Total:  " + str(total_price)
+	
 	if total_price > current_gold:
-		#price_display updates but turns red
-		pass
+		price_label.modulate = Color.RED
+	else:
+		price_label.modulate = Color(1.0, 1.0, 1.0)
+		
 
 func open_menu():
 	visible = true
@@ -80,3 +90,8 @@ func close_menu():
 		
 	slots.clear()
 	visible = false
+	
+	if price_label == null:
+		push_error("CartUI ERROR: price_label not assigned in Editor")
+	
+	price_label.text = "Total:  0"

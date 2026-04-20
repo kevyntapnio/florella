@@ -4,7 +4,7 @@ class_name Cart
 var size: int = 5
 var cart_items: Array = []
 var max_space: int = 99
-var total_price: int
+var total_price: int = 0
 var cart_ui: Control
 
 signal cart_changed
@@ -45,6 +45,7 @@ func add_stack(stack):
 			var new_stack = ItemStack.new()
 			new_stack.item_data = stack.item_data
 			new_stack.quantity = stack.quantity
+			new_stack.unit_price = stack.unit_price
 			
 			var to_add = min(max_space, stack.quantity)
 			new_stack.quantity = to_add
@@ -54,7 +55,6 @@ func add_stack(stack):
 			add_to_total(to_add, price)
 			
 			cart_changed.emit(total_price)
-			print(total_price)
 			return
 	
 func add_to_total(quantity, price):
@@ -104,7 +104,6 @@ func handle_right_click(index):
 		slot_stack.quantity -= 1
 		
 		total_price -= price
-		print(total_price)
 		
 	if slot_stack.quantity == 0:
 		clear_slot(index)
@@ -113,4 +112,3 @@ func handle_right_click(index):
 		
 func clear_slot(index):
 	cart_items[index] = null
-	

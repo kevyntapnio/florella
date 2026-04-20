@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8de5okh2bxsh" path="res://ui/shop/shop_ui/shop_ui.gd" id="1_a3nsf"]
 [ext_resource type="PackedScene" uid="uid://8g84i404iqif" path="res://ui/shop/shop_slot/shop_slot.tscn" id="2_1rbvm"]
-[ext_resource type="Texture2D" uid="uid://1kmiwuwe2qb0" path="res://assets/art/ui/shop_ui/shop_ui_background.PNG" id="3_hdvcj"]
+[ext_resource type="Texture2D" uid="uid://cilui32o5uc4c" path="res://assets/art/ui/main_menu_theme_1/panels_boxes/tooltip.png" id="3_a3nsf"]
 
 [node name="ShopUI" type="Control" unique_id=1488926804]
 custom_minimum_size = Vector2(225, 320)
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_hdvcj")
+texture = ExtResource("3_a3nsf")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
@@ -36,10 +36,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 48
 theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 
 [node name="GridContainer" type="GridContainer" parent="Background/MarginContainer" unique_id=1547870860]
 layout_mode = 2

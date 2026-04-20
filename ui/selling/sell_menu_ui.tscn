@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c2lowg4mre7w6" path="res://ui/selling/sell_menu_ui.gd" id="1_piur1"]
 [ext_resource type="PackedScene" uid="uid://b7ks18o54lk0p" path="res://ui/inventory_ui/inventory_ui.tscn" id="2_5gcrt"]
 [ext_resource type="PackedScene" uid="uid://kbwo8858b67m" path="res://ui/selling/shipping_bin_ui.tscn" id="2_piur1"]
+[ext_resource type="FontFile" uid="uid://cnfdulewx7n12" path="res://assets/fonts/ARCADECLASSIC.TTF" id="3_gl1is"]
 
 [node name="SellMenuUI" type="CanvasLayer" unique_id=1230154816 node_paths=PackedStringArray("shipping_bin_ui")]
 process_mode = 3
@@ -42,9 +43,18 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ShippingBinUI" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1822433370 instance=ExtResource("2_piur1")]
+[node name="ShippingBinUI" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1822433370 node_paths=PackedStringArray("price_label") instance=ExtResource("2_piur1")]
 custom_minimum_size = Vector2(196, 48)
 layout_mode = 2
+price_label = NodePath("../Price")
+
+[node name="Price" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1731163830]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_gl1is")
+theme_override_font_sizes/font_size = 18
+text = "Total:  0"
 
 [node name="Button" type="Button" parent="MarginContainer/CenterContainer/HBoxContainer/VBoxContainer" unique_id=1173492568]
 custom_minimum_size = Vector2(0, 40)
