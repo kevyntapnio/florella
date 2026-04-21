@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_ready
+
 const SPEED = 150
 var facing_direction = Vector2i(0, 1)
 
@@ -7,10 +9,12 @@ var facing_direction = Vector2i(0, 1)
 
 @export var tilemap: TileMapLayer
 @export var tile_highlight: Node2D
+@export var scene_controller: Node
 
 @onready var sprite = $AnimatedSprite2D
 @onready var interaction_prompt = $InteractionPrompt
 @onready var tile_detector = $TileDetector
+
 
 const INVALID_COORD = Vector2i(-1, -1)
 
@@ -20,13 +24,21 @@ var player_global_position
 var scroll_locked
 var reactive_objects: Dictionary = {}
 
+var just_spawned = true
+
 func _ready() -> void:
+	
 	interaction_prompt.hide()
 	
+	await get_tree().process_frame
+	apply_spawn_if_needed()
+	
+	player_ready.emit()
 func _process(delta):
 	update_targeting_visual()
 	
 func update_targeting_visual():
+	
 
 	var item_data = Hotbar.get_selected_item_data()
 	
@@ -71,7 +83,9 @@ func update_targeting_visual():
 	TargetingVisual.update_target(InteractionSystem.focused_interactable, valid)
 	
 func _physics_process(delta):
-
+	if just_spawned:
+		just_spawned = false
+		return
 	# Movement
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
@@ -228,3 +242,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 	if sprite.frame == 0 or sprite.frame == 2:
 		SoundManager.play("walk_grass")
+		
+func apply_spawn_if_needed():
+	
+	scene_controller.apply_spawn(self)

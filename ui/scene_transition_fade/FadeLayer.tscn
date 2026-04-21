@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c37rvq06lr21o"]
+
+[ext_resource type="Script" uid="uid://bqx37nhnocv8p" path="res://ui/scene_transition_fade/fade_layer.gd" id="1_pji0s"]
+
+[node name="FadeLayer" type="CanvasLayer" unique_id=698149931]
+script = ExtResource("1_pji0s")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=872292042]
+modulate = Color(1, 1, 1, 0)
+offset_right = 688.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

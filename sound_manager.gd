@@ -4,7 +4,7 @@ var sounds = {
 	"ui_hover": preload("res://assets/audio/sfx/pop.mp3"),
 	"slot_hover": preload("res://assets/audio/sfx/wood_block.wav"),
 	"walk_grass": preload("res://assets/audio/sfx/walk_grass.wav"),
-	"coin": preload("res://assets/audio/sfx/coin2.mp3")
+	"coin": preload("res://assets/audio/sfx/coin3.mp3")
 }
 
 func play(sound_id: String):

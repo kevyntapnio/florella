@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwx3pw7l3sd4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aa0x"]
+size = Vector2(66, 42)
+
+[node name="SceneTransition" type="Area2D" unique_id=1009774083]
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1290781693]
+position = Vector2(319, 339)
+shape = SubResource("RectangleShape2D_5aa0x")

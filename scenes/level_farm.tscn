@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://itp22a1r57o5" path="res://scenes/level_farm.gd" id="1_k51qb"]
 [ext_resource type="TileSet" uid="uid://d14sq78rllnfu" path="res://world/farm/tile_set/grass-dirt.tres" id="1_s088y"]
+[ext_resource type="PackedScene" uid="uid://colg6rpsasx6w" path="res://systems/global_managers/scene_manager/scene_controller/scene_controller.tscn" id="2_hdepx"]
+[ext_resource type="Script" uid="uid://bab24beyebsye" path="res://systems/global_managers/scene_manager/spawn_points/spawn_point.gd" id="3_0j4k1"]
 [ext_resource type="PackedScene" uid="uid://d30b6vfw84ppa" path="res://world/farm/tile_highlight/tile_highlight.tscn" id="3_47drt"]
 [ext_resource type="PackedScene" uid="uid://btttkhmphug02" path="res://player/player.tscn" id="3_k5frs"]
+[ext_resource type="PackedScene" uid="uid://bwx3pw7l3sd4m" path="res://systems/global_managers/scene_manager/scene_transition/scene_transition.tscn" id="4_lpu8x"]
 [ext_resource type="PackedScene" uid="uid://sfbkfsohxfi0" path="res://world/farm/farm_tiles/farm_tile.tscn" id="5_d35qd"]
 [ext_resource type="Script" uid="uid://dh4rfkggonian" path="res://scenes/grass_detail_map.gd" id="6_4xv46"]
 [ext_resource type="Script" uid="uid://sfriifoj7uvu" path="res://ui/time_debug_label.gd" id="6_q8hax"]
@@ -678,7 +681,24 @@ y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_k51qb")
 
+[node name="SceneController" parent="." unique_id=983084272 groups=["scene_controller"] instance=ExtResource("2_hdepx")]
+
 [node name="World" type="Node2D" parent="." unique_id=1692724726]
+
+[node name="SpawnPoints" type="Node" parent="World" unique_id=1390842027]
+
+[node name="farm_house_door" type="Node2D" parent="World/SpawnPoints" unique_id=2142763708 groups=["spawn_points"]]
+position = Vector2(199.07938, 584.2747)
+script = ExtResource("3_0j4k1")
+spawn_id = "farm_house_door"
+
+[node name="ExitPoints" type="Node" parent="World" unique_id=923618061]
+
+[node name="FarmHouseDoor" type="Node2D" parent="World/ExitPoints" unique_id=1813408510]
+position = Vector2(198.81961, 587.62683)
+
+[node name="SceneTransition" parent="World" unique_id=1009774083 instance=ExtResource("4_lpu8x")]
+position = Vector2(201.65456, 574.2092)
 
 [node name="GroundTileMap" type="TileMapLayer" parent="World" unique_id=453406408 groups=["terrain"]]
 z_index = -2
@@ -993,10 +1013,11 @@ tilemap = NodePath("../../../GroundTileMap")
 [node name="YSortWorld" type="Node2D" parent="World" unique_id=1508058470 groups=["ysort_world"]]
 y_sort_enabled = true
 
-[node name="Player" parent="World/YSortWorld" unique_id=1372264591 node_paths=PackedStringArray("tilemap", "tile_highlight") instance=ExtResource("3_k5frs")]
-position = Vector2(320, 592)
+[node name="Player" parent="World/YSortWorld" unique_id=1372264591 node_paths=PackedStringArray("tilemap", "tile_highlight", "scene_controller") instance=ExtResource("3_k5frs")]
+position = Vector2(296, 455)
 tilemap = NodePath("../../GroundTileMap")
 tile_highlight = NodePath("../../GroundTileMap/TileHighlight")
+scene_controller = NodePath("../../../SceneController")
 
 [node name="CliffTileMap" type="TileMapLayer" parent="World/YSortWorld" unique_id=2070959076 groups=["terrain"]]
 y_sort_enabled = true
@@ -1015,7 +1036,7 @@ tile_map_data = PackedByteArray("AAARACEAAAAAAAAABgASACIAAAAAAAAABgASACEAAAAAAAA
 tile_set = SubResource("TileSet_jgmuv")
 
 [node name="Dog" parent="World/YSortWorld" unique_id=290849294 instance=ExtResource("9_hyev1")]
-position = Vector2(216, 592)
+position = Vector2(265, 597)
 
 [node name="FarmCottage" parent="World/YSortWorld" unique_id=1448608620 instance=ExtResource("17_41ixy")]
 position = Vector2(192, 552)
@@ -1030,7 +1051,7 @@ shop_system = NodePath("../../../Systems/ShopSystem")
 shop_info = ExtResource("26_bsn28")
 
 [node name="DaisyLamp" parent="World/YSortWorld" unique_id=294373437 instance=ExtResource("28_p8dsh")]
-position = Vector2(128, 600)
+position = Vector2(592, 520)
 
 [node name="ShippingBin" parent="World/YSortWorld" unique_id=123653949 node_paths=PackedStringArray("selling_system") instance=ExtResource("45_a5i0f")]
 position = Vector2(416, 512)

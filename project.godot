@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Mobile")
 [autoload]
 
 TimeManager="*uid://nhbm75nrjo40"
+SceneManager="*uid://cxs2c4c4d1r48"
 PlayerGlobalStats="*uid://r1jq13wuyr26"
 InventorySystem="*uid://c56dlwcbkxmlm"
 TargetingSystem="*uid://c8rd2bjpyuhok"
@@ -27,6 +28,7 @@ SlotInteraction="*uid://dh3gmtjt3pdmi"
 ItemDatabase="*uid://cihl2odgqayhf"
 WorldItemSpawner="*uid://euho0wfepsok"
 DayTransition="*uid://hvubnck8s1kr"
+FadeLayer="*uid://c37rvq06lr21o"
 Hotbar="*uid://bsdwyi4yiv25r"
 HotbarUI="*uid://cg2x2l5bhty88"
 ToolTipUI="*uid://kgnbky2qxio2"
@@ -54,6 +56,8 @@ enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg")
 
 farm_tiles=""
 player=""
+spawn_points=""
+scene_controller=""
 
 [input]
 
@@ -178,6 +182,7 @@ toggle_tooltip={
 2d_physics/layer_6="Environment"
 2d_physics/layer_7="WorldItem"
 2d_physics/layer_8="OcclusionItem"
+2d_physics/layer_9="TransitionArea"
 
 [physics]
 

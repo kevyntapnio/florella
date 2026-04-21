@@ -54,7 +54,7 @@ theme_override_colors/font_color = Color(0.16590658, 0.21443185, 0.08711674, 1)
 theme_override_constants/line_spacing = -10
 theme_override_fonts/font = ExtResource("3_md4oa")
 theme_override_font_sizes/font_size = 17
-text = "Basic Watering Can"
+text = "Item  name"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="Control/Panel/MainMargin/ItemInfo" unique_id=1782880922]
@@ -62,7 +62,7 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.16590658, 0.21443185, 0.08711674, 1)
-theme_override_constants/line_spacing = -8
+theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("4_6bqwb")
 theme_override_font_sizes/font_size = 10
 text = "Lorem ipsum "

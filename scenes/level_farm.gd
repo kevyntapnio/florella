@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var scene_controller = $SceneController
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GridManager.set_tilemap($World/GroundTileMap)
@@ -32,3 +34,6 @@ func _ready() -> void:
 		$World/GrassDetailMap.add_grass_tile_variants()
 
 	PlayerGlobalStats.add_to_wallet(5000)
+	
+func initialize_scene(data): 
+	scene_controller.initialize_scene(data)
