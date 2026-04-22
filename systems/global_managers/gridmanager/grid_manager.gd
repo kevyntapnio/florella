@@ -31,7 +31,6 @@ func get_grid_objects(coords: Vector2i) -> Array:
 		return grid_objects.get(coords, [])
 	else:
 		return []
-		print("GRID MANAGER ERROR: Coords not registered")
 
 func is_grid_occupied(grid: Vector2i) -> bool:
 	return grid in grid_objects

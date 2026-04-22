@@ -91,7 +91,8 @@ func handle_interact_grid(selected_item):
 	var best_score = -1
 	
 	for obj in grid_objects:
-		
+		if not is_instance_valid(obj):
+			continue
 		if not obj.has_method("can_accept_item"):
 			continue
 			

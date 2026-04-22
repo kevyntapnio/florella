@@ -18,8 +18,6 @@ var overlapped_items: Array = []
 
 const INTERACT_PRIORITY = 1
 
-func _ready():
-	pass 
 	
 func _on_build_mode_enabled():
 	if tile_area == null:
@@ -169,6 +167,7 @@ func check_can_place() -> bool:
 	return false
 	
 func _exit_tree():
+	super()
 	if DecorSystem.build_mode_enabled.connect(_on_build_mode_enabled):
 		DecorSystem.build_mode_enabled.disconnect(_on_build_mode_enabled)
 	if DecorSystem.build_mode_disabled.connect(_on_build_mode_disabled):

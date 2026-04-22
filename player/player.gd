@@ -59,7 +59,9 @@ func update_targeting_visual():
 		var valid = false
 		
 		for obj in objects:
-			
+			if not is_instance_valid(obj):
+				continue
+				
 			if obj.has_method("get_interaction_score") and obj.has_method("can_accept_item"):
 				var score = obj.get_interaction_score(context)
 				
@@ -227,6 +229,9 @@ func find_reactive_objects():
 	var new_reactive := {}
 	
 	for obj in objects:
+		if not is_instance_valid(obj):
+			continue
+			
 		if obj.has_method("react"):
 			
 			var dist = global_position.distance_to(obj.global_position)

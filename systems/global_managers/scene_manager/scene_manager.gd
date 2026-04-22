@@ -81,3 +81,6 @@ func set_spawn_to_position(pos):
 			"y": pos.y
 		}
 	}
+
+func set_current_scene(scene_id):
+	current_scene_id = scene_id
