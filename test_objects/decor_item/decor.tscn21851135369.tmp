@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ctcaup2hoiud7"]
+
+[ext_resource type="Script" uid="uid://dee12rgk7t0uu" path="res://test_objects/decor_item/decor_object.gd" id="1_kam65"]
+
+[node name="Decor" type="StaticBody2D" unique_id=59478670]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_kam65")

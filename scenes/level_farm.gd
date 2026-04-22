@@ -10,10 +10,6 @@ func _ready() -> void:
 	FarmVisual.tilled_layer = $World/FarmLogic/FarmVisuals/TilledLayer
 	FarmVisual.watered_layer = $World/FarmLogic/FarmVisuals/WateredLayer
 	
-	InventorySystem.add_item("basic_hoe", 1)
-	InventorySystem.add_item("basic_watering_can", 1)
-	InventorySystem.add_item("tulip", 1)
-
 	var world_tile_query = $Systems/WorldTileQuery
 	
 	world_tile_query.set_terrain_layers()
@@ -33,7 +29,6 @@ func _ready() -> void:
 	if $World/GrassDetailMap.is_inside_tree():
 		$World/GrassDetailMap.add_grass_tile_variants()
 
-	PlayerGlobalStats.add_to_wallet(5000)
 	
 func initialize_scene(data): 
 	scene_controller.initialize_scene(data)

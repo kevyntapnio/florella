@@ -2,9 +2,11 @@ extends Node
 
 var sounds = {
 	"ui_hover": preload("res://assets/audio/sfx/pop.mp3"),
+	"ui_cancel": preload("res://assets/audio/sfx/ui_cancel.wav"),
 	"slot_hover": preload("res://assets/audio/sfx/wood_block.wav"),
 	"walk_grass": preload("res://assets/audio/sfx/walk_grass.wav"),
-	"coin": preload("res://assets/audio/sfx/coin3.mp3")
+	"coin": preload("res://assets/audio/sfx/coin3.mp3"),
+	"wood_placed": preload("res://assets/audio/sfx/wood_placed.wav"),
 }
 
 func play(sound_id: String):

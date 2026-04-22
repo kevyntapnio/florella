@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://i1jjm0wtyrg4" path="res://assets/art/ui/interaction_prompt.png" id="3_g1dw6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
-radius = 6.0827627
+radius = 6.08
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
 atlas = ExtResource("2_i3pqv")
@@ -165,12 +165,13 @@ animations = [{
 radius = 11.04
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(21, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=1372264591 groups=["player"]]
 process_mode = 1
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 164
+collision_mask = 160
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=473465960]

@@ -9,5 +9,8 @@ signal scene_switch
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		SceneManager.request_change_scene(target_scene, {
-			"spawn_id": target_spawn_id
+			"spawn":{
+				"type": "anchor",
+				"id": target_spawn_id
+			}
 		})

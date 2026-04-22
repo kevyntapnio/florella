@@ -11,7 +11,7 @@ var is_magnetized: bool = false
 var player: Node2D
 var velocity: Vector2
 var is_spawning := true
-var magnet_delay := 0.08
+var magnet_delay := 0.12
 var can_magnetize := false
 	
 func initialize(new_stack: ItemStack):

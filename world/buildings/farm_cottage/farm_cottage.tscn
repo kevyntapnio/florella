@@ -2,9 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bf2ma2on33jv5" path="res://assets/art/buildings/prop_farmhouse.png" id="1_sta4h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ebhw"]
-size = Vector2(96, 72)
-
 [node name="FarmCottage" type="StaticBody2D" unique_id=1448608620]
 collision_layer = 32
 collision_mask = 2
@@ -17,6 +14,6 @@ offset = Vector2(0, -47)
 region_enabled = true
 region_rect = Rect2(73, 33, 111, 148)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1968747968]
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_8ebhw")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=601399594]
+position = Vector2(1, 4)
+polygon = PackedVector2Array(-48, 16, -7, 16, -7, 2, 20, 3, 20, 16, 25, 19, 48, 19, 48, -48, -48, -48)

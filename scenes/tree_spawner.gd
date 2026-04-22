@@ -8,13 +8,11 @@ extends Node2D
 @export var min_spacing: int
 
 var rng
-var ysort
 
 var placed_positions: Array = []
 
 func _ready() -> void:
 	get_rng()
-	ysort = get_tree().get_first_node_in_group("ysort_world")
 	
 func get_rng():
 	rng = RandomNumberGenerator.new()
@@ -84,7 +82,8 @@ func spawn_tree(tile):
 		tree_instance.z_index = 1
 	else:
 		tree_instance.z_index = 0
-		
+	
+	var ysort = get_tree().get_first_node_in_group("ysort_world")
 	ysort.add_child(tree_instance)
 	
 func get_random_data():

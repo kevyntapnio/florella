@@ -24,6 +24,7 @@ var player_global_position
 var scroll_locked
 var reactive_objects: Dictionary = {}
 
+var build_mode:= false
 var just_spawned = true
 
 func _ready() -> void:
@@ -31,7 +32,7 @@ func _ready() -> void:
 	interaction_prompt.hide()
 	
 	await get_tree().process_frame
-	apply_spawn_if_needed()
+	#apply_spawn_if_needed()
 	
 	player_ready.emit()
 func _process(delta):
@@ -39,7 +40,6 @@ func _process(delta):
 	
 func update_targeting_visual():
 	
-
 	var item_data = Hotbar.get_selected_item_data()
 	
 	var usable_item = null
@@ -81,6 +81,15 @@ func update_targeting_visual():
 		interaction_prompt.hide()
 		
 	TargetingVisual.update_target(InteractionSystem.focused_interactable, valid)
+	
+	if item_data is DecorData:
+		if not build_mode:
+			if DecorSystem.initialized == true:
+				DecorSystem.initialize_build_mode(item_data)
+				build_mode = true
+	else:
+		DecorSystem.cancel_build_mode()
+		build_mode = false
 	
 func _physics_process(delta):
 	if just_spawned:
@@ -131,10 +140,19 @@ func _physics_process(delta):
 		
 func _input(event: InputEvent) -> void:
 	
+	## Temporary for debugging
+	if Input.is_action_just_pressed("add_debug_items"):
+		DebugSystem._add_items_to_inventory()
+		
 	if Input.is_action_just_pressed("interact"):
 		InteractionSystem.handle_interact_proximity(null)
 		
 	if Input.is_action_just_pressed("use_item"):
+		if build_mode:
+			print("build mode activated")
+			if DecorSystem.place_decor():
+				build_mode = false
+		
 		var item = Hotbar.get_selected_item()
 		
 		if item == null:
@@ -145,6 +163,11 @@ func _input(event: InputEvent) -> void:
 			return
 			
 		InteractionSystem.handle_interact_grid(item)
+	
+	if Input.is_action_just_pressed("right_click"):
+		if not build_mode:
+			return
+		DecorSystem.switch_variant()
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		TimeManager.advance_day()
@@ -243,6 +266,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if sprite.frame == 0 or sprite.frame == 2:
 		SoundManager.play("walk_grass")
 		
-func apply_spawn_if_needed():
-	
-	scene_controller.apply_spawn(self)
+#func apply_spawn_if_needed():
+	#
+	#scene_controller.apply_spawn(self)

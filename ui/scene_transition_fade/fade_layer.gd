@@ -6,13 +6,13 @@ func _ready() -> void:
 	rect.modulate.a = 0.0
 
 func fade_out(duration := 0.3):
-	print("test start")
+	
 	var tween = create_tween()
 	
 	tween.tween_property(rect, "modulate:a", 1.0, duration)
 	
 	await tween.finished
-	print("test finished")
+
 func fade_in(duration:= 0.3):
 	var tween = create_tween()
 	

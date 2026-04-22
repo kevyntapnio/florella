@@ -2,45 +2,57 @@
 
 [ext_resource type="Script" uid="uid://b6htwwygn5nul" path="res://data/cropdata/crop_data.gd" id="1_2hy2w"]
 [ext_resource type="Script" uid="uid://buwm7thaoq20g" path="res://data/cropdata/crop_stage_data.gd" id="2_m3enk"]
-[ext_resource type="Texture2D" uid="uid://x8q6fdd1n5al" path="res://assets/art/crops/sprites/daisy000.png" id="3_kooim"]
-[ext_resource type="Texture2D" uid="uid://c11npck8qrswi" path="res://assets/art/crops/sprites/daisy001.png" id="4_qwapp"]
-[ext_resource type="Texture2D" uid="uid://b1tb1ee0vjncd" path="res://assets/art/crops/sprites/daisy002.png" id="5_mrmvt"]
+[ext_resource type="Texture2D" uid="uid://cygljigj2tg7n" path="res://assets/art/crops/sprites/daisy_sprite_sheet.png" id="3_g456r"]
 [ext_resource type="Resource" uid="uid://baprk7xlhb4kx" path="res://data/itemdata/daisy.tres" id="6_pl1nm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxosx"]
+atlas = ExtResource("3_g456r")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_pl1nm"]
 script = ExtResource("2_m3enk")
 duration = 1
-texture = ExtResource("3_kooim")
+texture = SubResource("AtlasTexture_xxosx")
 metadata/_custom_type_script = "uid://buwm7thaoq20g"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl1nm"]
+atlas = ExtResource("3_g456r")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_mylmo"]
 script = ExtResource("2_m3enk")
 duration = 1
-texture = ExtResource("4_qwapp")
+texture = SubResource("AtlasTexture_pl1nm")
 metadata/_custom_type_script = "uid://buwm7thaoq20g"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mylmo"]
+atlas = ExtResource("3_g456r")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_7abn3"]
 script = ExtResource("2_m3enk")
 duration = 1
-texture = ExtResource("5_mrmvt")
+texture = SubResource("AtlasTexture_mylmo")
 metadata/_custom_type_script = "uid://buwm7thaoq20g"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qwapp"]
-load_path = "res://.godot/imported/large-bud-daisy.png-5a44d648b7a2ed0cc976c233ad2ccfd7.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_7abn3"]
+atlas = ExtResource("3_g456r")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_xgcuc"]
 script = ExtResource("2_m3enk")
 duration = 1
-texture = SubResource("CompressedTexture2D_qwapp")
+texture = SubResource("AtlasTexture_7abn3")
 metadata/_custom_type_script = "uid://buwm7thaoq20g"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cwhjr"]
-load_path = "res://.godot/imported/flower-daisy.png-c76fb905afa8d89eb130ef2d1e844402.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgcuc"]
+atlas = ExtResource("3_g456r")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="Resource" id="Resource_xau24"]
 script = ExtResource("2_m3enk")
 duration = 1
-texture = SubResource("CompressedTexture2D_cwhjr")
+texture = SubResource("AtlasTexture_xgcuc")
 harvestable = true
 yield_item = ExtResource("6_pl1nm")
 remove_on_harvest = true

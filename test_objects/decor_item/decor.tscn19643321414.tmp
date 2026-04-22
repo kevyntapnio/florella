@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ctcaup2hoiud7"]
+
+[ext_resource type="Script" uid="uid://dee12rgk7t0uu" path="res://test_objects/decor_item/decor_object.gd" id="1_kam65"]
+[ext_resource type="Texture2D" uid="uid://b2shuufucvymu" path="res://assets/art/decor/basic_set/UntitledArtwork1 (3).png" id="2_tjkf4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3oji"]
+size = Vector2(32, 32)
+
+[node name="Decor" type="Node2D" unique_id=311259837]
+script = ExtResource("1_kam65")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=616840182]
+texture = ExtResource("2_tjkf4")
+offset = Vector2(0, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1039740998]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_f3oji")

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://d2e801owmj47w"]
+
+[ext_resource type="Texture2D" uid="uid://b2shuufucvymu" path="res://assets/art/decor/basic_set/UntitledArtwork1 (3).png" id="1_22kau"]
+[ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="2_4krm1"]
+[ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="3_pjg51"]
+[ext_resource type="Texture2D" uid="uid://ba0kosa30n46j" path="res://assets/art/decor/basic_set/UntitledArtwork1 (4).png" id="4_tpf7u"]
+
+[sub_resource type="Resource" id="Resource_41duk"]
+script = ExtResource("3_pjg51")
+texture = ExtResource("1_22kau")
+object_size = Vector2i(32, 32)
+collider_size = Vector2i(32, 32)
+detection_size = Vector2i(28, 28)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[sub_resource type="Resource" id="Resource_1woog"]
+script = ExtResource("3_pjg51")
+texture = ExtResource("4_tpf7u")
+object_size = Vector2i(32, 32)
+collider_size = Vector2i(32, 32)
+detection_size = Vector2i(28, 28)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[resource]
+script = ExtResource("2_4krm1")
+variants = Array[ExtResource("3_pjg51")]([SubResource("Resource_41duk"), SubResource("Resource_1woog")])
+has_surface = true
+id = "worn_table"
+name = "Worn Table"
+icon = ExtResource("1_22kau")
+description = "It has a rustic charm to it."
+category = 5
+price = 600
+sell_price = 300
+is_sellable = true
+metadata/_custom_type_script = "uid://dr3gelm7abpq6"

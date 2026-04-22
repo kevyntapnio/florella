@@ -1,5 +1,8 @@
 extends Node
 
+var current_scene_id: int
+var last_spawn_data: Dictionary = {}
+
 enum Scenes {
 	FARM,
 	HOUSE,
@@ -16,6 +19,9 @@ func request_change_scene(scene_id: int, data: Dictionary):
 	change_scene(scene_id, data)
 	
 func change_scene(scene_id: int, data: Dictionary):
+	current_scene_id = scene_id
+	last_spawn_data = data.get("spawn", {})
+
 	transition_data = data
 	
 	await FadeLayer.fade_out()
@@ -25,9 +31,7 @@ func change_scene(scene_id: int, data: Dictionary):
 		return
 		
 	var path = scene_paths[scene_id]
-
 	var packed_scene = load(path)
-	
 	var new_scene = packed_scene.instantiate()
 	
 	var old_scene = get_tree().current_scene
@@ -55,3 +59,25 @@ func get_transition_data():
 	
 func clear_transition_data():
 	transition_data = {}
+
+func get_save_data():
+	var save_data = {
+		"scene": current_scene_id,
+		"spawn": last_spawn_data
+	}
+	return save_data
+
+func load_from_data(data): 
+	var scene_id = data.get("scene")
+	
+	request_change_scene(scene_id, data)
+	
+func set_spawn_to_position(pos):
+	
+	last_spawn_data = {
+		"type": "position",
+		"pos": {
+			"x": pos.x,
+			"y": pos.y
+		}
+	}

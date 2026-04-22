@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ceky5xkph2jbb"]
+
+[ext_resource type="Texture2D" uid="uid://cwwj2qa0fqimv" path="res://assets/art/decor/basic_set/UntitledArtwork1 (1).png" id="1_upetc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kiy7"]
+size = Vector2(18, 14)
+
+[node name="StaticBody2D2" type="StaticBody2D" unique_id=1524799770]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=414633434]
+position = Vector2(277, 251)
+shape = SubResource("RectangleShape2D_3kiy7")
+
+[node name="UntitledArtwork1(1)" type="Sprite2D" parent="." unique_id=240987697]
+position = Vector2(276, 257)
+texture = ExtResource("1_upetc")
+offset = Vector2(0, -17)

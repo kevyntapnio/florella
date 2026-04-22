@@ -7,7 +7,8 @@ enum ItemCategory {
 	FLOWER,
 	TOOL,
 	MATERIAL,
-	BUNDLE
+	BUNDLE,
+	DECOR
 }
 
 @export var id: String

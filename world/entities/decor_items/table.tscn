@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cigcosju42v7x"]
+
+[ext_resource type="Texture2D" uid="uid://ba0kosa30n46j" path="res://assets/art/decor/basic_set/UntitledArtwork1 (4).png" id="1_qx3ja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aa0x"]
+size = Vector2(29, 33)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1225789070]
+y_sort_enabled = true
+collision_layer = 32
+collision_mask = 2
+
+[node name="UntitledArtwork1(4)" type="Sprite2D" parent="." unique_id=391668349]
+position = Vector2(252, 265)
+texture = ExtResource("1_qx3ja")
+offset = Vector2(0, -23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=788650460]
+position = Vector2(252, 249)
+shape = SubResource("RectangleShape2D_5aa0x")

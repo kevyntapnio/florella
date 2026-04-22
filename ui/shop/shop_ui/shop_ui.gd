@@ -67,11 +67,15 @@ func update_slots(shop_entries):
 
 func _on_hovered(index):
 	
+	var item_data = slots[index].shop_entry.item
+	ToolTipUI.show_tooltip(item_data)
+	
 	var slot = slots[index]
 	slot.modulate = Color(1.1, 1.1, 1.1, 1.1)
 	slot.scale = Vector2(1.03, 1.03)
 	
 func _on_unhovered(index):
+	ToolTipUI.remove_tooltip()
 	
 	var slot = slots[index]
 	slot.modulate = Color(1.0, 1.0, 1.0, 1.0)
