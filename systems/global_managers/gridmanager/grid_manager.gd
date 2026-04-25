@@ -46,3 +46,6 @@ func get_world_position(grid_coordinate: Vector2i) -> Vector2:
 func get_tile_size():
 	var size = tilemap.tile_set.tile_size
 	tile_size = size.x
+
+func spatial_to_grid(coords: Vector2i):
+	return (coords * SpatialLookup.tile_size) / tile_size

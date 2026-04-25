@@ -21,6 +21,7 @@ SceneManager="*uid://cxs2c4c4d1r48"
 PlayerGlobalStats="*uid://r1jq13wuyr26"
 InventorySystem="*uid://c56dlwcbkxmlm"
 TargetingSystem="*uid://c8rd2bjpyuhok"
+SpatialLookup="*uid://blo220twbv5su"
 GridManager="*uid://bdh6epucito8u"
 FarmSystem="*uid://dtcafuruswncs"
 InteractionSystem="*uid://pjf3c155ew1p"
@@ -42,6 +43,7 @@ FarmVisual="*uid://c21e2c58rbf87"
 SoundManager="*uid://3lq8cw1qa7p4"
 DebugSystem="*uid://cqyioe0vob7ao"
 DecorSystem="*uid://cyn2rsfpdrsyq"
+PlacementValidator="*uid://g5epuelt3sld"
 
 [display]
 
@@ -61,6 +63,7 @@ player=""
 spawn_points=""
 scene_controller=""
 ysort_world=""
+tile_query=""
 
 [input]
 

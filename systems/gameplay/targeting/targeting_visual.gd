@@ -18,3 +18,4 @@ func update_target(new_target, valid):
 		
 	current_target = new_target
 	is_current_valid = valid
+		

@@ -58,6 +58,10 @@ func _on_slot_hovered(slot_index):
 	if slot_index == -1:
 		return
 		
+	var slot = slots[slot_index]
+	slot.set_highlight(true)
+	slot.icon.scale = Vector2(1.05, 1.05)
+		
 	var item = InventorySystem.get_item(slot_index)
 	
 	if item == null:
@@ -69,3 +73,7 @@ func _on_slot_hovered(slot_index):
 	
 func _on_slot_unhovered(slot_index):
 	ToolTipUI.remove_tooltip()
+	
+	var slot = slots[slot_index]
+	slot.set_highlight(false)
+	slot.icon.scale = Vector2(1.0, 1.0)

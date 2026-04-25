@@ -61,3 +61,4 @@ func _on_save_button_pressed() -> void:
 	
 func _on_load_button_pressed() -> void:
 	SaveSystem.load_game()
+	close()

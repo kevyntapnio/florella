@@ -33,6 +33,7 @@ func reset_session():
 		slots[i] = null
 		
 	slots_changed.emit()
+	container_ui.update_price_display()
 	
 func handle_unsold_items():
 	
@@ -45,6 +46,7 @@ func handle_unsold_items():
 		slots[i] = null
 		
 	slots_changed.emit()
+	
 		
 func is_empty():
 	return get_sell_items().is_empty()

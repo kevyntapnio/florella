@@ -7,9 +7,6 @@ var ysort: Node2D
 
 var placed_decor = {}
 
-signal build_mode_enabled
-signal build_mode_disabled
-
 var decor = null
 
 func _ready():
@@ -24,7 +21,6 @@ func set_tilemap(map, ysort_ref):
 	ysort = ysort_ref
 	
 func initialize_build_mode(item: DecorData):
-	build_mode_enabled.emit()
 	
 	if decor != null:
 		return
@@ -40,66 +36,118 @@ func initialize_build_mode(item: DecorData):
 	var new_decor = decor_scene.instantiate()
 	new_decor.initialize(item)
 	ysort.add_child(new_decor)
-	new_decor.set_build_mode()
 	
 	decor = new_decor
+	
+func _process(_delta: float) -> void:
+	## If currently in build_mode
+	if decor != null:
+		
+		get_decor_position()
+		set_preview_modulate()
+		
+func get_decor_position():
+	var context = PlacementContext.new()
+	var target_cell = get_target_cell()
+	
+	context.target_cell = target_cell
+	context.occupied_cells = decor.get_occupied_cells(target_cell)
+	context.data = decor.data
+	
+	var has_overlap = PlacementValidator.check_overlap(context)
+	
+	var preview_position = SpatialLookup.get_world_position(TargetingSystem.current_target_cell)
+	decor.position = preview_position
+	
+	var offset = Vector2(0, 0)
+	if has_overlap:
+		offset = PlacementValidator.get_adjusted_pos(context)
+		decor.stacked = true
+	else:
+		decor.stacked = false
+	
+	decor.apply_stacked_ysort(offset)
+		
+func set_preview_modulate():
+	
+	decor.set_preview_modulate(validate_placement())
+	
+func get_target_cell():
+	var hovered_cell = TargetingSystem.current_target_cell
+	var target_cell = hovered_cell + Vector2i(0, -1)
+	
+	return target_cell
 	
 func place_decor() -> bool:
 	if decor == null:
 		return false
 		
-	var valid = decor.check_can_place()
+	var valid = validate_placement()
 	
 	if not valid:
 		return false
-		
-	var mouse_pos = get_global_mouse_position()
-		
-	# Snap to nearest X and Y in 8-pixel increments
-	var snapped_pos = Vector2 (
-		snapped(mouse_pos.x, 16),
-		snapped(mouse_pos.y, 16)
-	)
-		
-	decor.position = snapped_pos
+	
+	var visual_cell = TargetingSystem.current_target_cell
+	var target_cell = get_target_cell()
+	
+	decor.anchor_cell = target_cell
+	decor.visual_cell = visual_cell
+	decor.position = SpatialLookup.get_world_position(visual_cell)
+	
 	decor.set_placed_mode()
 	InventorySystem.remove_item(decor.data.id, 1)
 	
-	add_to_placed_decor(snapped_pos)
+	add_to_placed_decor()
 	
 	decor = null
 	
 	SoundManager.play("wood_placed")
 	return true
 	
-func add_to_placed_decor(snapped_pos):
+func validate_placement() -> bool:
+	
+	if decor == null:
+		return false
+	
+	var target_cell = get_target_cell()
+	
+	var context = PlacementContext.new()
+	context.data = decor.data
+	context.occupied_cells = decor.get_occupied_cells(target_cell)
+	context.target_cell = target_cell
+		
+	return PlacementValidator.can_place(context)
+	
+func add_to_placed_decor():
+	## visual_cell represents where the object visually sits in the grid
+	## anchor_cell represnets the logical bottom-right anchor 
+	## anchor_cell is offset by tile_above to accommodate effect of coordinate semantics to node origin
 	
 	var id = decor.data.id
 	var variant = decor.current_variant
+	var anchor_cell = decor.anchor_cell
+	var visual_cell = decor.visual_cell
 	
-	var normalized_pos = Vector2i(snapped_pos/ 16)
-	
-	placed_decor[normalized_pos] = {
+	placed_decor[visual_cell] = {
+		"anchor_cell": anchor_cell,
 		"id": id,
 		"variant": variant
 		}
-
 	
 func cancel_build_mode():
 	if decor:
 		decor.queue_free()
 	decor = null
-	build_mode_disabled.emit()
 	
 func remove_decor(item_decor: DecorObject) -> bool:
 	var stack = ItemStack.new()
 	stack.item_data = item_decor.data
 	stack.quantity = 1
 	
-	var pos = item_decor.position
-	var normalized_pos = Vector2i(pos / 16)
+	var visual_cell = item_decor.visual_cell
+	var pos = SpatialLookup.get_world_position(visual_cell)
 	
-	placed_decor.erase(normalized_pos)
+	placed_decor.erase(visual_cell)
 	
 	WorldItemSpawner.spawn(stack, pos)
 	
@@ -112,11 +160,15 @@ func remove_decor(item_decor: DecorObject) -> bool:
 func get_save_data():
 	var save_data = {}
 	
-	for pos in placed_decor:
-		var decor_item = placed_decor[pos]
+	for visual_cell in placed_decor:
+		var decor_item = placed_decor[visual_cell]
 		var decor_copy = decor_item.duplicate(true)
 		
-		var key = str(pos.x) + "," + str(pos.y)
+		var key = str(visual_cell.x) + "," + str(visual_cell.y)
+		
+		var anchor_cell = decor_copy["anchor_cell"]
+		var anchor_key = str(anchor_cell.x) + "," + str(anchor_cell.y)
+		decor_copy["anchor_cell"] = anchor_key
 		
 		save_data[key] = decor_copy
 		
@@ -133,12 +185,17 @@ func load_from_data(data):
 		var decor_item = data[key]
 		
 		var parts = key.split(",")
-		var pos = Vector2i(parts[0].to_int(), parts[1].to_int())
+		var visual_cell = Vector2i(parts[0].to_int(), parts[1].to_int())
 		
 		var id = decor_item.get("id")
 		var variant = decor_item.get("variant")
 		
-		placed_decor[pos] = {
+		var anchor_str = decor_item.get("anchor_cell")
+		var a_parts = anchor_str.split(",")
+		var anchor_cell = Vector2i(a_parts[0].to_int(), a_parts[1].to_int())
+		
+		placed_decor[visual_cell] = {
+			"anchor_cell": anchor_cell,
 			"id": id,
 			"variant": variant
 		}
@@ -153,17 +210,22 @@ func spawn_decor():
 		push_error("DecorSystem ERROR: decor_scene failed to load")
 		return
 		
-	for pos in placed_decor:
-		var converted_pos = pos * 16
-	
+	for visual_cell in placed_decor:
+		var decor_item = placed_decor[visual_cell]
 		var decor_instance = decor_scene.instantiate()
 	
-		var data = ItemDatabase.get_item(placed_decor[pos]["id"])
-	
+		var data = ItemDatabase.get_item(decor_item["id"])
+		var variant = decor_item["variant"]
+		
+		decor_instance.current_variant = variant
+		decor_instance.anchor_cell = decor_item["anchor_cell"]
+		decor_instance.visual_cell = visual_cell
 		decor_instance.initialize(data)
-		decor_instance.set_placed_mode()
+		
 		ysort.add_child(decor_instance)
-		decor_instance.position = converted_pos
+		
+		decor_instance.position = SpatialLookup.get_world_position(visual_cell)
+		decor_instance.set_placed_mode()
 		
 func switch_variant():
 	if decor == null:
@@ -173,8 +235,6 @@ func switch_variant():
 	
 	if variants.is_empty():
 		return
-		
-	var size = variants.size()
 	
 	var new_variant = decor.current_variant + 1
 	
@@ -182,3 +242,5 @@ func switch_variant():
 	
 	decor.current_variant = new_variant
 	decor.apply_variant(new_variant)
+	
+	

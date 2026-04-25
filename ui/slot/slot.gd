@@ -52,15 +52,15 @@ func set_highlight(is_active: bool):
 		print("INVENTORY_SLOT ERROR: highlight texture not found")
 		
 func _on_mouse_entered():
-	icon.scale = Vector2(1.05, 1.05)
-	slot_hovered.emit(slot_index)
-	set_highlight(true)
+	#icon.scale = Vector2(1.05, 1.05)
+	#slot_hovered.emit(slot_index)
+	#set_highlight(true)
 	
 	slot_hovered.emit(slot_index)
 	
 func _on_mouse_exited():
-	icon.scale = Vector2(1.0, 1.0)
-	slot_hovered.emit(slot_index)
-	set_highlight(false)
+	#icon.scale = Vector2(1.0, 1.0)
+	#slot_hovered.emit(slot_index)
+	#set_highlight(false)
 
 	slot_unhovered.emit(slot_index)

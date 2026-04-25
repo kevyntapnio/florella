@@ -11,4 +11,7 @@ enum DecorType {
 @export var variants: Array[DecorVariant]
 @export var decor_type: DecorType
 @export var has_surface:= false
-@export var can_stack:= false
+@export var stackable:= false
+@export var blocks_movement:= true
+@export var blocks_placement:= true
+@export var requires_wall:= false

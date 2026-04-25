@@ -36,7 +36,18 @@ func _ready() -> void:
 	
 	player_ready.emit()
 func _process(delta):
+	
 	update_targeting_visual()
+	
+	var item_data = Hotbar.get_selected_item_data()
+	if item_data is DecorData:
+		if not build_mode:
+			if DecorSystem.initialized == true:
+				DecorSystem.initialize_build_mode(item_data)
+				build_mode = true
+	else:
+		DecorSystem.cancel_build_mode()
+		build_mode = false
 	
 func update_targeting_visual():
 	
@@ -50,10 +61,16 @@ func update_targeting_visual():
 		
 		var player_tile = player_tile_coords
 		var target_tile = TargetingSystem.current_target_coords
+		var target_cell = TargetingSystem.current_target_cell
 		
-		var objects = GridManager.get_grid_objects(target_tile)
+		var objects = []
+		var grid_objects = GridManager.get_grid_objects(target_tile)
+		var spatial_objects = SpatialLookup.get_spatial_objects(target_cell)
 		
-		var context = InteractionContext.new(player_tile, target_tile)
+		objects.append_array(grid_objects)
+		objects.append_array(spatial_objects)
+		
+		var context = InteractionContext.new(player_tile, target_tile, target_cell)
 		context.tool = usable_item
 		
 		var valid = false
@@ -69,7 +86,7 @@ func update_targeting_visual():
 					if usable_item.is_in_range(target_tile, context):
 						valid = true
 						break
-					
+		
 		tile_highlight.show_highlight()
 		tile_highlight.highlight_tile(target_tile, valid)
 	
@@ -83,15 +100,7 @@ func update_targeting_visual():
 		interaction_prompt.hide()
 		
 	TargetingVisual.update_target(InteractionSystem.focused_interactable, valid)
-	
-	if item_data is DecorData:
-		if not build_mode:
-			if DecorSystem.initialized == true:
-				DecorSystem.initialize_build_mode(item_data)
-				build_mode = true
-	else:
-		DecorSystem.cancel_build_mode()
-		build_mode = false
+
 	
 func _physics_process(delta):
 	if just_spawned:
@@ -151,10 +160,9 @@ func _input(event: InputEvent) -> void:
 		
 	if Input.is_action_just_pressed("use_item"):
 		if build_mode:
-			print("build mode activated")
 			if DecorSystem.place_decor():
 				build_mode = false
-		
+				
 		var item = Hotbar.get_selected_item()
 		
 		if item == null:

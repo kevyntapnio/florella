@@ -76,21 +76,28 @@ func handle_interact_grid(selected_item):
 		
 	var player_tile = TargetingSystem.player_tile_coords
 	var target_tile = TargetingSystem.current_target_coords
+	var target_cell = TargetingSystem.current_target_cell
+	
+	var target_objects = []
 	
 	var grid_objects = GridManager.get_grid_objects(target_tile)
+	var spatial_objects = SpatialLookup.get_spatial_objects(target_cell)
+	
+	target_objects.append_array(grid_objects)
+	target_objects.append_array(spatial_objects)
 	
 	var usable_item = null
 	
 	if item_data is UsableItem:
 		usable_item = item_data
 			
-	var context = InteractionContext.new(player_tile, target_tile)
+	var context = InteractionContext.new(player_tile, target_tile, target_cell)
 	context.tool = usable_item
 	
 	var best_object = null
 	var best_score = -1
 	
-	for obj in grid_objects:
+	for obj in target_objects:
 		if not is_instance_valid(obj):
 			continue
 		if not obj.has_method("can_accept_item"):
@@ -115,8 +122,9 @@ func handle_interact_proximity(_selected_item):
 		
 	var player_tile = TargetingSystem.player_tile_coords
 	var target_tile = focused_interactable.grid_position
+	var target_cell = TargetingSystem.current_target_cell
 	
-	var context = InteractionContext.new(player_tile, target_tile)
+	var context = InteractionContext.new(player_tile, target_tile, target_cell)
 	context.tool = null
 	
 	if focused_interactable.has_method("can_accept_item"):

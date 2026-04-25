@@ -17,11 +17,9 @@ func _notification(what: int) -> void:
 		update_grid_position()
 	
 func _exit_tree():
-	print("exit")
 	if is_registered:
 		GridManager.unregister_grid_object(grid_position, self)
-		print("exit")
-		
+
 func update_grid_position():
 	var new_grid_pos = GridManager.get_tile_coords(global_position)
 	
