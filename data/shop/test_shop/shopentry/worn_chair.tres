@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://cie428ptu7yqx"]
+
+[ext_resource type="Resource" uid="uid://dk4uacc72wpes" path="res://data/itemdata/worn_chair.tres" id="1_4cmcv"]
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_clkbi"]
+
+[resource]
+script = ExtResource("1_clkbi")
+item = ExtResource("1_4cmcv")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

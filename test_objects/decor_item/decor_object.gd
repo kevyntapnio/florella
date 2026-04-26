@@ -6,6 +6,7 @@ class_name DecorObject
 var body: StaticBody2D
 var sprite: Sprite2D
 var collider: CollisionShape2D
+var light: PointLight2D
 
 var is_placed:= false
 var current_variant: int
@@ -36,6 +37,9 @@ func initialize(decor_data: DecorData):
 	create_body()
 	
 	apply_variant(current_variant)
+	
+	if data.light_source:
+		create_light()
 	
 func create_body():
 	body = StaticBody2D.new()
@@ -76,7 +80,7 @@ func set_placed_mode():
 	if data.has_surface:
 		register_surface()
 		
-	debug_rect()
+	#debug_rect()
 		
 func register_surface():
 	## this function registers buildable surface_area of object
@@ -99,8 +103,18 @@ func register_surface():
 			surface_cells.append(cell)
 			SurfaceRegistry.register(cell, self)
 			
-func interact(item, context):
+func interact(item, context) -> void:
+	if data.light_source:
+		print("test")
+		if light.enabled:
+			light.enabled = true
+		else:
+			light.enabled = false
+		
 	if not can_accept_item(item, context):
+		return
+		
+	if not current_stacked.is_empty():
 		return
 		
 	if is_being_removed: 
@@ -111,15 +125,14 @@ func interact(item, context):
 	if item is HoeTool and DecorSystem.remove_decor(self):
 		play_animation()
 	
-func get_interaction_score(context):
+func get_interaction_score(context) -> int:
 	if is_stacked:
 		return 20
+	if not current_stacked.is_empty():
+		return 0
 	return INTERACT_PRIORITY
 	
 func can_accept_item(item, context) -> bool:
-	if not current_stacked.is_empty():
-		return false
-		
 	if item is HoeTool:
 		return true
 		
@@ -133,7 +146,9 @@ func set_preview_modulate(is_valid: bool):
 
 func set_targeted(is_targeted: bool):
 	if is_targeted:
-		modulate = Color(1.2, 1.2, 1.2)
+		modulate = Color(1.3, 1.3, 1.3)
+	else:
+		modulate = Color(1.0, 1.0, 1.0)
 	
 func play_animation():
 	var tween = create_tween()
@@ -204,3 +219,32 @@ func debug_rect():
 	#SpatialLookup.get_world_position(anchor_cell)
 	origin_rect.size = Vector2(4, 4)
 	origin_rect.modulate = Color.BLACK
+	
+func create_light():
+	var light_texture = load("res://test_objects/light_source/light_glow.tres")
+	
+	light = PointLight2D.new()
+	add_child(light)
+	light.texture = light_texture
+	light.position = self.position
+	light.enabled = false
+	light.energy = 0.8
+	
+	create_interactable_area()
+
+func create_interactable_area():
+	var interaction_area = Area2D.new()
+	add_child(interaction_area)
+	
+	var variant = data.variants[current_variant]
+	
+	var area = CollisionShape2D.new()
+	interaction_area.add_child(area)
+	
+	area.shape = RectangleShape2D.new()
+	area.shape.size = variant.collider_size 
+
+	area.position.y = - sprite.texture.get_size().y / 2
+	
+	interaction_area.set_collision_layer_value(3, true)
+	

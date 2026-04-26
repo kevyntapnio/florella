@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ceky5xkph2jbb"]
 
-[ext_resource type="Texture2D" uid="uid://cwwj2qa0fqimv" path="res://assets/art/decor/basic_set/UntitledArtwork1 (1).png" id="1_upetc"]
+[ext_resource type="Texture2D" uid="uid://cwwj2qa0fqimv" path="res://assets/art/decor/basic_set/worn_chair_3.png" id="1_upetc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kiy7"]
 size = Vector2(18, 14)

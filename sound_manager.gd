@@ -9,6 +9,8 @@ var sounds = {
 	"wood_placed": preload("res://assets/audio/sfx/wood_placed.wav"),
 }
 
+func _ready():
+	process_mode
 func play(sound_id: String):
 	
 	if not sounds.has(sound_id):

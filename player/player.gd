@@ -77,25 +77,31 @@ func update_targeting_visual():
 		objects.append_array(grid_objects)
 		objects.append_array(spatial_objects)
 		
-		var context = InteractionContext.new(player_tile, target_tile, target_cell)
+		var context = InteractionContext.new(player_tile, [target_tile], target_cell)
 		context.tool = usable_item
 		
-		var valid = false
+		var best_score = -1
+		var best_object = null
 		
 		for obj in objects:
 			if not is_instance_valid(obj):
 				continue
-				
+			
 			if obj.has_method("get_interaction_score") and obj.has_method("can_accept_item"):
+				if not obj.can_accept_item(usable_item, context):
+					continue
+					
 				var score = obj.get_interaction_score(context)
 				
-				if score > 0 and obj.can_accept_item(usable_item, context):
-					if usable_item.is_in_range(target_tile, context):
-						valid = true
-						break
+				if score > best_score:
+					best_object = obj
+					best_score = score
+					
+		var valid = (best_object != null and best_score > 0)
 		
-		tile_highlight.show_highlight()
-		tile_highlight.highlight_tile(target_tile, valid)
+		#tile_highlight.show_highlight()
+		#tile_highlight.highlight_tile(target_tile, valid)
+		TargetingVisual.update_mouse_target(best_object, valid)
 	
 	else:
 		tile_highlight.hide()
@@ -107,7 +113,6 @@ func update_targeting_visual():
 		interaction_prompt.hide()
 		
 	TargetingVisual.update_target(InteractionSystem.focused_interactable, valid)
-
 	
 func _physics_process(delta):
 	if just_spawned:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2shuufucvymu"
-path="res://.godot/imported/UntitledArtwork1 (3).png-b79aeca9254ffdc9c467d86831eda60b.ctex"
+uid="uid://ckt0grdx1nr0h"
+path="res://.godot/imported/worn_lamp_0.png-04c07e3d1177b733bea7ada5a410e6a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/decor/basic_set/UntitledArtwork1 (3).png"
-dest_files=["res://.godot/imported/UntitledArtwork1 (3).png-b79aeca9254ffdc9c467d86831eda60b.ctex"]
+source_file="res://assets/art/decor/basic_set/worn_lamp_0.png"
+dest_files=["res://.godot/imported/worn_lamp_0.png-04c07e3d1177b733bea7ada5a410e6a5.ctex"]
 
 [params]
 

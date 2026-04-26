@@ -325,6 +325,7 @@ func apply_stacked_offset(decor_instance: DecorObject):
 		
 		if surface != null:
 			decor_instance.position.y = surface.position.y + 1.0
+			decor_instance.register_as_stacked(surface)
 			decor_instance.apply_stacked_ysort(surface, info.get("offset"))
 		
 func switch_variant():

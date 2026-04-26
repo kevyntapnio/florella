@@ -15,3 +15,4 @@ enum DecorType {
 @export var blocks_movement:= true
 @export var blocks_placement:= true
 @export var requires_wall:= false
+@export var light_source:= false

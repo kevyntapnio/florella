@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdxh0qmdmee6u"
-path="res://.godot/imported/UntitledArtwork1 (2).png-90804dafa81bd833ed8a977b7bac34fd.ctex"
+uid="uid://dg42keasqroj0"
+path="res://.godot/imported/worn_chair_1.png-d89689aa1382769426b2b870f83081d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/decor/basic_set/UntitledArtwork1 (2).png"
-dest_files=["res://.godot/imported/UntitledArtwork1 (2).png-90804dafa81bd833ed8a977b7bac34fd.ctex"]
+source_file="res://assets/art/decor/basic_set/worn_chair_1.png"
+dest_files=["res://.godot/imported/worn_chair_1.png-d89689aa1382769426b2b870f83081d8.ctex"]
 
 [params]
 

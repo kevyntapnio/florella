@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://dk4uacc72wpes"]
+
+[ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="1_18pg5"]
+[ext_resource type="Texture2D" uid="uid://bdxh0qmdmee6u" path="res://assets/art/decor/basic_set/worn_chair_0.png" id="1_rum1u"]
+[ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="2_ej3j5"]
+[ext_resource type="Texture2D" uid="uid://dg42keasqroj0" path="res://assets/art/decor/basic_set/worn_chair_1.png" id="4_242i2"]
+[ext_resource type="Texture2D" uid="uid://ccea6jit6c5xa" path="res://assets/art/decor/basic_set/worn_chair_2.png" id="5_n1x2g"]
+[ext_resource type="Texture2D" uid="uid://cwwj2qa0fqimv" path="res://assets/art/decor/basic_set/worn_chair_3.png" id="6_f68ft"]
+
+[sub_resource type="Resource" id="Resource_g4mhp"]
+script = ExtResource("2_ej3j5")
+texture = ExtResource("1_rum1u")
+object_size = Vector2i(16, 16)
+collider_size = Vector2i(16, 16)
+surface_area = Vector2i(16, 16)
+vertical_height = Vector2i(0, 12)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[sub_resource type="Resource" id="Resource_alnex"]
+script = ExtResource("2_ej3j5")
+texture = ExtResource("4_242i2")
+object_size = Vector2i(16, 16)
+collider_size = Vector2i(16, 16)
+surface_area = Vector2i(16, 16)
+vertical_height = Vector2i(0, 12)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[sub_resource type="Resource" id="Resource_6sujc"]
+script = ExtResource("2_ej3j5")
+texture = ExtResource("5_n1x2g")
+object_size = Vector2i(16, 16)
+collider_size = Vector2i(16, 16)
+surface_area = Vector2i(16, 16)
+vertical_height = Vector2i(0, 12)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[sub_resource type="Resource" id="Resource_pybld"]
+script = ExtResource("2_ej3j5")
+texture = ExtResource("6_f68ft")
+object_size = Vector2i(16, 16)
+collider_size = Vector2i(16, 16)
+surface_area = Vector2i(16, 16)
+vertical_height = Vector2i(0, 12)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[resource]
+script = ExtResource("1_18pg5")
+variants = Array[ExtResource("2_ej3j5")]([SubResource("Resource_g4mhp"), SubResource("Resource_alnex"), SubResource("Resource_6sujc"), SubResource("Resource_pybld")])
+has_surface = true
+id = "worn_chair"
+name = "Worn Chair"
+icon = ExtResource("1_rum1u")
+description = "Looks worn, but seems sturdy."
+price = 400
+sell_price = 200
+is_sellable = true
+metadata/_custom_type_script = "uid://dr3gelm7abpq6"

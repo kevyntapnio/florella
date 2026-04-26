@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://0mjkwmv73ge4"]
+
+[ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="1_bcqj8"]
+[ext_resource type="Texture2D" uid="uid://ckt0grdx1nr0h" path="res://assets/art/decor/basic_set/worn_lamp_0.png" id="1_o6am6"]
+[ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="2_o6am6"]
+
+[sub_resource type="Resource" id="Resource_sm578"]
+script = ExtResource("2_o6am6")
+texture = ExtResource("1_o6am6")
+object_size = Vector2i(16, 16)
+collider_size = Vector2i(16, 16)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[resource]
+script = ExtResource("1_bcqj8")
+variants = Array[ExtResource("2_o6am6")]([SubResource("Resource_sm578")])
+light_source = true
+id = "worn_lamp"
+name = "Worn Lamp"
+icon = ExtResource("1_o6am6")
+description = "You might have to change the light bulb soon."
+price = 500
+sell_price = 250
+is_sellable = true
+metadata/_custom_type_script = "uid://dr3gelm7abpq6"

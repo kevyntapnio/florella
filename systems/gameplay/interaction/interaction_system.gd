@@ -119,11 +119,16 @@ func handle_interact_proximity(_selected_item):
 	
 	if focused_interactable == null:
 		return
-		
-	var player_tile = TargetingSystem.player_tile_coords
-	var target_tile = focused_interactable.grid_position
-	var target_cell = TargetingSystem.current_target_cell
 	
+	var target_cell = TargetingSystem.current_target_cell
+	var player_tile = TargetingSystem.player_tile_coords
+	var target_tile = null
+	
+	if focused_interactable is GridObject:
+		target_tile = focused_interactable.grid_position
+	if focused_interactable is SpatialObject:
+		target_tile = focused_interactable.cells
+		
 	var context = InteractionContext.new(player_tile, target_tile, target_cell)
 	context.tool = null
 	

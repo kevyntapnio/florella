@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://d2e801owmj47w"]
 
-[ext_resource type="Texture2D" uid="uid://b2shuufucvymu" path="res://assets/art/decor/basic_set/UntitledArtwork1 (3).png" id="1_22kau"]
+[ext_resource type="Texture2D" uid="uid://b2shuufucvymu" path="res://assets/art/decor/basic_set/worn_table_0.png" id="1_22kau"]
 [ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="2_4krm1"]
 [ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="3_pjg51"]
-[ext_resource type="Texture2D" uid="uid://ba0kosa30n46j" path="res://assets/art/decor/basic_set/UntitledArtwork1 (4).png" id="4_tpf7u"]
+[ext_resource type="Texture2D" uid="uid://ba0kosa30n46j" path="res://assets/art/decor/basic_set/worn_table_1.png" id="4_tpf7u"]
 
 [sub_resource type="Resource" id="Resource_22kau"]
 script = ExtResource("3_pjg51")
