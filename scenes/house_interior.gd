@@ -12,7 +12,6 @@ func _ready() -> void:
 	
 	initialize_systems()
 	
-	await initialize_systems()
 	spawn_decor()
 
 func initialize_scene(data): 

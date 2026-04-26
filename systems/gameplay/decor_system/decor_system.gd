@@ -10,6 +10,8 @@ var placed_decor = {}
 var decor = null
 var debug_print:= false
 
+signal load_finished
+
 func _ready():
 	decor_scene = load("res://test_objects/decor_item/decor.tscn")
 	
@@ -67,9 +69,10 @@ func get_decor_position():
 		if surface != null:
 			var offset = surface_info.get("offset")
 			decor.apply_stacked_ysort(surface, offset)
-			preview_position.y = surface.position.y
+			preview_position.y = surface.position.y + 1.0
+			
 	else:
-		decor.apply_regular_ysort(surface)
+		decor.apply_regular_ysort()
 	
 	decor.position = preview_position
 		
@@ -103,6 +106,7 @@ func place_decor() -> bool:
 	decor.visual_cell = visual_cell
 	#decor.position = SpatialLookup.get_world_position(visual_cell)
 	get_decor_position()
+	finalize_surface_placement()
 	
 	decor.set_placed_mode()
 	InventorySystem.remove_item(decor.data.id, 1)
@@ -114,6 +118,23 @@ func place_decor() -> bool:
 	SoundManager.play("wood_placed")
 	return true
 	
+func finalize_surface_placement():
+	if not decor:
+		return
+		
+	var context = PlacementContext.new()
+	context.data = decor.data
+	context.target_cell = get_target_cell()
+	context.occupied_cells = decor.get_occupied_cells(get_target_cell())
+	
+	if PlacementValidator.check_overlap(context):
+		var info = PlacementValidator.get_surface_offset(context)
+		var surface = info.get("surface")
+		
+		decor.register_as_stacked(surface)
+		
+		decor.position.y = surface.position.y + 1
+		
 func validate_placement() -> bool:
 	
 	if decor == null:
@@ -247,6 +268,7 @@ func load_from_data(data):
 			parsed_list.append(decor_info)
 		
 		placed_decor[visual_cell] = parsed_list
+		load_finished.emit()
 		
 func spawn_decor():
 	
@@ -283,6 +305,8 @@ func spawn_decor():
 				
 			spawned_instances.append(decor_instance)
 		
+	#await get_tree().process_frame
+	
 	for decor_instance in spawned_instances:
 		if decor_instance.is_stacked:
 			apply_stacked_offset(decor_instance)
@@ -300,7 +324,7 @@ func apply_stacked_offset(decor_instance: DecorObject):
 		var surface = info.get("surface")
 		
 		if surface != null:
-			decor_instance.position.y = surface.position.y
+			decor_instance.position.y = surface.position.y + 1.0
 			decor_instance.apply_stacked_ysort(surface, info.get("offset"))
 		
 func switch_variant():

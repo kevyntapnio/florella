@@ -7,7 +7,6 @@ var is_registered:= false
 		
 func activate_spatial_registration(anchor_cell):
 	
-	print(anchor_cell)
 	cells = get_occupied_cells(anchor_cell)
 	register_cells()
 	

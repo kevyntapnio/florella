@@ -12,7 +12,7 @@ object_size = Vector2i(32, 32)
 collider_size = Vector2i(32, 32)
 detection_size = Vector2i(28, 28)
 surface_area = Vector2i(32, 26)
-vertical_height = Vector2i(0, 14)
+vertical_height = Vector2i(0, 16)
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [sub_resource type="Resource" id="Resource_4krm1"]
@@ -22,7 +22,7 @@ texture = ExtResource("4_tpf7u")
 object_size = Vector2i(32, 32)
 collider_size = Vector2i(32, 32)
 detection_size = Vector2i(28, 28)
-vertical_height = Vector2i(0, 14)
+vertical_height = Vector2i(0, 16)
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [resource]

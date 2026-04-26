@@ -20,7 +20,7 @@ var is_stacked:= false
 var current_stacked: Array[DecorObject] = []
 var surface_object: DecorObject = null
 
-const INTERACT_PRIORITY = 20
+const INTERACT_PRIORITY = 1
 	
 func initialize(decor_data: DecorData):
 	
@@ -100,32 +100,31 @@ func register_surface():
 			SurfaceRegistry.register(cell, self)
 			
 func interact(item, context):
-	if is_being_removed: 
-		return
-		
-	is_being_removed = true
-	
 	if not can_accept_item(item, context):
 		return
 		
+	if is_being_removed: 
+		return
+
+	is_being_removed = true
+	
 	if item is HoeTool and DecorSystem.remove_decor(self):
-		if is_stacked:
-			if surface_object.current_stacked.has(self):
-				surface_object.current_stacked.erase(self)
-				
 		play_animation()
 	
 func get_interaction_score(context):
-	if not current_stacked.is_empty():
-		return 0
+	if is_stacked:
+		return 20
 	return INTERACT_PRIORITY
 	
 func can_accept_item(item, context) -> bool:
-	if current_stacked.is_empty():
-		if item is HoeTool:
-			return true
+	if not current_stacked.is_empty():
+		return false
+		
+	if item is HoeTool:
+		return true
+		
 	return false
-	
+
 func set_preview_modulate(is_valid: bool):
 	if is_valid: 
 		modulate = Color(1.0, 1.0, 1.0, 0.3)
@@ -166,38 +165,29 @@ func get_occupied_cells(target_cell):
 	return occupied_cells
 		
 func apply_stacked_ysort(surface, offset):
+
 	var base_offset = - sprite.texture.get_size().y / 2.0
 	sprite.offset.y = base_offset - offset
-	
-	is_stacked = true
-	
-	if surface == null:
-		return
-		
-	if not surface.current_stacked.has(self):
-		surface.current_stacked.append(self)
-	
-	surface_object = surface
-	
-func apply_regular_ysort(surface):
-	
+
+func apply_regular_ysort():
 	sprite.offset.y = - (sprite.texture.get_size().y / 2.0)
 	
-	is_stacked = false
-	
-	if surface == null:
-		return
+func register_as_stacked(surface):
+	if not surface.current_stacked.has(self):
+		surface.current_stacked.append(self)
 		
-	if surface.current_stacked.has(self):
-		surface.current_stacked.erase(self)
-	
-	surface_object = null
+	is_stacked = true
+	surface_object = surface
 	
 func _exit_tree():
 	super()
 	for cell in surface_cells:
 		SurfaceRegistry.unregister(cell, self)
-		
+	
+	if surface_object and is_instance_valid(surface_object):
+		if surface_object.current_stacked.has(self):
+			surface_object.current_stacked.erase(self)
+	
 func debug_rect():
 	var occupied = get_occupied_cells(anchor_cell)
 	
@@ -210,6 +200,7 @@ func debug_rect():
 		
 	var origin_rect = ColorRect.new()
 	add_child(origin_rect)
-	origin_rect.global_position = SpatialLookup.get_world_position(anchor_cell)
+	origin_rect.global_position = global_position
+	#SpatialLookup.get_world_position(anchor_cell)
 	origin_rect.size = Vector2(4, 4)
 	origin_rect.modulate = Color.BLACK
