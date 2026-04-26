@@ -14,9 +14,13 @@ var is_being_removed:= false
 var anchor_cell: Vector2i
 var visual_cell: Vector2i
 
-var stacked:= false
+var surface_cells: Array[Vector2i] = []
 
-const INTERACT_PRIORITY = 1
+var is_stacked:= false
+var current_stacked: Array[DecorObject] = []
+var surface_object: DecorObject = null
+
+const INTERACT_PRIORITY = 20
 	
 func initialize(decor_data: DecorData):
 	
@@ -53,8 +57,10 @@ func apply_variant(variant_no: int):
 	sprite.texture = variant.texture
 	
 	sprite.offset.y = - (sprite.texture.get_size().y / 2)
+	sprite.offset.x = - (sprite.texture.get_size().x /2)
 	
 	collider.position.y = - (variant.object_size.y / 2)
+	collider.position.x = - variant.object_size.x / 2
 	
 	collider.shape.size = variant.collider_size
 	
@@ -67,22 +73,58 @@ func set_placed_mode():
 	body.set_collision_layer_value(6, true)
 	body.set_collision_mask_value(2, true)
 	
+	if data.has_surface:
+		register_surface()
+		
 	debug_rect()
-
+		
+func register_surface():
+	## this function registers buildable surface_area of object
+	# based on perceived visual height
+	
+	var variant = data.variants[current_variant]
+	var surface_area = variant.surface_area
+	
+	# convert height to grid logic
+	var height = variant.vertical_height
+	var converted_height = height / SpatialLookup.tile_size
+	
+	# get anchor_cell of surface relative to height of object
+	
+	var surface_anchor = anchor_cell + converted_height
+	
+	for x in range(surface_area.x):
+		for y in range(surface_area.y):
+			var cell = surface_anchor + Vector2i(-x, -y)
+			surface_cells.append(cell)
+			SurfaceRegistry.register(cell, self)
+			
 func interact(item, context):
 	if is_being_removed: 
 		return
 		
 	is_being_removed = true
 	
+	if not can_accept_item(item, context):
+		return
+		
 	if item is HoeTool and DecorSystem.remove_decor(self):
-			play_animation()
+		if is_stacked:
+			if surface_object.current_stacked.has(self):
+				surface_object.current_stacked.erase(self)
+				
+		play_animation()
 	
 func get_interaction_score(context):
+	if not current_stacked.is_empty():
+		return 0
 	return INTERACT_PRIORITY
 	
 func can_accept_item(item, context) -> bool:
-	return item is HoeTool
+	if current_stacked.is_empty():
+		if item is HoeTool:
+			return true
+	return false
 	
 func set_preview_modulate(is_valid: bool):
 	if is_valid: 
@@ -122,26 +164,40 @@ func get_occupied_cells(target_cell):
 			occupied_cells.append(cell)
 			
 	return occupied_cells
-	
-func get_surface_area():
-	if not data:
-		push_error("DecorObject ERROR: Failed to load data:", self)
-		return 
 		
-	if data.has_surface:
-		return data.variants[current_variant].surface_area
+func apply_stacked_ysort(surface, offset):
+	var base_offset = - sprite.texture.get_size().y / 2.0
+	sprite.offset.y = base_offset - offset
 	
-func get_vertical_height():
-	if not data:
-		push_error("DecorObject ERROR: Failed to load data:", self)
-		return 
-		
-	if data.has_surface:
-		return data.variants[current_variant].vertical_height
-		
-func apply_stacked_ysort(offset):
-	sprite.offset.y = - (sprite.texture.get_size().y / 2) - offset.y
+	is_stacked = true
 	
+	if surface == null:
+		return
+		
+	if not surface.current_stacked.has(self):
+		surface.current_stacked.append(self)
+	
+	surface_object = surface
+	
+func apply_regular_ysort(surface):
+	
+	sprite.offset.y = - (sprite.texture.get_size().y / 2.0)
+	
+	is_stacked = false
+	
+	if surface == null:
+		return
+		
+	if surface.current_stacked.has(self):
+		surface.current_stacked.erase(self)
+	
+	surface_object = null
+	
+func _exit_tree():
+	super()
+	for cell in surface_cells:
+		SurfaceRegistry.unregister(cell, self)
+		
 func debug_rect():
 	var occupied = get_occupied_cells(anchor_cell)
 	
@@ -151,3 +207,9 @@ func debug_rect():
 		rect.size = Vector2(16, 16)
 		rect.global_position = SpatialLookup.get_world_position(c)
 		rect.modulate = Color(0.0, 0.681, 0.424, 0.5)
+		
+	var origin_rect = ColorRect.new()
+	add_child(origin_rect)
+	origin_rect.global_position = SpatialLookup.get_world_position(anchor_cell)
+	origin_rect.size = Vector2(4, 4)
+	origin_rect.modulate = Color.BLACK

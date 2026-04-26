@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://cs0vm5svna438"]
+
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_3scyr"]
+[ext_resource type="Resource" uid="uid://d3ogff4874odb" path="res://data/itemdata/small_philodendron.tres" id="1_ebv18"]
+
+[resource]
+script = ExtResource("1_3scyr")
+item = ExtResource("1_ebv18")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

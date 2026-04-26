@@ -27,6 +27,8 @@ var reactive_objects: Dictionary = {}
 var build_mode:= false
 var just_spawned = true
 
+var current_decor_id: String = ""
+
 func _ready() -> void:
 	
 	interaction_prompt.hide()
@@ -35,19 +37,24 @@ func _ready() -> void:
 	#apply_spawn_if_needed()
 	
 	player_ready.emit()
+	
 func _process(delta):
 	
 	update_targeting_visual()
 	
 	var item_data = Hotbar.get_selected_item_data()
+	
 	if item_data is DecorData:
-		if not build_mode:
+		if not build_mode or item_data.id != current_decor_id:
 			if DecorSystem.initialized == true:
 				DecorSystem.initialize_build_mode(item_data)
 				build_mode = true
+				current_decor_id = item_data.id
 	else:
-		DecorSystem.cancel_build_mode()
-		build_mode = false
+		if build_mode:
+			DecorSystem.cancel_build_mode()
+			build_mode = false
+			current_decor_id = ""
 	
 func update_targeting_visual():
 	

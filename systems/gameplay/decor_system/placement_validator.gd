@@ -69,28 +69,31 @@ func surface_is_buildable(context: PlacementContext) -> bool:
 		
 	return true
 	
-func get_adjusted_pos(context: PlacementContext) -> Vector2:
-	var occupied_cells = context.occupied_cells
-	
-	var offset = Vector2(0, 0)
-	
-	for cell in occupied_cells:
-		var objects = SpatialLookup.get_spatial_objects(cell)
-		
-		for obj in objects:
-			offset = obj.data.variants[obj.current_variant].vertical_height
-			return offset
-			
-	return offset
-
 func check_overlap(context: PlacementContext):
 	
 	var occupied_cells = context.occupied_cells
 	
 	for cell in occupied_cells:
-		if not SpatialLookup.is_tile_occupied(cell):
-			return false
+		if SpatialLookup.is_tile_occupied(cell):
+			return true
+			
+func get_surface_offset(context: PlacementContext):
 	
-	return true
+	var new_decor_anchor = context.target_cell
+	
+	var surfaces = SurfaceRegistry.get_surface_objects(new_decor_anchor)
+	
+	if surfaces.is_empty():
+		return {}
 		
-		
+	var surface = surfaces[0]
+	
+	var surface_height = surface.data.variants[surface.current_variant].vertical_height.y
+	
+	var depth = surface.anchor_cell.y - new_decor_anchor.y
+	
+	var offset = surface_height + (surface_height * depth)
+	
+	return {"surface": surface,
+		"offset": offset}
+	

@@ -44,6 +44,7 @@ SoundManager="*uid://3lq8cw1qa7p4"
 DebugSystem="*uid://cqyioe0vob7ao"
 DecorSystem="*uid://cyn2rsfpdrsyq"
 PlacementValidator="*uid://g5epuelt3sld"
+SurfaceRegistry="*uid://0rjrwlt5thl1"
 
 [display]
 
