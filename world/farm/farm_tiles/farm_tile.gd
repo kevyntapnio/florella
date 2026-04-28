@@ -2,8 +2,8 @@ extends GridObject
 
 class_name FarmTile
 
-@export var tilemap: TileMapLayer
 @export var crop_scene: PackedScene
+@onready var plant_spawn_point: Node2D = $PlantSpawnPoint
 
 const STATE_PRIORITY = {
 	"watered": 2,
@@ -14,29 +14,35 @@ const INTERACT_PRIORITY = 1
 
 var crop_node: Node2D = null
 
-func _ready():
+func _ready() -> void:
+	super()
 	FarmSystem.tile_updated.connect(_on_tile_updated)
-	await super()
 	
-	var data = FarmSystem.get_tile_data(grid_position)
+	var data = FarmSystem.get_tile_data(anchor_cell)
 	update_visual(data)
 	
-func _on_tile_updated(tile_position, data):
+	### TODO: IMPORTANT. clean this up instead of relying on await
+	
+	await get_tree().process_frame
+	update_visual(data)
+	debug_rect()
+	
+func _on_tile_updated(tile_position: Vector2i, data: Dictionary) -> void:
 	if FarmVisual == null:
-		push_error("FarmTileTest ERROR: FarmVisualManager didn't load")
+		push_error("FarmTile ERROR: FarmVisualManager didn't load")
 		return
 		
-	if tile_position != grid_position:
+	if tile_position != anchor_cell:
 		return
 	
 	update_visual(data)
 		
-func update_visual(data):
+func update_visual(data: Dictionary) -> void:
 	
 	var state = resolve_soil_state(data["soil"])
 	
 	## temporary function before replacing old logic that used Enum ##
-	FarmVisual.update_tile(grid_position, state)
+	FarmVisual.update_tile(anchor_cell, state)
 	
 	var crop_data = data["crop"]
 	
@@ -53,7 +59,21 @@ func update_visual(data):
 		
 	crop_node.update_visual(crop_data)
 	
-func resolve_soil_state(soil: Dictionary):
+func debug_rect():
+	for tile in occupied_tiles:
+		var rect = ColorRect.new()
+		add_child(rect)
+		rect.size = Vector2i(32, 32)
+		rect.modulate = Color(1.0, 0.0, 0.0, 0.3)
+		rect.global_position = GridManager.get_world_position(tile)
+		
+	var rect = ColorRect.new()
+	add_child(rect)
+	rect.size = Vector2i(4, 4)
+	rect.modulate = Color(0.423, 0.865, 0.443, 0.3)
+	rect.global_position = GridManager.get_world_position(visual_cell)
+	
+func resolve_soil_state(soil: Dictionary) -> String:
 	
 	var best_state = null
 	var best_priority = -1
@@ -70,53 +90,69 @@ func resolve_soil_state(soil: Dictionary):
 	
 	return best_state
 	
-func interact(item, context):
-	if item == null:
-		return
+func interact(request: InteractionRequest) -> bool:
+	var item_data = request.selected_item_data
+	
+	if item_data == null:
+		return false
 		
-	## Item runs validation logic within itself for range check, etc.
-	if item is ToolItem or item is SeedItem:
-		item.use(self, context)
+	if item_data is ToolItem or item_data is SeedItem:
+		if handle_item_interaction(item_data):
+			return true
+	
+	return false
 
-func interact_with_tool(item, context):
+func handle_item_interaction(item_data: ItemData) ->  bool:
 	
-	## letting FarmTile forward the correct item interaction instead of letting FarmSystem "know" about interaction rules
+	## letting FarmTile forward the correct item interaction 
+	## instead of letting FarmSystem "know" about interaction rules
 	## actual validation and state changes done by FarmSystem
-	if item is HoeTool:
-		FarmSystem.till_tile(grid_position)
-		
-	if item is WateringCan:
-		FarmSystem.water(grid_position)
-		
 	
-func get_interaction_score(context):
+	if item_data is SeedItem:
+		if FarmSystem.plant(anchor_cell, item_data.crop_data):
+			return true
+				
+	if item_data is HoeTool:
+		if FarmSystem.till_tile(anchor_cell):
+			return true
+		
+	if item_data is WateringCan:
+		if FarmSystem.water(anchor_cell):
+			return true
+	
+	return false
+		
+func is_currently_interactable() -> bool:
+	## always interactable, even if crop node exists (watering, manually destroying crop via tool, etc.)
+	## interaction score handles priority between crop and farm_tile
+	return true
+	
+func get_interaction_score(context) -> int:
 	return INTERACT_PRIORITY
 	
 func is_focusable():
+	## NOTE: Old logic, remove after refactor
 	# all interactable surfaces has this function for focused_object targeting visuals
 	# farm_tile always returns 'false' because it's never a part of proximity-based interaction
 	return false
 	
-func can_accept_item(item, context) -> bool:
-	## This function is used for updating TileHighlight logic only
+func can_accept_item(item_data: ItemData) -> bool:
 	
-	var data = FarmSystem.get_tile_data(grid_position)
+	var data = FarmSystem.get_tile_data(anchor_cell)
 	var state = resolve_soil_state(data["soil"])
 	
-	## allow HoeTool to undo tilled state 
-	if item is HoeTool:
+	if item_data is HoeTool:
 		return (state == "untilled") or (state == "tilled" and data["crop"] == null)
 		
-	## remove tile_highlight when tile has already been watered
-	if item is WateringCan:
+	if item_data is WateringCan:
 		return state == "tilled"
 		
-	if item is SeedItem:
+	if item_data is SeedItem:
 		return state == "tilled" or state == "watered"
 		
 	return false
 	
-func spawn_crop():
+func spawn_crop() -> GridObject:
 	if crop_scene == null:
 		push_error("FarmTileTest ERROR: crop_scene not assigned in Editor")
 		return null
@@ -131,9 +167,9 @@ func spawn_crop():
 		
 	var crop = crop_scene.instantiate()
 	
-	var global_pos = GridManager.get_world_position(grid_position)
-	crop.grid_position = grid_position
-	crop.global_position = global_pos
 	ysort.add_child(crop)
+	crop.anchor_cell = anchor_cell
+	crop.global_position = plant_spawn_point.global_position
+	crop.update_occupancy(anchor_cell)
 	
 	return crop

@@ -23,6 +23,7 @@ enum ItemCategory {
 @export var price: int
 @export var sell_price: int = 0
 @export var is_sellable: bool = false
+@export var is_consumable:= false
 
 func use(player_tile, context):
 	pass

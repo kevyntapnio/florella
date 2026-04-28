@@ -5,7 +5,8 @@ extends GridObject
 
 const INTERACT_PRIORITY = 10
 
-func update_visual(crop_state):
+	
+func update_visual(crop_state: Dictionary) -> void:
 	
 	var crop_id = crop_state["crop_id"]
 	var resource = crop_state["resource"]
@@ -22,13 +23,19 @@ func update_visual(crop_state):
 		
 	sprite.texture = resource.stages[stage].texture
 	
-func get_interaction_score(context):
-	if FarmSystem.is_harvestable(grid_position):
+func get_interaction_score(context) -> int:
+	## NOTE: this function currently receives null only
+	# but may change later if targeting_system ever starts using passive_context
+	# leaving this context untyped for now
+	
+	if FarmSystem.is_harvestable(anchor_cell):
 		return INTERACT_PRIORITY
+		
 	return 0
 			
-func interact(item, context) -> bool:
-	if FarmSystem.harvest(grid_position):
+func interact(request: InteractionRequest) -> bool:
+	
+	if FarmSystem.harvest(anchor_cell):
 		
 		play_harvest_sfx()
 		
@@ -38,17 +45,18 @@ func interact(item, context) -> bool:
 		return true
 	return false
 
-func can_accept_item(item, context):
+func can_accept_item(item_data: ItemData) -> bool:
+	## NOTE: When harvest tool is added, this function must be edited
+	## item_data == null means no item is selected/empty hand interaction
 	
-	if item is UsableItem:
-		return false
-		
-	return FarmSystem.is_harvestable(grid_position)
+	return true
 	
-	## Note for later: Add if item is Shears: return current_stage.harvestable
+func is_currently_interactable() -> bool:
+	return FarmSystem.is_harvestable(anchor_cell)
 		
 func _on_sway_area_body_entered(body: Node2D) -> void:
-	var data = FarmSystem.get_tile_data(grid_position)
+	## Old logic; will be cleaned up later when centralized feedback system is added
+	var data = FarmSystem.get_tile_data(anchor_cell)
 	var crop = data.get("crop")
 	
 	if crop == null:
@@ -73,7 +81,8 @@ func _on_sway_area_body_entered(body: Node2D) -> void:
 		$SwaySFX.pitch_scale = randf_range(0.85, 1.15)
 		$SwaySFX.play()
 		
-func play_harvest_sfx():
+func play_harvest_sfx() -> void:
+	## old logic. will also remove and integrate into existing SoundManager soon
 	var sfx = AudioStreamPlayer.new()
 	get_tree().current_scene.add_child(sfx)
 
@@ -99,11 +108,22 @@ func play_harvest_animation():
 	
 	return tween
 	
-func set_targeted(is_targeted: bool):
-	if is_targeted and FarmSystem.is_harvestable(grid_position):
+func set_targeted(is_targeted: bool) -> void:
+	if is_targeted and FarmSystem.is_harvestable(anchor_cell):
 		modulate = Color(1.3, 1.3, 1.3)
 	else:
 		modulate = Color(1, 1, 1)
 		
-func is_focusable():
+func is_focusable() -> bool:
+	### NOTE: old logic, remove after successful migration
 	return true
+
+func debug_rect():
+	for tile in occupied_tiles:
+		var rect = ColorRect.new()
+		add_child(rect)
+		rect.size = Vector2i(32, 32)
+		rect.modulate = Color(0.832, 0.0, 0.582, 0.3)
+		rect.global_position = GridManager.get_world_position(anchor_cell)
+		
+	pass

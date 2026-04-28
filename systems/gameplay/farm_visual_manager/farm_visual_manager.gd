@@ -10,6 +10,11 @@ const tilled_tile = Vector2i(2, 1)
 const watered_tile = Vector2i(2, 1)
 		
 func update_tile(grid_pos: Vector2i, state):
+	### TODO: REMOVE THIS. fix initialization setup in scene orchestrator
+	## This is added because of desync issues when switching scenes
+
+	await get_tree().process_frame
+	
 	watered_layer.set_cell(grid_pos, 0, empty_tile)
 	
 	if state == "untilled":

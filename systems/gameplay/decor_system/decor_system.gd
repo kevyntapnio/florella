@@ -8,11 +8,14 @@ var ysort: Node2D
 var placed_decor = {}
 
 var decor = null
-var debug_print:= false
+
+### TODO: this is temporary, needs refactoring
+var current_target_cell
 
 signal load_finished
 
 func _ready():
+	
 	decor_scene = load("res://test_objects/decor_item/decor.tscn")
 	
 	if decor_scene == null:
@@ -20,8 +23,9 @@ func _ready():
 
 func set_tilemap(map, ysort_ref):
 	tilemap = map
-	initialized = true
 	ysort = ysort_ref
+	
+	initialized = true
 	
 func initialize_build_mode(item: DecorData):
 	if decor != null:
@@ -42,8 +46,11 @@ func initialize_build_mode(item: DecorData):
 	decor = new_decor
 	
 func _process(_delta: float) -> void:
+	
 	## If currently in build_mode
 	if decor != null:
+		
+		current_target_cell = SpatialLookup.get_cell_coords(get_global_mouse_position())
 		
 		get_decor_position()
 		set_preview_modulate()
@@ -52,6 +59,9 @@ func _process(_delta: float) -> void:
 		#decor.position = preview_position
 		
 func get_decor_position():
+	if not current_target_cell:
+		return
+		
 	var context = PlacementContext.new()
 	var target_cell = get_target_cell()
 	
@@ -59,7 +69,7 @@ func get_decor_position():
 	context.occupied_cells = decor.get_occupied_cells(target_cell)
 	context.data = decor.data
 	
-	var preview_position = SpatialLookup.get_world_position(TargetingSystem.current_target_cell)
+	var preview_position = SpatialLookup.get_world_position(current_target_cell)
 	var has_surface = PlacementValidator.check_overlap(context)
 	
 	var surface_info = PlacementValidator.get_surface_offset(context)
@@ -84,13 +94,14 @@ func get_target_cell():
 	
 	## target_cell is adjusted to compensate for node origin sitting at bottom-right of decor_object
 	## occupancy must be calculated based on 1 tile above, 1 tile left of origin
-	
-	var hovered_cell = TargetingSystem.current_target_cell
-	var target_cell = hovered_cell + Vector2i(-1, -1)
-	
-	return target_cell
+	if current_target_cell:
+		var hovered_cell = current_target_cell
+		var target_cell = hovered_cell + Vector2i(-1, -1)
+		
+		return target_cell
 	
 func place_decor() -> bool:
+	
 	if decor == null:
 		return false
 		
@@ -99,7 +110,7 @@ func place_decor() -> bool:
 	if not valid:
 		return false
 	
-	var visual_cell = TargetingSystem.current_target_cell
+	var visual_cell = current_target_cell
 	var target_cell = get_target_cell()
 	
 	decor.anchor_cell = target_cell

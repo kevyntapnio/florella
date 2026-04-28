@@ -18,6 +18,9 @@ var facing_direction = Vector2i(0, 1)
 
 const INVALID_COORD = Vector2i(-1, -1)
 
+var interaction_system: Node
+var targeting_system: TargetingSystem
+
 var focused_interactable = null
 var player_tile_coords: Vector2i
 var player_global_position
@@ -26,6 +29,7 @@ var reactive_objects: Dictionary = {}
 
 var build_mode:= false
 var just_spawned = true
+var initialized:= false
 
 var current_decor_id: String = ""
 
@@ -39,8 +43,8 @@ func _ready() -> void:
 	player_ready.emit()
 	
 func _process(delta):
-	
-	update_targeting_visual()
+	pass
+	#update_targeting_visual()
 	
 	var item_data = Hotbar.get_selected_item_data()
 	
@@ -56,63 +60,13 @@ func _process(delta):
 			build_mode = false
 			current_decor_id = ""
 	
+func setup(interaction_system_ref: InteractionSystem, targeting_system_ref: TargetingSystem) -> void:
+	interaction_system = interaction_system_ref
+	targeting_system = targeting_system_ref
+	initialized = true
+	
 func update_targeting_visual():
-	
-	var item_data = Hotbar.get_selected_item_data()
-	
-	var usable_item = null
-	if item_data is UsableItem:
-		usable_item = item_data
-	
-	if usable_item != null:
-		
-		var player_tile = player_tile_coords
-		var target_tile = TargetingSystem.current_target_coords
-		var target_cell = TargetingSystem.current_target_cell
-		
-		var objects = []
-		var grid_objects = GridManager.get_grid_objects(target_tile)
-		var spatial_objects = SpatialLookup.get_spatial_objects(target_cell)
-		
-		objects.append_array(grid_objects)
-		objects.append_array(spatial_objects)
-		
-		var context = InteractionContext.new(player_tile, [target_tile], target_cell)
-		context.tool = usable_item
-		
-		var best_score = -1
-		var best_object = null
-		
-		for obj in objects:
-			if not is_instance_valid(obj):
-				continue
-			
-			if obj.has_method("get_interaction_score") and obj.has_method("can_accept_item"):
-				if not obj.can_accept_item(usable_item, context):
-					continue
-					
-				var score = obj.get_interaction_score(context)
-				
-				if score > best_score:
-					best_object = obj
-					best_score = score
-					
-		var valid = (best_object != null and best_score > 0)
-		
-		#tile_highlight.show_highlight()
-		#tile_highlight.highlight_tile(target_tile, valid)
-		TargetingVisual.update_mouse_target(best_object, valid)
-	
-	else:
-		tile_highlight.hide()
-		
-	var valid = InteractionSystem.has_valid_interaction()
-	if valid:
-		interaction_prompt.show()
-	else:
-		interaction_prompt.hide()
-		
-	TargetingVisual.update_target(InteractionSystem.focused_interactable, valid)
+	pass
 	
 func _physics_process(delta):
 	if just_spawned:
@@ -153,11 +107,12 @@ func _physics_process(delta):
 	
 	update_player_tile_coords()
 	
-	TargetingSystem.player_tile_coords = player_tile_coords
-	TargetingSystem.facing_direction = facing_direction
-	TargetingSystem.player_global_position = global_position
-
-	TargetingSystem.update_current_target()
+	if not initialized:
+		return
+		
+	player_global_position = get_global_position()
+	targeting_system.update_player_info(player_global_position, facing_direction)
+	targeting_system.update_current_targets(get_global_mouse_position())
 	
 	find_reactive_objects()
 		
@@ -168,23 +123,16 @@ func _input(event: InputEvent) -> void:
 		DebugSystem._add_items_to_inventory()
 		
 	if Input.is_action_just_pressed("interact"):
-		InteractionSystem.handle_interact_proximity(null)
+		var request = create_interaction_request(InteractionRequest.InteractionMode.PROXIMITY)
+		interaction_system.handle_request(request)
 		
 	if Input.is_action_just_pressed("use_item"):
 		if build_mode:
 			if DecorSystem.place_decor():
 				build_mode = false
 				
-		var item = Hotbar.get_selected_item()
-		
-		if item == null:
-			return
-		var item_data = ItemDatabase.get_item(item.item_data.id)
-		
-		if not (item_data is UsableItem):
-			return
-			
-		InteractionSystem.handle_interact_grid(item)
+		var request = create_interaction_request(InteractionRequest.InteractionMode.TARGETED)
+		interaction_system.handle_request(request)
 	
 	if Input.is_action_just_pressed("right_click"):
 		if not build_mode:
@@ -211,6 +159,22 @@ func _input(event: InputEvent) -> void:
 			Hotbar.change_selected_index(-1)
 			lock_scroll()
 		
+func create_interaction_request(interaction_mode) -> InteractionRequest:
+	var request = InteractionRequest.new()
+	
+	request.actor = self
+	request.interaction_mode = interaction_mode
+	request.mouse_pos = get_global_mouse_position()
+	
+	var selected_item = Hotbar.get_selected_item()
+	
+	if selected_item != null:
+		selected_item = selected_item.item_data
+		
+	request.selected_item_data = selected_item
+	
+	return request
+	
 func lock_scroll():
 		scroll_locked = true
 		await get_tree().create_timer(0.03).timeout
@@ -221,7 +185,7 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 	var object = area.get_parent()
 	
 	if object.has_method("interact"):
-		InteractionSystem.register_interactable(object)
+		targeting_system.register_interactable(object)
 		
 	if object != null and object is WorldItem:
 		object.start_magnet(self)
@@ -233,7 +197,7 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 	var object = area.get_parent()
 	
 	if object.has_method("interact"):
-		InteractionSystem.unregister_interactable(object)
+		targeting_system.unregister_interactable(object)
 		
 	VisibilitySystem.unregister_object(object)
 	

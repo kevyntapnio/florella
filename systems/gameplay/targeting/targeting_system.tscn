@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://c8rd2bjpyuhok" path="res://systems/gameplay/targeting/targeting_system.gd" id="1_dwngt"]
 
-[node name="TargetingSystem" type="Node2D" unique_id=796433443]
+[node name="TargetingSystem" type="Node" unique_id=1730495320]
 script = ExtResource("1_dwngt")

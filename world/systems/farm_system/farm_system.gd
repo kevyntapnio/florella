@@ -40,7 +40,7 @@ func debug_signal():
 	var debug_pos = Vector2i(12, 19)
 	tile_updated.emit(debug_pos, data)
 	
-func till_tile(position: Vector2i):
+func till_tile(position: Vector2i) -> bool:
 	var tile_data = get_tile_data(position)
 	
 	if tile_data["soil"]["untilled"]:
@@ -54,16 +54,20 @@ func till_tile(position: Vector2i):
 	
 	tile_updated.emit(position, tile_data)
 	
-func water(position: Vector2i):
+	return true
+	
+func water(position: Vector2i) -> bool:
 	var tile_data = get_tile_data(position)
 	
 	if tile_data["soil"]["tilled"]:
 		tile_data["soil"]["watered"] = true
 		
 	tile_updated.emit(position, tile_data)
+	
+	return true
 
 func plant(position: Vector2i, crop_data: CropData) -> bool:
-	## This function returns a bool for remove_item validation inside Seed
+	## This function returns a bool for remove_item validation
 	
 	var tile_data = get_tile_data(position)
 	
@@ -85,7 +89,7 @@ func plant(position: Vector2i, crop_data: CropData) -> bool:
 	
 	return true
 	
-func is_tilled(position: Vector2i):
+func is_tilled(position: Vector2i) -> bool:
 	var tile_data = get_tile_data(position)
 	
 	return tile_data["soil"]["tilled"] or tile_data["soil"]["watered"]
@@ -95,7 +99,7 @@ func is_watered(position: Vector2i):
 	
 	return tile_data["soil"]["watered"]
 	
-func _on_day_passed():
+func _on_day_passed() -> void:
 	
 	for pos in tiles_data:
 		
@@ -181,7 +185,7 @@ func harvest(position: Vector2i) -> bool:
 	
 	return true
 		
-func spawn_yield_stack(item, quantity, position):
+func spawn_yield_stack(item: ItemData, quantity: int, position: Vector2i) -> void:
 	
 	var stack = ItemStack.new()
 	

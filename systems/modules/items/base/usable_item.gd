@@ -2,4 +2,4 @@ extends ItemData
 
 class_name UsableItem
 
-@export var range: int = 1
+@export var interaction_range: int = 1

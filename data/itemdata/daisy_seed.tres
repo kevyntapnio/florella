@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="SeedItem" format=3 uid="uid://dcmmxa5sp8qrd"]
 
-[ext_resource type="Script" uid="uid://cocmcuylq1b4b" path="res://systems/modules/items/seeds/seed.gd" id="1_38r8d"]
 [ext_resource type="Resource" uid="uid://vawldvd3va0a" path="res://data/cropdata/daisy.tres" id="1_gm6cm"]
 [ext_resource type="Texture2D" uid="uid://0jag7sndfvat" path="res://assets/art/seeds/icons/seeds/daisy_seed.png" id="2_gm6cm"]
+[ext_resource type="Script" uid="uid://cocmcuylq1b4b" path="res://systems/modules/items/seeds/seed_item.gd" id="3_gm6cm"]
 
 [resource]
-script = ExtResource("1_38r8d")
+script = ExtResource("3_gm6cm")
 crop_data = ExtResource("1_gm6cm")
 id = "daisy_seed"
 name = "Daisy Seed"
@@ -13,4 +13,5 @@ icon = ExtResource("2_gm6cm")
 description = "Grow in spring. Takes 4 days to mature."
 category = 0
 price = 40
+is_consumable = true
 metadata/_custom_type_script = "uid://cocmcuylq1b4b"

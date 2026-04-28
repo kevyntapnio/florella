@@ -21,6 +21,8 @@ var is_stacked:= false
 var current_stacked: Array[DecorObject] = []
 var surface_object: DecorObject = null
 
+var light_enabled:= false
+
 const INTERACT_PRIORITY = 1
 	
 func initialize(decor_data: DecorData):
@@ -80,7 +82,7 @@ func set_placed_mode():
 	if data.has_surface:
 		register_surface()
 		
-	#debug_rect()
+	debug_rect()
 		
 func register_surface():
 	## this function registers buildable surface_area of object
@@ -103,27 +105,33 @@ func register_surface():
 			surface_cells.append(cell)
 			SurfaceRegistry.register(cell, self)
 			
-func interact(item, context) -> void:
-	if data.light_source:
-		print("test")
-		if light.enabled:
-			light.enabled = true
-		else:
-			light.enabled = false
+func interact(request: InteractionRequest) -> bool:
+	if request.interaction_mode == InteractionRequest.InteractionMode.PROXIMITY:
+		if data.light_source:
+			if light_enabled:
+				light.enabled = false
+				light_enabled = false
+			else:
+				light.enabled = true
+				light_enabled = true
+	else:
 		
-	if not can_accept_item(item, context):
-		return
-		
-	if not current_stacked.is_empty():
-		return
-		
-	if is_being_removed: 
-		return
+		if not can_accept_item(request.selected_item_data):
+			return false
+			
+		if not current_stacked.is_empty():
+			return false
+			
+		if is_being_removed: 
+			return false
 
-	is_being_removed = true
-	
-	if item is HoeTool and DecorSystem.remove_decor(self):
-		play_animation()
+		is_being_removed = true
+		
+		if request.selected_item_data is HoeTool and DecorSystem.remove_decor(self):
+			play_animation()
+			
+		return true
+	return true
 	
 func get_interaction_score(context) -> int:
 	if is_stacked:
@@ -132,11 +140,11 @@ func get_interaction_score(context) -> int:
 		return 0
 	return INTERACT_PRIORITY
 	
-func can_accept_item(item, context) -> bool:
-	if item is HoeTool:
-		return true
-		
-	return false
+func can_accept_item(item_data: ItemData) -> bool:
+	return true
+	
+func is_currently_interactable() -> bool:
+	return true
 
 func set_preview_modulate(is_valid: bool):
 	if is_valid: 
@@ -166,7 +174,9 @@ func play_animation():
 	return tween
 	
 func get_occupied_cells(target_cell):
-	
+	if target_cell == null:
+		return
+		
 	var size = data.variants[current_variant].object_size
 	var size_in_tiles = Vector2i(size / SpatialLookup.tile_size)
 	
@@ -226,7 +236,7 @@ func create_light():
 	light = PointLight2D.new()
 	add_child(light)
 	light.texture = light_texture
-	light.position = self.position
+	light.global_position = self.global_position
 	light.enabled = false
 	light.energy = 0.8
 	
@@ -242,9 +252,10 @@ func create_interactable_area():
 	interaction_area.add_child(area)
 	
 	area.shape = RectangleShape2D.new()
-	area.shape.size = variant.collider_size 
+	area.shape.size = Vector2i(32, 32)
 
 	area.position.y = - sprite.texture.get_size().y / 2
+	area.position.x = - sprite.texture.get_size().x / 2
 	
 	interaction_area.set_collision_layer_value(3, true)
 	

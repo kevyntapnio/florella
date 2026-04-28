@@ -11,8 +11,14 @@ script = ExtResource("1_jvyi0")
 crop_scene = ExtResource("2_5b145")
 
 [node name="TileArea" type="Area2D" parent="." unique_id=836724375]
+position = Vector2(-16, -16)
 collision_layer = 8
 collision_mask = 16
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileArea" unique_id=312803005]
 shape = SubResource("RectangleShape2D_pxvgq")
+
+[node name="PlantSpawnPoint" type="Node2D" parent="." unique_id=793491681]
+position = Vector2(-16, -16)

@@ -21,7 +21,9 @@ func can_place(context: PlacementContext) -> bool:
 func tiles_unoccupied(context: PlacementContext):
 	
 	var cells = context.occupied_cells
-	
+	if cells == null:
+		return false 
+		
 	for c in cells:
 		var converted_grid = GridManager.spatial_to_grid(c)
 		if GridManager.is_grid_occupied(converted_grid):

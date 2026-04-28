@@ -6,7 +6,7 @@ class_name ShopCounter
 
 const INTERACT_PRIORITY = 10
 
-func interact(item, context) -> bool:
+func interact(request: InteractionRequest) -> bool:
 
 	if shop_info == null:
 		push_error("ShopCounter ERROR: shop_info not assigned Editor")
@@ -47,3 +47,11 @@ func set_targeted(is_targeted: bool):
 		
 func get_interaction_score(context):
 	return INTERACT_PRIORITY
+	
+func is_currently_interactable() -> bool:
+	## always returns true, even if closed
+	## this gives leeway for visual feedback to indicate "closed" later
+	return true
+	
+func can_accept_item(item_data) -> bool:
+	return true

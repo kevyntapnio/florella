@@ -5,7 +5,7 @@ var spatial_objects: Dictionary = {}
 var initialized:= false
 	
 func register_spatial_object(coords: Vector2i, object):
-
+	
 	if not spatial_objects.has(coords):
 		spatial_objects[coords] = [object]
 	else:
@@ -21,8 +21,13 @@ func unregister_spatial_object(coords, object):
 	
 	if spatial_objects[coords].is_empty():
 		spatial_objects.erase(coords)
+		
+func get_objects_at_world_pos(pos: Vector2) -> Array:
+	var cell = get_cell_coords(pos)
+	return get_spatial_objects(cell)
 	
 func get_spatial_objects(coords: Vector2i) -> Array:
+
 	if spatial_objects.has(coords):
 		return spatial_objects.get(coords, [])
 	else:

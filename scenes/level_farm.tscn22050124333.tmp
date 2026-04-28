@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/tile_map_dual.gd" id="10_b8io8"]
 [ext_resource type="Texture2D" uid="uid://cocd7u1m762hb" path="res://assets/art/tilesets/watered_dirt_tiles.png" id="10_nkyni"]
 [ext_resource type="PackedScene" uid="uid://8fu27x2eekb3" path="res://world/foliage/tall_grass/flower_3.tscn" id="12_ii5s6"]
+[ext_resource type="PackedScene" uid="uid://lc3vja5g22dj" path="res://test_objects/crop_test.tscn" id="12_jwf87"]
 [ext_resource type="Script" uid="uid://bwrv50mw3200u" path="res://scenes/tree_spawner.gd" id="14_vk3p0"]
 [ext_resource type="PackedScene" uid="uid://dw4fkigoerc7e" path="res://world/trees/tree.tscn" id="15_52aj1"]
 [ext_resource type="Script" uid="uid://xkjtylgsjc4e" path="res://world/trees/TreeData.gd" id="15_ahd6e"]
@@ -43,6 +44,7 @@
 [ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
 [ext_resource type="PackedScene" uid="uid://dp8tigonc3r05" path="res://test_objects/light_source/light_source.tscn" id="28_p8dsh"]
 [ext_resource type="PackedScene" uid="uid://hvubnck8s1kr" path="res://systems/global_managers/timemanager/day_transition.tscn" id="30_a5i0f"]
+[ext_resource type="PackedScene" uid="uid://dvem2to6ddc11" path="res://test_objects/farm_tile_test.tscn" id="30_ivnov"]
 [ext_resource type="Script" uid="uid://coxtildet1c5e" path="res://ui/current_gold_label.gd" id="35_0p3ls"]
 [ext_resource type="PackedScene" uid="uid://c1jaq6kvtgerl" path="res://ui/shop/shop_ui/shop_menu.tscn" id="36_0p3ls"]
 [ext_resource type="FontFile" uid="uid://cnfdulewx7n12" path="res://assets/fonts/ARCADECLASSIC.TTF" id="39_jwf87"]
@@ -766,113 +768,199 @@ metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
 [node name="FarmTiles" type="Node" parent="World/FarmLogic" unique_id=655994396]
 
-[node name="FarmTile64" parent="World/FarmLogic/FarmTiles" unique_id=1563810621 instance=ExtResource("5_d35qd")]
-position = Vector2(416.25577, 672.0479)
+[node name="FarmTileTest" parent="World/FarmLogic/FarmTiles" unique_id=974946717 node_paths=PackedStringArray("farm_visual_manager") instance=ExtResource("30_ivnov")]
+position = Vector2(416, 640)
+crop_scene = ExtResource("12_jwf87")
+farm_visual_manager = NodePath("../../../../Systems/WorldTileQuery/FarmVisualManager")
 
-[node name="FarmTile" parent="World/FarmLogic/FarmTiles" unique_id=1754329870 instance=ExtResource("5_d35qd")]
-position = Vector2(384.1264, 672)
+[node name="FarmTile" parent="World/FarmLogic/FarmTiles" unique_id=1563810621 instance=ExtResource("5_d35qd")]
+position = Vector2(544, 192)
 
-[node name="FarmTile2" parent="World/FarmLogic/FarmTiles" unique_id=505603015 instance=ExtResource("5_d35qd")]
+[node name="FarmTile5" parent="World/FarmLogic/FarmTiles" unique_id=238332172 instance=ExtResource("5_d35qd")]
+position = Vector2(608, 192)
+
+[node name="FarmTile2" parent="World/FarmLogic/FarmTiles" unique_id=2119950371 instance=ExtResource("5_d35qd")]
+position = Vector2(576, 192)
+
+[node name="FarmTile3" parent="World/FarmLogic/FarmTiles" unique_id=944988252 instance=ExtResource("5_d35qd")]
+position = Vector2(544, 224)
+
+[node name="FarmTile4" parent="World/FarmLogic/FarmTiles" unique_id=1917467716 instance=ExtResource("5_d35qd")]
+position = Vector2(576, 224)
+
+[node name="FarmTile6" parent="World/FarmLogic/FarmTiles" unique_id=314202739 instance=ExtResource("5_d35qd")]
+position = Vector2(608, 224)
+
+[node name="FarmTile7" parent="World/FarmLogic/FarmTiles" unique_id=993774642 instance=ExtResource("5_d35qd")]
+position = Vector2(544, 256)
+
+[node name="FarmTile8" parent="World/FarmLogic/FarmTiles" unique_id=570345786 instance=ExtResource("5_d35qd")]
+position = Vector2(576, 256)
+
+[node name="FarmTile9" parent="World/FarmLogic/FarmTiles" unique_id=115913898 instance=ExtResource("5_d35qd")]
+position = Vector2(608, 256)
+
+[node name="FarmTile10" parent="World/FarmLogic/FarmTiles" unique_id=1477362137 instance=ExtResource("5_d35qd")]
+position = Vector2(672, 192)
+
+[node name="FarmTile11" parent="World/FarmLogic/FarmTiles" unique_id=766345200 instance=ExtResource("5_d35qd")]
+position = Vector2(736, 192)
+
+[node name="FarmTile12" parent="World/FarmLogic/FarmTiles" unique_id=968823037 instance=ExtResource("5_d35qd")]
+position = Vector2(704, 192)
+
+[node name="FarmTile13" parent="World/FarmLogic/FarmTiles" unique_id=696841875 instance=ExtResource("5_d35qd")]
+position = Vector2(672, 224)
+
+[node name="FarmTile14" parent="World/FarmLogic/FarmTiles" unique_id=577646321 instance=ExtResource("5_d35qd")]
+position = Vector2(704, 224)
+
+[node name="FarmTile15" parent="World/FarmLogic/FarmTiles" unique_id=310424883 instance=ExtResource("5_d35qd")]
+position = Vector2(736, 224)
+
+[node name="FarmTile16" parent="World/FarmLogic/FarmTiles" unique_id=251420767 instance=ExtResource("5_d35qd")]
+position = Vector2(672, 256)
+
+[node name="FarmTile17" parent="World/FarmLogic/FarmTiles" unique_id=736971807 instance=ExtResource("5_d35qd")]
+position = Vector2(704, 256)
+
+[node name="FarmTile18" parent="World/FarmLogic/FarmTiles" unique_id=1462100486 instance=ExtResource("5_d35qd")]
+position = Vector2(736, 256)
+
+[node name="FarmTile19" parent="World/FarmLogic/FarmTiles" unique_id=1845220371 instance=ExtResource("5_d35qd")]
+position = Vector2(800, 192)
+
+[node name="FarmTile20" parent="World/FarmLogic/FarmTiles" unique_id=774260757 instance=ExtResource("5_d35qd")]
+position = Vector2(864, 192)
+
+[node name="FarmTile21" parent="World/FarmLogic/FarmTiles" unique_id=458914952 instance=ExtResource("5_d35qd")]
+position = Vector2(832, 192)
+
+[node name="FarmTile22" parent="World/FarmLogic/FarmTiles" unique_id=1748573589 instance=ExtResource("5_d35qd")]
+position = Vector2(800, 224)
+
+[node name="FarmTile23" parent="World/FarmLogic/FarmTiles" unique_id=1773702338 instance=ExtResource("5_d35qd")]
+position = Vector2(832, 224)
+
+[node name="FarmTile24" parent="World/FarmLogic/FarmTiles" unique_id=1908828894 instance=ExtResource("5_d35qd")]
+position = Vector2(864, 224)
+
+[node name="FarmTile25" parent="World/FarmLogic/FarmTiles" unique_id=299224267 instance=ExtResource("5_d35qd")]
+position = Vector2(800, 256)
+
+[node name="FarmTile26" parent="World/FarmLogic/FarmTiles" unique_id=1418442412 instance=ExtResource("5_d35qd")]
+position = Vector2(832, 256)
+
+[node name="FarmTile27" parent="World/FarmLogic/FarmTiles" unique_id=1974007603 instance=ExtResource("5_d35qd")]
+position = Vector2(864, 256)
+
+[node name="FarmTile28" parent="World/FarmLogic/FarmTiles" unique_id=464724313 instance=ExtResource("5_d35qd")]
 position = Vector2(352, 672)
 
-[node name="FarmTile65" parent="World/FarmLogic/FarmTiles" unique_id=1009225388 instance=ExtResource("5_d35qd")]
-position = Vector2(416.25574, 704.04785)
+[node name="FarmTile29" parent="World/FarmLogic/FarmTiles" unique_id=1180205087 instance=ExtResource("5_d35qd")]
+position = Vector2(416, 672)
 
-[node name="FarmTile3" parent="World/FarmLogic/FarmTiles" unique_id=1022953952 instance=ExtResource("5_d35qd")]
-position = Vector2(384.12634, 704)
+[node name="FarmTile30" parent="World/FarmLogic/FarmTiles" unique_id=165825471 instance=ExtResource("5_d35qd")]
+position = Vector2(384, 672)
 
-[node name="FarmTile4" parent="World/FarmLogic/FarmTiles" unique_id=751117397 instance=ExtResource("5_d35qd")]
+[node name="FarmTile31" parent="World/FarmLogic/FarmTiles" unique_id=1142933324 instance=ExtResource("5_d35qd")]
 position = Vector2(352, 704)
 
-[node name="FarmTile66" parent="World/FarmLogic/FarmTiles" unique_id=510424254 instance=ExtResource("5_d35qd")]
-position = Vector2(416.25574, 736.04785)
+[node name="FarmTile32" parent="World/FarmLogic/FarmTiles" unique_id=1253179139 instance=ExtResource("5_d35qd")]
+position = Vector2(384, 704)
 
-[node name="FarmTile5" parent="World/FarmLogic/FarmTiles" unique_id=799674174 instance=ExtResource("5_d35qd")]
-position = Vector2(384.12634, 736)
+[node name="FarmTile33" parent="World/FarmLogic/FarmTiles" unique_id=1962937710 instance=ExtResource("5_d35qd")]
+position = Vector2(416, 704)
 
-[node name="FarmTile6" parent="World/FarmLogic/FarmTiles" unique_id=1870226000 instance=ExtResource("5_d35qd")]
+[node name="FarmTile34" parent="World/FarmLogic/FarmTiles" unique_id=2037538723 instance=ExtResource("5_d35qd")]
 position = Vector2(352, 736)
 
-[node name="FarmTile67" parent="World/FarmLogic/FarmTiles" unique_id=753043404 instance=ExtResource("5_d35qd")]
-position = Vector2(544.25574, 672.0479)
+[node name="FarmTile35" parent="World/FarmLogic/FarmTiles" unique_id=849443109 instance=ExtResource("5_d35qd")]
+position = Vector2(384, 736)
 
-[node name="FarmTile7" parent="World/FarmLogic/FarmTiles" unique_id=1300922095 instance=ExtResource("5_d35qd")]
-position = Vector2(512.1264, 672)
+[node name="FarmTile36" parent="World/FarmLogic/FarmTiles" unique_id=395544795 instance=ExtResource("5_d35qd")]
+position = Vector2(416, 736)
 
-[node name="FarmTile8" parent="World/FarmLogic/FarmTiles" unique_id=2049477536 instance=ExtResource("5_d35qd")]
+[node name="FarmTile37" parent="World/FarmLogic/FarmTiles" unique_id=1290413405 instance=ExtResource("5_d35qd")]
 position = Vector2(480, 672)
 
-[node name="FarmTile68" parent="World/FarmLogic/FarmTiles" unique_id=93362234 instance=ExtResource("5_d35qd")]
-position = Vector2(544.25574, 704.04785)
+[node name="FarmTile38" parent="World/FarmLogic/FarmTiles" unique_id=629292831 instance=ExtResource("5_d35qd")]
+position = Vector2(544, 672)
 
-[node name="FarmTile9" parent="World/FarmLogic/FarmTiles" unique_id=1452249495 instance=ExtResource("5_d35qd")]
-position = Vector2(512.12634, 704)
+[node name="FarmTile39" parent="World/FarmLogic/FarmTiles" unique_id=1797757284 instance=ExtResource("5_d35qd")]
+position = Vector2(512, 672)
 
-[node name="FarmTile10" parent="World/FarmLogic/FarmTiles" unique_id=1427546004 instance=ExtResource("5_d35qd")]
+[node name="FarmTile40" parent="World/FarmLogic/FarmTiles" unique_id=1500648213 instance=ExtResource("5_d35qd")]
 position = Vector2(480, 704)
 
-[node name="FarmTile69" parent="World/FarmLogic/FarmTiles" unique_id=3810313 instance=ExtResource("5_d35qd")]
-position = Vector2(544.25574, 736.04785)
+[node name="FarmTile41" parent="World/FarmLogic/FarmTiles" unique_id=1741726397 instance=ExtResource("5_d35qd")]
+position = Vector2(512, 704)
 
-[node name="FarmTile11" parent="World/FarmLogic/FarmTiles" unique_id=1090105124 instance=ExtResource("5_d35qd")]
-position = Vector2(512.12634, 736)
+[node name="FarmTile42" parent="World/FarmLogic/FarmTiles" unique_id=1552317104 instance=ExtResource("5_d35qd")]
+position = Vector2(544, 704)
 
-[node name="FarmTile12" parent="World/FarmLogic/FarmTiles" unique_id=1908731625 instance=ExtResource("5_d35qd")]
+[node name="FarmTile43" parent="World/FarmLogic/FarmTiles" unique_id=1189448864 instance=ExtResource("5_d35qd")]
 position = Vector2(480, 736)
 
-[node name="FarmTile70" parent="World/FarmLogic/FarmTiles" unique_id=1721417553 instance=ExtResource("5_d35qd")]
-position = Vector2(672.25574, 672.0479)
+[node name="FarmTile44" parent="World/FarmLogic/FarmTiles" unique_id=1467125694 instance=ExtResource("5_d35qd")]
+position = Vector2(512, 736)
 
-[node name="FarmTile13" parent="World/FarmLogic/FarmTiles" unique_id=22702491 instance=ExtResource("5_d35qd")]
-position = Vector2(640.1264, 672)
+[node name="FarmTile45" parent="World/FarmLogic/FarmTiles" unique_id=1793641336 instance=ExtResource("5_d35qd")]
+position = Vector2(544, 736)
 
-[node name="FarmTile14" parent="World/FarmLogic/FarmTiles" unique_id=1651611762 instance=ExtResource("5_d35qd")]
+[node name="FarmTile46" parent="World/FarmLogic/FarmTiles" unique_id=635890870 instance=ExtResource("5_d35qd")]
 position = Vector2(608, 672)
 
-[node name="FarmTile71" parent="World/FarmLogic/FarmTiles" unique_id=80842680 instance=ExtResource("5_d35qd")]
-position = Vector2(672.25574, 704.04785)
+[node name="FarmTile47" parent="World/FarmLogic/FarmTiles" unique_id=956031067 instance=ExtResource("5_d35qd")]
+position = Vector2(672, 672)
 
-[node name="FarmTile15" parent="World/FarmLogic/FarmTiles" unique_id=482127042 instance=ExtResource("5_d35qd")]
-position = Vector2(640.12634, 704)
+[node name="FarmTile48" parent="World/FarmLogic/FarmTiles" unique_id=47034860 instance=ExtResource("5_d35qd")]
+position = Vector2(640, 672)
 
-[node name="FarmTile16" parent="World/FarmLogic/FarmTiles" unique_id=1356138235 instance=ExtResource("5_d35qd")]
+[node name="FarmTile49" parent="World/FarmLogic/FarmTiles" unique_id=830462087 instance=ExtResource("5_d35qd")]
 position = Vector2(608, 704)
 
-[node name="FarmTile72" parent="World/FarmLogic/FarmTiles" unique_id=1112973725 instance=ExtResource("5_d35qd")]
-position = Vector2(672.25574, 736.04785)
+[node name="FarmTile50" parent="World/FarmLogic/FarmTiles" unique_id=989869709 instance=ExtResource("5_d35qd")]
+position = Vector2(640, 704)
 
-[node name="FarmTile17" parent="World/FarmLogic/FarmTiles" unique_id=2462271 instance=ExtResource("5_d35qd")]
-position = Vector2(640.12634, 736)
+[node name="FarmTile51" parent="World/FarmLogic/FarmTiles" unique_id=1034582240 instance=ExtResource("5_d35qd")]
+position = Vector2(672, 704)
 
-[node name="FarmTile18" parent="World/FarmLogic/FarmTiles" unique_id=1585129638 instance=ExtResource("5_d35qd")]
+[node name="FarmTile52" parent="World/FarmLogic/FarmTiles" unique_id=119588341 instance=ExtResource("5_d35qd")]
 position = Vector2(608, 736)
 
-[node name="FarmTile73" parent="World/FarmLogic/FarmTiles" unique_id=307503949 instance=ExtResource("5_d35qd")]
-position = Vector2(800.25574, 672.0479)
+[node name="FarmTile53" parent="World/FarmLogic/FarmTiles" unique_id=1471518016 instance=ExtResource("5_d35qd")]
+position = Vector2(640, 736)
 
-[node name="FarmTile19" parent="World/FarmLogic/FarmTiles" unique_id=970145845 instance=ExtResource("5_d35qd")]
-position = Vector2(768.1264, 672)
+[node name="FarmTile54" parent="World/FarmLogic/FarmTiles" unique_id=2045904040 instance=ExtResource("5_d35qd")]
+position = Vector2(672, 736)
 
-[node name="FarmTile20" parent="World/FarmLogic/FarmTiles" unique_id=1141847574 instance=ExtResource("5_d35qd")]
+[node name="FarmTile55" parent="World/FarmLogic/FarmTiles" unique_id=1748798651 instance=ExtResource("5_d35qd")]
 position = Vector2(736, 672)
 
-[node name="FarmTile74" parent="World/FarmLogic/FarmTiles" unique_id=2110747378 instance=ExtResource("5_d35qd")]
-position = Vector2(800.25574, 704.04785)
+[node name="FarmTile56" parent="World/FarmLogic/FarmTiles" unique_id=930748253 instance=ExtResource("5_d35qd")]
+position = Vector2(800, 672)
 
-[node name="FarmTile21" parent="World/FarmLogic/FarmTiles" unique_id=1138224068 instance=ExtResource("5_d35qd")]
-position = Vector2(768.12634, 704)
+[node name="FarmTile57" parent="World/FarmLogic/FarmTiles" unique_id=455258670 instance=ExtResource("5_d35qd")]
+position = Vector2(768, 672)
 
-[node name="FarmTile22" parent="World/FarmLogic/FarmTiles" unique_id=1713882077 instance=ExtResource("5_d35qd")]
+[node name="FarmTile58" parent="World/FarmLogic/FarmTiles" unique_id=2019813067 instance=ExtResource("5_d35qd")]
 position = Vector2(736, 704)
 
-[node name="FarmTile75" parent="World/FarmLogic/FarmTiles" unique_id=1016760915 instance=ExtResource("5_d35qd")]
-position = Vector2(800.25574, 736.04785)
+[node name="FarmTile59" parent="World/FarmLogic/FarmTiles" unique_id=188439523 instance=ExtResource("5_d35qd")]
+position = Vector2(768, 704)
 
-[node name="FarmTile23" parent="World/FarmLogic/FarmTiles" unique_id=2097481803 instance=ExtResource("5_d35qd")]
-position = Vector2(768.12634, 736)
+[node name="FarmTile60" parent="World/FarmLogic/FarmTiles" unique_id=546079355 instance=ExtResource("5_d35qd")]
+position = Vector2(800, 704)
 
-[node name="FarmTile24" parent="World/FarmLogic/FarmTiles" unique_id=970051680 instance=ExtResource("5_d35qd")]
+[node name="FarmTile61" parent="World/FarmLogic/FarmTiles" unique_id=697717941 instance=ExtResource("5_d35qd")]
 position = Vector2(736, 736)
+
+[node name="FarmTile62" parent="World/FarmLogic/FarmTiles" unique_id=1700810645 instance=ExtResource("5_d35qd")]
+position = Vector2(768, 736)
+
+[node name="FarmTile63" parent="World/FarmLogic/FarmTiles" unique_id=231667390 instance=ExtResource("5_d35qd")]
+position = Vector2(800, 736)
 
 [node name="YSortWorld" type="Node2D" parent="World" unique_id=1508058470 groups=["ysort_world"]]
 y_sort_enabled = true
@@ -915,7 +1003,7 @@ shop_system = NodePath("../../../Systems/ShopSystem")
 shop_info = ExtResource("26_bsn28")
 
 [node name="DaisyLamp" parent="World/YSortWorld" unique_id=294373437 instance=ExtResource("28_p8dsh")]
-position = Vector2(584, 504)
+position = Vector2(592, 520)
 
 [node name="ShippingBin" parent="World/YSortWorld" unique_id=123653949 node_paths=PackedStringArray("selling_system") instance=ExtResource("45_a5i0f")]
 position = Vector2(416, 512)

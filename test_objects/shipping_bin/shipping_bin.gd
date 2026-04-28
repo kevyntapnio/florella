@@ -5,11 +5,20 @@ class_name ShippingBin
 
 const INTERACT_PRIORITY = 10
 
-func get_interaction_score(context):
+func get_interaction_score(context) -> int:
 	return INTERACT_PRIORITY
 	
-func interact(item, context):
+func interact(request: InteractionRequest) -> bool:
 	if selling_system == null:
 		push_error("ShippingBin ERROR: selling_system not assigned in Editor!")
+		return true
 		
 	selling_system.initialize()
+	
+	return true
+	
+func can_accept_item(item_data: ItemData) -> bool:
+	return true
+	
+func is_currently_interactable() -> bool:
+	return true

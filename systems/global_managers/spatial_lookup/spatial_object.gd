@@ -38,3 +38,5 @@ func refresh_occupancy(anchor_cell):
 		
 	cells = new_cells
 		
+func get_interaction_zone() -> Array[Vector2i]:
+	return cells
