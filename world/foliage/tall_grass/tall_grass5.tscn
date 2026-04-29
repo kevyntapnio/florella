@@ -15,28 +15,28 @@ stream = ExtResource("2_3iau5")
 volume_db = -10.628
 
 [node name="blade" type="Sprite2D" parent="." unique_id=140987222]
-position = Vector2(10, 1)
+position = Vector2(3, 0)
 texture = ExtResource("3_x7w5y")
 offset = Vector2(-2, -7)
 flip_h = true
 
 [node name="blade2" type="Sprite2D" parent="." unique_id=1205213912]
-position = Vector2(3, -1)
+position = Vector2(-4, -2)
 texture = ExtResource("4_pldte")
 offset = Vector2(0, -9)
 
 [node name="blade4" type="Sprite2D" parent="." unique_id=294136432]
-position = Vector2(-4, 1)
+position = Vector2(-11, 0)
 texture = ExtResource("5_txh0k")
 offset = Vector2(0, -5)
 
 [node name="blade3" type="Sprite2D" parent="." unique_id=1237622957]
-position = Vector2(-7, -1)
+position = Vector2(-14, -2)
 texture = ExtResource("4_pldte")
 offset = Vector2(0, -9)
 flip_h = true
 
 [node name="blade5" type="Sprite2D" parent="." unique_id=2147229523]
-position = Vector2(-10, 0)
+position = Vector2(-17, -1)
 texture = ExtResource("5_txh0k")
 offset = Vector2(0, -5)

@@ -95,26 +95,27 @@ script = SubResource("GDScript_jdhtg")
 grass_textures = Array[Texture2D]([ExtResource("2_0iaio"), ExtResource("3_3ygtk"), ExtResource("4_gav2x")])
 
 [node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=503867132]
+position = Vector2(-9, -1)
 stream = ExtResource("5_0iaio")
 volume_db = -10.628
 
 [node name="blade" type="Sprite2D" parent="." unique_id=140987222]
-position = Vector2(-5, 0)
+position = Vector2(-14, -1)
 texture = ExtResource("4_gav2x")
 offset = Vector2(-2, -7)
 
 [node name="blade2" type="Sprite2D" parent="." unique_id=1205213912]
-position = Vector2(4, 0)
+position = Vector2(-5, -1)
 texture = ExtResource("3_3ygtk")
 offset = Vector2(0, -9)
 
 [node name="blade3" type="Sprite2D" parent="." unique_id=1205743627]
-position = Vector2(-2, 2)
+position = Vector2(-11, 1)
 texture = ExtResource("2_0iaio")
 offset = Vector2(0, -5)
 
 [node name="blade4" type="Sprite2D" parent="." unique_id=294136432]
-position = Vector2(5, 1)
+position = Vector2(-4, 0)
 texture = ExtResource("2_0iaio")
 offset = Vector2(0, -5)
 flip_h = true

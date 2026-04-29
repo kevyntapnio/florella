@@ -2,7 +2,7 @@ extends Node2D
 
 class_name SpatialObject
 
-var cells: Array[Vector2i]
+var cells: Array[Vector2i] = []
 var is_registered:= false
 		
 func activate_spatial_registration(anchor_cell):

@@ -10,27 +10,28 @@ y_sort_enabled = true
 script = ExtResource("1_ofbc2")
 
 [node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=503867132]
+position = Vector2(-15, -2)
 stream = ExtResource("4_y48ry")
 volume_db = -10.628
 
 [node name="TallGrass1" type="Sprite2D" parent="." unique_id=1084745628]
-position = Vector2(10, -3)
+position = Vector2(-5, -5)
 texture = ExtResource("2_ofbc2")
 offset = Vector2(0, -8)
 
 [node name="TallGrass0" type="Sprite2D" parent="." unique_id=122890490]
-position = Vector2(2, 1)
+position = Vector2(-13, -1)
 texture = ExtResource("1_gecs1")
 offset = Vector2(0, -4)
 
 [node name="TallGrass2" type="Sprite2D" parent="." unique_id=821551405]
-position = Vector2(-5, -4)
+position = Vector2(-20, -6)
 texture = ExtResource("2_ofbc2")
 offset = Vector2(0, -8)
 flip_h = true
 
 [node name="TallGrass3" type="Sprite2D" parent="." unique_id=459401713]
-position = Vector2(4, -4)
+position = Vector2(-11, -6)
 texture = ExtResource("1_gecs1")
 offset = Vector2(0, -5)
 flip_h = true

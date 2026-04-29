@@ -1,4 +1,4 @@
-extends GridObject
+extends SpatialObject
 
 @onready var wind_shader = preload("res://shaders/wind_sway.gdshader")
 
@@ -11,10 +11,21 @@ static var sfx_cooldown:= 0.05
 var rng:= RandomNumberGenerator.new()
 var sprite 
 var blades = []
+var anchor_cell: Vector2i
 
-func _ready(): 	
+func _ready(): 
 	get_blades()
 	apply_shader()
+	
+	var anchor_cell = SpatialLookup.get_cell_coords(global_position) + Vector2i(-1, -1)
+	activate_spatial_registration(anchor_cell)
+	
+	#debug_rect()
+	
+func get_occupied_cells(anchor_cell):
+	var occupied: Array[Vector2i] = []
+	occupied.append(anchor_cell)
+	return occupied
 	
 func apply_shader():
 	for blade in blades:
@@ -81,3 +92,17 @@ func play_sfx():
 		
 		tween.finished.connect(sfx.stop)
 		
+func debug_rect():
+	
+	for cell in cells:
+		var rect = ColorRect.new()
+		add_child(rect)
+		rect.global_position = SpatialLookup.get_world_position(cell)
+		rect.size = Vector2i(16, 16)
+		rect.modulate = Color(1.0, 0, 0, 0.5)
+	
+	var origin = ColorRect.new()
+	add_child(origin)
+	origin.global_position = SpatialLookup.get_world_position(anchor_cell)
+	origin.size = Vector2i(4, 4)
+	origin.modulate = Color.BLACK

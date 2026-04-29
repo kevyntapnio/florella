@@ -11,26 +11,27 @@ y_sort_enabled = true
 script = ExtResource("1_e6ros")
 
 [node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=503867132]
+position = Vector2(-5, -8)
 stream = ExtResource("2_6juun")
 volume_db = -10.628
 
 [node name="blade" type="Sprite2D" parent="." unique_id=140987222]
-position = Vector2(6, 8)
+position = Vector2(1, 0)
 texture = ExtResource("3_7u8jo")
 offset = Vector2(-2, -7)
 flip_h = true
 
 [node name="blade2" type="Sprite2D" parent="." unique_id=1205213912]
-position = Vector2(3, 1)
+position = Vector2(-2, -7)
 texture = ExtResource("4_2hedc")
 offset = Vector2(0, -9)
 
 [node name="blade3" type="Sprite2D" parent="." unique_id=1205743627]
-position = Vector2(-4, 4)
+position = Vector2(-9, -4)
 texture = ExtResource("5_h75fe")
 offset = Vector2(0, -5)
 
 [node name="blade4" type="Sprite2D" parent="." unique_id=294136432]
-position = Vector2(-4, -2)
+position = Vector2(-9, -10)
 texture = ExtResource("5_h75fe")
 offset = Vector2(0, -5)

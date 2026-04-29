@@ -207,8 +207,8 @@ func update_player_tile_coords():
 	player_tile_coords = tilemap.local_to_map(local_pos)
 	
 func find_reactive_objects():
-	var current_tile = player_tile_coords
-	var objects = GridManager.get_grid_objects(current_tile)
+	var current_tile = SpatialLookup.get_cell_coords(player_global_position)
+	var objects = SpatialLookup.get_spatial_objects(current_tile)
 	
 	var new_reactive := {}
 	
@@ -219,8 +219,9 @@ func find_reactive_objects():
 		if obj.has_method("react"):
 			
 			var dist = global_position.distance_to(obj.global_position)
+			print(dist)
 			
-			if dist < 12:
+			if dist < 25:
 				new_reactive[obj] = true
 				
 				if not reactive_objects.has(obj):
