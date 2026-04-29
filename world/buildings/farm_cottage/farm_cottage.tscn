@@ -8,12 +8,12 @@ collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=207591685]
 y_sort_enabled = true
-position = Vector2(0, -1)
+position = Vector2(-49.199997, -23)
 texture = ExtResource("1_sta4h")
 offset = Vector2(0, -47)
 region_enabled = true
 region_rect = Rect2(73, 33, 111, 148)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=601399594]
-position = Vector2(1, 4)
+position = Vector2(-48.199997, -18)
 polygon = PackedVector2Array(-48, 16, -7, 16, -7, 2, 20, 3, 20, 16, 25, 19, 48, 19, 48, -48, -48, -48)

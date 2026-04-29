@@ -12,6 +12,7 @@ func _ready():
 	PlayerGlobalStats.wallet_changed.connect(on_wallet_changed)
 	
 	update_day_display()
+	on_wallet_changed(PlayerGlobalStats.current_gold)
 	
 func toggle():
 	if is_open:

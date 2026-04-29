@@ -117,13 +117,3 @@ func set_targeted(is_targeted: bool) -> void:
 func is_focusable() -> bool:
 	### NOTE: old logic, remove after successful migration
 	return true
-
-func debug_rect():
-	for tile in occupied_tiles:
-		var rect = ColorRect.new()
-		add_child(rect)
-		rect.size = Vector2i(32, 32)
-		rect.modulate = Color(0.832, 0.0, 0.582, 0.3)
-		rect.global_position = GridManager.get_world_position(anchor_cell)
-		
-	pass

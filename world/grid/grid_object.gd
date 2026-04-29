@@ -17,7 +17,7 @@ func _ready():
 	
 	register_all_tiles()
 	is_registered = true
-	
+		
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSFORM_CHANGED:
 		update_occupancy(anchor_cell)

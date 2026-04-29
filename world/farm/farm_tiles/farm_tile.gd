@@ -25,8 +25,7 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	update_visual(data)
-	debug_rect()
-	
+		
 func _on_tile_updated(tile_position: Vector2i, data: Dictionary) -> void:
 	if FarmVisual == null:
 		push_error("FarmTile ERROR: FarmVisualManager didn't load")
@@ -58,20 +57,6 @@ func update_visual(data: Dictionary) -> void:
 		crop_node = spawn_crop()
 		
 	crop_node.update_visual(crop_data)
-	
-func debug_rect():
-	for tile in occupied_tiles:
-		var rect = ColorRect.new()
-		add_child(rect)
-		rect.size = Vector2i(32, 32)
-		rect.modulate = Color(1.0, 0.0, 0.0, 0.3)
-		rect.global_position = GridManager.get_world_position(tile)
-		
-	var rect = ColorRect.new()
-	add_child(rect)
-	rect.size = Vector2i(4, 4)
-	rect.modulate = Color(0.423, 0.865, 0.443, 0.3)
-	rect.global_position = GridManager.get_world_position(visual_cell)
 	
 func resolve_soil_state(soil: Dictionary) -> String:
 	

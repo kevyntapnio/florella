@@ -201,6 +201,7 @@ right_click={
 2d_physics/layer_8="OcclusionItem"
 2d_physics/layer_9="TransitionArea"
 2d_physics/layer_10="DecorItem"
+2d_physics/layer_11="ReactiveObjects"
 
 [physics]
 

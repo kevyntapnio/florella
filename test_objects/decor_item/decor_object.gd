@@ -82,8 +82,6 @@ func set_placed_mode():
 	if data.has_surface:
 		register_surface()
 		
-	debug_rect()
-		
 func register_surface():
 	## this function registers buildable surface_area of object
 	# based on perceived visual height
@@ -212,23 +210,6 @@ func _exit_tree():
 	if surface_object and is_instance_valid(surface_object):
 		if surface_object.current_stacked.has(self):
 			surface_object.current_stacked.erase(self)
-	
-func debug_rect():
-	var occupied = get_occupied_cells(anchor_cell)
-	
-	for c in occupied:
-		var rect = ColorRect.new()
-		add_child(rect)
-		rect.size = Vector2(16, 16)
-		rect.global_position = SpatialLookup.get_world_position(c)
-		rect.modulate = Color(0.0, 0.681, 0.424, 0.5)
-		
-	var origin_rect = ColorRect.new()
-	add_child(origin_rect)
-	origin_rect.global_position = global_position
-	#SpatialLookup.get_world_position(anchor_cell)
-	origin_rect.size = Vector2(4, 4)
-	origin_rect.modulate = Color.BLACK
 	
 func create_light():
 	var light_texture = load("res://test_objects/light_source/light_glow.tres")

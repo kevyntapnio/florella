@@ -13,15 +13,16 @@ script = ExtResource("1_nciir")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1715559130]
 y_sort_enabled = true
-position = Vector2(0, -16)
+position = Vector2(-15, -16)
 texture = ExtResource("3_0rnix")
 offset = Vector2(0, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1242689237]
-position = Vector2(0, -8)
+position = Vector2(-15, -8)
 shape = SubResource("RectangleShape2D_nciir")
 
 [node name="OcclusionArea" type="Area2D" parent="." unique_id=547653624]
+position = Vector2(-15, 0)
 collision_layer = 128
 collision_mask = 0
 

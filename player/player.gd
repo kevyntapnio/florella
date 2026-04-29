@@ -13,7 +13,7 @@ var facing_direction = Vector2i(0, 1)
 
 @onready var sprite = $AnimatedSprite2D
 @onready var interaction_prompt = $InteractionPrompt
-@onready var tile_detector = $TileDetector
+@onready var reactive_detector = $ReactiveDetector
 
 
 const INVALID_COORD = Vector2i(-1, -1)
@@ -43,11 +43,12 @@ func _ready() -> void:
 	player_ready.emit()
 	
 func _process(delta):
-	pass
 	#update_targeting_visual()
 	
 	var item_data = Hotbar.get_selected_item_data()
-	
+	check_for_decor(item_data)
+
+func check_for_decor(item_data: ItemData) -> void:
 	if item_data is DecorData:
 		if not build_mode or item_data.id != current_decor_id:
 			if DecorSystem.initialized == true:
@@ -114,7 +115,7 @@ func _physics_process(delta):
 	targeting_system.update_player_info(player_global_position, facing_direction)
 	targeting_system.update_current_targets(get_global_mouse_position())
 	
-	find_reactive_objects()
+	#find_reactive_objects()
 		
 func _input(event: InputEvent) -> void:
 	
@@ -207,8 +208,8 @@ func update_player_tile_coords():
 	player_tile_coords = tilemap.local_to_map(local_pos)
 	
 func find_reactive_objects():
-	var current_tile = SpatialLookup.get_cell_coords(player_global_position)
-	var objects = SpatialLookup.get_spatial_objects(current_tile)
+	var current_tile = GridManager.get_tile_coords(player_global_position)
+	var objects = GridManager.get_grid_objects(current_tile)
 	
 	var new_reactive := {}
 	
@@ -219,9 +220,8 @@ func find_reactive_objects():
 		if obj.has_method("react"):
 			
 			var dist = global_position.distance_to(obj.global_position)
-			print(dist)
 			
-			if dist < 25:
+			if dist < 30:
 				new_reactive[obj] = true
 				
 				if not reactive_objects.has(obj):
@@ -256,6 +256,15 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if sprite.frame == 0 or sprite.frame == 2:
 		SoundManager.play("walk_grass")
 		
+
+		
 #func apply_spawn_if_needed():
 	#
 	#scene_controller.apply_spawn(self)
+
+
+func _on_reactive_detector_area_entered(area: Area2D) -> void:
+	var object = area.get_parent()
+	
+	if object.has_method("react_on_enter"):
+		object.react_on_enter()

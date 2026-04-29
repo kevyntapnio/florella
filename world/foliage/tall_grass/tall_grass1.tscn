@@ -3,16 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://u0khak5ajxrc" path="res://assets/art/foliage/grass/tall-grass-0.png" id="1_gecs1"]
 [ext_resource type="Script" uid="uid://cyob4vrqndaci" path="res://world/foliage/tall_grass/tall_grass.gd" id="1_ofbc2"]
 [ext_resource type="Texture2D" uid="uid://civbv0rtq1rq1" path="res://assets/art/foliage/grass/tall-grass-1.png" id="2_ofbc2"]
-[ext_resource type="AudioStream" uid="uid://dm8p7ppsijq63" path="res://assets/audio/sfx/soft_grass_rustle.mp3" id="4_y48ry"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gecs1"]
+radius = 8.0
 
 [node name="TallGrass" type="Node2D" unique_id=423580306]
 y_sort_enabled = true
 script = ExtResource("1_ofbc2")
-
-[node name="SwaySFX" type="AudioStreamPlayer2D" parent="." unique_id=503867132]
-position = Vector2(-15, -2)
-stream = ExtResource("4_y48ry")
-volume_db = -10.628
 
 [node name="TallGrass1" type="Sprite2D" parent="." unique_id=1084745628]
 position = Vector2(-5, -5)
@@ -35,3 +32,11 @@ position = Vector2(-11, -6)
 texture = ExtResource("1_gecs1")
 offset = Vector2(0, -5)
 flip_h = true
+
+[node name="ReactiveArea" type="Area2D" parent="." unique_id=1551930412]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReactiveArea" unique_id=2143386056]
+position = Vector2(-12, -7)
+shape = SubResource("CircleShape2D_gecs1")

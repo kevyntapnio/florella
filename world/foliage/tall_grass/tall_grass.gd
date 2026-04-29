@@ -1,4 +1,4 @@
-extends SpatialObject
+extends GridObject
 
 @onready var wind_shader = preload("res://shaders/wind_sway.gdshader")
 
@@ -11,16 +11,11 @@ static var sfx_cooldown:= 0.05
 var rng:= RandomNumberGenerator.new()
 var sprite 
 var blades = []
-var anchor_cell: Vector2i
 
 func _ready(): 
 	get_blades()
 	apply_shader()
-	
-	var anchor_cell = SpatialLookup.get_cell_coords(global_position) + Vector2i(-1, -1)
-	activate_spatial_registration(anchor_cell)
-	
-	#debug_rect()
+
 	
 func get_occupied_cells(anchor_cell):
 	var occupied: Array[Vector2i] = []
@@ -46,7 +41,7 @@ func get_blades():
 		if child is Sprite2D:
 			blades.append(child)
 			
-func react():
+func react_on_enter():
 	for blade in blades:
 		## -- Remove existing tween on this blade -- ##
 		if blade.has_meta("sway_tween"): 
@@ -69,40 +64,5 @@ func react():
 			.set_trans(Tween.TRANS_SINE)\
 			.set_ease(Tween.EASE_IN)
 	
-	play_sfx()
-	
-func play_sfx():
-	var sfx = $SwaySFX
-	var current_time = Time.get_ticks_msec() / 1000.0
-	
-	if current_time - last_sfx_time > sfx_cooldown:
-		last_sfx_time = current_time
+	SoundManager.play("grass_rustle")
 		
-		sfx.volume_db = -10.0
-
-		sfx.pitch_scale = randf_range(0.85, 1.15)
-		sfx.play()
-		
-		var tween = create_tween()
-		var duration = 0.7
-		
-		tween.tween_interval(duration * 0.5)
-		
-		tween.tween_property(sfx, "volume_db", -80.0, duration * 0.5)
-		
-		tween.finished.connect(sfx.stop)
-		
-func debug_rect():
-	
-	for cell in cells:
-		var rect = ColorRect.new()
-		add_child(rect)
-		rect.global_position = SpatialLookup.get_world_position(cell)
-		rect.size = Vector2i(16, 16)
-		rect.modulate = Color(1.0, 0, 0, 0.5)
-	
-	var origin = ColorRect.new()
-	add_child(origin)
-	origin.global_position = SpatialLookup.get_world_position(anchor_cell)
-	origin.size = Vector2i(4, 4)
-	origin.modulate = Color.BLACK

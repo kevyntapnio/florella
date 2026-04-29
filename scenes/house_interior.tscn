@@ -40,6 +40,7 @@ tile_map_data = PackedByteArray("AAD/////AAACAAEAAAD//wAAAAACAAEAAAD//wEAAAACAAE
 tile_set = ExtResource("2_7c0ll")
 
 [node name="TileHighlight" parent="FloorTilemap" unique_id=2079784629 node_paths=PackedStringArray("tilemap") instance=ExtResource("3_uggl2")]
+visible = false
 tilemap = NodePath("..")
 
 [node name="FloorCollisionLayer" type="TileMapLayer" parent="." unique_id=562455067]

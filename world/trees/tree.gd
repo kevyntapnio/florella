@@ -12,6 +12,7 @@ extends GridObject
 var is_occluded = false
 
 func _ready():
+	super()
 	if tree_data:
 		apply_tree_data()
 	else:
