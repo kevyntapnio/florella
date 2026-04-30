@@ -8,6 +8,13 @@ enum DecorType {
 	CARPET
 }
 
+enum DecorRuntimeBehavior {
+	STATIC,
+	GENERIC_INTERACTIVE,
+	LIGHT_SOURCE,
+	MUSIC_PLAYER
+}
+
 @export var variants: Array[DecorVariant]
 @export var decor_type: DecorType
 @export var has_surface:= false
@@ -15,4 +22,3 @@ enum DecorType {
 @export var blocks_movement:= true
 @export var blocks_placement:= true
 @export var requires_wall:= false
-@export var light_source:= false

@@ -6,7 +6,6 @@ class_name DecorObject
 var body: StaticBody2D
 var sprite: Sprite2D
 var collider: CollisionShape2D
-var light: PointLight2D
 
 var is_placed:= false
 var current_variant: int
@@ -20,8 +19,6 @@ var surface_cells: Array[Vector2i] = []
 var is_stacked:= false
 var current_stacked: Array[DecorObject] = []
 var surface_object: DecorObject = null
-
-var light_enabled:= false
 
 const INTERACT_PRIORITY = 1
 	
@@ -39,9 +36,6 @@ func initialize(decor_data: DecorData):
 	create_body()
 	
 	apply_variant(current_variant)
-	
-	if data.light_source:
-		create_light()
 	
 func create_body():
 	body = StaticBody2D.new()
@@ -104,31 +98,23 @@ func register_surface():
 			SurfaceRegistry.register(cell, self)
 			
 func interact(request: InteractionRequest) -> bool:
-	if request.interaction_mode == InteractionRequest.InteractionMode.PROXIMITY:
-		if data.light_source:
-			if light_enabled:
-				light.enabled = false
-				light_enabled = false
-			else:
-				light.enabled = true
-				light_enabled = true
-	else:
 		
-		if not can_accept_item(request.selected_item_data):
+	if not can_accept_item(request.selected_item_data):
 			return false
 			
-		if not current_stacked.is_empty():
-			return false
+	if not current_stacked.is_empty():
+		return false
 			
-		if is_being_removed: 
-			return false
+	if is_being_removed: 
+		return false
 
-		is_being_removed = true
+	is_being_removed = true
 		
-		if request.selected_item_data is HoeTool and DecorSystem.remove_decor(self):
-			play_animation()
+	if request.selected_item_data is HoeTool and DecorSystem.remove_decor(self):
+		play_animation()
 			
 		return true
+		
 	return true
 	
 func get_interaction_score(context) -> int:
@@ -139,6 +125,8 @@ func get_interaction_score(context) -> int:
 	return INTERACT_PRIORITY
 	
 func can_accept_item(item_data: ItemData) -> bool:
+	if not current_stacked.is_empty():
+		return false
 	return true
 	
 func is_currently_interactable() -> bool:
@@ -211,32 +199,4 @@ func _exit_tree():
 		if surface_object.current_stacked.has(self):
 			surface_object.current_stacked.erase(self)
 	
-func create_light():
-	var light_texture = load("res://test_objects/light_source/light_glow.tres")
-	
-	light = PointLight2D.new()
-	add_child(light)
-	light.texture = light_texture
-	light.global_position = self.global_position
-	light.enabled = false
-	light.energy = 0.8
-	
-	create_interactable_area()
-
-func create_interactable_area():
-	var interaction_area = Area2D.new()
-	add_child(interaction_area)
-	
-	var variant = data.variants[current_variant]
-	
-	var area = CollisionShape2D.new()
-	interaction_area.add_child(area)
-	
-	area.shape = RectangleShape2D.new()
-	area.shape.size = Vector2i(32, 32)
-
-	area.position.y = - sprite.texture.get_size().y / 2
-	area.position.x = - sprite.texture.get_size().x / 2
-	
-	interaction_area.set_collision_layer_value(3, true)
 	

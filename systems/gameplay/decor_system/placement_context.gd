@@ -1,11 +1,11 @@
 extends RefCounted
 class_name PlacementContext
 
-var data
-var occupied_cells
-var target_cell
+var data: DecorData
+var occupied_cells: Array[Vector2i]
+var anchor_cell: Vector2i
 
 func _init() -> void:
 	self.data = data
 	self.occupied_cells = occupied_cells
-	self.target_cell = target_cell
+	self.anchor_cell = anchor_cell

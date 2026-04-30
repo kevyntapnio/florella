@@ -355,4 +355,3 @@ func switch_variant():
 	decor.current_variant = new_variant
 	decor.apply_variant(new_variant)
 	
-	
