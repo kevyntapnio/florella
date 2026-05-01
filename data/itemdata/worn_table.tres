@@ -10,25 +10,23 @@ script = ExtResource("3_pjg51")
 texture = ExtResource("1_22kau")
 object_size = Vector2i(32, 32)
 collider_size = Vector2i(32, 32)
-detection_size = Vector2i(28, 28)
-surface_area = Vector2i(32, 26)
-vertical_height = Vector2i(0, 16)
+vertical_height = 16
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [sub_resource type="Resource" id="Resource_4krm1"]
 script = ExtResource("3_pjg51")
-variant = 1
 texture = ExtResource("4_tpf7u")
 object_size = Vector2i(32, 32)
 collider_size = Vector2i(32, 32)
-detection_size = Vector2i(28, 28)
-vertical_height = Vector2i(0, 16)
+vertical_height = 16
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [resource]
 script = ExtResource("2_4krm1")
 variants = Array[ExtResource("3_pjg51")]([SubResource("Resource_22kau"), SubResource("Resource_4krm1")])
+placement_behavior = 1
 has_surface = true
+stackable = true
 id = "worn_table"
 name = "Worn Table"
 icon = ExtResource("1_22kau")

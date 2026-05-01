@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://k86e6tv7mom3"]
+
+[ext_resource type="Resource" uid="uid://dm1nn86r1362e" path="res://data/itemdata/worn_window.tres" id="1_7ws5w"]
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_xhe6g"]
+
+[resource]
+script = ExtResource("1_xhe6g")
+item = ExtResource("1_7ws5w")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

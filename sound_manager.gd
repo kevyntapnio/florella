@@ -10,7 +10,7 @@ var sounds = {
 	"walk_grass": preload("res://assets/audio/sfx/walk_grass.wav"),
 	"coin": preload("res://assets/audio/sfx/coin3.mp3"),
 	"wood_placed": preload("res://assets/audio/sfx/wood_placed.wav"),
-	"grass_rustle": preload("res://assets/audio/sfx/soft_grass.mp3")
+	"grass_rustle": preload("res://assets/audio/sfx/soft_grass_rustle.mp3")
 }
 
 func play(sound_id: String):

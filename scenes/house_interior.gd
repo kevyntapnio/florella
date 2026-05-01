@@ -4,6 +4,7 @@ extends Node2D
 @onready var tile_query = $WorldTileQuery
 @onready var interaction_system = $InteractionSystem
 @onready var targeting_system = $TargetingSystem
+@onready var ysort_world = $YSortWorld
 
 @export var player: Node2D
 @export var scene_id: SceneManager.Scenes
@@ -12,7 +13,6 @@ func _ready() -> void:
 	SceneManager.set_current_scene(scene_id)
 	GridManager.set_tilemap($FloorTilemap)
 	targeting_system.set_tilemap($FloorTilemap)
-	PlacementValidator.set_tile_query(tile_query)
 	
 	initialize_systems()
 	setup()
@@ -29,7 +29,7 @@ func initialize_scene(data):
 	tile_query.initialize($FloorTilemap)
 
 func initialize_systems():
-	DecorSystem.set_tilemap($FloorTilemap, $YSortWorld)
+	DecorSystem.setup(ysort_world, tile_query)
 	
 func spawn_decor():
 	if not DecorSystem.placed_decor.is_empty():

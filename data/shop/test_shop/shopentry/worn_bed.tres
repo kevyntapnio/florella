@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://dmidtrj2fp1pt"]
+
+[ext_resource type="Resource" uid="uid://601caedvau06" path="res://data/itemdata/worn_bed.tres" id="1_5fnqk"]
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_auivk"]
+
+[resource]
+script = ExtResource("1_auivk")
+item = ExtResource("1_5fnqk")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

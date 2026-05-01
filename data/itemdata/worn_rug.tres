@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://yk7sscp55g7q"]
+
+[ext_resource type="Texture2D" uid="uid://ccdgsfkjssiir" path="res://assets/art/decor/basic_set/worn_rug_0.png" id="1_mus0d"]
+[ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="1_rmjq4"]
+[ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="2_dfruf"]
+[ext_resource type="Texture2D" uid="uid://q6wh3nfmu4kb" path="res://assets/art/decor/basic_set/worn_rug_1.png" id="4_5ub3k"]
+
+[sub_resource type="Resource" id="Resource_grbv7"]
+script = ExtResource("2_dfruf")
+texture = ExtResource("1_mus0d")
+object_size = Vector2i(48, 32)
+vertical_height = 4
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[sub_resource type="Resource" id="Resource_0pck5"]
+script = ExtResource("2_dfruf")
+texture = ExtResource("4_5ub3k")
+object_size = Vector2i(32, 48)
+vertical_height = 4
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[resource]
+script = ExtResource("1_rmjq4")
+variants = Array[ExtResource("2_dfruf")]([SubResource("Resource_grbv7"), SubResource("Resource_0pck5")])
+decor_type = 3
+has_surface = true
+id = "worn_rug"
+name = "Worn Rug"
+icon = ExtResource("1_mus0d")
+description = "It looks old but it's very soft."
+price = 150
+sell_price = 75
+is_sellable = true
+metadata/_custom_type_script = "uid://dr3gelm7abpq6"

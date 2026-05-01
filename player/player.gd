@@ -28,6 +28,8 @@ var scroll_locked
 var reactive_objects: Dictionary = {}
 
 var build_mode:= false
+var active_build_session: BuildSession = null
+
 var just_spawned = true
 var initialized:= false
 
@@ -49,17 +51,34 @@ func _process(delta):
 	check_for_decor(item_data)
 
 func check_for_decor(item_data: ItemData) -> void:
+	
 	if item_data is DecorData:
-		if not build_mode or item_data.id != current_decor_id:
-			if DecorSystem.initialized == true:
-				DecorSystem.initialize_build_mode(item_data)
-				build_mode = true
-				current_decor_id = item_data.id
-	else:
-		if build_mode:
-			DecorSystem.cancel_build_mode()
-			build_mode = false
-			current_decor_id = ""
+		if active_build_session == null or item_data.id != current_decor_id:
+			if active_build_session:
+				active_build_session.cancel_build_mode()
+				active_build_session.queue_free()
+				
+			active_build_session = BuildSession.new()
+			add_child(active_build_session)
+			
+			active_build_session.setup()
+			active_build_session.initialize_build_session(item_data)
+			
+			current_decor_id = item_data.id
+			build_mode = true
+			
+	elif active_build_session:
+		active_build_session.cancel_build_mode()
+		cleanup_build_session()
+		
+func cleanup_build_session() -> void:
+		if active_build_session:
+			active_build_session.cancel_build_mode()
+			active_build_session.queue_free()
+			active_build_session = null
+			
+		build_mode = false
+		current_decor_id = ""
 	
 func setup(interaction_system_ref: InteractionSystem, targeting_system_ref: TargetingSystem) -> void:
 	interaction_system = interaction_system_ref
@@ -114,7 +133,7 @@ func _physics_process(delta):
 	player_global_position = get_global_position()
 	targeting_system.update_player_info(player_global_position, facing_direction)
 	targeting_system.update_current_targets(get_global_mouse_position())
-	
+		
 	#find_reactive_objects()
 		
 func _input(event: InputEvent) -> void:
@@ -129,8 +148,9 @@ func _input(event: InputEvent) -> void:
 		
 	if Input.is_action_just_pressed("use_item"):
 		if build_mode:
-			if DecorSystem.place_decor():
-				build_mode = false
+			if active_build_session:
+				if active_build_session.handle_place_request():
+					active_build_session.refresh_build_mode(Hotbar.get_selected_item_data())
 				
 		var request = create_interaction_request(InteractionRequest.InteractionMode.TARGETED)
 		interaction_system.handle_request(request)
@@ -138,7 +158,8 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("right_click"):
 		if not build_mode:
 			return
-		DecorSystem.switch_variant()
+		if active_build_session:
+			active_build_session.switch_variant()
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		TimeManager.advance_day()
@@ -255,8 +276,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		
 	if sprite.frame == 0 or sprite.frame == 2:
 		SoundManager.play("walk_grass")
-		
-
 		
 #func apply_spawn_if_needed():
 	#

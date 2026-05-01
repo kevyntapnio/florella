@@ -9,5 +9,5 @@ load_path = "res://.godot/imported/birch tree.png-5833fa247086ba314c7f578f0a2c52
 script = ExtResource("1_veuvq")
 texture = SubResource("CompressedTexture2D_veuvq")
 collision_size = Vector2(15, 22)
-collision_offset = Vector2(-12, -8)
+collision_offset = Vector2(-15, -8)
 metadata/_custom_type_script = "uid://xkjtylgsjc4e"

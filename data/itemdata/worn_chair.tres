@@ -12,8 +12,6 @@ script = ExtResource("2_ej3j5")
 texture = ExtResource("1_rum1u")
 object_size = Vector2i(16, 16)
 collider_size = Vector2i(16, 16)
-surface_area = Vector2i(16, 16)
-vertical_height = Vector2i(0, 12)
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [sub_resource type="Resource" id="Resource_alnex"]
@@ -21,8 +19,6 @@ script = ExtResource("2_ej3j5")
 texture = ExtResource("4_242i2")
 object_size = Vector2i(16, 16)
 collider_size = Vector2i(16, 16)
-surface_area = Vector2i(16, 16)
-vertical_height = Vector2i(0, 12)
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [sub_resource type="Resource" id="Resource_6sujc"]
@@ -30,8 +26,6 @@ script = ExtResource("2_ej3j5")
 texture = ExtResource("5_n1x2g")
 object_size = Vector2i(16, 16)
 collider_size = Vector2i(16, 16)
-surface_area = Vector2i(16, 16)
-vertical_height = Vector2i(0, 12)
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [sub_resource type="Resource" id="Resource_pybld"]
@@ -39,14 +33,12 @@ script = ExtResource("2_ej3j5")
 texture = ExtResource("6_f68ft")
 object_size = Vector2i(16, 16)
 collider_size = Vector2i(16, 16)
-surface_area = Vector2i(16, 16)
-vertical_height = Vector2i(0, 12)
 metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 
 [resource]
 script = ExtResource("1_18pg5")
 variants = Array[ExtResource("2_ej3j5")]([SubResource("Resource_g4mhp"), SubResource("Resource_alnex"), SubResource("Resource_6sujc"), SubResource("Resource_pybld")])
-has_surface = true
+placement_behavior = 1
 id = "worn_chair"
 name = "Worn Chair"
 icon = ExtResource("1_rum1u")

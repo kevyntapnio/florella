@@ -1,24 +1,40 @@
-extends Node
+extends RefCounted
+class_name PlacementValidator
 
-@export var tile_query: Node
+var tile_query: Node
 
 func set_tile_query(scene_tile_query):
 	tile_query = scene_tile_query
-
-func can_place(context: PlacementContext) -> bool:
 	
-	if not tiles_unoccupied(context):
-		return false
-		
-	if not surface_is_buildable(context):
-		return false
-		
+func evaluate_placement(context: PlacementContext) -> PlacementResult:
+	var result = PlacementResult.new()
+	
+	var valid = is_placement_valid(context)
+	var surface_info = get_surface_info(context)
+	
+	result.valid = valid
+	result.on_surface = has_overlap(context)
+	result.surface_object = surface_info.get("surface")
+	result.surface_offset = surface_info.get("offset", 0)
+	
+	return result
+	
+func is_placement_valid(context: PlacementContext) -> bool:
+	
 	if not terrain_is_buildable(context):
 		return false
 		
+	if not context.data.stackable:
+		if not grid_unoccupied(context): ### As of current implementation, all grid_objects block buildability
+			return false
+			
+	if has_overlap(context):
+		if not surface_is_buildable(context):
+			return false
+				
 	return true
 		
-func tiles_unoccupied(context: PlacementContext):
+func grid_unoccupied(context: PlacementContext):
 	
 	var cells = context.occupied_cells
 	if cells == null:
@@ -36,6 +52,7 @@ func terrain_is_buildable(context: PlacementContext) -> bool:
 	var data = context.data
 	
 	if tile_query == null:
+		
 		push_error("PlacementValidator ERROR: failed to load tile_query")
 		return false
 		
@@ -50,6 +67,9 @@ func terrain_is_buildable(context: PlacementContext) -> bool:
 		if not data.requires_wall and terrain_type == "wallpaper":
 			return false
 			
+		if data.requires_wall and terrain_type != "wallpaper":
+			return false
+			
 		if not info["properties"]["buildable"]:
 			return false
 			
@@ -62,16 +82,22 @@ func surface_is_buildable(context: PlacementContext) -> bool:
 	var occupied_cells = context.occupied_cells
 	var data = context.data
 	
+	var has_valid_surface = false
+	
 	for cell in occupied_cells:
 		var objects = SpatialLookup.get_spatial_objects(cell)
 		
 		for obj in objects:
-			if not obj.data.has_surface:
-				return false
+			if obj.data.has_surface:
+				has_valid_surface = true
+				break
+				
+	if not has_valid_surface:
+		return false
 		
 	return true
 	
-func check_overlap(context: PlacementContext):
+func has_overlap(context: PlacementContext) -> bool:
 	
 	var occupied_cells = context.occupied_cells
 	
@@ -79,23 +105,49 @@ func check_overlap(context: PlacementContext):
 		if SpatialLookup.is_tile_occupied(cell):
 			return true
 			
-func get_surface_offset(context: PlacementContext):
+	return false
+			
+func get_surface_info(context: PlacementContext) -> Dictionary:
 	
-	var new_decor_anchor = context.target_cell
+	## Register every surface_object detected as a key in surface_scores
+	## Assign 'int' as value to keep count of how many cells report an overlap with object
+	## example: {"decor_object": 1} and then for every match found, surface_scores[surface] += 1
 	
-	var surfaces = SurfaceRegistry.get_surface_objects(new_decor_anchor)
+	var surface_scores: Dictionary[DecorObject, int] = {}
 	
-	if surfaces.is_empty():
-		return {}
+	for cell in context.occupied_cells:
+		var found_surfaces = SurfaceRegistry.get_surface_objects(cell)
 		
-	var surface = surfaces[0]
+		for surface in found_surfaces:
+			if not surface_scores.has(surface) and is_instance_valid(surface):
+				surface_scores[surface] = 1
+			else:
+				surface_scores[surface] += 1
 	
-	var surface_height = surface.data.variants[surface.current_variant].vertical_height.y
+	var best_surface: DecorObject = null
+	var best_height: int = 0
+	var best_score: int = -1
 	
-	var depth = surface.anchor_cell.y - new_decor_anchor.y
+	for surface in surface_scores:
+		var current_height = surface.data.variants[surface.current_variant].vertical_height
+		var current_score = surface_scores[surface]
+		
+		if current_height > best_height:
+			best_height = current_height
+			best_score = current_score
+			best_surface = surface
+			
+		elif current_height == best_height:
+			if current_score > best_score:
+				best_score = current_score
+				best_surface = surface
 	
-	var offset = surface_height + (surface_height * depth)
+	if best_surface == null:
+		return {"surface": null, "offset": 0}
+		
+	var surface_depth_index  = best_surface.anchor_cell.y - context.anchor_cell.y
 	
-	return {"surface": surface,
-		"offset": offset}
+	var offset = best_height + (best_height * surface_depth_index)
+	
+	return {"surface": best_surface, "offset": offset}
 	

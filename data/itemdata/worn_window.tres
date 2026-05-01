@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://dm1nn86r1362e"]
+
+[ext_resource type="Texture2D" uid="uid://bqci673aa630p" path="res://assets/art/decor/basic_set/worn_window.png" id="1_t1n6b"]
+[ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="1_tibq2"]
+[ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="2_t1n6b"]
+
+[sub_resource type="Resource" id="Resource_yg6wn"]
+script = ExtResource("2_t1n6b")
+texture = ExtResource("1_t1n6b")
+object_size = Vector2i(32, 40)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[resource]
+script = ExtResource("1_tibq2")
+variants = Array[ExtResource("2_t1n6b")]([SubResource("Resource_yg6wn")])
+placement_behavior = 2
+requires_wall = true
+id = "worn_window"
+name = "Worn Window"
+icon = ExtResource("1_t1n6b")
+description = "The soft curtains are softly embroidered with details."
+price = 500
+sell_price = 250
+is_sellable = true
+metadata/_custom_type_script = "uid://dr3gelm7abpq6"

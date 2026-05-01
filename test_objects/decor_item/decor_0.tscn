@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://nli0cny7vafv"]
+
+[ext_resource type="Script" uid="uid://cdqcmwo138qx5" path="res://test_objects/decor_item/decor_object.gd" id="1_pplgk"]
+
+[node name="Decor" type="Node2D" unique_id=919017834]
+script = ExtResource("1_pplgk")

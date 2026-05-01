@@ -64,5 +64,5 @@ func react_on_enter():
 			.set_trans(Tween.TRANS_SINE)\
 			.set_ease(Tween.EASE_IN)
 	
-	SoundManager.play("grass_rustle")
+	SoundManager.play("")
 		

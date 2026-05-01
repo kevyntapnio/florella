@@ -1,167 +1,74 @@
-extends SpatialObject
 class_name DecorObject
+extends SpatialObject
 
-@export var data: DecorData
+var current_variant: int = 0
+var data: DecorData
 
 var body: StaticBody2D
 var sprite: Sprite2D
 var collider: CollisionShape2D
 
-var is_placed:= false
-var current_variant: int
 var is_being_removed:= false
+var is_placed:= false
+var is_stacked:= false
 
 var anchor_cell: Vector2i
-var visual_cell: Vector2i
+var origin_cell: Vector2i
+var surface_object: DecorObject
+var occupied_cells: Array[Vector2i] = []
 
-var surface_cells: Array[Vector2i] = []
+const INTERACT_PRIORITY = 10
 
-var is_stacked:= false
-var current_stacked: Array[DecorObject] = []
-var surface_object: DecorObject = null
-
-const INTERACT_PRIORITY = 1
-	
 func initialize(decor_data: DecorData):
-	
 	if decor_data == null:
-		push_error("DecorObject: failed to load decor_data")
 		return
 	
 	data = decor_data
-		
-	sprite = Sprite2D.new()
-	add_child(sprite)
 	
 	create_body()
+	create_sprite()
+	apply_variant_texture(current_variant)
 	
-	apply_variant(current_variant)
-	
-func create_body():
+func create_body() -> void:
 	body = StaticBody2D.new()
 	add_child(body)
 	
-	collider = CollisionShape2D.new()
-	body.add_child(collider)
-	collider.shape = RectangleShape2D.new()
+func create_sprite() -> void:
+	sprite = Sprite2D.new()
+	add_child(sprite)
 	
-func apply_variant(variant_no: int):
-	current_variant = variant_no
-	
-	if current_variant < 0 or current_variant >= data.variants.size():
-		push_error("DecorObject ERROR: invalid variant index")
-		return
-		
-	var variant = data.variants[current_variant]
+func apply_variant_texture(variant_index: int) -> void:
+	var variant = data.variants[variant_index] 
 	
 	sprite.texture = variant.texture
 	
-	sprite.offset.y = - (sprite.texture.get_size().y / 2)
-	sprite.offset.x = - (sprite.texture.get_size().x /2)
+	## We offset the sprite up to handle y-sorting
+	## Sprite is then offset to the left to accommodate occupancy rules: See docs on Coordinate Systems
 	
-	collider.position.y = - (variant.object_size.y / 2)
-	collider.position.x = - variant.object_size.x / 2
+	var sprite_size = sprite.texture.get_size()
+	sprite.offset.x = - sprite_size.x / 2
+	sprite.offset.y = - sprite_size.y /2
 	
-	collider.shape.size = variant.collider_size
+func apply_stacked_offset(stacked: bool, offset: int) -> void:
+	## this function is called to accomodate visual offset for decor stacking
+	## received value "offset" pertains to surface_object's vertical height
 	
-func set_placed_mode():
-	is_placed = true
-	modulate.a = 1.0
+	var default_y_offset = - (sprite.texture.get_size().y / 2)
+	var final_offset: int 
 	
-	activate_spatial_registration(anchor_cell)
-	
-	body.set_collision_layer_value(6, true)
-	body.set_collision_mask_value(2, true)
-	
-	if data.has_surface:
-		register_surface()
-		
-func register_surface():
-	## this function registers buildable surface_area of object
-	# based on perceived visual height
-	
-	var variant = data.variants[current_variant]
-	var surface_area = variant.surface_area
-	
-	# convert height to grid logic
-	var height = variant.vertical_height
-	var converted_height = height / SpatialLookup.tile_size
-	
-	# get anchor_cell of surface relative to height of object
-	
-	var surface_anchor = anchor_cell + converted_height
-	
-	for x in range(surface_area.x):
-		for y in range(surface_area.y):
-			var cell = surface_anchor + Vector2i(-x, -y)
-			surface_cells.append(cell)
-			SurfaceRegistry.register(cell, self)
-			
-func interact(request: InteractionRequest) -> bool:
-		
-	if not can_accept_item(request.selected_item_data):
-			return false
-			
-	if not current_stacked.is_empty():
-		return false
-			
-	if is_being_removed: 
-		return false
-
-	is_being_removed = true
-		
-	if request.selected_item_data is HoeTool and DecorSystem.remove_decor(self):
-		play_animation()
-			
-		return true
-		
-	return true
-	
-func get_interaction_score(context) -> int:
-	if is_stacked:
-		return 20
-	if not current_stacked.is_empty():
-		return 0
-	return INTERACT_PRIORITY
-	
-func can_accept_item(item_data: ItemData) -> bool:
-	if not current_stacked.is_empty():
-		return false
-	return true
-	
-func is_currently_interactable() -> bool:
-	return true
-
-func set_preview_modulate(is_valid: bool):
-	if is_valid: 
-		modulate = Color(1.0, 1.0, 1.0, 0.3)
+	if stacked:
+		final_offset = default_y_offset - offset
 	else:
-		modulate = Color(1.0, 0.0, 0.0, 0.5)
-
-func set_targeted(is_targeted: bool):
-	if is_targeted:
-		modulate = Color(1.3, 1.3, 1.3)
-	else:
-		modulate = Color(1.0, 1.0, 1.0)
-	
-func play_animation():
-	var tween = create_tween()
-
-	tween.tween_property(self, "scale", Vector2(1.2, 0.8), 0.08) \
-		.set_trans(Tween.TRANS_SINE) \
-		.set_ease(Tween.EASE_OUT)
-	
-	tween.tween_property(self, "scale", Vector2(0.9, 1.2), 0.08) \
-		.set_trans(Tween.TRANS_SINE) \
-		.set_ease(Tween.EASE_IN)
+		final_offset = default_y_offset
 		
-	tween.tween_property(self, "scale", Vector2(1, 1), 0.05) 
+	sprite.offset.y = final_offset
 	
-	return tween
-	
-func get_occupied_cells(target_cell):
-	if target_cell == null:
-		return
+	if collider:
+		collider.position.y = - (data.variants[current_variant].object_size.y / 2)
+		
+func get_occupied_cells(cell: Vector2i) -> Array[Vector2i]:
+	if cell == null:
+		return []
 		
 	var size = data.variants[current_variant].object_size
 	var size_in_tiles = Vector2i(size / SpatialLookup.tile_size)
@@ -170,33 +77,80 @@ func get_occupied_cells(target_cell):
 	
 	for x in range(size_in_tiles.x):
 		for y in range(size_in_tiles.y):
-			var cell = target_cell + Vector2i(-x, -y)
-			occupied_cells.append(cell)
+			var c = cell + Vector2i(-x, -y)
+			occupied_cells.append(c)
 			
 	return occupied_cells
-		
-func apply_stacked_ysort(surface, offset):
-
-	var base_offset = - sprite.texture.get_size().y / 2.0
-	sprite.offset.y = base_offset - offset
-
-func apply_regular_ysort():
-	sprite.offset.y = - (sprite.texture.get_size().y / 2.0)
 	
-func register_as_stacked(surface):
-	if not surface.current_stacked.has(self):
-		surface.current_stacked.append(self)
+func register_surface():
+	## this function registers buildable surface_area of object
+	# based on perceived visual height
+	if occupied_cells.is_empty():
+		return
 		
-	is_stacked = true
-	surface_object = surface
+	for cell in occupied_cells:
+		SurfaceRegistry.register(cell, self)
+			
+func set_placed_mode(variant_index: int, is_stacked: bool, surface_offset: int) -> void:
+
+	is_placed = true
+	
+	apply_variant_texture(variant_index)
+	apply_colliders(variant_index, is_stacked, surface_offset)
+	current_variant = variant_index
+	
+	occupied_cells = get_occupied_cells(anchor_cell)
+	activate_spatial_registration(anchor_cell)
+		
+	modulate.a = 1.0
+	
+	if data.has_surface:
+		register_surface()
+	
+func apply_colliders(variant_index: int, is_stacked: bool, offset: int) -> void:
+	
+	var variant = data.variants[variant_index]
+	
+	collider = CollisionShape2D.new()
+	collider.shape = RectangleShape2D.new()
+	body.add_child(collider)
+	
+	collider.shape.size = variant.collider_size
+	collider.position.x = - (variant.object_size.x / 2)
+	collider.position.y = - (variant.object_size.y / 2)
+
+	
+	body.set_collision_layer_value(6, true)
+	body.set_collision_mask_value(2, true)
+	
+	if is_stacked:
+		apply_stacked_offset(true, offset)
+		
+func interact(request: InteractionRequest) -> bool:
+	if not request.selected_item_data is HoeTool:
+		return false
+	
+	DecorSystem.request_removal(self)
+	return true
+	
+func get_interaction_score(context):
+	return INTERACT_PRIORITY
+	
+func get_interaction_zone():
+	return occupied_cells
+	
+func can_accept_item(request):
+	return true
+
+func is_currently_interactable():
+	return true
 	
 func _exit_tree():
 	super()
-	for cell in surface_cells:
-		SurfaceRegistry.unregister(cell, self)
+	if occupied_cells.is_empty():
+		return
 	
-	if surface_object and is_instance_valid(surface_object):
-		if surface_object.current_stacked.has(self):
-			surface_object.current_stacked.erase(self)
-	
-	
+	for cell in occupied_cells:
+		if SurfaceRegistry.surface_objects.has(cell):
+			SurfaceRegistry.unregister(cell, self)
+		

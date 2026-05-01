@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 [resource]
 script = ExtResource("1_bcqj8")
 variants = Array[ExtResource("2_o6am6")]([SubResource("Resource_sm578")])
+placement_behavior = 1
 id = "worn_lamp"
 name = "Worn Lamp"
 icon = ExtResource("1_o6am6")

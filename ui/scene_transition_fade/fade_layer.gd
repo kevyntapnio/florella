@@ -4,6 +4,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	rect.modulate.a = 0.0
+	layer = 15
 
 func fade_out(duration := 0.3):
 	

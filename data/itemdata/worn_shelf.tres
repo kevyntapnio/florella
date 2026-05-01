@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://ddfjytc6srdon"]
+
+[ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="1_fwdci"]
+[ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="2_hoon3"]
+[ext_resource type="Texture2D" uid="uid://dxipl3eg3wyki" path="res://assets/art/decor/basic_set/worn_shelf.png" id="3_hoon3"]
+
+[sub_resource type="Resource" id="Resource_q0hhu"]
+script = ExtResource("2_hoon3")
+texture = ExtResource("3_hoon3")
+object_size = Vector2i(32, 25)
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[resource]
+script = ExtResource("1_fwdci")
+variants = Array[ExtResource("2_hoon3")]([SubResource("Resource_q0hhu")])
+decor_type = 1
+placement_behavior = 2
+requires_wall = true
+id = "worn_shelf"
+name = "Worn Shelf"
+icon = ExtResource("3_hoon3")
+description = "The plant is fake so you don't have to water it."
+price = 300
+sell_price = 150
+is_sellable = true
+metadata/_custom_type_script = "uid://dr3gelm7abpq6"
