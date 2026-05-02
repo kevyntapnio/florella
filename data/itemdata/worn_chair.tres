@@ -39,6 +39,7 @@ metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 script = ExtResource("1_18pg5")
 variants = Array[ExtResource("2_ej3j5")]([SubResource("Resource_g4mhp"), SubResource("Resource_alnex"), SubResource("Resource_6sujc"), SubResource("Resource_pybld")])
 placement_behavior = 1
+stackable = true
 id = "worn_chair"
 name = "Worn Chair"
 icon = ExtResource("1_rum1u")

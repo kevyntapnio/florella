@@ -5,3 +5,4 @@ var valid:= false
 var on_surface:= false
 var surface_object: DecorObject
 var surface_offset: int = 0
+var placement_behavior: DecorData.PlacementBehavior

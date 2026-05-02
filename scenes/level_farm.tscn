@@ -985,7 +985,7 @@ selling_system = NodePath("../Systems/SellingSystem")
 
 [node name="Systems" type="Node2D" parent="." unique_id=1370087006]
 
-[node name="WorldTileQuery" type="Node2D" parent="Systems" unique_id=666533549]
+[node name="WorldTileQuery" type="Node2D" parent="Systems" unique_id=666533549 groups=["tile_query"]]
 script = ExtResource("18_wkult")
 
 [node name="FarmVisualManager" type="Node" parent="Systems/WorldTileQuery" unique_id=1157675117 node_paths=PackedStringArray("tilled_layer", "watered_layer")]

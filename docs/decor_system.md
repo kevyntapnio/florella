@@ -31,7 +31,7 @@ DATA STRUCTURE:
 	- objects that are is_stacked are visually offset
 	- is_stacked objects position.y is "glued" to its surface_object's y-level + 1
 	- position.y +1 offset ensures that the the stacked_object.y has bias over surface_object.y
-	- DEPTH handling: inside PlacementValidator, it calculates offset value based on on
+	- DEPTH handling: inside PlacementValidator, it calculates offset value based on
 		depth index of buildable surface
 			- surface_height + (surface_height * depth)
 			- this returns default height or calculated offset based on how far the new decor is
@@ -50,6 +50,8 @@ DESIGN DECISIONS AND CONSTRAINTS:
 	- rugs are also included in surface_objects but may or may not have height offset
 	- for assets: try to design everything loosely following the 16px grid so that no highly special logic
 		is needed for spatial systems to keep up with
+	- as of 05/30/2026: wall_item placement is invalidated when placing below existing wall_item because
+		of temporary interaction_zone solution
 		
 DEPENDENCIES:
 	- SpatialLookup system --- expected coupling for validation

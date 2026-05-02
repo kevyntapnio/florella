@@ -21,24 +21,31 @@ func request_placement(request: PlacementRequest) -> bool:
 	context.data = request.current_decor.data
 	context.occupied_cells = request.current_decor.get_occupied_cells(request.anchor_cell)
 	
-	var result = placement_validator.evaluate_placement(context)
+	var result = placement_validator.evaluate(context)
 	
 	if not result.valid:
 		return false
 	
 	var decor_instance = request.current_decor
 	
+	var on_surface:= false
+	
 	if result.surface_object != null:
 		decor_instance.surface_object = result.surface_object
+		on_surface = true
 		
 	decor_instance.anchor_cell = request.anchor_cell
 	decor_instance.origin_cell = request.origin_cell
-	decor_instance.set_placed_mode(request.current_variant, result.on_surface, result.surface_offset)
+	decor_instance.set_placed_mode(request.current_variant, on_surface, result.surface_offset)
+	
+	if result.placement_behavior == DecorData.PlacementBehavior.RUG:
+		decor_instance.z_index = -1
+		decor_instance.y_sort_enabled = false
 	
 	var decor_info = {
 		"anchor_cell": request.anchor_cell,
 		"id": request.current_decor.data.id,
-		"is_stacked": result.on_surface,
+		"is_stacked": on_surface,
 		"variant": request.current_variant
 		}
 	
@@ -58,7 +65,6 @@ func request_removal(object: DecorObject):
 	
 	var origin_cell = object.origin_cell
 	var anchor_cell = object.anchor_cell
-	print(origin_cell, anchor_cell)
 	
 	if not placed_decor.has(origin_cell):
 		return false
@@ -105,7 +111,7 @@ func get_save_data():
 			saved_items_list.append(decor_copy)
 		
 		save_data[key] = saved_items_list
-		
+
 	return save_data
 
 func load_from_data(data):
@@ -126,7 +132,7 @@ func load_from_data(data):
 		for decor_item in items_at_tile:
 		
 			var id = decor_item.get("id")
-			var variant = decor_item.get("variant")
+			var variant = int(decor_item.get("variant", 0))
 			var is_stacked = decor_item.get("is_stacked")
 			
 			var anchor_str = decor_item.get("anchor_cell")
@@ -144,7 +150,6 @@ func load_from_data(data):
 		placed_decor[origin_cell] = parsed_list
 		
 func spawn_decor():
-	
 	if not is_instance_valid(ysort):
 		push_error("DecorSystem ERROR: invalid ysort")
 		return
@@ -171,9 +176,13 @@ func spawn_decor():
 				
 			## spawn everything first without offsets
 			decor_instance.set_placed_mode(variant, decor_item["is_stacked"], 0)
+			
+			if decor_instance.data.placement_behavior == DecorData.PlacementBehavior.RUG:
+				decor_instance.z_index = -1
+				decor_instance.y_sort_enabled = false
 				
 			spawned_instances.append(decor_instance)
-			
+	
 	for decor_instance in spawned_instances:
 		if decor_instance.is_stacked:
 			apply_stacked_offset(decor_instance)
@@ -184,8 +193,9 @@ func apply_stacked_offset(decor_instance: DecorObject):
 	context.anchor_cell = decor_instance.anchor_cell
 	context.data = decor_instance.data
 	context.occupied_cells = decor_instance.get_occupied_cells(decor_instance.anchor_cell)
+	context.placement_behavior = decor_instance.data.placement_behavior
 	
-	var result = placement_validator.evaluate_placement(context)
+	var result = placement_validator.evaluate(context)
 		
 	var surface = result.surface_object
 		

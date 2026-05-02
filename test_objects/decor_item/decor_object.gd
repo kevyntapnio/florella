@@ -52,7 +52,7 @@ func apply_variant_texture(variant_index: int) -> void:
 func apply_stacked_offset(stacked: bool, offset: int) -> void:
 	## this function is called to accomodate visual offset for decor stacking
 	## received value "offset" pertains to surface_object's vertical height
-	
+
 	var default_y_offset = - (sprite.texture.get_size().y / 2)
 	var final_offset: int 
 	
@@ -91,9 +91,10 @@ func register_surface():
 	for cell in occupied_cells:
 		SurfaceRegistry.register(cell, self)
 			
-func set_placed_mode(variant_index: int, is_stacked: bool, surface_offset: int) -> void:
+func set_placed_mode(variant_index: int, is_currently_stacked: bool, surface_offset: int) -> void:
 
 	is_placed = true
+	is_stacked = is_currently_stacked
 	
 	apply_variant_texture(variant_index)
 	apply_colliders(variant_index, is_stacked, surface_offset)
@@ -106,8 +107,8 @@ func set_placed_mode(variant_index: int, is_stacked: bool, surface_offset: int) 
 	
 	if data.has_surface:
 		register_surface()
-	
-func apply_colliders(variant_index: int, is_stacked: bool, offset: int) -> void:
+			
+func apply_colliders(variant_index: int, is_currently_stacked: bool, offset: int) -> void:
 	
 	var variant = data.variants[variant_index]
 	
@@ -134,16 +135,43 @@ func interact(request: InteractionRequest) -> bool:
 	return true
 	
 func get_interaction_score(context):
-	return INTERACT_PRIORITY
+	if is_stacked: 
+		return 20
+	else:
+		return INTERACT_PRIORITY
 	
 func get_interaction_zone():
-	return occupied_cells
+	return get_total_interactable_area()
 	
 func can_accept_item(request):
 	return true
 
 func is_currently_interactable():
 	return true
+	
+func get_total_interactable_area():
+	if not is_placed:
+		return
+		
+	var offset_zone: Array[Vector2i] = []
+	
+	if is_stacked:
+		for cell in occupied_cells:
+			var adjusted = cell + Vector2i.UP
+			offset_zone.append(adjusted)
+		
+	if data.placement_behavior == DecorData.PlacementBehavior.WALL_ITEM:
+		for cell in occupied_cells:
+			var adjusted = cell + Vector2i(0, 2)
+			offset_zone.append(adjusted)
+	
+	return occupied_cells + offset_zone
+	
+func activate_spatial_registration(anchor_cell):
+	var interactable_zone = get_total_interactable_area()
+	
+	for c in interactable_zone:
+		SpatialLookup.register_spatial_object(c, self)
 	
 func _exit_tree():
 	super()
@@ -153,4 +181,6 @@ func _exit_tree():
 	for cell in occupied_cells:
 		if SurfaceRegistry.surface_objects.has(cell):
 			SurfaceRegistry.unregister(cell, self)
-		
+	
+	for cell in get_total_interactable_area():
+		SpatialLookup.unregister_spatial_object(cell, self)

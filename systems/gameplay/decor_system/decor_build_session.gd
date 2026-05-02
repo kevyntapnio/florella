@@ -51,22 +51,23 @@ func _process(delta: float) -> void:
 		context.anchor_cell = occupancy_anchor_cell
 		context.occupied_cells = current_decor.get_occupied_cells(occupancy_anchor_cell)
 		context.data = current_decor.data
+		context.placement_behavior = current_decor.data.placement_behavior
 		
-		var result = placement_validator.evaluate_placement(context)
+		var result = placement_validator.evaluate(context)
 		
 		if result == null:
 			push_error("BuildSession ERROR: placement_result not returned by placement_validator")
 			return
 		
-		var surface_object = result.surface_object
-		var offset = result.surface_offset
+		match result.placement_behavior:
+			DecorData.PlacementBehavior.RUG:
+				handle_rug_preview(result)
 				
-		if result.surface_object != null:
-			current_decor.apply_stacked_offset(true, offset)
-			preview_position.y = surface_object.global_position.y + 1.0
-			print(offset)
-		else:
-			current_decor.apply_stacked_offset(false, offset)
+			DecorData.PlacementBehavior.FLOOR_ITEM:
+				handle_floor_preview(result)
+				
+			DecorData.PlacementBehavior.WALL_ITEM:
+				handle_wall_preview(result)
 			
 		current_preview_result = result
 	
@@ -76,6 +77,25 @@ func _process(delta: float) -> void:
 		
 	current_decor.global_position = preview_position
 
+func handle_rug_preview(result: PlacementResult) -> void:
+	if current_decor == null:
+		return
+		
+	current_decor.y_sort_enabled = false
+	current_decor.z_index = -1
+	
+func handle_floor_preview(result: PlacementResult) -> void:
+	if current_decor == null:
+		return
+		
+	if result.surface_object == null:
+		current_decor.apply_stacked_offset(false, 0)
+	else:
+		current_decor.apply_stacked_offset(true, result.surface_offset)
+	
+func handle_wall_preview(result: PlacementResult) -> void:
+	pass
+		
 func set_preview_modulate(valid: bool) -> void:
 	if current_decor == null:
 		return

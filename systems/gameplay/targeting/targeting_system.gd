@@ -26,7 +26,7 @@ func set_tilemap(map: TileMapLayer):
 	initialized = true
 	
 func setup():
-	## in the future, this function will receive resolver instead of creating it
+	## TODO: in the future, this function will receive resolver instead of creating it
 	resolver = TargetResolver.new()
 	interaction_target_builder = InteractionTargetBuilder.new()
 	

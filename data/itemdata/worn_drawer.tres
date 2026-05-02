@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DecorData" format=3 uid="uid://ctpoargdllugt"]
+
+[ext_resource type="Script" uid="uid://dr3gelm7abpq6" path="res://test_objects/decor_item/decor_data.gd" id="1_ml1nl"]
+[ext_resource type="Script" uid="uid://b3rpgtd4a0iko" path="res://test_objects/decor_item/decor_variants.gd" id="2_28x1q"]
+[ext_resource type="Texture2D" uid="uid://c671hvwrb3mbe" path="res://assets/art/decor/basic_set/worn_drawer_0.png" id="3_2f8du"]
+[ext_resource type="Texture2D" uid="uid://bihiysyh3w1da" path="res://assets/art/decor/basic_set/worn_drawer_1.png" id="4_17n6k"]
+
+[sub_resource type="Resource" id="Resource_qbijx"]
+script = ExtResource("2_28x1q")
+texture = ExtResource("3_2f8du")
+object_size = Vector2i(32, 16)
+collider_size = Vector2i(32, 16)
+vertical_height = 20
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[sub_resource type="Resource" id="Resource_gaolj"]
+script = ExtResource("2_28x1q")
+texture = ExtResource("4_17n6k")
+object_size = Vector2i(16, 32)
+collider_size = Vector2i(16, 32)
+vertical_height = 16
+metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
+
+[resource]
+script = ExtResource("1_ml1nl")
+variants = Array[ExtResource("2_28x1q")]([SubResource("Resource_qbijx"), SubResource("Resource_gaolj")])
+placement_behavior = 1
+has_surface = true
+stackable = true
+id = "worn_drawer"
+name = "Worn Drawer"
+icon = ExtResource("3_2f8du")
+description = "Old but sturdy."
+price = 400
+sell_price = 200
+is_sellable = true
+metadata/_custom_type_script = "uid://dr3gelm7abpq6"

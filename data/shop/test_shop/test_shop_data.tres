@@ -11,10 +11,13 @@
 [ext_resource type="Resource" uid="uid://bi0b8bjptgiak" path="res://data/shop/test_shop/shopentry/worn_shelf.tres" id="9_iy2b7"]
 [ext_resource type="Resource" uid="uid://k86e6tv7mom3" path="res://data/shop/test_shop/shopentry/worn_window.tres" id="10_nj7xf"]
 [ext_resource type="Resource" uid="uid://dmidtrj2fp1pt" path="res://data/shop/test_shop/shopentry/worn_bed.tres" id="11_6xc5g"]
+[ext_resource type="Resource" uid="uid://cph0xmdc75wt8" path="res://data/shop/test_shop/shopentry/worn_nightstand.tres" id="12_lgs7v"]
+[ext_resource type="Resource" uid="uid://dd1bw1k8mbrqw" path="res://data/shop/test_shop/shopentry/worn_drawer.tres" id="13_8tmx3"]
+[ext_resource type="Resource" uid="uid://sqdaftvjoyv" path="res://data/shop/test_shop/shopentry/worn_dresser.tres" id="14_pnydc"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_nfd80")
 shop_type = "Seed"
-shop_entries = Array[Resource]([ExtResource("3_x4rir"), ExtResource("3_ft8ae"), ExtResource("4_ft8ae"), ExtResource("5_43sv5"), ExtResource("6_p0jww"), ExtResource("7_xe236"), ExtResource("8_hrtxh"), ExtResource("9_iy2b7"), ExtResource("10_nj7xf"), ExtResource("11_6xc5g")])
+shop_entries = Array[Resource]([ExtResource("3_x4rir"), ExtResource("3_ft8ae"), ExtResource("4_ft8ae"), ExtResource("5_43sv5"), ExtResource("6_p0jww"), ExtResource("7_xe236"), ExtResource("8_hrtxh"), ExtResource("9_iy2b7"), ExtResource("10_nj7xf"), ExtResource("11_6xc5g"), ExtResource("12_lgs7v"), ExtResource("13_8tmx3"), ExtResource("14_pnydc")])
 metadata/_custom_type_script = "uid://wyiybuh7c3eg"

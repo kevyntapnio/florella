@@ -13,6 +13,7 @@ func _ready() -> void:
 	SceneManager.set_current_scene(scene_id)
 	GridManager.set_tilemap($FloorTilemap)
 	targeting_system.set_tilemap($FloorTilemap)
+	tile_query.initialize($FloorTilemap)
 	
 	initialize_systems()
 	setup()
@@ -26,7 +27,6 @@ func setup():
 
 func initialize_scene(data): 
 	scene_controller.initialize_scene(data)
-	tile_query.initialize($FloorTilemap)
 
 func initialize_systems():
 	DecorSystem.setup(ysort_world, tile_query)

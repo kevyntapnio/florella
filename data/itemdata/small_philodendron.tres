@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://b3rpgtd4a0iko"
 script = ExtResource("1_b40e6")
 variants = Array[ExtResource("2_x28n4")]([SubResource("Resource_stxdr")])
 decor_type = 2
+placement_behavior = 1
 stackable = true
 id = "small_philodendron"
 name = "Small Philodendron"
