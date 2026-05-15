@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RequestData" format=3 uid="uid://dh3ef31afvl7x"]
+
+[ext_resource type="Script" uid="uid://n07864y4ey7b" path="res://systems/gameplay/flower_shop/bouquet_minigame/request_system/request_data.gd" id="1_hi0bv"]
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="1_oobep"]
+[ext_resource type="Resource" uid="uid://c2dq5sq5q458p" path="res://data/itemdata/tulip.tres" id="2_a33kh"]
+
+[resource]
+script = ExtResource("1_hi0bv")
+request_message = "My mom's birthday is coming up. She loves pink tulips. Her favorite vase can only hold a few flowers, though!"
+request_meanings = Array[int]([0, 3])
+preferred_flowers = Array[ExtResource("1_oobep")]([ExtResource("2_a33kh")])
+min_size = 3
+max_size = 5
+request_level = 10
+metadata/_custom_type_script = "uid://n07864y4ey7b"

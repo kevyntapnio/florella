@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RequestData" format=3 uid="uid://b7xk8pg6mccol"]
+
+[ext_resource type="Script" uid="uid://n07864y4ey7b" path="res://systems/gameplay/flower_shop/bouquet_minigame/request_system/request_data.gd" id="1_hi0bv"]
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="1_oobep"]
+
+[resource]
+script = ExtResource("1_hi0bv")
+request_message = "Going on a first date today. Can I get a medium-sized bouquet? I want something that looks classy."
+request_meanings = Array[int]([5])
+preferred_attributes = Array[int]([2])
+min_size = 6
+max_size = 8
+request_weight = 8
+metadata/_custom_type_script = "uid://n07864y4ey7b"

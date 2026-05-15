@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RequestData" format=3 uid="uid://dorhqm64datgq"]
+
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="1_mdb0u"]
+[ext_resource type="Script" uid="uid://n07864y4ey7b" path="res://systems/gameplay/flower_shop/bouquet_minigame/request_system/request_data.gd" id="2_lfr7a"]
+
+[resource]
+script = ExtResource("2_lfr7a")
+request_message = "Visiting my nan today. Got some lavender? She finds the scent relaxing. It's gonna be a long trek, so I need something that's easy to carry."
+request_meanings = Array[int]([2])
+preferred_attributes = Array[int]([7, 8])
+min_size = 3
+max_size = 5
+request_level = 8
+metadata/_custom_type_script = "uid://n07864y4ey7b"

@@ -7,9 +7,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GridManager.set_tilemap($World/GroundTileMap)
-	targeting_system.set_tilemap($World/GroundTileMap)
-	
+	GridManager.setup()
+	targeting_system.setup()
 	FarmVisual.tilled_layer = $World/FarmLogic/FarmVisuals/TilledLayer
 	FarmVisual.watered_layer = $World/FarmLogic/FarmVisuals/WateredLayer
 	

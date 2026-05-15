@@ -31,6 +31,7 @@ id = "worn_drawer"
 name = "Worn Drawer"
 icon = ExtResource("3_2f8du")
 description = "Old but sturdy."
+category = 5
 price = 400
 sell_price = 200
 is_sellable = true

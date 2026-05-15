@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FlowerBucketData" format=3 uid="uid://drerj4rm5tu2b"]
+
+[ext_resource type="Script" uid="uid://c7xku3fv7rqct" path="res://systems/gameplay/flower_shop/flower_stand/flower_bucket_data.gd" id="1_f48qy"]
+[ext_resource type="Texture2D" uid="uid://clm5e0are87fw" path="res://assets/art/flower_shop/flower_stand/basic_flower_bucket.png" id="2_isui1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sl8c"]
+atlas = ExtResource("2_isui1")
+region = Rect2(32, 0, 32, 48)
+
+[resource]
+script = ExtResource("1_f48qy")
+id = "tulip"
+texture = SubResource("AtlasTexture_0sl8c")
+metadata/_custom_type_script = "uid://c7xku3fv7rqct"

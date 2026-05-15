@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RequestData" format=3 uid="uid://w08tibt8af3s"]
+
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="1_ilkkc"]
+[ext_resource type="Script" uid="uid://n07864y4ey7b" path="res://systems/gameplay/flower_shop/bouquet_minigame/request_system/request_data.gd" id="2_l843i"]
+
+[resource]
+script = ExtResource("2_l843i")
+request_message = "My friend and I are going on a picnic. I want to surprise her, so I need something that's easy to hide."
+request_meanings = Array[int]([1])
+preferred_attributes = Array[int]([1])
+min_size = 3
+max_size = 5
+request_level = 10
+metadata/_custom_type_script = "uid://n07864y4ey7b"

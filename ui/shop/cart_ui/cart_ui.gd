@@ -9,7 +9,7 @@ var cart: Cart
 
 var slots = []
 
-func initialize(size, cart_object):
+func initialize(size: int, cart_object: Cart):
 	visible = true
 	create_slots(size)
 	
@@ -36,7 +36,7 @@ func create_slots(size):
 	
 func on_left_click(index):
 	
-	cart.handle_left_click(index)
+	pass
 	
 func on_right_click(index):
 	

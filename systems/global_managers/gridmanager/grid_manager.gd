@@ -3,10 +3,9 @@ extends Node2D
 @export var tilemap: TileMapLayer
 
 var grid_objects: Dictionary = {}
-var tile_size: int
+var tile_size: int = 32
 
-func set_tilemap(map: TileMapLayer):
-	tilemap = map
+func setup():
 	get_tile_size()
 		
 func register_grid_object(coords: Vector2i, object):
@@ -55,8 +54,7 @@ func get_world_position(grid_coordinate: Vector2i) -> Vector2:
 		)
 	
 func get_tile_size():
-	var size = tilemap.tile_set.tile_size
-	tile_size = size.x
+	var size = WorldSpace.LOGIC_GRID_SIZE
 
 func spatial_to_grid(coords: Vector2i):
 	return (coords * SpatialLookup.tile_size) / tile_size

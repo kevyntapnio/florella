@@ -19,6 +19,7 @@ id = "worn_bed"
 name = "Worn Bed"
 icon = ExtResource("1_rvsai")
 description = "Nothing comfier than soft, well-worn sheets."
+category = 5
 price = 1000
 sell_price = 500
 is_sellable = true

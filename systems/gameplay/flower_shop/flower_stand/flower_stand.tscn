@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://b2lu11fu6yvx"]
+
+[ext_resource type="Script" uid="uid://b8gqngj4hso1w" path="res://flower_stand_object.gd" id="1_3jhuv"]
+[ext_resource type="Texture2D" uid="uid://c33t8va3jsxpp" path="res://assets/art/flower_shop/flower_stand/basic_flower_stand.png" id="2_m3v0i"]
+[ext_resource type="PackedScene" uid="uid://dyeo77cyxytrh" path="res://systems/gameplay/flower_shop/flower_stand/flower_bucket.tscn" id="3_t8576"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jhuv"]
+size = Vector2(51, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3v0i"]
+size = Vector2(62, 44.625)
+
+[node name="FlowerStandObject" type="Node2D" unique_id=797849210]
+script = ExtResource("1_3jhuv")
+object_footprint = Vector2i(2, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=349047204]
+position = Vector2(-25, 0)
+collision_layer = 32
+collision_mask = 2
+
+[node name="FlowerStand" type="Sprite2D" parent="StaticBody2D" unique_id=1443287855]
+texture = ExtResource("2_m3v0i")
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1121742640]
+position = Vector2(-0.5, -11.5)
+shape = SubResource("RectangleShape2D_3jhuv")
+
+[node name="FlowerBuckets" type="Node2D" parent="." unique_id=1154046235]
+y_sort_enabled = true
+position = Vector2(-25, 0)
+
+[node name="FlowerBucket0" parent="FlowerBuckets" unique_id=1661669957 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(-16, -26)
+
+[node name="FlowerBucket1" parent="FlowerBuckets" unique_id=1287824006 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(0, -26)
+
+[node name="FlowerBucket7" parent="FlowerBuckets" unique_id=343278855 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(16, -26)
+
+[node name="FlowerBucket4" parent="FlowerBuckets" unique_id=1664009184 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(-16, -15)
+
+[node name="FlowerBucket5" parent="FlowerBuckets" unique_id=1033951710 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(0, -15)
+
+[node name="FlowerBucket6" parent="FlowerBuckets" unique_id=2110373752 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(16, -15)
+
+[node name="FlowerBucket" parent="FlowerBuckets" unique_id=1636271626 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(-16, -4)
+
+[node name="FlowerBucket2" parent="FlowerBuckets" unique_id=722513017 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(0, -4)
+
+[node name="FlowerBucket3" parent="FlowerBuckets" unique_id=942307456 instance=ExtResource("3_t8576")]
+y_sort_enabled = true
+position = Vector2(16, -4)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=81843582]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=2022852872]
+position = Vector2(-26, -14.3125)
+shape = SubResource("RectangleShape2D_m3v0i")

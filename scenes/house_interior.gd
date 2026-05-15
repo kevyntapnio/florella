@@ -11,8 +11,7 @@ extends Node2D
 
 func _ready() -> void:
 	SceneManager.set_current_scene(scene_id)
-	GridManager.set_tilemap($FloorTilemap)
-	targeting_system.set_tilemap($FloorTilemap)
+	GridManager.setup()
 	tile_query.initialize($FloorTilemap)
 	
 	initialize_systems()

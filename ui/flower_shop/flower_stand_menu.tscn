@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://crw4tc67cbxja"]
+
+[ext_resource type="Script" uid="uid://caanwqthrqery" path="res://ui/flower_shop/flower_stand_menu.gd" id="1_1djum"]
+[ext_resource type="PackedScene" uid="uid://b7ks18o54lk0p" path="res://ui/inventory_ui/inventory_ui.tscn" id="1_kkmka"]
+[ext_resource type="PackedScene" uid="uid://br06aiqkblxfh" path="res://ui/flower_shop/flower_stand_ui.tscn" id="1_vtf7u"]
+[ext_resource type="Texture2D" uid="uid://blwm5xgkf5tm7" path="res://assets/art/ui/main_menu_theme_1/background/background.png" id="2_1djum"]
+
+[node name="FlowerStandMenu" type="CanvasLayer" unique_id=572837462 node_paths=PackedStringArray("flower_stand_ui")]
+process_mode = 3
+script = ExtResource("1_1djum")
+flower_stand_ui = NodePath("Root/MarginContainer/CenterContainer/HBoxContainer/FlowerStandUI")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1040799606]
+modulate = Color(1, 1, 1, 0.8745098)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("2_1djum")
+
+[node name="Root" type="Control" parent="." unique_id=1103889077]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Root" unique_id=698819513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Root/MarginContainer" unique_id=319632112]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Root/MarginContainer/CenterContainer" unique_id=233677271]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="InventoryUI" parent="Root/MarginContainer/CenterContainer/HBoxContainer" unique_id=763682832 instance=ExtResource("1_kkmka")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="FlowerStandUI" parent="Root/MarginContainer/CenterContainer/HBoxContainer" unique_id=229796500 instance=ExtResource("1_vtf7u")]
+process_mode = 3
+custom_minimum_size = Vector2(124, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1

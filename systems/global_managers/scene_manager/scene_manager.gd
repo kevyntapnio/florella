@@ -6,11 +6,13 @@ var last_spawn_data: Dictionary = {}
 enum Scenes {
 	FARM,
 	HOUSE,
+	SHOP_INTERIOR
 }
 
 var scene_paths = {
 	Scenes.FARM: "res://scenes/level_farm.tscn",
-	Scenes.HOUSE: "res://scenes/house_interior.tscn"
+	Scenes.HOUSE: "res://scenes/house_interior.tscn",
+	Scenes.SHOP_INTERIOR: "res://scenes/shop_interior.tscn"
 }
 
 var transition_data = {}

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://br06aiqkblxfh"]
+
+[ext_resource type="Script" uid="uid://dd8s4wahyrmt8" path="res://ui/flower_shop/flower_stand_ui.gd" id="1_775rg"]
+[ext_resource type="Texture2D" uid="uid://cilui32o5uc4c" path="res://assets/art/ui/main_menu_theme_1/panels_boxes/tooltip.png" id="2_775rg"]
+[ext_resource type="PackedScene" uid="uid://ipm4ajwd7kup" path="res://ui/slot/slot_2.tscn" id="2_ce0bo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43mg3"]
+texture = ExtResource("2_775rg")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="FlowerStandUI" type="Control" unique_id=229796500 node_paths=PackedStringArray("grid_container")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 4
+script = ExtResource("1_775rg")
+slot_scene = ExtResource("2_ce0bo")
+grid_container = NodePath("PanelContainer/MarginContainer/GridContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=848716135]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_43mg3")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=568762404]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer" unique_id=1729221406]
+layout_mode = 2
+columns = 3

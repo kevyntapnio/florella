@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FlowerBucketData" format=3 uid="uid://vygbeyye3oi8"]
+
+[ext_resource type="Script" uid="uid://c7xku3fv7rqct" path="res://systems/gameplay/flower_shop/flower_stand/flower_bucket_data.gd" id="1_xnifi"]
+[ext_resource type="Texture2D" uid="uid://clm5e0are87fw" path="res://assets/art/flower_shop/flower_stand/basic_flower_bucket.png" id="2_4fsqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yqdn"]
+atlas = ExtResource("2_4fsqc")
+region = Rect2(96, 0, 32, 48)
+
+[resource]
+script = ExtResource("1_xnifi")
+id = "ranunculus"
+texture = SubResource("AtlasTexture_1yqdn")
+metadata/_custom_type_script = "uid://c7xku3fv7rqct"

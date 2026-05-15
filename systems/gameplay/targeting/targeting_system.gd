@@ -1,13 +1,6 @@
 class_name TargetingSystem
 extends Node
 
-### TODO: Remove these after refactor cleanup 
-var tilemap: TileMapLayer
-var player_tile_coords
-var current_target_coords
-var current_target_cell
-### ---------- ###
-
 var resolver: TargetResolver
 var interaction_target_builder: InteractionTargetBuilder
 var initialized := false
@@ -20,11 +13,6 @@ var current_proximity_target: InteractionTarget
 
 var current_targeted_target: InteractionTarget
 
-func set_tilemap(map: TileMapLayer):
-	tilemap = map
-	
-	initialized = true
-	
 func setup():
 	## TODO: in the future, this function will receive resolver instead of creating it
 	resolver = TargetResolver.new()

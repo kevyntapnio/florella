@@ -41,7 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://d1g5v6rv40y8w" path="res://data/shop/shop_counter.tscn" id="25_dlwqu"]
 [ext_resource type="PackedScene" uid="uid://18m8t6ns0um6" path="res://world/foliage/tall_grass/tall_grass5.tscn" id="25_g2dj5"]
 [ext_resource type="Resource" uid="uid://cx01fnxwuqntv" path="res://data/shop/test_shop/test_shop_info.tres" id="26_bsn28"]
-[ext_resource type="PackedScene" uid="uid://dp8tigonc3r05" path="res://test_objects/light_source/light_source.tscn" id="28_p8dsh"]
 [ext_resource type="Script" uid="uid://bccys20aysvqk" path="res://world/buildings/farm_cottage/farm_cottage.gd" id="29_lpu8x"]
 [ext_resource type="PackedScene" uid="uid://hvubnck8s1kr" path="res://systems/global_managers/timemanager/day_transition.tscn" id="30_a5i0f"]
 [ext_resource type="Script" uid="uid://coxtildet1c5e" path="res://ui/current_gold_label.gd" id="35_0p3ls"]
@@ -697,6 +696,11 @@ position = Vector2(183, 550)
 script = ExtResource("3_0j4k1")
 spawn_id = "farm_house_door"
 
+[node name="temporary_shop" type="Node2D" parent="World/SpawnPoints" unique_id=1665878015 groups=["spawn_points"]]
+position = Vector2(768, 544)
+script = ExtResource("3_0j4k1")
+spawn_id = "temporary_shop"
+
 [node name="ExitPoints" type="Node" parent="World" unique_id=923618061]
 
 [node name="FarmHouseDoor" type="Area2D" parent="World/ExitPoints" unique_id=2020345239]
@@ -708,6 +712,18 @@ target_scene = 1
 target_spawn_id = "doorway"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/ExitPoints/FarmHouseDoor" unique_id=1142937376]
+position = Vector2(-1.3196106, -5.626831)
+shape = SubResource("RectangleShape2D_lpu8x")
+
+[node name="TemporaryShop" type="Area2D" parent="World/ExitPoints" unique_id=529072336]
+position = Vector2(688, 544)
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("4_0j4k1")
+target_scene = 2
+target_spawn_id = "shop_door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/ExitPoints/TemporaryShop" unique_id=468133345]
 position = Vector2(-1.3196106, -5.626831)
 shape = SubResource("RectangleShape2D_lpu8x")
 
@@ -917,9 +933,6 @@ position = Vector2(512, 512)
 shop_system = NodePath("../../../Systems/ShopSystem")
 shop_info = ExtResource("26_bsn28")
 
-[node name="DaisyLamp" parent="World/YSortWorld" unique_id=294373437 instance=ExtResource("28_p8dsh")]
-position = Vector2(584, 504)
-
 [node name="ShippingBin" parent="World/YSortWorld" unique_id=123653949 node_paths=PackedStringArray("selling_system") instance=ExtResource("45_a5i0f")]
 position = Vector2(416, 512)
 selling_system = NodePath("../../../Systems/SellingSystem")
@@ -937,7 +950,7 @@ tree_scene = ExtResource("15_52aj1")
 tree_data_list = Array[ExtResource("15_ahd6e")]([ExtResource("16_52aj1"), ExtResource("17_xca5m")])
 tile_query = NodePath("../../Systems/WorldTileQuery")
 quantity = 130
-seed_value = 3270
+seed_value = 826
 min_spacing = 1
 
 [node name="GrassSpawner" type="Node2D" parent="Spawners" unique_id=1639539115 node_paths=PackedStringArray("tile_query")]
@@ -1014,3 +1027,4 @@ script = ExtResource("55_46xxu")
 metadata/_custom_type_script = "uid://c8rd2bjpyuhok"
 
 [connection signal="body_entered" from="World/ExitPoints/FarmHouseDoor" to="World/ExitPoints/FarmHouseDoor" method="_on_body_entered"]
+[connection signal="body_entered" from="World/ExitPoints/TemporaryShop" to="World/ExitPoints/TemporaryShop" method="_on_body_entered"]

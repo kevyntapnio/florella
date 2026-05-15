@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dyeo77cyxytrh"]
+
+[ext_resource type="Script" uid="uid://c86kolobmoix6" path="res://systems/gameplay/flower_shop/flower_stand/flower_bucket.gd" id="1_lfxoj"]
+[ext_resource type="Texture2D" uid="uid://clm5e0are87fw" path="res://assets/art/flower_shop/flower_stand/basic_flower_bucket.png" id="2_lla57"]
+
+[node name="FlowerBucket" type="Node2D" unique_id=1636271626]
+script = ExtResource("1_lfxoj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103509221]
+texture = ExtResource("2_lla57")
+offset = Vector2(0, -24)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 48)

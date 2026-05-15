@@ -137,6 +137,10 @@ func interact(request: InteractionRequest) -> bool:
 func get_interaction_score(context):
 	if is_stacked: 
 		return 20
+		
+	### NOTE: temporary until interaction_zone registry is implemented
+	if data.placement_behavior == DecorData.PlacementBehavior.WALL_ITEM:
+		return 1
 	else:
 		return INTERACT_PRIORITY
 	

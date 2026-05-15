@@ -7,6 +7,7 @@ func set_tile_query(scene_tile_query: Node) -> void:
 	tile_query = scene_tile_query
 	
 func evaluate(context: PlacementContext) -> PlacementResult:
+	
 	var result = get_placement_result(context)
 	return result
 	
@@ -29,8 +30,11 @@ func get_placement_result(context: PlacementContext) -> PlacementResult:
 			
 	return result
 	
-func handle_floor_item(context: PlacementContext):
-	assert(tile_query != null)
+func handle_floor_item(context: PlacementContext) -> PlacementResult:
+	if tile_query == null:
+		push_warning("PlacementValidator: No tile_query assigned. Check if this level supports decorating")
+		return null
+		
 	var valid:= true
 	
 	if not grid_unoccupied(context):
@@ -98,8 +102,6 @@ func classify_overlap_objects(overlap_scores: Dictionary) -> Dictionary:
 		if obj.data.blocks_placement:
 			blockers.append(obj)
 		
-	print("surfaces", surfaces)
-	print("blockers:", blockers)
 	return {
 		"blockers": blockers,
 		"surfaces": surfaces
@@ -111,6 +113,10 @@ func handle_wall_item(context: PlacementContext) -> PlacementResult:
 	## wall items do not have a floor footprint
 	## if these rules ever change, we can always do so here
 	
+	if tile_query == null:
+		push_warning("PlacementValidator: No tile_query assigned. Check if this level supports decorating")
+		return null
+		
 	var valid:= true
 	
 	for cell in context.occupied_cells:
@@ -136,6 +142,10 @@ func handle_rug_item(context: PlacementContext) -> PlacementResult:
 	## NOTE: fine-tune for feel whether to allow rug to be placed under existing object,
 	## 		or if it should only be placed before other decor gets stacked over it
 	
+	if tile_query == null:
+		push_warning("PlacementValidator: No tile_query assigned. Check if this level supports decorating")
+		return null
+		
 	var valid:= true
 	
 	for cell in context.occupied_cells:

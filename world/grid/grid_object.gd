@@ -5,7 +5,7 @@ class_name GridObject
 var visual_cell: Vector2i
 var anchor_cell: Vector2i
 var is_registered:= false
-var occupied_tiles = []
+var occupied_tiles: Array[Vector2i] = []
 
 @export var object_footprint: Vector2i = Vector2i(1, 1)
 		

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RequestData" format=3 uid="uid://cai4vhy5k3f4n"]
+
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="1_vplrl"]
+[ext_resource type="Script" uid="uid://n07864y4ey7b" path="res://systems/gameplay/flower_shop/bouquet_minigame/request_system/request_data.gd" id="2_xg3cu"]
+
+[resource]
+script = ExtResource("2_xg3cu")
+request_message = "I've had some rough days. I need a pick-me-up. Just something small would be fine."
+request_meanings = Array[int]([2])
+min_size = 3
+max_size = 5
+request_weight = 8
+allow_random_preferences = true
+metadata/_custom_type_script = "uid://n07864y4ey7b"

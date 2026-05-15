@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://cpbxyowqul6cw"]
+
+[ext_resource type="Resource" uid="uid://hbbq3ycrmrk6" path="res://data/itemdata/fake_plant.tres" id="1_ldhnv"]
+[ext_resource type="Script" uid="uid://b2kq5lannicn6" path="res://world/shop/shopdata/shop_entry.gd" id="1_pdnw3"]
+
+[resource]
+script = ExtResource("1_pdnw3")
+item = ExtResource("1_ldhnv")
+metadata/_custom_type_script = "uid://b2kq5lannicn6"

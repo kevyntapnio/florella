@@ -11,8 +11,10 @@ func initialize(container_size):
 	for i in range(container_size):
 		slots.append(null)
 	
-func add_stack(stack):
-
+func add_stack(stack: ItemStack):
+	if not can_accept_stack(stack):
+		return stack
+		
 	for i in range(slots.size()):
 		if slots[i] == null:
 			continue
@@ -50,6 +52,9 @@ func add_stack(stack):
 	return stack
 	
 func add_to_slot(slot_index, stack: ItemStack) -> bool:
+	if not can_accept_stack(stack):
+		return false
+		
 	var slot_stack = slots[slot_index]
 	
 	if slot_stack == null:
@@ -128,3 +133,6 @@ func get_item(index):
 func set_slot(slot_index, stack: ItemStack):
 	slots[slot_index] = stack
 	slots_changed.emit()
+	
+func can_accept_stack(stack: ItemStack) -> bool:
+	return true

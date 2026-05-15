@@ -8,7 +8,7 @@ func _ready():
 	
 	layer = 10
 	
-	var hbox = $MarginContainer/HotbarPanel/HBoxContainer
+	var hbox = $Control/HotbarPanel/MarginContainer/HBoxContainer
 	if hbox:
 		slots = hbox.get_children()
 	else:

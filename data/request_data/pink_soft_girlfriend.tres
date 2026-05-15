@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RequestData" format=3 uid="uid://gag8xxn3utp1"]
+
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="1_whqll"]
+[ext_resource type="Script" uid="uid://n07864y4ey7b" path="res://systems/gameplay/flower_shop/bouquet_minigame/request_system/request_data.gd" id="2_d1m3i"]
+
+[resource]
+script = ExtResource("2_d1m3i")
+request_message = "My girlfriend loves pink. Nothing too extravagant, though."
+request_meanings = Array[int]([5])
+preferred_attributes = Array[int]([4])
+preferred_colors = Array[int]([0])
+min_size = 6
+max_size = 8
+request_level = 8
+metadata/_custom_type_script = "uid://n07864y4ey7b"

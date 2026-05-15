@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RequestData" format=3 uid="uid://bfnmo1key8psc"]
+
+[ext_resource type="Script" uid="uid://cc041ovb8lov8" path="res://systems/modules/items/flowers/flower_data.gd" id="1_tf71s"]
+[ext_resource type="Script" uid="uid://n07864y4ey7b" path="res://systems/gameplay/flower_shop/bouquet_minigame/request_system/request_data.gd" id="2_x1jr3"]
+
+[resource]
+script = ExtResource("2_x1jr3")
+request_message = "It's my sister's birthday. Can I get a medium-sized bouquet? I don't know much about flowers, but yellow's her favorite color."
+request_meanings = Array[int]([0])
+preferred_colors = Array[int]([4])
+min_size = 6
+max_size = 8
+request_weight = 5
+metadata/_custom_type_script = "uid://n07864y4ey7b"
